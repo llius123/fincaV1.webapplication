@@ -13,6 +13,8 @@ class VecinoBean {
   telefono: string;
   id_tipovecino: number;
   cod_poblacion: number;
+  login: string;
+  pass: string;
   constructor(
     id: number,
     nombre: string,
@@ -27,7 +29,9 @@ class VecinoBean {
     email: string,
     telefono: string,
     id_tipovecino: number,
-    cod_poblacion: number
+    cod_poblacion: number,
+    login: string,
+    pass: string
   ) {
     this.id = id;
     this.nombre = nombre;
@@ -43,5 +47,7 @@ class VecinoBean {
     this.telefono = telefono;
     this.id_tipovecino = id_tipovecino;
     this.cod_poblacion = cod_poblacion;
+    this.login = login;
+    this.pass = pass;
   }
 }
