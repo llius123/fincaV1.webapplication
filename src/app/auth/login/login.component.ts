@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(login: string,pass: string){
-    this.loginService.login(login, pass).subscribe((vecino: VecinoBean) => console.log(vecino.id));
+    this.loginService.login(login, pass).subscribe((vecino: VecinoBean) => console.log(vecino));
   }
 
 }

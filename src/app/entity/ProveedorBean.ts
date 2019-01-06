@@ -3,18 +3,18 @@ class ProveedorBean {
   direccion: string;
   telefono: string;
   email: string;
-  cod_poblacion: number;
+  poblacion: PoblacionBean;
   constructor(
     id: number,
     direccion: string,
     telefono: string,
     email: string,
-    cod_poblacion: number
+    poblacion: PoblacionBean
   ) {
     this.id = id;
     this.direccion = direccion;
     this.telefono = telefono;
     this.email = email;
-    this.cod_poblacion = cod_poblacion;
+    this.poblacion = poblacion;
   }
 }

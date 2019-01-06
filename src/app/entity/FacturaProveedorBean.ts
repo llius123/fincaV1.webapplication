@@ -1,7 +1,7 @@
 class FacturaProveedorBean {
   fecha_registro: Date;
-  id_proveedor: number;
-  id_tipofactura: number;
+  proveedor: ProveedorBean;
+  tipofactura: TipofacturaBean;
   base_imponible0: number;
   base_imponible1: number;
   base_imponible2: number;
@@ -13,13 +13,13 @@ class FacturaProveedorBean {
   cuota_iva2: number;
   cuota_iva3: number;
   total: number;
-  id_comunidad: number;
+  comunidad: ComunidadBean;
   num_factura: string;
   cobrado: string;
   constructor(
     fecha_registro: Date,
-    id_proveedor: number,
-    id_tipofactura: number,
+    proveedor: ProveedorBean,
+    tipofactura: TipofacturaBean,
     base_imponible0: number,
     base_imponible1: number,
     base_imponible2: number,
@@ -31,13 +31,13 @@ class FacturaProveedorBean {
     cuota_iva2: number,
     cuota_iva3: number,
     total: number,
-    id_comunidad: number,
+    comunidad: ComunidadBean,
     num_factura: string,
     cobrado: string
   ) {
     this.fecha_registro = fecha_registro;
-    this.id_proveedor = id_proveedor;
-    this.id_tipofactura = id_tipofactura;
+    this.proveedor = proveedor;
+    this.tipofactura = tipofactura;
     this.base_imponible0 = base_imponible0;
     this.base_imponible1 = base_imponible1;
     this.base_imponible2 = base_imponible2;
@@ -49,7 +49,7 @@ class FacturaProveedorBean {
     this.cuota_iva2 = cuota_iva2;
     this.cuota_iva3 = cuota_iva3;
     this.total = total;
-    this.id_comunidad = id_comunidad;
+    this.comunidad = comunidad;
     this.num_factura = num_factura;
     this.cobrado = cobrado;
   }

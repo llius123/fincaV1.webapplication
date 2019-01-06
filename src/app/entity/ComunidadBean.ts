@@ -5,7 +5,7 @@ class ComunidadBean {
   nif: string;
   iban: string;
   sufijo: string;
-  cod_poblacion: number;
+  poblacion: PoblacionBean;
   constructor(
     id: number,
     nombre: string,
@@ -13,7 +13,7 @@ class ComunidadBean {
     nif: string,
     iban: string,
     sufijo: string,
-    cod_poblacion: number
+    poblacion: PoblacionBean
   ) {
     this.id = id;
     this.nombre = nombre;
@@ -21,6 +21,6 @@ class ComunidadBean {
     this.nif = nif;
     this.iban = iban;
     this.sufijo = sufijo;
-    this.cod_poblacion = cod_poblacion;
+    this.poblacion = poblacion;
   }
 }

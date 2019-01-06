@@ -8,11 +8,11 @@ class VecinoBean {
   num_mandato: string;
   fecha_mandato: Date;
   porcentaje_participacion: number;
-  id_comunidad: number;
+  comunidad: ComunidadBean;
   email: string;
   telefono: string;
-  id_tipovecino: number;
-  cod_poblacion: number;
+  tipovecino: TipovecinoBean;
+  poblacion: PoblacionBean;
   login: string;
   pass: string;
   constructor(
@@ -25,11 +25,11 @@ class VecinoBean {
     num_mandato: string,
     fecha_mandato: Date,
     porcentaje_participacion: number,
-    id_comunidad: number,
+    comunidad: ComunidadBean,
     email: string,
     telefono: string,
-    id_tipovecino: number,
-    cod_poblacion: number,
+    tipovecino: TipovecinoBean,
+    poblacion: PoblacionBean,
     login: string,
     pass: string
   ) {
@@ -42,11 +42,11 @@ class VecinoBean {
     this.num_mandato = num_mandato;
     this.fecha_mandato = fecha_mandato;
     this.porcentaje_participacion = porcentaje_participacion;
-    this.id_comunidad = id_comunidad;
+    this.comunidad = comunidad;
     this.email = email;
     this.telefono = telefono;
-    this.id_tipovecino = id_tipovecino;
-    this.cod_poblacion = cod_poblacion;
+    this.tipovecino = tipovecino;
+    this.poblacion = poblacion;
     this.login = login;
     this.pass = pass;
   }

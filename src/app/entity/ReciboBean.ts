@@ -2,7 +2,7 @@ class ReciboBean {
   id: number;
   fecha_emision: Date;
   num_registro: number;
-  id_vecino: number;
+  vecino: VecinoBean;
   descripcion: string;
   importe: number;
   fecha_cobro: Date;
@@ -11,7 +11,7 @@ class ReciboBean {
     id: number,
     fecha_emision: Date,
     num_registro: number,
-    id_vecino: number,
+    vecino: VecinoBean,
     descripcion: string,
     importe: number,
     fecha_cobro: Date
@@ -19,7 +19,7 @@ class ReciboBean {
     this.id = id;
     this.fecha_emision = fecha_emision;
     this.num_registro = num_registro;
-    this.id_vecino = id_vecino;
+    this.vecino = vecino;
     this.descripcion = descripcion;
     this.importe = importe;
     this.fecha_cobro = fecha_cobro;
