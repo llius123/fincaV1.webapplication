@@ -12,6 +12,7 @@ import { AdministradorModule } from './administrador/administrador.module';
 import { HeaderNotloggedComponent } from './header/header-notlogged/header-notlogged.component';
 import { HeaderLoggedComponent } from './header/header-logged/header-logged.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     LogoutComponent,
     AdministradorComponent,
     HeaderNotloggedComponent,
-    HeaderLoggedComponent
+    HeaderLoggedComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

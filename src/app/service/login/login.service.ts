@@ -9,10 +9,19 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
+  private vecino: VecinoInterface;
+
   constructor(private http: HttpClient, private api: ConfigService) { }
 
-  login(login: string, pass: string): Observable<VecinoBean> {
-    return this.http.get<VecinoBean>(`${this.api.api}vecinos/1`);
-    // return this.http.get<VecinoBean>(`${this.api.api}login/${login}/${pass}`);
+  login(login: string, pass: string): Observable<VecinoInterface> {
+    return this.http.get<VecinoInterface>(`${this.api.api}login/${login}/${pass}`);
+  }
+
+  setLoggedUser(vecino: VecinoInterface){
+    this.vecino = vecino;
+  }
+
+  getLoggedUser(){
+    return this.vecino;
   }
 }

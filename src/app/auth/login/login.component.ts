@@ -1,20 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { LoginService } from 'src/app/service/login/login.service';
+import { Component, OnInit, Input } from "@angular/core";
+import { LoginService } from "src/app/service/login/login.service";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  constructor(private loginService: LoginService) {}
 
-  constructor(private loginService: LoginService) { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  login(login: string, pass: string) {
+    this.loginService
+      .login(login, pass)
+      .subscribe((vecino: VecinoInterface) => {
+        this.loginService.setLoggedUser(vecino);
+      },
+      error => {
+      });
   }
-
-  login(login: string,pass: string){
-    this.loginService.login(login, pass).subscribe((vecino: VecinoInterface) => console.log(vecino));
-  }
-
 }

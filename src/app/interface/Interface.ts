@@ -93,3 +93,8 @@ interface VecinoInterface {
   login: string;
   pass: string;
 }
+
+interface ErrorInterface {
+  status: number;
+  msg: string;
+}
