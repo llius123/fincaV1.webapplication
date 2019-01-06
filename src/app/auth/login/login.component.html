@@ -1,3 +1,20 @@
-<p>
-  login works!
-</p>
+<app-header-notlogged></app-header-notlogged>
+<div class="flex border border-black">
+  <div class="w-1/4 ">
+  username:
+  </div>
+  <div class="w-1/4 ">
+    <input type="text" #username>
+  </div>
+  <div class="w-1/4 ">
+  password:
+  </div>
+  <div class="w-1/4 ">
+    <input type="password" #password>
+  </div>
+</div>
+<div class="flex border border-black">
+  <div class="w-1/2 ">
+    <button (click)="login(username.value, password.value)">Login</button>
+  </div>
+</div>
