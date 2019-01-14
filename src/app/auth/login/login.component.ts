@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { LoginService } from "src/app/service/login/login.service";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-login",
@@ -8,18 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService, private route: Router) {}
+  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   login(login: string, pass: string) {
     this.loginService
       .login(login, pass)
       .subscribe(data => {
-        this.loginService.check().subscribe((vecino: VecinoBean) => { this.loginService.setLoggedUser(vecino); })
-        this.route.navigate(['admin']);
+        console.log(data);
+        this.router.navigate(['admin']);
       },
-      error => {
-      });
+        error => {
+        });
   }
 }

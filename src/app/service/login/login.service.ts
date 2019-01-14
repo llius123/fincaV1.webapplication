@@ -1,6 +1,6 @@
 import { ConfigService } from './../config/config.service';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 import { isUndefined } from 'util';
@@ -19,6 +19,7 @@ export class LoginService {
   }
 
   check(): Observable<VecinoInterface> {
+    //return this.http.get<VecinoInterface>(`http://www.mocky.io/v2/5c3c77fb3100006300a1a3e4`);
     return this.http.get<VecinoInterface>(`${this.api.api}check`);
   }
 
