@@ -7,8 +7,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},  
-  { path: 'administradorcomponentes', loadChildren: './administrador/administrador.module#AdministradorModule'},
-  { path: '**', component: PagenotfoundComponent }
+  { path: 'administrador', loadChildren: './administrador/administrador.module#AdministradorModule'},
+  //{ path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({

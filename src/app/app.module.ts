@@ -1,3 +1,4 @@
+import { AuthUsuario } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,9 +11,9 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { AdministradorModule } from './administrador/administrador.module';
 import { HeaderNotloggedComponent } from './header/header-notlogged/header-notlogged.component';
-import { HeaderLoggedComponent } from './header/header-logged/header-logged.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +22,6 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     LogoutComponent,
     AdministradorComponent,
     HeaderNotloggedComponent,
-    HeaderLoggedComponent,
     PagenotfoundComponent
   ],
   imports: [
@@ -31,7 +31,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     AdministradorModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthUsuario],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

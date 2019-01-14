@@ -1,0 +1,6 @@
+{
+    "/fincaV1.server/": {
+      "target": "http://localhost:8081",
+      "secure": false
+    }
+  }

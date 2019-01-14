@@ -59,7 +59,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "fincaV1-webapplication:build"
+            "browserTarget": "fincaV1-webapplication:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

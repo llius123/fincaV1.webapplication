@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderLoggedComponent } from './header-logged.component';
+import { InicioComponent } from './inicio.component';
 
-describe('HeaderLoggedComponent', () => {
-  let component: HeaderLoggedComponent;
-  let fixture: ComponentFixture<HeaderLoggedComponent>;
+describe('InicioComponent', () => {
+  let component: InicioComponent;
+  let fixture: ComponentFixture<InicioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderLoggedComponent ]
+      declarations: [ InicioComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderLoggedComponent);
+    fixture = TestBed.createComponent(InicioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
