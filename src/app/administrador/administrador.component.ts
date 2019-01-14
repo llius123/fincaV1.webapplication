@@ -11,9 +11,6 @@ export class AdministradorComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.check().subscribe((vecino: VecinoBean) => {
-      this.loginService.setLoggedUser(vecino);
-    })
   }
 
 }

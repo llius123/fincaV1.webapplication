@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
     this.loginService
       .login(login, pass)
       .subscribe(data => {
-        console.log(data);
+        this.loginService.check().subscribe((vecino: VecinoBean) => {
+          console.log(vecino);
+          this.loginService.setLoggedUser(vecino);
+        })
         this.router.navigate(['admin']);
       },
         error => {
