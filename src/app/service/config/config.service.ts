@@ -5,11 +5,18 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class ConfigService {
-  constructor() {}
+  constructor() { }
 
   private _api: string = "http://localhost:8081/fincaV1.server/";
 
   public get api(): string {
     return this._api;
+  }
+
+  public get header(): Object {
+    const httpOptions = {
+      withCredentials: true
+    };
+    return httpOptions;
   }
 }

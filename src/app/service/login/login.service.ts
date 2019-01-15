@@ -11,15 +11,14 @@ export class LoginService {
 
   private vecino: VecinoInterface;
 
-  constructor(private http: HttpClient, private api: ConfigService) { }
+  constructor(private http: HttpClient, private configAPI: ConfigService) { }
   
-
   login(login: string, pass: string): Observable<VecinoInterface> {
-    return this.http.get<VecinoInterface>(`${this.api.api}login/${login}/${pass}`);
+    return this.http.get<VecinoInterface>(`${this.configAPI.api}login/${login}/${pass}`, this.configAPI.header);
   }
 
   check(): Observable<VecinoInterface> {
-    return this.http.get<VecinoInterface>(`${this.api.api}check`);
+    return this.http.get<VecinoInterface>(`${this.configAPI.api}check`, this.configAPI.header);
   }
 
   setLoggedUser(vecino: VecinoInterface){
