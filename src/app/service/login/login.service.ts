@@ -4,15 +4,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { isUndefined } from 'util';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LoginService {
-
-  private vecino: VecinoInterface;
 
   constructor(private http: HttpClient, private configAPI: ConfigService) { }
   
+  vecino: VecinoInterface;
+
   login(login: string, pass: string): Observable<VecinoInterface> {
     return this.http.get<VecinoInterface>(`${this.configAPI.api}login/${login}/${pass}`, this.configAPI.header);
   }
@@ -21,20 +19,8 @@ export class LoginService {
     return this.http.get<VecinoInterface>(`${this.configAPI.api}check`, this.configAPI.header);
   }
 
-  setLoggedUser(vecino: VecinoInterface){
+  setvecino(vecino: VecinoInterface){
+    console.log(vecino)
     this.vecino = vecino;
-  }
-
-  getLoggedUser(): VecinoBean{
-    return this.vecino;
-  }
-
-  isLogged(): boolean{
-    console.log(this.vecino);
-    if(isUndefined(this.vecino) ){
-      return true;
-    }else{
-      return false;
-    }
   }
 }

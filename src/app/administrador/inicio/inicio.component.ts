@@ -11,7 +11,6 @@ export class InicioComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.check().subscribe(data => console.log(data))
   }
 
 }

@@ -88,7 +88,7 @@ interface VecinoInterface {
   comunidad: ComunidadBean;
   email: string;
   telefono: string;
-  tipovecino: TipovecinoBean;
+  id_tipovecino: TipovecinoBean;
   poblacion: PoblacionBean;
   login: string;
   pass: string;

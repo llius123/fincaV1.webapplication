@@ -11,7 +11,7 @@ class VecinoBean {
   comunidad: ComunidadBean;
   email: string;
   telefono: string;
-  tipovecino: TipovecinoBean;
+  id_tipovecino: TipovecinoBean;
   poblacion: PoblacionBean;
   login: string;
   pass: string;
@@ -28,7 +28,7 @@ class VecinoBean {
     comunidad: ComunidadBean,
     email: string,
     telefono: string,
-    tipovecino: TipovecinoBean,
+    id_tipovecino: TipovecinoBean,
     poblacion: PoblacionBean,
     login: string,
     pass: string
@@ -45,7 +45,7 @@ class VecinoBean {
     this.comunidad = comunidad;
     this.email = email;
     this.telefono = telefono;
-    this.tipovecino = tipovecino;
+    this.id_tipovecino = id_tipovecino;
     this.poblacion = poblacion;
     this.login = login;
     this.pass = pass;
