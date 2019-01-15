@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
+  vecinotest;
+
   login(login: string, pass: string) {
     this.loginService
       .login(login, pass)

@@ -5,15 +5,15 @@ import { routes } from './app-routing';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './auth/login/login.component';
-import { LogoutComponent } from './auth/logout/logout.component';
+import { LoginComponent } from './auth-components/login/login.component';
+import { LogoutComponent } from './auth-components/logout/logout.component';
 import { AdministradorComponent } from './administrador/administrador.component';
 import { AdministradorModule } from './administrador/administrador.module';
 import { HeaderNotloggedComponent } from './header/header-notlogged/header-notlogged.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginService } from './service/login/login.service';
-import { AuthAdmin } from './service/login/admin.service';
+import { AuthAdmin } from './service/login/auth.service';
 import { RouterModule } from '@angular/router';
 
 

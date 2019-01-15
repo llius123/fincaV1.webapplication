@@ -1,6 +1,6 @@
 import { AdministradorComponent } from "./administrador.component";
 import { InicioComponent } from "./inicio/inicio.component";
-import { AuthAdmin } from '../service/login/admin.service';
+import { AuthAdmin } from '../service/login/auth.service';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [

@@ -50,4 +50,9 @@ class VecinoBean {
     this.login = login;
     this.pass = pass;
   }
+  // constructor(properties: any) {
+  //   for (var key in properties) {
+  //     this[key] = properties[key]
+  //   }
+  // }
 }
