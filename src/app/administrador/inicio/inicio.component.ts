@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../service/login/login.service';
 
 @Component({
   selector: 'app-inicio',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
+    this.loginService.check().subscribe(data => console.log(data))
   }
 
 }

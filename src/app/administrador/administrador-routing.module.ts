@@ -2,7 +2,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
 import { AdministradorComponent } from "./administrador.component";
 import { InicioComponent } from "./inicio/inicio.component";
-import { AuthUsuario } from '../auth/auth.service';
+import { AuthUsuario } from '../service/login/auth.service';
 
 const routes: Routes = [
   {
@@ -11,11 +11,9 @@ const routes: Routes = [
     children: [
       {
         path: "inicio",
-        component: InicioComponent,
-        canActivate: [AuthUsuario]
+        component: InicioComponent
       }
     ],
-    canActivate: [AuthUsuario]
   }
 ];
 

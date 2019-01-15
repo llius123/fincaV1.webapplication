@@ -12,12 +12,4 @@ export class ConfigService {
   public get api(): string {
     return this._api;
   }
-
-  // public requestOptions(): RequestOptions {
-  //   let requestOptions = new RequestOptions({
-  //     headers: null,
-  //     withCredentials: true
-  //   });
-  //   return requestOptions;
-  // }
 }

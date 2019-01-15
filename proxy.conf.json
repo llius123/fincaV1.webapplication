@@ -1,6 +1,7 @@
 {
-    "/fincaV1.server": {
-      "target": "http://localhost:8081",
-      "secure": false
-    }
+  "/fincaV1.server": {
+    "target": "http://localhost:8081",
+    "secure": false,
+    "changeOrigin": true
   }
+}

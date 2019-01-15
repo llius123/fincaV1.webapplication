@@ -1,5 +1,6 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, Input } from "@angular/core";
-import { LoginService } from "src/app/service/login/login.service";
+import { LoginService } from "../../service/login/login.service";
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,10 +17,8 @@ export class LoginComponent implements OnInit {
     this.loginService
       .login(login, pass)
       .subscribe(data => {
-        this.loginService.check().subscribe((vecino: VecinoBean) => {
-          console.log(vecino);
-          this.loginService.setLoggedUser(vecino);
-        })
+        console.log(data);
+        this.loginService.check().subscribe(data => console.log(data))
         this.router.navigate(['admin']);
       },
         error => {
