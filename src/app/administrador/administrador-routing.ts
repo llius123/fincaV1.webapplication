@@ -14,24 +14,29 @@ export const routes: Routes = [
       {
         path: "inicio",
         component: InicioComponent,
-        canLoad: [AuthAdmin]
+        canLoad: [AuthAdmin],
+        data: { id: 1}
       },
       {
         path: "mantenimiento",
         component: MantenimientoTablasComponent,
-        canLoad: [AuthAdmin]
+        canLoad: [AuthAdmin],
+        data: { id: 1}
       },
       {
         path: "gestion",
         component: GestionComponent,
-        canLoad: [AuthAdmin]
+        canLoad: [AuthAdmin],
+        data: { id: 1}
       },
       {
         path: "incidencia",
         component: IncidenciaComponent,
-        canLoad: [AuthAdmin]
+        canLoad: [AuthAdmin],
+        data: { id: 1}
       }
     ],
-    canActivate: [AuthAdmin]
+    canActivate: [AuthAdmin],
+    data: { id: 1}
   }
 ];

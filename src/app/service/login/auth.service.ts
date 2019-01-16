@@ -10,19 +10,22 @@ export class AuthAdmin implements CanLoad, CanActivate {
 
     constructor(private login: LoginService, private router: Router) { }
 
+
     canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
-        console.log("AuthGuard->CanLoad:", route, this.isAdmin());
-        return this.isAdmin();
+        const id = route.data.id;
+        console.log("AuthGuard->CanLoad:", route, this.isAdmin(id), `Permiso requerido para entrar: ${id}`);
+        return this.isAdmin(id);
     }
 
     canActivate(next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot) {
-        console.log("AuthGuard->CanActivate:", state, this.isAdmin());
-        return this.isAdmin();
+        const id = next.data.id;
+        console.log("AuthGuard->CanActivate:", state, this.isAdmin(id), `Permiso requerido para entrar: ${id}`);
+        return this.isAdmin(id);
     }
 
-    isAdmin() {
-        if (!isUndefined(this.login.vecino) && this.login.vecino.id_tipovecino.id === 1) {
+    isAdmin(data: number) {
+        if (!isUndefined(this.login.vecino) && this.login.vecino.id_tipovecino.id === data) {
             return true;
         } else {
             this.router.navigate(["login"]);
