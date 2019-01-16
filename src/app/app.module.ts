@@ -16,6 +16,8 @@ import { LoginService } from './service/login/login.service';
 import { AuthAdmin } from './service/login/auth.service';
 import { RouterModule } from '@angular/router';
 import { IncidenciaService } from './service/incidencia/incidencia.service';
+import { TareaService } from './service/tarea/tarea.service';
+import { ServiceModule } from './service/service.module';
 
 
 @NgModule({
@@ -31,10 +33,11 @@ import { IncidenciaService } from './service/incidencia/incidencia.service';
     BrowserModule,
     BrowserAnimationsModule,
     AdministradorModule,
+    ServiceModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [LoginService, AuthAdmin, IncidenciaService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -98,3 +98,9 @@ interface ErrorInterface {
   status: number;
   msg: string;
 }
+
+interface TareaInterface{
+  id: number;
+  fecha: Date;
+  descripcion: String;
+}
