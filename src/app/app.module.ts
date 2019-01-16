@@ -15,6 +15,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginService } from './service/login/login.service';
 import { AuthAdmin } from './service/login/auth.service';
 import { RouterModule } from '@angular/router';
+import { IncidenciaService } from './service/incidencia/incidencia.service';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [LoginService, AuthAdmin],
+  providers: [LoginService, AuthAdmin, IncidenciaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

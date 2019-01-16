@@ -1,14 +1,22 @@
 <div class="flex">
-  <p>
-    Inicio
-  </p>
-  <p>
-    Mantenimiento general
-  </p>
-  <p>
-    Gestion
-  </p>
-  <p>
-    Incidencias
-  </p>
+  <div class="flex-1">
+    <a [routerLink]="['inicio']">
+      Inicio
+    </a>
+  </div>
+  <div class="flex-1">
+    <a [routerLink]="['mantenimiento']">
+      Mantenimiento general
+    </a>
+  </div>
+  <div class="flex-1">
+    <a [routerLink]="['gestion']">
+      Gestion
+    </a>
+  </div>
+  <div class="flex-1">
+    <a [routerLink]="['incidencia']">
+      Incidencias
+    </a>
+  </div>
 </div>
