@@ -17,10 +17,11 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {BlockUIModule} from 'primeng/blockui';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
 
 @NgModule({
   declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule,DialogModule,ButtonModule],
+  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule,DialogModule,ButtonModule,ToastModule],
   exports: [HeaderAdminComponent]
 })
 export class AdministradorModule {}

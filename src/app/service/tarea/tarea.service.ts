@@ -10,4 +10,12 @@ export class TareaService{
     getAllTarea(): Observable<Array<TareaInterface>>{
         return this.http.get<Array<TareaInterface>>(`${this.config.api}tareas`, this.config.header);
     }
+
+    addTarea(tarea: TareaInterface) {
+        return this.http.post(`${this.config.api}tareas`, tarea, this.config.header);
+    }
+
+    deleteTarea(id: number) {
+        return this.http.delete(`${this.config.api}tareas/${id}`, this.config.header);
+    }
 }
