@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TareaService } from '../../../service/tarea/tarea.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { FechaService } from 'src/app/service/general/dates.service';
 
 @Component({
   selector: 'app-tareas',
@@ -11,7 +12,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class TareasComponent implements OnInit {
 
-  constructor(private tareaService: TareaService, private messageService: MessageService) { }
+  constructor(private tareaService: TareaService, private messageService: MessageService, private fechaService: FechaService) { }
 
   tareas: Array<TareaInterface>;
   datos: boolean = false;
@@ -96,8 +97,12 @@ export class TareasComponent implements OnInit {
     )
   }
 
+  formatFecha(date: Date){
+    return this.fechaService.fromSecodsToDate(date);
+  }
+
   showSuccess() {
-    this.messageService.add({ severity: 'success', summary: 'Tarea creada!', detail: 'Tarea creada correctamente' });
+    this.messageService.add({ severity: 'success', summary: 'Tarea actualizada!', detail: 'Tarea actualizada correctamente' });
   }
   showError() {
     this.messageService.add({ severity: 'error', summary: 'Error!', detail: 'Ha ocurrido un error!' });

@@ -3,7 +3,7 @@
 </div>
 <div class="overflow-y-auto h-32 w-full" [hidden]="!datos">
   <div class="border border-yellow" *ngFor="let tarea of tareas">
-    {{tarea.fecha}} {{ tarea.descripcion}}
+    {{formatFecha(tarea.fecha)}} {{ tarea.descripcion}}
     <button (click)="showDialogEdit(tarea)">
       <i class="fas fa-edit" ></i>
     </button>
