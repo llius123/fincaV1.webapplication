@@ -1,0 +1,11 @@
+<div class="flex-1 justify-center">
+  Titulo
+</div>
+<div class="flex">
+  <div class="overflow-y-auto h-32 w-full" [hidden]="!datos">
+    <div class="border border-yellow" *ngFor="let incidencia of incidencias">
+      {{incidencia.vecino.nombre}} {{incidencia.descripcion}} {{incidencia.fecha_creacion}}
+    </div>
+  </div>
+  <p-progressSpinner [style]="{width: '50px', height: '50px'}" [hidden]="datos"></p-progressSpinner>
+</div>

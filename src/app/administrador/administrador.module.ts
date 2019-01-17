@@ -7,10 +7,20 @@ import { MantenimientoTablasComponent } from './mantenimiento-tablas/mantenimien
 import { GestionComponent } from './gestion/gestion.component';
 import { IncidenciaComponent } from './incidencia/incidencia.component';
 import { BrowserModule } from '../../../node_modules/@angular/platform-browser';
+import { TareasComponent } from './inicio/tareas/tareas.component';
+import { IncidenciasComponent } from './inicio/incidencias/incidencias.component';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+//https://www.primefaces.org/primeng
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import {BlockUIModule} from 'primeng/blockui';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent],
+  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule,DialogModule,ButtonModule],
   exports: [HeaderAdminComponent]
 })
 export class AdministradorModule {}

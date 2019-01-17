@@ -1,17 +1,8 @@
 <div class="flex">
   <div class="flex-1 border border-black">
-    Tareas
+    <app-tareas></app-tareas>
   </div>
   <div class="flex-1 border border-black">
-    <div class="flex-1 justify-center">
-      Titulo
-    </div>
-    <div class="flex">
-      <div class="overflow-y-auto h-32 w-full">
-        <div class="border border-yellow" *ngFor="let incidencia of incidencias">
-          {{incidencia.vecino.nombre}} {{incidencia.descripcion}} {{incidencia.fecha_creacion}}
-        </div>
-      </div>
-    </div>
+    <app-incidencias></app-incidencias>
   </div>
 </div>

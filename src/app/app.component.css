@@ -1,0 +1,7 @@
+/* Color spinner */
+@keyframes ui-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #9E4F6E;
+    }
+}

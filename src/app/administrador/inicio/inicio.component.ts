@@ -16,17 +16,6 @@ export class InicioComponent implements OnInit {
   tareas: Array<TareaInterface>;
 
   ngOnInit() {
-    this.incidenciasService.getAllIncidencia().subscribe(
-      (incidencias:Array<IncidenciaInterface>) => {
-        this.incidencias = incidencias;
-      }
-    )
-    this.tareaService.getAllTarea().subscribe(
-      (tareas: Array<TareaInterface>) => {
-        this.tareas = tareas
-        console.log("tareas",this.tareas)
-      }
-    )
   }
 
 }
