@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { LoginService } from '../../service/login/login.service';
 
 @Component({
   selector: 'app-header-admin',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private login: LoginService) { }
+
+  vecino_nombre:  string;
+  countIncidencias: number;
+  countTareas: number;
 
   ngOnInit() {
+    this.vecino_nombre = this.login.vecino.nombre;
+    setTimeout(() => {
+      this.countIncidencias = this.login.countIncidencias;
+      this.countTareas = this.login.countTareas;
+    }, 3000);
   }
-
 }

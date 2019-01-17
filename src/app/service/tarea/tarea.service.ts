@@ -22,4 +22,8 @@ export class TareaService{
     editTarea(tarea: TareaInterface) {
         return this.http.put(`${this.config.api}tareas`, tarea, this.config.header);
     }
+
+    countTarea(): Observable<number>{
+        return this.http.get<number>(`${this.config.api}count/TareaBean`, this.config.header);
+    }
 }

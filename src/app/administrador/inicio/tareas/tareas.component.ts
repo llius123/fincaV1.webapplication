@@ -3,6 +3,7 @@ import { TareaService } from '../../../service/tarea/tarea.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { FechaService } from 'src/app/service/general/dates.service';
+import { LoginService } from '../../../service/login/login.service';
 
 @Component({
   selector: 'app-tareas',
@@ -12,12 +13,13 @@ import { FechaService } from 'src/app/service/general/dates.service';
 })
 export class TareasComponent implements OnInit {
 
-  constructor(private tareaService: TareaService, private messageService: MessageService, private fechaService: FechaService) { }
+  constructor(private tareaService: TareaService, private messageService: MessageService, private fechaService: FechaService, private login: LoginService) { }
 
   tareas: Array<TareaInterface>;
   datos: boolean = false;
   tarea: TareaInterface;
-  tareaEdited: TareaInterface = {id: null, fecha: null, descripcion: null};
+  tareaEdited: TareaInterface = { id: null, fecha: null, descripcion: null };
+  count: number;
 
   modal_display: boolean = false;
   modal_display_edit: boolean = false;
@@ -30,12 +32,16 @@ export class TareasComponent implements OnInit {
     this.tareaService.getAllTarea().subscribe(
       (tareas: Array<TareaInterface>) => {
         this.tareas = tareas
-        console.log("tareas", this.tareas)
+      }
+    )
+    this.tareaService.countTarea().subscribe(
+      (num: number)  => {
+        this.login.setTareas(num);
       }
     )
     setTimeout(() => {
       this.datos = true;
-    }, 3000);
+    }, 1500);
   }
 
   showDialog() {
@@ -56,6 +62,7 @@ export class TareasComponent implements OnInit {
     this.tareaService.addTarea(this.tarea).subscribe(
       (response) => {
         this.showSuccess();
+        this.cargaTareas();
       },
       (error: ErrorInterface) => {
         this.showError();
@@ -64,7 +71,7 @@ export class TareasComponent implements OnInit {
     this.modal_display = false;
   }
 
-  editarTarea(descripcion: string){
+  editarTarea(descripcion: string) {
     const fecha = new Date();
     const tarea = {
       id: this.tareaEdited.id,
@@ -77,7 +84,7 @@ export class TareasComponent implements OnInit {
         this.cargaTareas();
         this.datos = false;
         this.modal_display_edit = false;
-      }, 
+      },
       (error: ErrorInterface) => {
         this.showError();
       }
@@ -97,7 +104,7 @@ export class TareasComponent implements OnInit {
     )
   }
 
-  formatFecha(date: Date){
+  formatFecha(date: Date) {
     return this.fechaService.fromSecodsToDate(date);
   }
 

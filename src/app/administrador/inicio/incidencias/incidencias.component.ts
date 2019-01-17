@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidenciaService } from '../../../service/incidencia/incidencia.service';
+import { LoginService } from '../../../service/login/login.service';
 
 @Component({
   selector: 'app-incidencias',
@@ -8,21 +9,25 @@ import { IncidenciaService } from '../../../service/incidencia/incidencia.servic
 })
 export class IncidenciasComponent implements OnInit {
 
-  constructor(private incidenciasService: IncidenciaService) { }
+  constructor(private incidenciasService: IncidenciaService, private login: LoginService) { }
 
   datos: boolean = false;
 
-  incidencias:Array<IncidenciaInterface>;
+  incidencias: Array<IncidenciaInterface>;
 
   ngOnInit() {
+    this.cargaIncidencias()
+  }
+
+  cargaIncidencias() {
     this.incidenciasService.getAllIncidencia().subscribe(
-      (incidencias:Array<IncidenciaInterface>) => {
+      (incidencias: Array<IncidenciaInterface>) => {
         this.incidencias = incidencias;
       }
     )
     setTimeout(() => {
       this.datos = true;
-  }, 3000);
+    }, 1500);
   }
 
 }
