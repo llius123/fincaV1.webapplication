@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TareaService } from '../../../service/tarea/tarea.service';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-tareas',
@@ -14,8 +15,11 @@ export class TareasComponent implements OnInit {
 
   tareas: Array<TareaInterface>;
   datos: boolean = false;
-  modal_display: boolean = false;
   tarea: TareaInterface;
+  tareaEdited: TareaInterface = {id: null, fecha: null, descripcion: null};
+
+  modal_display: boolean = false;
+  modal_display_edit: boolean = false;
 
   ngOnInit() {
     this.cargaTareas();
@@ -36,6 +40,10 @@ export class TareasComponent implements OnInit {
   showDialog() {
     this.modal_display = true;
   }
+  showDialogEdit(tarea: TareaInterface) {
+    this.modal_display_edit = true;
+    this.tareaEdited = tarea;
+  }
 
   nuevaTarea(descripcion: string) {
     const fecha = new Date();
@@ -55,7 +63,27 @@ export class TareasComponent implements OnInit {
     this.modal_display = false;
   }
 
-  deleteTarea(id: number){
+  editarTarea(descripcion: string){
+    const fecha = new Date();
+    const tarea = {
+      id: this.tareaEdited.id,
+      descripcion: descripcion,
+      fecha: fecha
+    }
+    this.tareaService.editTarea(tarea).subscribe(
+      response => {
+        this.showSuccess();
+        this.cargaTareas();
+        this.datos = false;
+        this.modal_display_edit = false;
+      }, 
+      (error: ErrorInterface) => {
+        this.showError();
+      }
+    )
+  }
+
+  deleteTarea(id: number) {
     this.tareaService.deleteTarea(id).subscribe(
       response => {
         this.showSuccess();

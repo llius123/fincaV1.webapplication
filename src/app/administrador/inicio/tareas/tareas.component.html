@@ -4,11 +4,16 @@
 <div class="overflow-y-auto h-32 w-full" [hidden]="!datos">
   <div class="border border-yellow" *ngFor="let tarea of tareas">
     {{tarea.fecha}} {{ tarea.descripcion}}
+    <button (click)="showDialogEdit(tarea)">
+      <i class="fas fa-edit" ></i>
+    </button>
     <button (click)="deleteTarea(tarea.id)">
       <i class="fas fa-trash-alt"></i>
     </button>
   </div>
 </div>
+
+<!-- Crear una nueva tarea -->
 <p-progressSpinner [style]="{width: '50px', height: '50px'}" [hidden]="datos"></p-progressSpinner>
 <p-dialog header="Nueva tarea" [(visible)]="modal_display" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
   <div class="flex">
@@ -25,6 +30,24 @@
         </p-footer>
 </p-dialog>
 <button type="button" (click)="showDialog()" pButton icon="fas fa-search-plus" label="Show"></button>
+
+<!-- Editar una tarea -->
+<p-dialog header="Editar tarea" [(visible)]="modal_display_edit" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
+  <div class="flex">
+      <div class="flex-1">
+        Descripcion
+      </div>
+      <div class="flex-1 border border-black">
+        <textarea rows="4" cols="30" #tareaedited>
+          {{tareaEdited.descripcion}}
+        </textarea>
+      </div>
+    </div>
+        <p-footer>
+            <button type="button" pButton icon="fas fa-check" (click)="editarTarea(tareaedited.value)" label="Yes"></button>
+            <button type="button" pButton icon="fas fa-times" (click)="modal_display_edit=false" label="No" class="ui-button-secondary"></button>
+        </p-footer>
+</p-dialog>
 
 <p-toast position="bottom-right" [style]="{marginTop: '80px'}">
 </p-toast>

@@ -18,4 +18,8 @@ export class TareaService{
     deleteTarea(id: number) {
         return this.http.delete(`${this.config.api}tareas/${id}`, this.config.header);
     }
+
+    editTarea(tarea: TareaInterface) {
+        return this.http.put(`${this.config.api}tareas`, tarea, this.config.header);
+    }
 }
