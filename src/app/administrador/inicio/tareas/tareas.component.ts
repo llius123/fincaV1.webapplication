@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { HeaderAdminComponent } from './../../header-admin/header-admin.component';
+import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { TareaService } from '../../../service/tarea/tarea.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -24,7 +25,11 @@ export class TareasComponent implements OnInit {
   modal_display: boolean = false;
   modal_display_edit: boolean = false;
 
+  @Output()
+  change: EventEmitter<string> = new EventEmitter<string>();
+
   ngOnInit() {
+    this.change.emit('hola');
     this.cargaTareas();
   }
 
@@ -35,7 +40,7 @@ export class TareasComponent implements OnInit {
       }
     )
     this.tareaService.countTarea().subscribe(
-      (num: number)  => {
+      (num: number) => {
         this.login.setTareas(num);
       }
     )
