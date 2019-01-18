@@ -7,6 +7,8 @@ import { ConfigService } from '../config/config.service';
 export class TareaService{
     constructor(private http: HttpClient, private config: ConfigService){}
 
+    tareasNum: number;
+
     getAllTarea(): Observable<Array<TareaInterface>>{
         return this.http.get<Array<TareaInterface>>(`${this.config.api}tareas`, this.config.header);
     }
@@ -25,5 +27,9 @@ export class TareaService{
 
     countTarea(): Observable<number>{
         return this.http.get<number>(`${this.config.api}count/TareaBean`, this.config.header);
+    }
+
+    setCountTareas(numTareas: number){
+        this.tareasNum = numTareas;
     }
 }

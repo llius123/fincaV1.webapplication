@@ -25,11 +25,7 @@ export class TareasComponent implements OnInit {
   modal_display: boolean = false;
   modal_display_edit: boolean = false;
 
-  @Output()
-  change: EventEmitter<string> = new EventEmitter<string>();
-
   ngOnInit() {
-    this.change.emit('hola');
     this.cargaTareas();
   }
 
@@ -41,7 +37,6 @@ export class TareasComponent implements OnInit {
     )
     this.tareaService.countTarea().subscribe(
       (num: number) => {
-        this.login.setTareas(num);
       }
     )
     setTimeout(() => {
@@ -66,11 +61,11 @@ export class TareasComponent implements OnInit {
     }
     this.tareaService.addTarea(this.tarea).subscribe(
       (response) => {
-        this.showSuccess();
+        this.showTooltip('success', '',' Tarea creada correctamente!' );
         this.cargaTareas();
       },
       (error: ErrorInterface) => {
-        this.showError();
+        this.showTooltip('error', '', 'Error en el servidor al añadir la tarea!');
       }
     )
     this.modal_display = false;
@@ -85,13 +80,13 @@ export class TareasComponent implements OnInit {
     }
     this.tareaService.editTarea(tarea).subscribe(
       response => {
-        this.showSuccess();
+        this.showTooltip('success', '',' Tarea editada correctamente!' );
         this.cargaTareas();
         this.datos = false;
         this.modal_display_edit = false;
       },
       (error: ErrorInterface) => {
-        this.showError();
+        this.showTooltip('error', '', 'Error en el servidor!');
       }
     )
   }
@@ -99,12 +94,12 @@ export class TareasComponent implements OnInit {
   deleteTarea(id: number) {
     this.tareaService.deleteTarea(id).subscribe(
       response => {
-        this.showSuccess();
+        this.showTooltip('success', '',' Tarea eliminada correctamente!' );
         this.cargaTareas();
         this.datos = false;
       },
       error => {
-        this.showError();
+        this.showTooltip('error', '', 'Error en el servidor!');
       }
     )
   }
@@ -113,10 +108,15 @@ export class TareasComponent implements OnInit {
     return this.fechaService.fromSecodsToDate(date);
   }
 
-  showSuccess() {
-    this.messageService.add({ severity: 'success', summary: 'Tarea actualizada!', detail: 'Tarea actualizada correctamente' });
+  showTooltip(type: string, title: string, desc: string) {
+    this.messageService.add({
+      severity: `${type}`,
+      summary: `${title}`,
+      detail: `${desc}`
+    })
+    //this.messageService.add({ severity: 'success', summary: 'Tarea actualizada!', detail: 'Tarea actualizada correctamente' });
   }
-  showError() {
-    this.messageService.add({ severity: 'error', summary: 'Error!', detail: 'Ha ocurrido un error!' });
-  }
+  // showError() {
+  //   this.messageService.add({ severity: 'error', summary: 'Error!', detail: 'Ha ocurrido un error!' });
+  // }
 }

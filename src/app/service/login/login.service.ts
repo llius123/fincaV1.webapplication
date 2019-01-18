@@ -10,8 +10,6 @@ export class LoginService {
   constructor(private http: HttpClient, private configAPI: ConfigService) { }
   
   vecino: VecinoInterface;
-  countTareas: number;
-  countIncidencias: number;
 
   login(login: string, pass: string): Observable<VecinoInterface> {
     return this.http.get<VecinoInterface>(`${this.configAPI.api}login/${login}/${pass}`, this.configAPI.header);
@@ -25,14 +23,4 @@ export class LoginService {
     console.log(vecino)
     this.vecino = vecino;
   }
-
-  setTareas(num: number){
-    this.countTareas = num;
-  }
-
-  setIncidencias(num: number){
-    this.countIncidencias = num;
-  }
-
-
 }
