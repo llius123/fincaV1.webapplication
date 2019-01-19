@@ -45,17 +45,16 @@ export class IncidenciasComponent implements OnInit {
     this.incidenciasService.resolveIncidencia(incidencia).subscribe(
       response => {
         this.showTooltip('success', 'Incidencia atendida', `Incidencia del dia: ${incidencia.fecha_creacion} atendida!`);
+        this.datos = false;
+        this.cargaIncidencias();
         this.modal_incidencia = false;
       },
       (error: ErrorInterface) => {
         this.showTooltip('error', '', `Error: ${error.msg}`);
+        this.cargaIncidencias();
         this.modal_incidencia = false;
       }
     )
-  }
-
-  filtroIncidencia(incidencia: IncidenciaInterface){
-    console.log(incidencia)
   }
 
   showTooltip(type: string, title: string, desc: string) {

@@ -20,6 +20,7 @@ import { TareaService } from './service/tarea/tarea.service';
 import { ServiceModule } from './service/service.module';
 import { IncidenciaPipePipe } from './pipes/incidencia-pipe.pipe';
 import { FormsModule } from '../../node_modules/@angular/forms';
+import { FechaPipePipe } from './pipes/fecha-pipe.pipe';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { FormsModule } from '../../node_modules/@angular/forms';
     LogoutComponent,
     AdministradorComponent,
     HeaderNotloggedComponent,
-    PagenotfoundComponent    
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

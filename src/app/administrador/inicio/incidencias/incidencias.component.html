@@ -4,7 +4,7 @@
 <div class="flex">
   <div class="overflow-y-auto h-32 w-full" [hidden]="!datos">
     <div class="border border-yellow" *ngFor="let incidencia of incidencias | incidenciaPipe">
-      {{incidencia.vecino.nombre}} {{incidencia.descripcion}} {{incidencia.fecha_creacion}}
+      {{incidencia.vecino.nombre}} {{incidencia.descripcion}} {{incidencia.fecha_creacion | fechaPipe}}
       <button (click)="showDialog(incidencia)">
         <i class="fas fa-check"></i>
       </button>
@@ -20,7 +20,7 @@
       Vecino: {{incidenciaResolver.vecino.nombre}}
     </div>
     <div class="flex-1">
-      Fecha: {{incidenciaResolver.fecha_creacion}}
+      Fecha: {{incidenciaResolver.fecha_creacion |fechaPipe}}
     </div>
   </div>
   <div class="flex-1">
