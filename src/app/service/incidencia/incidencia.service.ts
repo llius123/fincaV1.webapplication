@@ -15,4 +15,8 @@ export class IncidenciaService{
     countTarea(): Observable<number>{
         return this.http.get<number>(`${this.config.api}count/IncidenciaBean`, this.config.header);
     }
+
+    resolveIncidencia(incidencia: IncidenciaInterface) {
+        return this.http.put(`${this.config.api}incidencias`, incidencia, this.config.header);
+    }
 }

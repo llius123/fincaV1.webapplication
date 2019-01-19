@@ -1,11 +1,43 @@
 <div class="flex-1 justify-center">
-  Titulo
+  Incidencias
 </div>
 <div class="flex">
   <div class="overflow-y-auto h-32 w-full" [hidden]="!datos">
-    <div class="border border-yellow" *ngFor="let incidencia of incidencias">
+    <div class="border border-yellow" *ngFor="let incidencia of incidencias | incidenciaPipe">
       {{incidencia.vecino.nombre}} {{incidencia.descripcion}} {{incidencia.fecha_creacion}}
+      <button (click)="showDialog(incidencia)">
+        <i class="fas fa-check"></i>
+      </button>
     </div>
   </div>
   <p-progressSpinner [style]="{width: '50px', height: '50px'}" [hidden]="datos"></p-progressSpinner>
 </div>
+
+<!-- Resolver la incidencia -->
+<p-dialog header="Incidencia" [(visible)]="modal_incidencia" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
+  <div class="flex">
+    <div class="flex-1">
+      Vecino: {{incidenciaResolver.vecino.nombre}}
+    </div>
+    <div class="flex-1">
+      Fecha: {{incidenciaResolver.fecha_creacion}}
+    </div>
+  </div>
+  <div class="flex-1">
+    Descripcion: {{incidenciaResolver.descripcion}}
+  </div>
+  <p-footer>
+    <div class="flex">
+      <div class="flex-1">
+        Ha sido resuelta la incidencia?
+      </div>
+      <div class="flex-1">
+        <button type="button" pButton icon="fas fa-check" (click)="resolverIncidencia(incidenciaResolver)" label="Yes"></button>
+        <button type="button" pButton icon="fas fa-times" (click)="modal_incidencia=false" label="No" class="ui-button-secondary"></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>

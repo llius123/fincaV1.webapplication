@@ -17,8 +17,8 @@ export class HeaderAdminComponent implements OnInit {
   ngOnInit() {
     this.vecino_nombre = this.login.vecino.nombre;
     setTimeout(() => {
-      this.countIncidencias = this.login.countIncidencias;
-      this.countTareas = this.login.countTareas;
+      // this.countIncidencias = this.login.countIncidencias;
+      // this.countTareas = this.login.countTareas;
     }, 3000);
   }
 }

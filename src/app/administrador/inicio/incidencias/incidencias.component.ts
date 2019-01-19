@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { IncidenciaService } from '../../../service/incidencia/incidencia.service';
 import { LoginService } from '../../../service/login/login.service';
+import { MessageService } from '../../../../../node_modules/primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-incidencias',
   templateUrl: './incidencias.component.html',
-  styleUrls: ['./incidencias.component.css']
+  styleUrls: ['./incidencias.component.css'],
+  providers: [MessageService]
 })
 export class IncidenciasComponent implements OnInit {
 
-  constructor(private incidenciasService: IncidenciaService, private login: LoginService) { }
+  constructor(private incidenciasService: IncidenciaService, private login: LoginService,private messageService: MessageService) { }
 
   datos: boolean = false;
+  modal_incidencia: boolean = false;
+  incidenciaResolver = {id: null, vecino:{nombre: null}, descripcion: null,fecha_creacion: null, atendido: null};
 
   incidencias: Array<IncidenciaInterface>;
-
+  
   ngOnInit() {
     this.cargaIncidencias()
   }
@@ -28,6 +32,39 @@ export class IncidenciasComponent implements OnInit {
     setTimeout(() => {
       this.datos = true;
     }, 1500);
+  }
+
+  showDialog(incidencia: IncidenciaInterface): void {
+    this.modal_incidencia = true;
+    this.incidenciaResolver = incidencia;
+  }
+
+  resolverIncidencia(incidencia: IncidenciaInterface): void{
+    incidencia.atendido = "s";
+    console.log(incidencia);
+    this.incidenciasService.resolveIncidencia(incidencia).subscribe(
+      response => {
+        this.showTooltip('success', 'Incidencia atendida', `Incidencia del dia: ${incidencia.fecha_creacion} atendida!`);
+        this.modal_incidencia = false;
+      },
+      (error: ErrorInterface) => {
+        this.showTooltip('error', '', `Error: ${error.msg}`);
+        this.modal_incidencia = false;
+      }
+    )
+  }
+
+  filtroIncidencia(incidencia: IncidenciaInterface){
+    console.log(incidencia)
+  }
+
+  showTooltip(type: string, title: string, desc: string) {
+    this.messageService.add({
+      severity: `${type}`,
+      summary: `${title}`,
+      detail: `${desc}`
+    })
+    //this.messageService.add({ severity: 'success', summary: 'Tarea actualizada!', detail: 'Tarea actualizada correctamente' });
   }
 
 }

@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
 import { IncidenciaService } from './service/incidencia/incidencia.service';
 import { TareaService } from './service/tarea/tarea.service';
 import { ServiceModule } from './service/service.module';
+import { IncidenciaPipePipe } from './pipes/incidencia-pipe.pipe';
+import { FormsModule } from '../../node_modules/@angular/forms';
 
 
 @NgModule({
@@ -27,10 +29,11 @@ import { ServiceModule } from './service/service.module';
     LogoutComponent,
     AdministradorComponent,
     HeaderNotloggedComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent    
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     AdministradorModule,
     ServiceModule,
