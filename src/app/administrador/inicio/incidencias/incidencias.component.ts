@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IncidenciaService } from '../../../service/incidencia/incidencia.service';
 import { LoginService } from '../../../service/login/login.service';
 import { MessageService } from '../../../../../node_modules/primeng/components/common/messageservice';
+import { GeneralService } from '../../../service/general/general.service';
 
 @Component({
   selector: 'app-incidencias',
@@ -11,7 +12,7 @@ import { MessageService } from '../../../../../node_modules/primeng/components/c
 })
 export class IncidenciasComponent implements OnInit {
 
-  constructor(private incidenciasService: IncidenciaService, private login: LoginService,private messageService: MessageService) { }
+  constructor(private incidenciasService: IncidenciaService, private login: LoginService,private messageService: MessageService, private general: GeneralService) { }
 
   datos: boolean = false;
   modal_incidencia: boolean = false;
@@ -27,6 +28,11 @@ export class IncidenciasComponent implements OnInit {
     this.incidenciasService.getAllIncidencia().subscribe(
       (incidencias: Array<IncidenciaInterface>) => {
         this.incidencias = incidencias;
+      }
+    )
+    this.incidenciasService.countNoAtendido().subscribe(
+      (num: ErrorInterface) => {
+        this.general.incidenciasEvent.emit(num.msg[1]);
       }
     )
     setTimeout(() => {

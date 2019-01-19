@@ -3,8 +3,8 @@ import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angu
 import { TareaService } from '../../../service/tarea/tarea.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { FechaService } from 'src/app/service/general/dates.service';
 import { LoginService } from '../../../service/login/login.service';
+import { GeneralService } from '../../../service/general/general.service';
 
 @Component({
   selector: 'app-tareas',
@@ -14,7 +14,7 @@ import { LoginService } from '../../../service/login/login.service';
 })
 export class TareasComponent implements OnInit {
 
-  constructor(private tareaService: TareaService, private messageService: MessageService, private fechaService: FechaService, private login: LoginService) { }
+  constructor(private tareaService: TareaService, private messageService: MessageService, private login: LoginService, private general: GeneralService) { }
 
   tareas: Array<TareaInterface>;
   datos: boolean = false;
@@ -37,6 +37,7 @@ export class TareasComponent implements OnInit {
     )
     this.tareaService.countTarea().subscribe(
       (num: number) => {
+        this.general.tareasEvent.emit(num);
       }
     )
     setTimeout(() => {
@@ -102,10 +103,6 @@ export class TareasComponent implements OnInit {
         this.showTooltip('error', '', 'Error en el servidor!');
       }
     )
-  }
-
-  formatFecha(date: Date) {
-    return this.fechaService.fromSecodsToDate(date);
   }
 
   showTooltip(type: string, title: string, desc: string) {
