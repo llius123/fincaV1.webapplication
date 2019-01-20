@@ -32,7 +32,7 @@ export class IncidenciasComponent implements OnInit {
     )
     this.incidenciasService.countNoAtendido().subscribe(
       (num: ErrorInterface) => {
-        this.general.incidenciasEvent.emit(num.msg[1]);
+        this.general.incidenciasEvent.emit(num.msg);
       }
     )
     setTimeout(() => {
