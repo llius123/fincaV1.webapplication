@@ -22,17 +22,19 @@ import { IncidenciaPipePipe } from '../pipes/incidencia-pipe.pipe';
 import { FechaPipePipe } from '../pipes/fecha-pipe.pipe';
 
 //mantenimiento-tablas
-import {InicioComponent  as InicioComponentMentenimiento} from './mantenimiento-tablas/inicio/inicio.component';
+import { InicioComponent as InicioComponentMentenimiento } from './mantenimiento-tablas/inicio/inicio.component';
 import { VecinoComponent } from './mantenimiento-tablas/vecino/vecino.component';
 import { PoblacionProvinciaComponent } from './mantenimiento-tablas/poblacion-provincia/poblacion-provincia.component';
 import { ComunidadComponent } from './mantenimiento-tablas/comunidad/comunidad.component';
 import { ProveedorComponent } from './mantenimiento-tablas/proveedor/proveedor.component';
 import { TipofacturaComponent } from './mantenimiento-tablas/tipofactura/tipofactura.component';
 import { LateralIzquierdoComponent } from './mantenimiento-tablas/lateral-izquierdo/lateral-izquierdo.component';
+import { EditVecinoComponent } from './mantenimiento-tablas/vecino/edit-vecino/edit-vecino.component';
+import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, PoblacionProvinciaComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento],
-  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, PoblacionProvinciaComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent],
+  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule,ReactiveFormsModule],
   exports: [HeaderAdminComponent]
 })
 export class AdministradorModule { }

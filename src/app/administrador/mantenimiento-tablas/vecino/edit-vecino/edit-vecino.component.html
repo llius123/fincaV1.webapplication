@@ -1,0 +1,12 @@
+<div *ngIf="!seleccionado">
+  Selecciona un vecino o crea uno nuevo
+</div>
+
+<div *ngIf="seleccionado">
+  <form [formGroup]="formularioVecino">
+    <input formControlName="nombre">
+  </form>
+  <button (click)="editVecino(vecino)"> Edit</button>
+</div>
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>

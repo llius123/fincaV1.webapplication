@@ -12,15 +12,9 @@ import { AdministradorModule } from './administrador/administrador.module';
 import { HeaderNotloggedComponent } from './header/header-notlogged/header-notlogged.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { LoginService } from './service/login/login.service';
-import { AuthAdmin } from './service/login/auth.service';
 import { RouterModule } from '@angular/router';
-import { IncidenciaService } from './service/incidencia/incidencia.service';
-import { TareaService } from './service/tarea/tarea.service';
 import { ServiceModule } from './service/service.module';
-import { IncidenciaPipePipe } from './pipes/incidencia-pipe.pipe';
-import { FormsModule } from '../../node_modules/@angular/forms';
-import { FechaPipePipe } from './pipes/fecha-pipe.pipe';
+import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 
 
 @NgModule({

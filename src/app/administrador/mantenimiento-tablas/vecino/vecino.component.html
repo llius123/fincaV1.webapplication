@@ -1,3 +1,13 @@
-<p>
-  vecino works!
-</p>
+<div class="flex">
+  <div class="w-2/5">
+    <div *ngFor="let vecino of vecinos">
+      {{vecino.nombre}} {{vecino.direccion}} {{vecino.numero}} {{vecino.email}} {{vecino.telefono}}
+      <button (click)="editVecino(vecino)">
+          <i class="fas fa-edit"></i>
+      </button>
+    </div>
+  </div>
+  <div class="w-3/5">
+    <app-edit-vecino [seleccionado]="parentMessage" [vecino]="vecinoEdit"></app-edit-vecino>
+  </div>
+</div>
