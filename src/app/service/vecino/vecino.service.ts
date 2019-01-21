@@ -16,6 +16,10 @@ export class VecinoService {
     return this.http.get<VecinoInterface[]>(`${this.config.api}vecinos`, this.config.header);
   }
 
+  updateVecino(vecino: VecinoInterface): Observable<ErrorInterface> {
+    return this.http.put<ErrorInterface>(`${this.config.api}vecinos`, vecino, this.config.header);
+  }
+
 
 
 }

@@ -29,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/fo
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AdministradorModule,
     ServiceModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VecinoService } from '../../../service/vecino/vecino.service';
 import { MessageService } from '../../../../../node_modules/primeng/components/common/messageservice';
+import { Subject } from '../../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-vecino',
@@ -29,7 +30,9 @@ export class VecinoComponent implements OnInit {
     )
   }
 
+  vecinoPadre: Subject<VecinoInterface> = new Subject();
   editVecino(vecino: VecinoInterface): void{
+    this.vecinoPadre.next(vecino);
     this.parentMessage = true;
     this.vecinoEdit = vecino;
   }
