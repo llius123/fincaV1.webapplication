@@ -10,9 +10,8 @@ JESUS
 .hover\:rosa-jesus:hover {
   color: #9E4F6E;
 }
-rosa-jesus-borde{
-  border-width: 1px;
-  border-color: #9E4F6E;
+.hover\:azul-gris-jesus:hover {
+  color: #404E5C;
 }
 
 

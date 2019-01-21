@@ -1,13 +1,36 @@
-<div class="flex-1 justify-center">
-  Incidencias
+<div class="flex justify-center p-2">
+  <div class="text-4xl underline mr-5">
+    Incidencias
+  </div>
 </div>
 <div class="flex">
-  <div class="overflow-y-auto h-32 w-full" [hidden]="!datos">
-    <div class="border border-yellow" *ngFor="let incidencia of incidencias | incidenciaPipe">
-      {{incidencia.vecino.nombre}} {{incidencia.descripcion}} {{incidencia.fecha_creacion | fechaPipe}}
-      <button (click)="showDialog(incidencia)">
-        <i class="fas fa-check"></i>
-      </button>
+  <div class="w-full" [hidden]="!datos">
+    <div class="border rounded ng-star-inserted m-2 p-2 bg-grey-lighter shadow-md" *ngFor="let incidencia of incidencias | incidenciaPipe"
+      style="border-color: #404E5C">
+      <div class="flex p-2">
+        <div class="p-1 h-8 w-8 border-tareas-icono rounded-full" style="border-color: #404E5C;border-width: 2px;">
+          <i class="flex fas fa-user items-center justify-center"></i>
+        </div>
+        <div class="text-2xl ml-5">
+          {{incidencia.vecino.nombre}}
+        </div>
+      </div>
+      <div class="flex m-3">
+        {{incidencia.descripcion}}
+      </div>
+      <div class="mt-3 mb-3" style="border-color: #404E5C;border-width: 1px;"></div>
+      <div class="flex pt-2 p-2">
+        <div class="w-24 rounded-full h-8 text-center" style="border-color: #404E5C;border-width: 2px;">
+          <div class="self-auto mt-1">
+            {{incidencia.fecha_creacion | fechaPipe}}
+          </div>
+        </div>
+        <div class="w-full text-right">
+          <button (click)="showDialog(incidencia)" class="mr-5 hover:azul-gris-jesus">
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
   <p-progressSpinner [style]="{width: '50px', height: '50px'}" [hidden]="datos"></p-progressSpinner>
