@@ -1,52 +1,85 @@
-<div class="flex-1 justify-center">
-  Tareas
-</div>
-<div class="overflow-y-auto h-32 w-full" [hidden]="!datos">
-  <div class="border border-yellow" *ngFor="let tarea of tareas">
-    {{tarea.fecha | fechaPipe}} {{ tarea.descripcion}}
-    <button (click)="showDialogEdit(tarea)">
-      <i class="fas fa-edit" ></i>
-    </button>
-    <button (click)="deleteTarea(tarea.id)">
-      <i class="fas fa-trash-alt"></i>
+<div class="flex justify-center p-2">
+  <div class="text-4xl underline mr-5">
+    Tareas
+  </div>
+  <div>
+    <button type="button" (click)="showDialog()" class="rounded-full w-32 h-10" style="border-width: 2px; border-color: #9E4F6E;">
+      <div class="flex">
+        <i class="far fa-plus-square fa-2x pl-2"></i>
+        <div class="text-2xl pl-2">
+          Nueva
+        </div>
+      </div>
     </button>
   </div>
 </div>
+<div [hidden]="!datos">
+  <div class="border rounded ng-star-inserted m-2 p-2 bg-grey-lighter" *ngFor="let tarea of tareas" style="border-color: #9E4F6E">
+    <div class="flex p-2">
+      <div class="p-1 h-8 w-8 border-tareas-icono rounded-full" style="border-color: #9E4F6E;border-width: 2px;">
+        <i class="flex fas fa-user items-center justify-center"></i>
+      </div>
+      <div class="text-2xl ml-5">
+        nombre
+      </div>
+    </div>
+    <div class="flex m-3">
+      {{ tarea.descripcion}}
+    </div>
+    <div class="mt-3 mb-3" style="border-color: #9E4F6E;border-width: 1px;"></div>
+    <div class="flex pt-2 p-2">
+      <div class="w-24 rounded-full h-8 text-center" style="border-color: #9E4F6E;border-width: 2px;">
+        <div class="self-auto mt-1">
+          {{tarea.fecha | fechaPipe}}
+        </div>
+      </div>
+      <div class="w-full text-right">
+        <button (click)="showDialogEdit(tarea)" class="mr-5 hover:rosa-jesus">
+          <i class="fas fa-edit fa-2x"></i>
+        </button>
+        <button (click)="deleteTarea(tarea.id)" class="mr-5 hover:rosa-jesus">
+          <i class="fas fa-trash-alt fa-2x"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <!-- Crear una nueva tarea -->
 <p-progressSpinner [style]="{width: '50px', height: '50px'}" [hidden]="datos"></p-progressSpinner>
 <p-dialog header="Nueva tarea" [(visible)]="modal_display" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
   <div class="flex">
-      <div class="flex-1">
-        Descripcion
-      </div>
-      <div class="flex-1 border border-black">
-        <textarea rows="4" cols="30" #tarea></textarea>
-      </div>
+    <div class="flex-1">
+      Descripcion
     </div>
-        <p-footer>
-            <button type="button" pButton icon="fas fa-check" (click)="nuevaTarea(tarea.value)" label="Yes"></button>
-            <button type="button" pButton icon="fas fa-times" (click)="modal_display=false" label="No" class="ui-button-secondary"></button>
-        </p-footer>
+    <div class="flex-1 border border-black">
+      <textarea rows="4" cols="30" #tarea></textarea>
+    </div>
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="fas fa-check" (click)="nuevaTarea(tarea.value)" label="Yes"></button>
+    <button type="button" pButton icon="fas fa-times" (click)="modal_display=false" label="No" class="ui-button-secondary"></button>
+  </p-footer>
 </p-dialog>
-<button type="button" (click)="showDialog()" pButton icon="fas fa-search-plus" label="Crear"></button>
 
 <!-- Editar una tarea -->
 <p-dialog header="Editar tarea" [(visible)]="modal_display_edit" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
   <div class="flex">
-      <div class="flex-1">
-        Descripcion
-      </div>
-      <div class="flex-1 border border-black">
-        <textarea rows="4" cols="30" #tareaedited>
+    <div class="flex-1">
+      Descripcion
+    </div>
+    <div class="flex-1 border border-black">
+      <textarea rows="4" cols="30" #tareaedited>
           {{tareaEdited.descripcion}}
         </textarea>
-      </div>
     </div>
-        <p-footer>
-            <button type="button" pButton icon="fas fa-check" (click)="editarTarea(tareaedited.value)" label="Yes"></button>
-            <button type="button" pButton icon="fas fa-times" (click)="modal_display_edit=false" label="No" class="ui-button-secondary"></button>
-        </p-footer>
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="fas fa-check" (click)="editarTarea(tareaedited.value)" label="Yes"></button>
+    <button type="button" pButton icon="fas fa-times" (click)="modal_display_edit=false" label="No" class="ui-button-secondary"></button>
+  </p-footer>
 </p-dialog>
 
 <p-toast position="bottom-right" [style]="{marginTop: '80px'}">

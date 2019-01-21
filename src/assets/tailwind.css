@@ -7,6 +7,14 @@ JESUS
 .hover\:border-blue-jesus:hover {
   border-color: #22292f;
 }
+.hover\:rosa-jesus:hover {
+  color: #9E4F6E;
+}
+rosa-jesus-borde{
+  border-width: 1px;
+  border-color: #9E4F6E;
+}
+
 
 /* Document
    ========================================================================== */
