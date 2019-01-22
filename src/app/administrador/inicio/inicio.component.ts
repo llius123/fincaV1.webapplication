@@ -22,5 +22,4 @@ export class InicioComponent implements OnInit {
     console.log($event);
     this.incidencias = $event;
   }
-
 }

@@ -1,46 +1,88 @@
 <div class="flex">
-  <div *ngIf="!seleccionado">
-    Selecciona un vecino o crea uno nuevo
-  </div>
+    <div *ngIf="!seleccionado">
+        Selecciona un vecino o crea uno nuevo
+    </div>
 </div>
 
 <div class="flex">
-  <div *ngIf="seleccionado">
-    <form [formGroup]="formularioVecino">
-      <input formControlName="id">
-      <input formControlName="nombre">
-      <input formControlName="direccion">
-      <input formControlName="numero">
-      <input formControlName="nif">
-      <input formControlName="iban">
-      <input formControlName="num_mandato">
-      <input formControlName="fecha_mandato">
-      <input formControlName="porcentaje_participacion">
-      <input formControlName="comunidad">
-      <button (click)="showDialog('comunidad')">
-        <i class="fas fa-arrows-alt"></i>
-      </button>
-      <input formControlName="email">
-      <input formControlName="telefono">
-      <input formControlName="id_tipovecino">
-      <button (click)="showDialog('tipovecino')">
-        <i class="fas fa-arrows-alt"></i>
-      </button>
-      <input formControlName="poblacion">
-      <button (click)="showDialog('poblacion')">
-        <i class="fas fa-arrows-alt"></i>
-      </button>
-      <input formControlName="login">
-      <input formControlName="pass">
-    </form>
-    <button (click)="editVecino()"> Edit</button>
-  </div>
+    <div *ngIf="seleccionado">
+        <form [formGroup]="formularioVecino">
+            <input formControlName="id">
+            <input formControlName="nombre">
+            <input formControlName="direccion">
+            <input formControlName="numero">
+            <input formControlName="nif">
+            <input formControlName="iban">
+            <input formControlName="num_mandato">
+            <input formControlName="fecha_mandato">
+            <input formControlName="porcentaje_participacion">
+            <input formControlName="comunidad">
+            <button (click)="showDialog('comunidad')">
+                <i class="fas fa-arrows-alt"></i>
+            </button>
+            <input formControlName="email">
+            <input formControlName="telefono">
+            <input formControlName="id_tipovecino">
+            <button (click)="showDialog('tipovecino')">
+                <i class="fas fa-arrows-alt"></i>
+            </button>
+            <input formControlName="poblacion">
+            <button (click)="showDialog('poblacion')">
+                <i class="fas fa-arrows-alt"></i>
+            </button>
+            <input formControlName="login">
+            <input formControlName="pass">
+        </form>
+        <button (click)="editVecino()"> Edit</button>
+    </div>
 </div>
 <p-dialog [(visible)]="display_comunidad" [modal]="true">
     <p-header>
         display_comunidad
     </p-header>
-    Content
+    <div class="flex">
+        <div>
+            id
+        </div>
+        <div>
+            nombre
+        </div>
+        <div>
+            direccion
+        </div>
+        <div>
+            nif
+        </div>
+        <div>
+            iban
+        </div>
+        <div>
+            sufijo
+        </div>
+    </div>
+    <div class="flex" *ngFor="let comunidad of comunidades">
+        <div>
+            {{comunidad.id}}
+        </div>
+        <div>
+            {{comunidad.nombre}}
+        </div>
+        <div>
+            {{comunidad.direccion}}
+        </div>
+        <div>
+            {{comunidad.nif}}
+        </div>
+        <div>
+            {{comunidad.iban}}
+        </div>
+        <div>
+            {{comunidad.sufijo}}
+        </div>
+        <button (click)="saveComunidad(comunidad)">
+            <i class="fas fa-check"></i>
+        </button>
+    </div>
     <p-footer>
         //buttons
     </p-footer>
@@ -49,7 +91,25 @@
     <p-header>
         display_tipovecino
     </p-header>
-    Content
+    <div class="flex">
+        <div>
+            id
+        </div>
+        <div>
+            descripcion
+        </div>
+    </div>
+    <div class="flex" *ngFor="let tipovecino of tipovecinos">
+        <div>
+            {{tipovecino.id}}
+        </div>
+        <div>
+            {{tipovecino.descripcion}}
+        </div>
+        <button (click)="saveVecino(tipovecino)">
+            <i class="fas fa-check"></i>
+        </button>
+    </div>
     <p-footer>
         //buttons
     </p-footer>
@@ -58,7 +118,31 @@
     <p-header>
         display_poblacion
     </p-header>
-    Content
+    <div class="flex">
+        <div>
+            Cod postal
+        </div>
+        <div>
+            descripcion
+        </div>
+        <div>
+            provincia
+        </div>
+    </div>
+    <div class="flex" *ngFor="let poblacion of poblaciones">
+        <div>
+            {{poblacion.cod_postal}}
+        </div>
+        <div>
+            {{poblacion.descripcion}}
+        </div>
+        <div>
+            {{poblacion.cod_provincia.descripcion}}
+        </div>
+        <button (click)="savePoblacion(poblacion)">
+            <i class="fas fa-check"></i>
+        </button>
+    </div>
     <p-footer>
         //buttons
     </p-footer>

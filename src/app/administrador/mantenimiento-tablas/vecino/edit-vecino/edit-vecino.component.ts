@@ -1,3 +1,4 @@
+import { ComunidadService } from './../../../../service/comunidad/comunidad.service';
 import { Input, OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../../../../../../node_modules/primeng/components/common/messageservice';
@@ -5,6 +6,8 @@ import { FormGroup, FormControl, FormBuilder } from '../../../../../../node_modu
 import { isNull } from 'util';
 import { Subject } from '../../../../../../node_modules/rxjs';
 import { VecinoService } from '../../../../service/vecino/vecino.service';
+import { TipoVecinoService } from 'src/app/service/tipovecino/tipovecino.service';
+import { PoblacionProvinciaService } from 'src/app/service/poblacion-provincia/poblacion.service';
 
 @Component({
   selector: 'app-edit-vecino',
@@ -14,7 +17,7 @@ import { VecinoService } from '../../../../service/vecino/vecino.service';
 })
 export class EditVecinoComponent implements OnInit, OnDestroy {
 
-  constructor(private messageService: MessageService, private fb: FormBuilder, private vecinoSQL: VecinoService) { }
+  constructor(private messageService: MessageService, private fb: FormBuilder, private vecinoSQL: VecinoService, private comunidadService: ComunidadService, private tipovecinoService: TipoVecinoService, private poblacionService: PoblacionProvinciaService) { }
 
   @Input() seleccionado: boolean;
   @Input() vecinoHijo: Subject<VecinoInterface>;
@@ -22,6 +25,14 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
   display_comunidad: boolean = false;
   display_tipovecino: boolean = false;
   display_poblacion: boolean = false;
+  
+  comunidades: ComunidadInterface[];
+  tipovecinos: TipovecinoInterface[];
+  poblaciones: PoblacionInterface[];
+
+  comunidadSeleccionada: ComunidadInterface;
+  tipovecinoSeleccionado: TipovecinoInterface;
+  poblacionSeleccionada: PoblacionInterface;
 
   ngOnInit() {
     this.vecinoHijo.subscribe((vecino: VecinoInterface) => {
@@ -53,6 +64,10 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
   }
 
   putVecinoForm(vecino: VecinoInterface): void {
+    this.comunidadSeleccionada = vecino.comunidad;
+    this.tipovecinoSeleccionado = vecino.id_tipovecino;
+    this.poblacionSeleccionada = vecino.poblacion;
+
     this.formularioVecino.patchValue({
       id: vecino.id,
       nombre: vecino.nombre,
@@ -63,10 +78,10 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
       num_mandato: vecino.num_mandato,
       fecha_mandato: vecino.fecha_mandato,
       porcentaje_participacion: vecino.porcentaje_participacion,
-      comunidad: vecino.comunidad.id,
+      comunidad: vecino.comunidad.nombre,
       email: vecino.email,
       telefono: vecino.telefono,
-      id_tipovecino: vecino.id_tipovecino.id,
+      id_tipovecino: vecino.id_tipovecino.descripcion,
       poblacion: vecino.poblacion.cod_postal,
       login: vecino.login,
       pass: vecino.pass
@@ -74,9 +89,14 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
   }
 
   editVecino(): void {
-    const test: VecinoInterface = this.formularioVecino.value;
-    console.log(test)
-    this.vecinoSQL.updateVecino(test).subscribe(
+
+    const vecino: VecinoInterface = this.formularioVecino.value;
+
+    vecino.comunidad = this.comunidadSeleccionada;
+    vecino.id_tipovecino = this.tipovecinoSeleccionado;
+    vecino.poblacion = this.poblacionSeleccionada;
+
+    this.vecinoSQL.updateVecino(vecino).subscribe(
       (response: ErrorInterface) => {
         this.showTooltip('success', '', `${response.msg}`)
       },
@@ -92,18 +112,62 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
         this.display_comunidad = true;
         this.display_tipovecino = false;
         this.display_poblacion = false;
+        this.comunidad();
         break;
       case 'tipovecino':
         this.display_comunidad = false;
         this.display_tipovecino = true;
         this.display_poblacion = false;
+        this.tipoVecino();
         break;
       case 'poblacion':
         this.display_poblacion = true;
         this.display_comunidad = false;
         this.display_tipovecino = false;
+        this.poblacion();
         break;
     }
+  }
+  closeModals(): void{
+    this.display_comunidad = false;
+    this.display_tipovecino = false;
+    this.display_poblacion = false;
+  }
+
+  comunidad() : void{
+    this.comunidadService.getAll().subscribe(
+      (comunidades: ComunidadInterface[]) => {
+        this.comunidades = comunidades;
+      }
+    )
+  }
+  saveComunidad(comunidad: ComunidadInterface): void {
+    this.comunidadSeleccionada = comunidad;
+    this.closeModals();
+  }
+
+  tipoVecino(): void{
+    this.tipovecinoService.getAll().subscribe(
+      (tipovecino: TipovecinoInterface[]) => {
+        this.tipovecinos = tipovecino;
+      }
+    )
+  }
+  saveVecino(tipovecino: TipovecinoInterface): void{
+    this.tipovecinoSeleccionado = tipovecino;
+    this.closeModals();
+  }
+
+  poblacion(): void{
+    this.poblacionService.getAllPoblacion().subscribe(
+      (data: PoblacionInterface[]) => {
+        this.poblaciones = data;
+      }
+    )
+  }
+  savePoblacion(poblacion: PoblacionInterface): void{
+    this.poblacionSeleccionada = poblacion;
+    this.closeModals();
   }
 
   showTooltip(type: string, title: string, desc: string) {
