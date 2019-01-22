@@ -142,6 +142,9 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
     )
   }
   saveComunidad(comunidad: ComunidadInterface): void {
+    this.formularioVecino.patchValue({
+      comunidad: comunidad.nombre,
+    })
     this.comunidadSeleccionada = comunidad;
     this.closeModals();
   }
@@ -154,6 +157,9 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
     )
   }
   saveVecino(tipovecino: TipovecinoInterface): void{
+    this.formularioVecino.patchValue({
+      id_tipovecino: tipovecino.descripcion
+    })
     this.tipovecinoSeleccionado = tipovecino;
     this.closeModals();
   }
@@ -166,8 +172,12 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
     )
   }
   savePoblacion(poblacion: PoblacionInterface): void{
+    this.formularioVecino.patchValue({
+      poblacion: poblacion.cod_postal
+    })
     this.poblacionSeleccionada = poblacion;
     this.closeModals();
+    qweqwe
   }
 
   showTooltip(type: string, title: string, desc: string) {

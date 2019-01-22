@@ -1,3 +1,13 @@
-<p>
-  comunidad works!
-</p>
+<div class="flex">
+  <div class="w-2/5">
+    <div *ngFor="let comunidad of comunidades">
+      {{comunidad.nombre}}{{comunidad.direccion}}{{comunidad.nif}}{{comunidad.iban}}{{comunidad.sufijo}}{{comunidad.poblacion.cod_poblacion}}
+      <button (click)="editComunidad(comunidad)">
+          <i class="fas fa-edit"></i>
+      </button>
+    </div>
+  </div>
+  <div class="w-3/5">
+    <app-edit-comunidad [seleccionado]="parentMessage" [comunidadHijo]="comunidadPadre"></app-edit-comunidad>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 
 import { routes } from './app-routing';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RouterModule } from '@angular/router';
 import { ServiceModule } from './service/service.module';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
+import { SentryErrorHandle } from './service/error/error.service';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/fo
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [{ provide: ErrorHandler, useClass: SentryErrorHandle }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

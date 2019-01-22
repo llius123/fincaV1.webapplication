@@ -1,0 +1,56 @@
+<div class="flex">
+  <div *ngIf="!seleccionado">
+    Selecciona un vecino o crea uno nuevo
+  </div>
+</div>
+<div class="flex" *ngIf="seleccionado">
+  <form [formGroup]="formularioComunidad">
+    <input formControlName="id">
+    <input formControlName="nombre">
+    <input formControlName="direccion">
+    <input formControlName="nif">
+    <input formControlName="iban">
+    <input formControlName="sufijo">
+    <input formControlName="poblacion">
+    <button (click)="showDialog()">
+        <i class="fas fa-arrows-alt"></i>
+    </button>
+  </form>
+  <button (click)="editComunidad()"> Edit</button>
+</div>
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>
+
+<p-dialog [(visible)]="display_comunidad" [modal]="true">
+    <p-header>
+        display_poblacion
+    </p-header>
+    <div class="flex">
+        <div>
+            Cod postal
+        </div>
+        <div>
+            descripcion
+        </div>
+        <div>
+            provincia
+        </div>
+    </div>
+    <div class="flex" *ngFor="let poblacion of poblaciones">
+        <div>
+            {{poblacion.cod_postal}}
+        </div>
+        <div>
+            {{poblacion.descripcion}}
+        </div>
+        <div>
+            {{poblacion.cod_provincia.descripcion}}
+        </div>
+        <button (click)="savePoblacion(poblacion)">
+            <i class="fas fa-check"></i>
+        </button>
+    </div>
+    <p-footer>
+        //buttons
+    </p-footer>
+</p-dialog>

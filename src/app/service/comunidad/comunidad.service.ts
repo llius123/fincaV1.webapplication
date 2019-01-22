@@ -10,4 +10,7 @@ export class ComunidadService{
     getAll(): Observable<ComunidadInterface[]>{
         return this.http.get<ComunidadInterface[]>(`${this.config.api}comunidades`, this.config.header);
     }
+    save(comunidad: ComunidadInterface): Observable<ErrorInterface>{
+        return this.http.put<ErrorInterface>(`${this.config.api}comunidades`, comunidad, this.config.header);
+    }
 }
