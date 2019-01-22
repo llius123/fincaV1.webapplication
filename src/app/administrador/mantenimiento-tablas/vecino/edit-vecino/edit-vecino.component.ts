@@ -6,7 +6,7 @@ import { FormGroup, FormControl, FormBuilder } from '../../../../../../node_modu
 import { isNull } from 'util';
 import { Subject } from '../../../../../../node_modules/rxjs';
 import { VecinoService } from '../../../../service/vecino/vecino.service';
-import { TipoVecinoService } from 'src/app/service/tipovecino/tipovecino.service';
+import { TipoVecinoService } from 'src/app/service/tipovecino-tipofactura/tipovecino.service';
 import { PoblacionProvinciaService } from 'src/app/service/poblacion-provincia/poblacion.service';
 
 @Component({

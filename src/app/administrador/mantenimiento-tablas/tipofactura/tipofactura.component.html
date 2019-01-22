@@ -1,3 +1,54 @@
-<p>
-  tipofactura works!
-</p>
+<div class="flex">
+  <div class="flex-1">
+    <div *ngFor="let tipofactura of tipofacturas">
+      {{tipofactura.id}} {{tipofactura.descripcion}}
+      <button (click)="showDialog(tipofactura, 'tipofactura')">
+        <i class="fas fa-arrows-alt"></i>
+      </button>
+    </div>
+  </div>
+  <div class="flex-1">
+    <div *ngFor="let tipovecino of tipovecinos">
+      {{tipovecino.id}} {{tipovecino.descripcion}}
+      <button (click)="showDialog(tipovecino, 'tipovecino')">
+        <i class="fas fa-arrows-alt"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<p-dialog [(visible)]="display_tipo" [modal]="true">
+  <p-header>
+    <div *ngIf="!tipovecino">
+      display_tipofactura
+    </div>
+    <div *ngIf="tipovecino">
+      display_tipovecino
+    </div>
+  </p-header>
+  <div class="flex">
+    <div>
+      id
+    </div>
+    <div>
+      descripcion
+    </div>
+  </div>
+  <div class="flex">
+    <form [formGroup]="formularioTipo">
+      <input formControlName="id">
+      <input formControlName="descripcion">
+    </form>
+  </div>
+  <p-footer>
+    <button (click)="editTipo('tipofactura')" *ngIf="!tipovecino">
+      <i class="fas fa-check"></i>
+    </button>
+    <button (click)="editTipo('tipovecino')" *ngIf="tipovecino">
+      <i class="fas fa-check"></i>
+    </button>
+  </p-footer>
+</p-dialog>
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>
