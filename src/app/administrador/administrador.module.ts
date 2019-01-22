@@ -32,9 +32,10 @@ import { LateralIzquierdoComponent } from './mantenimiento-tablas/lateral-izquie
 import { EditVecinoComponent } from './mantenimiento-tablas/vecino/edit-vecino/edit-vecino.component';
 import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { EditComunidadComponent } from './mantenimiento-tablas/comunidad/edit-comunidad/edit-comunidad.component';
+import { EditProveedorComponent } from './mantenimiento-tablas/proveedor/edit-proveedor/edit-proveedor.component';
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, PoblacionProvinciaComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, PoblacionProvinciaComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule,ReactiveFormsModule],
   exports: [HeaderAdminComponent]
 })

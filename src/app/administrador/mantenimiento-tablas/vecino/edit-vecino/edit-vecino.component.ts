@@ -177,7 +177,6 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
     })
     this.poblacionSeleccionada = poblacion;
     this.closeModals();
-    qweqwe
   }
 
   showTooltip(type: string, title: string, desc: string) {

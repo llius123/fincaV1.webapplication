@@ -9,7 +9,8 @@ import { ComunidadService } from './comunidad/comunidad.service';
 import { TipoVecinoService } from './tipovecino/tipovecino.service';
 import { PoblacionProvinciaService } from './poblacion-provincia/poblacion.service';
 import { SentryErrorHandle } from './error/error.service';
+import { ProveedorService } from './proveedor/proveedor.service';
 @NgModule({
-    providers: [LoginService, AuthAdmin, IncidenciaService,  TareaService, GeneralService, VecinoService, ComunidadService, TipoVecinoService, PoblacionProvinciaService, SentryErrorHandle],
-  })
-  export class ServiceModule { }
+  providers: [LoginService, AuthAdmin, IncidenciaService, TareaService, GeneralService, VecinoService, ComunidadService, TipoVecinoService, PoblacionProvinciaService, SentryErrorHandle, ProveedorService],
+})
+export class ServiceModule { }

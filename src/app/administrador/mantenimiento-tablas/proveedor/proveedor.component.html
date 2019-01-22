@@ -1,3 +1,13 @@
-<p>
-  proveedor works!
-</p>
+<div class="flex">
+    <div class="w-2/5">
+      <div *ngFor="let proveedor  of proveedores">
+        {{proveedor.direccion}} {{proveedor.telefono}} {{proveedor.email}} {{proveedor.poblacion.cod_postal}}
+        <button (click)="editProveedor(proveedor)">
+            <i class="fas fa-edit"></i>
+        </button>
+      </div>
+    </div>
+    <div class="w-3/5">
+      <app-edit-proveedor [seleccionado]="parentMessage" [hijo]="padre"></app-edit-proveedor>
+    </div>
+  </div>
