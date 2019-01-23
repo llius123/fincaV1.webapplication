@@ -1,3 +1,74 @@
-<p>
-  poblacion-provincia works!
-</p>
+<div class="flex">
+  <div class="flex-1">
+    <div *ngFor="let poblacion of poblaciones">
+      {{poblacion.cod_postal}} {{poblacion.descripcion}} {{poblacion.provincia}}
+      <button (click)="showDialogPoblacion(poblacion)">
+        <i class="fas fa-arrows-alt"></i>
+      </button>
+    </div>
+  </div>
+  <div class="flex-1">
+    <div *ngFor="let provincia of provincias">
+      {{provincia.cod_provincia}} {{provincia.descripcion}}
+      <button (click)="showDialogProvincia(provincia)">
+        <i class="fas fa-arrows-alt"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<p-dialog [(visible)]="display_provincia" [modal]="true">
+  <p-header>
+    provincia
+  </p-header>
+  <div class="flex">
+    <div>
+      cod_provincia
+    </div>
+    <div>
+      descripcion
+    </div>
+  </div>
+  <div class="flex">
+    <form [formGroup]="formularioProvincia">
+      <input formControlName="cod_provincia">
+      <input formControlName="descripcion">
+    </form>
+  </div>
+  <p-footer>
+    <button (click)="edit('provincia')">
+      <i class="fas fa-check"></i>
+    </button>
+  </p-footer>
+</p-dialog>
+<p-dialog [(visible)]="display_poblacion" [modal]="true">
+  <p-header>
+    poblacion
+  </p-header>
+  <div class="flex">
+    <div>
+      cod_postal
+    </div>
+    <div>
+      descripcion
+    </div>
+    <div>
+      cod_provincia
+    </div>
+  </div>
+  <div class="flex">
+    <form [formGroup]="formularioPoblacion">
+      <input formControlName="cod_postal">
+      <input formControlName="descripcion">
+      <input formControlName="cod_provincia">
+    </form>
+  </div>
+  <p-footer>
+    <button (click)="edit('poblacion')">
+      <i class="fas fa-check"></i>
+    </button>
+  </p-footer>
+</p-dialog>
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>

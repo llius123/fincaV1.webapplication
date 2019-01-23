@@ -14,4 +14,12 @@ export class PoblacionProvinciaService{
     getAllProvincia(): Observable<ProvinciaInterface[]>{
         return this.http.get<ProvinciaInterface[]>(`${this.config.api}provincias`, this.config.header);
     }
+
+    updatePoblacion(data: PoblacionInterface): Observable<ErrorInterface>{
+        return this.http.put<ErrorInterface>(`${this.config.api}poblaciones`, data, this.config.header);
+    }
+
+    updateProvincia(data: ProvinciaInterface): Observable<ErrorInterface>{
+        return this.http.put<ErrorInterface>(`${this.config.api}provincias`, data, this.config.header);
+    }
 }

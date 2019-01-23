@@ -25,11 +25,7 @@ export class EditComunidadComponent implements OnInit {
   cod_poblacionSeleccted: PoblacionInterface;
 
   ngOnInit() {
-    this.comunidadHijo.subscribe(
-      (data: ComunidadInterface) => {
-        this.putComunidadForm(data)
-      }
-    )
+    this.getData();
     this.formularioComunidad = new FormGroup({
       id: new FormControl(),
       nombre: new FormControl(),
@@ -41,6 +37,13 @@ export class EditComunidadComponent implements OnInit {
     })
   }
 
+  getData(): void {
+    this.comunidadHijo.subscribe(
+      (data: ComunidadInterface) => {
+        this.putComunidadForm(data)
+      }
+    )
+  }
   putComunidadForm(data: ComunidadInterface): void {
     this.cod_poblacionSeleccted = data.poblacion;
     this.formularioComunidad.patchValue({
