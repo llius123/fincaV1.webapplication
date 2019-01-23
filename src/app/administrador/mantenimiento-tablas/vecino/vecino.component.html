@@ -1,10 +1,47 @@
 <div class="flex">
-  <div class="w-2/5">
-    <div *ngFor="let vecino of vecinos">
-      {{vecino.nombre}} {{vecino.direccion}} {{vecino.numero}} {{vecino.email}} {{vecino.telefono}}
-      <button (click)="editVecino(vecino)">
-          <i class="fas fa-edit"></i>
-      </button>
+  <div class="w-2/5 border rounded m-1" style="border-color: #404E5C; border-width:2px;">
+    <div *ngFor="let vecino of vecinos" class="p-2">
+      <div class="flex">
+        <div class="w-3/5">
+          <div class="flex" id="borde">
+            <div class="text-lg font-bold pl-3 mt-2 mb-2">
+              Nombre:
+            </div>
+            <div class="font-mono ml-2 mt-2 mb-2">
+              {{vecino.nombre}}
+            </div>
+          </div>
+          <div class="flex" id="borde">
+            <div class="text-lg font-bold pl-3 mt-2 mb-2">
+              Direccion:
+            </div>
+            <div class="font-mono ml-2 mt-2 mb-2">
+              {{vecino.direccion}}
+            </div>
+          </div>
+          <div class="flex" id="borde">
+            <div class="text-lg font-bold pl-3 mt-2 mb-2">
+              Email:
+            </div>
+            <div class="font-mono ml-2 mt-2 mb-2">
+              {{vecino.email}}
+            </div>
+          </div>
+          <div class="flex" id="borde">
+            <div class="text-lg font-bold pl-3 mt-2 mb-2">
+              Telefono:
+            </div>
+            <div class="font-mono ml-2 mt-2 mb-2">
+              {{vecino.telefono}}
+            </div>
+          </div>
+        </div>
+        <div class="w-1/5 ">
+          <button (click)="editVecino(vecino)" class="p-4 hover:rosa-jesus">
+            <i class="fas fa-edit fa-3x"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
   <div class="w-3/5">
