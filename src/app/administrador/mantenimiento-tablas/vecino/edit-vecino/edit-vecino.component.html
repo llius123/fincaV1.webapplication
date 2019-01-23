@@ -7,10 +7,48 @@
 <div class="flex">
     <div *ngIf="seleccionado">
         <form [formGroup]="formularioVecino">
-            <input formControlName="id">
-            <input formControlName="nombre">
-            <input formControlName="direccion">
-            <input formControlName="numero">
+            <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                <div class="pl-3 pt-2 font-bold">
+                    <p>Id:</p>
+                </div>
+                <div class="pl-3 pt-2">
+                    <input class="pl-2 border-b-2 focus:outline-none" formControlName="id" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                </div>
+            </div>
+            <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                <div class="pl-3 pt-2 font-bold">
+                    <p>Nombre:</p>
+                </div>
+                <div class="pl-3 pt-2">
+                    <input class="pl-2 border-b-2 focus:outline-none" formControlName="nombre" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    <div class="w-1/2">
+                        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold">
+                                <p>Direccion:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="direccion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-1/2">
+                        <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold">
+                                <p>Numero:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="numero" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <input formControlName="nif">
             <input formControlName="iban">
             <input formControlName="num_mandato">
