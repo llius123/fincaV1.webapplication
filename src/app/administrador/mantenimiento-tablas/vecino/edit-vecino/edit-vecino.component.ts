@@ -7,7 +7,7 @@ import { isNull } from 'util';
 import { Subject } from '../../../../../../node_modules/rxjs';
 import { VecinoService } from '../../../../service/vecino/vecino.service';
 import { TipoVecinoService } from 'src/app/service/tipovecino-tipofactura/tipovecino.service';
-import { PoblacionProvinciaService } from 'src/app/service/poblacion-provincia/poblacion.service';
+import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
 
 @Component({
   selector: 'app-edit-vecino',
@@ -17,7 +17,7 @@ import { PoblacionProvinciaService } from 'src/app/service/poblacion-provincia/p
 })
 export class EditVecinoComponent implements OnInit, OnDestroy {
 
-  constructor(private messageService: MessageService, private fb: FormBuilder, private vecinoSQL: VecinoService, private comunidadService: ComunidadService, private tipovecinoService: TipoVecinoService, private poblacionService: PoblacionProvinciaService) { }
+  constructor(private messageService: MessageService, private fb: FormBuilder, private vecinoSQL: VecinoService, private comunidadService: ComunidadService, private tipovecinoService: TipoVecinoService, private poblacionService: PoblacionService) { }
 
   @Input() seleccionado: boolean;
   @Input() vecinoHijo: Subject<VecinoInterface>;

@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ProveedorService } from 'src/app/service/proveedor/proveedor.service';
-import { PoblacionProvinciaService } from 'src/app/service/poblacion-provincia/poblacion.service';
+import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
 
 @Component({
   selector: 'app-edit-proveedor',
@@ -13,7 +13,7 @@ import { PoblacionProvinciaService } from 'src/app/service/poblacion-provincia/p
 })
 export class EditProveedorComponent implements OnInit {
 
-  constructor(private messageService: MessageService, private proveedorSql: ProveedorService, private poblacionService: PoblacionProvinciaService) { }
+  constructor(private messageService: MessageService, private proveedorSql: ProveedorService, private poblacionService: PoblacionService) { }
 
   @Input() seleccionado: boolean;
   @Input() hijo: Subject<ProveedorInterface>;

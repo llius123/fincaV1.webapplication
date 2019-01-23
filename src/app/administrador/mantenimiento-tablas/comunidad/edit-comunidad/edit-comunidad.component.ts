@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ComunidadService } from 'src/app/service/comunidad/comunidad.service';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { PoblacionProvinciaService } from 'src/app/service/poblacion-provincia/poblacion.service';
+import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
 
 @Component({
   selector: 'app-edit-comunidad',
@@ -14,7 +14,7 @@ import { PoblacionProvinciaService } from 'src/app/service/poblacion-provincia/p
 })
 export class EditComunidadComponent implements OnInit {
 
-  constructor(private comunidadService: ComunidadService, private messageService: MessageService, private poblacionService: PoblacionProvinciaService) { }
+  constructor(private comunidadService: ComunidadService, private messageService: MessageService, private poblacionService: PoblacionService) { }
 
   @Input() seleccionado: boolean;
   @Input() comunidadHijo: Subject<ComunidadInterface>;

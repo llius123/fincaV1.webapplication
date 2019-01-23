@@ -1,6 +1,6 @@
 <div class="flex">
   <div class="w-2/5 border rounded m-1" style="border-color: #404E5C; border-width:2px;">
-    <div *ngFor="let tipofactura of tipofacturas" class="p-2">
+    <div *ngFor="let tipovecino of tipovecinos" class="p-2">
       <div class="flex">
         <div class="w-3/5">
           <div class="flex" id="borde">
@@ -8,12 +8,12 @@
               Descripcion:
             </div>
             <div class="font-mono ml-2 mt-2 mb-2">
-              {{tipofactura.descripcion}}
+              {{tipovecino.descripcion}}
             </div>
           </div>
         </div>
         <div class="w-1/5 ">
-          <button (click)="edit(tipofactura)" class="p-4 hover:rosa-jesus">
+          <button (click)="edit(tipovecino)" class="p-4 hover:rosa-jesus">
             <i class="fas fa-edit fa-3x"></i>
           </button>
         </div>
@@ -21,6 +21,6 @@
     </div>
   </div>
   <div class="w-3/5">
-    <app-edit-tipofactura [seleccionado]="parentMessage" [hijo]="padre"></app-edit-tipofactura>
+    <app-edit-tipovecino [seleccionado]="parentMessage" [hijo]="padre"></app-edit-tipovecino>
   </div>
 </div>

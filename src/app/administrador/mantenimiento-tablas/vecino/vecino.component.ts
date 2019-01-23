@@ -16,7 +16,9 @@ export class VecinoComponent implements OnInit {
   modal_display_vecino: boolean = false;
 
   parentMessage = false;
+  
   vecinoEdit: VecinoInterface = null;
+  vecinoPadre: Subject<VecinoInterface> = new Subject();
 
   ngOnInit() {
     this.getAllVecinos();
@@ -30,7 +32,6 @@ export class VecinoComponent implements OnInit {
     )
   }
 
-  vecinoPadre: Subject<VecinoInterface> = new Subject();
   editVecino(vecino: VecinoInterface): void{
     this.vecinoPadre.next(vecino);
     this.parentMessage = true;
