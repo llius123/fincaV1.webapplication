@@ -1,0 +1,17 @@
+<div class="flex">
+    <div *ngIf="!seleccionado">
+        Selecciona un tipovecino o crea uno nuevo
+    </div>
+</div>
+
+<div class="flex">
+    <div *ngIf="seleccionado">
+        <form [formGroup]="formularioTipoVecino">
+            <input formControlName="id">
+            <input formControlName="descripcion">
+        </form>
+        <button (click)="editTipoVecino()"> Edit</button>
+    </div>
+</div>
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>

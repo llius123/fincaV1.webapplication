@@ -12,7 +12,9 @@ import { VecinoComponent as VecinoComponentMantenimiento } from './mantenimiento
 import { ComunidadComponent as ComunidadComponentMantenimiento } from './mantenimiento-tablas/comunidad/comunidad.component';
 import { ProveedorComponent as ProveedorComponentMantenimiento } from './mantenimiento-tablas/proveedor/proveedor.component';
 import { TipofacturaComponent as TipofacturaComponentMantenimiento } from './mantenimiento-tablas/tipofactura/tipofactura.component';
-import { PoblacionProvinciaComponent as PoblacionProvinciaComponentMantenimiento } from './mantenimiento-tablas/poblacion-provincia/poblacion-provincia.component';
+import { TipovecinoComponent } from './mantenimiento-tablas/tipovecino/tipovecino.component';
+import { PoblacionComponent } from './mantenimiento-tablas/poblacion/poblacion.component';
+import { ProvinciaComponent } from './mantenimiento-tablas/provincia/provincia.component';
 
 export const routes: Routes = [
   {
@@ -60,8 +62,20 @@ export const routes: Routes = [
             data: { id: 1 }
           },
           {
-            path: "poblacion-provincia",
-            component: PoblacionProvinciaComponentMantenimiento,
+            path: "tipovecino",
+            component: TipovecinoComponent,
+            canLoad: [AuthAdmin],
+            data: { id: 1 }
+          },
+          {
+            path: "poblacion",
+            component: PoblacionComponent,
+            canLoad: [AuthAdmin],
+            data: { id: 1 }
+          },
+          {
+            path: "provincia",
+            component: ProvinciaComponent,
             canLoad: [AuthAdmin],
             data: { id: 1 }
           }

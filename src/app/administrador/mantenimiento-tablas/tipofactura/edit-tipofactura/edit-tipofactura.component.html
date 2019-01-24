@@ -1,0 +1,17 @@
+<div class="flex">
+    <div *ngIf="!seleccionado">
+        Selecciona un tipofactura o crea uno nuevo
+    </div>
+</div>
+
+<div class="flex">
+    <div *ngIf="seleccionado">
+        <form [formGroup]="formularioTipoFactura">
+            <input formControlName="id">
+            <input formControlName="descripcion">
+        </form>
+        <button (click)="edit()"> Edit</button>
+    </div>
+</div>
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>
