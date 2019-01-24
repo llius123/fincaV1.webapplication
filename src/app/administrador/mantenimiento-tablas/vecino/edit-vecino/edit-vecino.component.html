@@ -15,12 +15,33 @@
                     <input class="pl-2 border-b-2 focus:outline-none" formControlName="id" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
                 </div>
             </div>
-            <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-                <div class="pl-3 pt-2 font-bold w-48">
-                    <p>Nombre:</p>
+            <div class="flex">
+                <div>
+                    <div class="w-1/2">
+                        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Nombre:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="nombre" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                                <div class="mt-2 mb-2" style="width: 135px;">
+                                    <p-message severity="error" text="Field is required"></p-message>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="pl-3 pt-2">
-                    <input class="pl-2 border-b-2 focus:outline-none" formControlName="nombre" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                <div>
+                    <div class="w-1/2">
+                        <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Poblacion:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="flex">
@@ -78,6 +99,11 @@
                             </div>
                             <div class="pl-3 pt-2">
                                 <input class="pl-2 border-b-2 focus:outline-none" formControlName="id_tipovecino" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                            <div>
+                                <button (click)="showDialog('tipovecino')">
+                                    <i class="fas fa-arrows-alt"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -162,18 +188,38 @@
                     </div>
                 </div>
             </div>
+            <div class="flex">
+                <div>
+                    <div class="w-1/2">
+                        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Login</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="login" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-1/2">
+                        <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Pass</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="pass" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <button (click)="showDialog('comunidad')">
                 <i class="fas fa-arrows-alt"></i>
             </button>
-            <button (click)="showDialog('tipovecino')">
-                <i class="fas fa-arrows-alt"></i>
-            </button>
-            <input formControlName="poblacion">
             <button (click)="showDialog('poblacion')">
                 <i class="fas fa-arrows-alt"></i>
             </button>
-            <input formControlName="login">
-            <input formControlName="pass">
         </form>
         <button (click)="editVecino()"> Edit</button>
     </div>
@@ -229,7 +275,7 @@
         //buttons
     </p-footer>
 </p-dialog>
-<p-dialog [(visible)]="display_tipovecino" [modal]="true">
+<!-- <p-dialog [(visible)]="display_tipovecino" [modal]="true">
     <p-header>
         display_tipovecino
     </p-header>
@@ -255,7 +301,7 @@
     <p-footer>
         //buttons
     </p-footer>
-</p-dialog>
+</p-dialog> -->
 <p-dialog [(visible)]="display_poblacion" [modal]="true">
     <p-header>
         display_poblacion
@@ -294,7 +340,7 @@
     <i class="fas fa-arrows-alt"></i>
 </button>
 
-<p-dialog [(visible)]="display_test" [modal]="true" [style]="{width: '300px', height: '200px'}">
+<p-dialog [(visible)]="display_tipovecino" [modal]="true" [style]="{width: '300px', height: '200px'}">
     <p-header>
         Tipo de vecinos:
     </p-header>
@@ -306,9 +352,18 @@
             </div>
             <div class="border-b w-5/6 mt-2" style="border-color:#9E4F6E;">
             </div>
-            <div class="flex mt-2 mb-2">
-                <p>1</p>
-                <p style="margin-left:20px">admin</p>
+            <div class="flex justify-between bg-grey-lighter">
+                <div class="text-grey-darker text-center bg-grey-light px-4 py-2 m-2">1</div>
+                <div class="text-grey-darker text-center bg-grey-light px-4 py-2 m-2">2</div>
+                <div class="text-grey-darker text-center bg-grey-light px-4 py-2 m-2">3</div>
+            </div>
+
+            <div class="flex mt-2 mb-2" *ngFor="let tipovecino of tipovecinos">
+                <p>{{tipovecino.id}}</p>
+                <p style="margin-left:20px">{{tipovecino.descripcion}}</p>
+                <button (click)="saveVecino(tipovecino)" style="margin-left: 90px">
+                    <i class="fas fa-check"></i>
+                </button>
             </div>
         </div>
     </div>

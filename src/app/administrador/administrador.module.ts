@@ -21,6 +21,8 @@ import { ToastModule } from 'primeng/toast';
 import { IncidenciaPipePipe } from '../pipes/incidencia-pipe.pipe';
 import { FechaPipePipe } from '../pipes/fecha-pipe.pipe';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
+import {MessagesModule} from 'primeng/messages';
+import { MessageModule} from 'primeng/message';
 
 //mantenimiento-tablas
 import { InicioComponent as InicioComponentMentenimiento } from './mantenimiento-tablas/inicio/inicio.component';
@@ -43,7 +45,7 @@ import { EditPoblacionComponent } from './mantenimiento-tablas/poblacion/edit-po
 
 @NgModule({
   declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule],
+  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule],
   exports: [HeaderAdminComponent]
 })
 export class AdministradorModule { }

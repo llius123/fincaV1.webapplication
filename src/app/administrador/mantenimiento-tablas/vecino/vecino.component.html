@@ -13,14 +13,14 @@
           </div>
         </div>
         <div class="w-1/5 ">
-          <button (click)="editVecino(vecino)" class="p-4 hover:rosa-jesus">
-            <i class="fas fa-edit fa-3x"></i>
+          <button (click)="editVecino(vecino)" class="ml-5 hover:rosa-jesus">
+            <i class="fas fa-edit fa-2x"></i>
           </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="w-3/5">
+  <div class="w-3/5 overflow-auto m-1 rounded" style="height: 650px; border-color: #404E5C; border-width:2px;">
     <app-edit-vecino [seleccionado]="parentMessage" [vecinoHijo]="vecinoPadre"></app-edit-vecino>
   </div>
 </div>
