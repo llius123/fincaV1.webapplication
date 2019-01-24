@@ -8,7 +8,7 @@
     <div *ngIf="seleccionado">
         <form [formGroup]="formularioVecino">
             <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-                <div class="pl-3 pt-2 font-bold">
+                <div class="pl-3 pt-2 font-bold w-48">
                     <p>Id:</p>
                 </div>
                 <div class="pl-3 pt-2">
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-                <div class="pl-3 pt-2 font-bold">
+                <div class="pl-3 pt-2 font-bold w-48">
                     <p>Nombre:</p>
                 </div>
                 <div class="pl-3 pt-2">
@@ -27,7 +27,7 @@
                 <div>
                     <div class="w-1/2">
                         <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-                            <div class="pl-3 pt-2 font-bold">
+                            <div class="pl-3 pt-2 font-bold w-48">
                                 <p>Direccion:</p>
                             </div>
                             <div class="pl-3 pt-2">
@@ -39,7 +39,7 @@
                 <div>
                     <div class="w-1/2">
                         <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-                            <div class="pl-3 pt-2 font-bold">
+                            <div class="pl-3 pt-2 font-bold w-48">
                                 <p>Numero:</p>
                             </div>
                             <div class="pl-3 pt-2">
@@ -49,18 +49,122 @@
                     </div>
                 </div>
             </div>
-            <input formControlName="nif">
-            <input formControlName="iban">
-            <input formControlName="num_mandato">
-            <input formControlName="fecha_mandato">
-            <input formControlName="porcentaje_participacion">
-            <input formControlName="comunidad">
+            <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                <div class="pl-3 pt-2 font-bold w-48">
+                    <p>Iban:</p>
+                </div>
+                <div class="pl-3 pt-2">
+                    <input class="pl-2 border-b-2 focus:outline-none" formControlName="iban" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    <div class="w-1/2">
+                        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Nif:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="nif" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-1/2">
+                        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Tipo vecino:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="id_tipovecino" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    <div class="w-1/2">
+                        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Comunidad:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="comunidad" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-1/2">
+                        <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Numero:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="porcentaje_participacion"
+                                    style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    <div class="w-1/2">
+                        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Numero mandatos:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="num_mandato" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-1/2">
+                        <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Fecha Mandato:</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="fecha_mandato" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div>
+                    <div class="w-1/2">
+                        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Email</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="email" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="w-1/2">
+                        <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                            <div class="pl-3 pt-2 font-bold w-48">
+                                <p>Telefono</p>
+                            </div>
+                            <div class="pl-3 pt-2">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="telefono" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <button (click)="showDialog('comunidad')">
                 <i class="fas fa-arrows-alt"></i>
             </button>
-            <input formControlName="email">
-            <input formControlName="telefono">
-            <input formControlName="id_tipovecino">
             <button (click)="showDialog('tipovecino')">
                 <i class="fas fa-arrows-alt"></i>
             </button>
@@ -185,5 +289,31 @@
         //buttons
     </p-footer>
 </p-dialog>
+
+<button (click)="display_test=true">
+    <i class="fas fa-arrows-alt"></i>
+</button>
+
+<p-dialog [(visible)]="display_test" [modal]="true" [style]="{width: '300px', height: '200px'}">
+    <p-header>
+        Tipo de vecinos:
+    </p-header>
+    <div class="flex-col m-3 border rounded" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold">
+            <div class="flex">
+                <p>Id</p>
+                <p style="margin-left:10px">Descripcion</p>
+            </div>
+            <div class="border-b w-5/6 mt-2" style="border-color:#9E4F6E;">
+            </div>
+            <div class="flex mt-2 mb-2">
+                <p>1</p>
+                <p style="margin-left:20px">admin</p>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+
 <p-toast position="bottom-right" [style]="{marginTop: '80px'}">
 </p-toast>
