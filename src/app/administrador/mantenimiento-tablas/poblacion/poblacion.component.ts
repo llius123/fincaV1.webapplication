@@ -26,4 +26,8 @@ export class PoblacionComponent implements OnInit {
     )
   }
 
+  edit(data: PoblacionInterface): void {
+    this.padre.next(data);
+    this.parentMessage = true;
+  }
 }

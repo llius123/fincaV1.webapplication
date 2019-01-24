@@ -1,8 +1,16 @@
 <div class="flex">
   <div class="w-2/5 border rounded m-1" style="border-color: #404E5C; border-width:2px;">
-    <div *ngFor="let poblacion of poblacions" class="p-2">
+    <div *ngFor="let poblacion of poblaciones" class="p-2">
       <div class="flex">
         <div class="w-3/5">
+          <div class="flex" id="borde">
+            <div class="text-lg font-bold pl-3 mt-2 mb-2">
+              Cod Postal
+            </div>
+            <div class="font-mono ml-2 mt-2 mb-2">
+              {{poblacion.cod_postal}}
+            </div>
+          </div>
           <div class="flex" id="borde">
             <div class="text-lg font-bold pl-3 mt-2 mb-2">
               Descripcion:

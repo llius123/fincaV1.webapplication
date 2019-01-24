@@ -1,3 +1,18 @@
-<p>
-  edit-poblacion works!
-</p>
+<div class="flex">
+  <div *ngIf="!seleccionado">
+      Selecciona una provincia o crea uno nuevo
+  </div>
+</div>
+
+<div class="flex">
+  <div *ngIf="seleccionado">
+      <form [formGroup]="formulario">
+          <input formControlName="cod_postal">
+          <input formControlName="descripcion">
+          <input formControlName="cod_provincia">
+      </form>
+      <button (click)="edit()"> Edit</button>
+  </div>
+</div>
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>
