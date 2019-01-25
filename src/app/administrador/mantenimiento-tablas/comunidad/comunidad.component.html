@@ -1,6 +1,9 @@
 <div class="flex">
   <div class="w-2/5">
-    <div *ngFor="let comunidad of comunidades">
+    <div class="border rounded m-1" style="border-color: #404E5C; border-width:2px;">
+        <input #myInput placeholder="Item name..." [(ngModel)]="searchName"  >
+      </div>
+    <div *ngFor="let comunidad of comunidades | BusquedaNombre: searchName: 'comunidad'">
       {{comunidad.nombre}}{{comunidad.direccion}}{{comunidad.nif}}{{comunidad.iban}}{{comunidad.sufijo}}{{comunidad.poblacion.cod_poblacion}}
       <button (click)="editComunidad(comunidad)">
           <i class="fas fa-edit"></i>

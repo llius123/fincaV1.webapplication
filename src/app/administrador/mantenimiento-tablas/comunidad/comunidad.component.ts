@@ -34,4 +34,5 @@ export class ComunidadComponent implements OnInit {
     this.parentMessage = true;
     this.comunidadEdit = data;
   }
+
 }

@@ -38,9 +38,4 @@ export class VecinoComponent implements OnInit {
     this.vecinoEdit = vecino;
   }
 
-  filtroBusqueda(data: String){
-  //   this.vecinos = Object.assign([], this.items).filter(
-  //     item => item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
-  //  )
-  }
 }
