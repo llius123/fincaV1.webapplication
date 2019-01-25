@@ -2,8 +2,7 @@ import { ComunidadService } from './../../../../service/comunidad/comunidad.serv
 import { Input, OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../../../../../../node_modules/primeng/components/common/messageservice';
-import { FormGroup, FormControl, FormBuilder } from '../../../../../../node_modules/@angular/forms';
-import { isNull } from 'util';
+import { FormGroup, FormControl, FormBuilder, Validators } from '../../../../../../node_modules/@angular/forms';
 import { Subject } from '../../../../../../node_modules/rxjs';
 import { VecinoService } from '../../../../service/vecino/vecino.service';
 import { TipoVecinoService } from 'src/app/service/tipovecino-tipofactura/tipovecino.service';
@@ -21,6 +20,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
 
   @Input() seleccionado: boolean;
   @Input() vecinoHijo: Subject<VecinoInterface>;
+  new: boolean = false;
   formularioVecino: FormGroup;
   display_comunidad: boolean = false;
   display_tipovecino: boolean = false;
@@ -40,30 +40,38 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
       this.putVecinoForm(vecino)
     });
     this.formularioVecino = new FormGroup({
-      id: new FormControl(),
-      nombre: new FormControl(),
-      direccion: new FormControl(),
-      numero: new FormControl(),
-      nif: new FormControl(),
-      iban: new FormControl(),
-      num_mandato: new FormControl(),
-      fecha_mandato: new FormControl(),
-      porcentaje_participacion: new FormControl(),
-      comunidad: new FormControl(),
-      email: new FormControl(),
-      telefono: new FormControl(),
-      id_tipovecino: new FormControl(),
-      poblacion: new FormControl(),
-      login: new FormControl(),
+      id: new FormControl({value:'',disabled:true}),
+      nombre: new FormControl('', [Validators.required]),
+      direccion: new FormControl('', [Validators.required]),
+      numero: new FormControl('', [Validators.required]),
+      nif: new FormControl('', [Validators.required]),
+      iban: new FormControl('', [Validators.required]),
+      num_mandato: new FormControl('', [Validators.required]),
+      fecha_mandato: new FormControl('', [Validators.required]),
+      porcentaje_participacion: new FormControl('', [Validators.required]),
+      comunidad: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      telefono: new FormControl('', [Validators.required]),
+      id_tipovecino: new FormControl('', [Validators.required]),
+      poblacion: new FormControl('', [Validators.required]),
+      login: new FormControl('', [Validators.required]),
       pass: new FormControl()
     })
+    console.log(this.formularioVecino.get('nombre').errors.required)
   }
 
   ngOnDestroy() {
     this.vecinoHijo.unsubscribe();
   }
 
+  newVecino(): void{
+    this.new = true;
+  }
+
+
   putVecinoForm(vecino: VecinoInterface): void {
+    this.new = false;
+
     this.comunidadSeleccionada = vecino.comunidad;
     this.tipovecinoSeleccionado = vecino.id_tipovecino;
     this.poblacionSeleccionada = vecino.poblacion;

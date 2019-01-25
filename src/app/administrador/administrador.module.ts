@@ -42,9 +42,10 @@ import { EditTipovecinoComponent } from './mantenimiento-tablas/tipovecino/edit-
 import { EditTipofacturaComponent } from './mantenimiento-tablas/tipofactura/edit-tipofactura/edit-tipofactura.component';
 import { EditProvinciaComponent } from './mantenimiento-tablas/provincia/edit-provincia/edit-provincia.component';
 import { EditPoblacionComponent } from './mantenimiento-tablas/poblacion/edit-poblacion/edit-poblacion.component';
+import { NewVecinoComponent } from './mantenimiento-tablas/vecino/new-vecino/new-vecino.component';
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule],
   exports: [HeaderAdminComponent]
 })
