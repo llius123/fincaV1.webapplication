@@ -1,3 +1,402 @@
-<p>
-  new-vecino works!
-</p>
+<div class="flex" class="relative">
+  <div>
+      <form [formGroup]="formularioVecino">
+          <div class="flex mb-3 mt-3">
+              <div>
+                  <div class="w-1/2">
+                      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Nombre:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="nombre" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('nombre').hasError('required') && formularioVecino.get('nombre').touched ">
+                                  <p-message severity="error" text="Nombre es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div>
+                  <div class="w-1/2">
+                      <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Poblacion:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('poblacion').hasError('required') && formularioVecino.get('poblacion').touched">
+                                  <p-message severity="error" text="Poblacion es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="flex mb-3 mt-3">
+              <div>
+                  <div class="w-1/2">
+                      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Direccion:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="direccion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('direccion').hasError('required') && formularioVecino.get('direccion').touched">
+                                  <p-message severity="error" text="Direccion es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div>
+                  <div class="w-1/2">
+                      <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Numero:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="numero" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('numero').hasError('required') && formularioVecino.get('numero').touched">
+                                  <p-message severity="error" text="Numero es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+              <div class="pl-3 pt-2 font-bold w-48">
+                  <p>Iban:</p>
+              </div>
+              <div class="pl-3 pt-2">
+                  <input class="pl-2 border-b-2 focus:outline-none" formControlName="iban" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
+                  <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('iban').hasError('required') && formularioVecino.get('iban').touched">
+                      <p-message severity="error" text="Iban es obligatorio"></p-message>
+                  </div>
+              </div>
+          </div>
+          <div class="flex mb-3 mt-3">
+              <div>
+                  <div class="w-1/2">
+                      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Nif:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="nif" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('nif').hasError('required') && formularioVecino.get('nif').touched">
+                                  <p-message severity="error" text="Nif es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div>
+                  <div class="w-1/2">
+                      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Tipo vecino:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="id_tipovecino" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('id_tipovecino').hasError('required') && formularioVecino.get('id_tipovecino').touched">
+                                  <p-message severity="error" text="Tipo de vecino es obligatorio"></p-message>
+                              </div>
+                          </div>
+                          <div>
+                              <button (click)="showDialog('tipovecino')">
+                                  <i class="fas fa-arrows-alt"></i>
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="flex mb-3 mt-3">
+              <div>
+                  <div class="w-1/2">
+                      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Comunidad:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="comunidad" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('comunidad').hasError('required') && formularioVecino.get('comunidad').touched">
+                                  <p-message severity="error" text="Comunidad es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div>
+                  <div class="w-1/2">
+                      <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Numero:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="porcentaje_participacion"
+                                  style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('porcentaje_participacion').hasError('required') && formularioVecino.get('porcentaje_participacion').touched">
+                                  <p-message severity="error" text="Porcentaje participacion es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="flex mb-3 mt-3">
+              <div>
+                  <div class="w-1/2">
+                      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Numero mandatos:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="num_mandato" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('num_mandato').hasError('required') && formularioVecino.get('num_mandato').touched">
+                                  <p-message severity="error" text="Numero de mandato es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div>
+                  <div class="w-1/2">
+                      <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Fecha Mandato:</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="fecha_mandato" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('fecha_mandato').hasError('required') && formularioVecino.get('fecha_mandato').touched">
+                                  <p-message severity="error" text="Fecha de mandato es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="flex mb-3 mt-3">
+              <div>
+                  <div class="w-1/2">
+                      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Email</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="email" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('email').hasError('required') && formularioVecino.get('email').touched">
+                                  <p-message severity="error" text="Email es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div>
+                  <div class="w-1/2">
+                      <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Telefono</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="telefono" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('telefono').hasError('required') && formularioVecino.get('telefono').touched">
+                                  <p-message severity="error" text="Telefono es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="flex mb-3 mt-3">
+              <div>
+                  <div class="w-1/2">
+                      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Login</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="login" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('login').hasError('required') && formularioVecino.get('login').touched">
+                                  <p-message severity="error" text="Nombre de usuario es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div>
+                  <div class="w-1/2">
+                      <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                          <div class="pl-3 pt-2 font-bold w-48">
+                              <p>Pass</p>
+                          </div>
+                          <div class="pl-3 pt-2">
+                              <input class="pl-2 border-b-2 focus:outline-none" formControlName="pass" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('pass').hasError('required') && formularioVecino.get('pass').touched">
+                                  <p-message severity="error" text="Password es obligatorio"></p-message>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <button (click)="showDialog('comunidad')">
+              <i class="fas fa-arrows-alt"></i>
+          </button>
+          <button (click)="showDialog('poblacion')">
+              <i class="fas fa-arrows-alt"></i>
+          </button>
+      </form>
+      <button (click)="nuevoVecino()"> Crear</button>
+  </div>
+</div>
+<p-dialog [(visible)]="display_comunidad" [modal]="true">
+  <p-header>
+      display_comunidad
+  </p-header>
+  <div class="flex mb-3 mt-3">
+      <div>
+          id
+      </div>
+      <div>
+          nombre
+      </div>
+      <div>
+          direccion
+      </div>
+      <div>
+          nif
+      </div>
+      <div>
+          iban
+      </div>
+      <div>
+          sufijo
+      </div>
+  </div>
+  <div class="flex" *ngFor="let comunidad of comunidades">
+      <div>
+          {{comunidad.id}}
+      </div>
+      <div>
+          {{comunidad.nombre}}
+      </div>
+      <div>
+          {{comunidad.direccion}}
+      </div>
+      <div>
+          {{comunidad.nif}}
+      </div>
+      <div>
+          {{comunidad.iban}}
+      </div>
+      <div>
+          {{comunidad.sufijo}}
+      </div>
+      <button (click)="saveComunidad(comunidad)">
+          <i class="fas fa-check"></i>
+      </button>
+  </div>
+  <p-footer>
+      //buttons
+  </p-footer>
+</p-dialog>
+<!-- <p-dialog [(visible)]="display_tipovecino" [modal]="true">
+  <p-header>
+      display_tipovecino
+  </p-header>
+  <div class="flex mb-3 mt-3">
+      <div>
+          id
+      </div>
+      <div>
+          descripcion
+      </div>
+  </div>
+  <div class="flex" *ngFor="let tipovecino of tipovecinos">
+      <div>
+          {{tipovecino.id}}
+      </div>
+      <div>
+          {{tipovecino.descripcion}}
+      </div>
+      <button (click)="saveVecino(tipovecino)">
+          <i class="fas fa-check"></i>
+      </button>
+  </div>
+  <p-footer>
+      //buttons
+  </p-footer>
+</p-dialog> -->
+<p-dialog [(visible)]="display_poblacion" [modal]="true">
+  <p-header>
+      display_poblacion
+  </p-header>
+  <div class="flex mb-3 mt-3">
+      <div>
+          Cod postal
+      </div>
+      <div>
+          descripcion
+      </div>
+      <div>
+          provincia
+      </div>
+  </div>
+  <div class="flex" *ngFor="let poblacion of poblaciones">
+      <div>
+          {{poblacion.cod_postal}}
+      </div>
+      <div>
+          {{poblacion.descripcion}}
+      </div>
+      <div>
+          {{poblacion.cod_provincia.descripcion}}
+      </div>
+      <button (click)="savePoblacion(poblacion)">
+          <i class="fas fa-check"></i>
+      </button>
+  </div>
+  <p-footer>
+      //buttons
+  </p-footer>
+</p-dialog>
+
+<button (click)="display_test=true">
+  <i class="fas fa-arrows-alt"></i>
+</button>
+
+<p-dialog [(visible)]="display_tipovecino" [modal]="true" [style]="{width: '300px', height: '200px'}">
+  <p-header>
+      Tipo de vecinos:
+  </p-header>
+  <div class="flex-col m-3 border rounded" style="border-color:#9E4F6E;">
+      <div class="pl-3 pt-2 font-bold">
+          <div class="flex mb-3 mt-3">
+              <p>Id</p>
+              <p style="margin-left:10px">Descripcion</p>
+          </div>
+          <div class="border-b w-5/6 mt-2" style="border-color:#9E4F6E;">
+          </div>
+          <div class="flex justify-between bg-grey-lighter">
+              <div class="text-grey-darker text-center bg-grey-light px-4 py-2 m-2">1</div>
+              <div class="text-grey-darker text-center bg-grey-light px-4 py-2 m-2">2</div>
+              <div class="text-grey-darker text-center bg-grey-light px-4 py-2 m-2">3</div>
+          </div>
+
+          <div class="flex mt-2 mb-2" *ngFor="let tipovecino of tipovecinos">
+              <p>{{tipovecino.id}}</p>
+              <p style="margin-left:20px">{{tipovecino.descripcion}}</p>
+              <button (click)="saveVecino(tipovecino)" style="margin-left: 90px">
+                  <i class="fas fa-check"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+</p-dialog>
+
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>

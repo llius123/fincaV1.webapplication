@@ -1,21 +1,26 @@
 <div class="flex">
-  <div class="w-2/5 border rounded m-1" style="border-color: #404E5C; border-width:2px;">
-    <div *ngFor="let vecino of vecinos" class="p-2">
-      <div class="flex">
-        <div class="w-3/5">
-          <div class="flex" id="borde">
-            <div class="text-lg font-bold pl-3 mt-2 mb-2">
-              Nombre:
-            </div>
-            <div class="font-mono ml-2 mt-2 mb-2">
-              {{vecino.nombre}}
+  <div class="w-2/5 ">
+    <div class="border rounded m-1" style="border-color: #404E5C; border-width:2px;">
+      <input #myInput placeholder="Item name..." (input)="filtroBusqueda(myInput.value)" [(ngModel)]="searchName"  >
+    </div>
+    <div class="border rounded m-1 p-2" style="border-color: #404E5C; border-width:2px;">
+      <div *ngFor="let vecino of vecinos | BusquedaNombre: searchName">
+        <div class="flex">
+          <div class="w-3/5">
+            <div class="flex" id="borde">
+              <div class="text-lg font-bold pl-3 mt-2 mb-2">
+                Nombre:
+              </div>
+              <div class="font-mono ml-2 mt-2 mb-2">
+                {{vecino.nombre}}
+              </div>
             </div>
           </div>
-        </div>
-        <div class="w-1/5 ">
-          <button (click)="editVecino(vecino)" class="ml-5 hover:rosa-jesus">
-            <i class="fas fa-edit fa-2x"></i>
-          </button>
+          <div class="w-1/5 ">
+            <button (click)="editVecino(vecino)" class="ml-5 hover:rosa-jesus">
+              <i class="fas fa-edit fa-2x"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>

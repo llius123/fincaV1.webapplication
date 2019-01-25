@@ -1,5 +1,5 @@
 <div class="flex">
-    <div *ngIf="!seleccionado">
+    <div *ngIf="!seleccionado && !new">
         Selecciona un vecino o crea uno nuevo
         <button (click)="newVecino()">Nuevo</button>
     </div>
@@ -268,6 +268,9 @@
                             </div>
                             <div class="pl-3 pt-2">
                                 <input class="pl-2 border-b-2 focus:outline-none" formControlName="pass" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                                <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('pass').hasError('required')">
+                                    <p-message severity="error" text="Password es obligatorio"></p-message>
+                                </div>
                             </div>
                         </div>
                     </div>

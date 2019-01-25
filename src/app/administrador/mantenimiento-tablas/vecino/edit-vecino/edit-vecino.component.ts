@@ -7,6 +7,7 @@ import { Subject } from '../../../../../../node_modules/rxjs';
 import { VecinoService } from '../../../../service/vecino/vecino.service';
 import { TipoVecinoService } from 'src/app/service/tipovecino-tipofactura/tipovecino.service';
 import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-edit-vecino',
@@ -40,7 +41,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
       this.putVecinoForm(vecino)
     });
     this.formularioVecino = new FormGroup({
-      id: new FormControl({value:'',disabled:true}),
+      id: new FormControl({value:''}),
       nombre: new FormControl('', [Validators.required]),
       direccion: new FormControl('', [Validators.required]),
       numero: new FormControl('', [Validators.required]),
@@ -57,7 +58,6 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
       login: new FormControl('', [Validators.required]),
       pass: new FormControl()
     })
-    console.log(this.formularioVecino.get('nombre').errors.required)
   }
 
   ngOnDestroy() {
@@ -66,11 +66,13 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
 
   newVecino(): void{
     this.new = true;
+    this.seleccionado = false;
   }
 
 
   putVecinoForm(vecino: VecinoInterface): void {
     this.new = false;
+    this.seleccionado = true;
 
     this.comunidadSeleccionada = vecino.comunidad;
     this.tipovecinoSeleccionado = vecino.id_tipovecino;
@@ -103,6 +105,9 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
     vecino.comunidad = this.comunidadSeleccionada;
     vecino.id_tipovecino = this.tipovecinoSeleccionado;
     vecino.poblacion = this.poblacionSeleccionada;
+    if(!vecino.pass){
+      vecino.pass = '';
+    }
 
     this.vecinoSQL.updateVecino(vecino).subscribe(
       (response: ErrorInterface) => {

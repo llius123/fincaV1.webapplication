@@ -32,7 +32,7 @@ import { ProveedorComponent } from './mantenimiento-tablas/proveedor/proveedor.c
 import { TipofacturaComponent } from './mantenimiento-tablas/tipofactura/tipofactura.component';
 import { LateralIzquierdoComponent } from './mantenimiento-tablas/lateral-izquierdo/lateral-izquierdo.component';
 import { EditVecinoComponent } from './mantenimiento-tablas/vecino/edit-vecino/edit-vecino.component';
-import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '../../../node_modules/@angular/forms';
 import { EditComunidadComponent } from './mantenimiento-tablas/comunidad/edit-comunidad/edit-comunidad.component';
 import { EditProveedorComponent } from './mantenimiento-tablas/proveedor/edit-proveedor/edit-proveedor.component';
 import { TipovecinoComponent } from './mantenimiento-tablas/tipovecino/tipovecino.component';
@@ -43,10 +43,11 @@ import { EditTipofacturaComponent } from './mantenimiento-tablas/tipofactura/edi
 import { EditProvinciaComponent } from './mantenimiento-tablas/provincia/edit-provincia/edit-provincia.component';
 import { EditPoblacionComponent } from './mantenimiento-tablas/poblacion/edit-poblacion/edit-poblacion.component';
 import { NewVecinoComponent } from './mantenimiento-tablas/vecino/new-vecino/new-vecino.component';
+import { BusquedaNombrePipe } from '../pipes/busqueda-nombre-pipe.pipe';
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe],
+  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule, FormsModule],
   exports: [HeaderAdminComponent]
 })
 export class AdministradorModule { }

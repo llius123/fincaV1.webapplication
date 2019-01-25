@@ -20,6 +20,10 @@ export class VecinoService {
     return this.http.put<ErrorInterface>(`${this.config.api}vecinos`, vecino, this.config.header);
   }
 
+  newVecino(vecino: VecinoInterface){
+    return this.http.post(`${this.config.api}vecinos`, vecino, this.config.header);
+  }
+
 
 
 }
