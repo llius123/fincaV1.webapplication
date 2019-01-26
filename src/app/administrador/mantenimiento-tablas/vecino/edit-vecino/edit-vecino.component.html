@@ -1,7 +1,10 @@
-<div class="flex">
-    <div *ngIf="!seleccionado && !new">
-        Selecciona un vecino o crea uno nuevo
-        <button (click)="newVecino()">Nuevo</button>
+<div *ngIf="!seleccionado && !new " class="flex justify-center rounded ml-10 mr-10 " style="margin-top: 40%;border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; background-color: #B7C3F3">
+    <div  class="pb-5 pt-5">
+        Selecciona un vecino o crea uno
+        <button class="rounded hover:bg-grey-light"  style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; " (click)="newVecino()">
+            <i class="fas fa-newspaper"></i>
+            Nuevo
+        </button>
     </div>
 </div>
 <div class="flex">
@@ -12,11 +15,11 @@
 
 <div *ngIf="seleccionado" class="flex" class="relative">
     <div class="  absolute pin-t pin-r" style="padding-right: 110px;">
-        <div class="fixed" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px;">
+        <div class="fixed" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; background-color: #B7C3F3">
             <button (click)="newVecino()">
                 <div class="flex">
                     <div>
-                        <i class="far fa-plus-square"></i>
+                        <i class="fas fa-newspaper"></i>
                     </div>
                     <div>
                         Nuevo
@@ -58,9 +61,21 @@
                                 <p>Poblacion:</p>
                             </div>
                             <div class="pl-3 pt-2">
-                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-                                <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('poblacion').hasError('required')">
-                                    <p-message severity="error" text="Poblacion es obligatorio"></p-message>
+                                <div>
+                                    <div class="flex">
+                                        <div>
+                                            <input class="pl-2 border-b-2 focus:outline-none" formControlName="poblacion"
+                                                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
+                                        </div>
+                                        <div class="ml-4">
+                                            <button (click)="showDialog('poblacion')">
+                                                <i class="fas fa-search fa-lg"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('poblacion').hasError('required')">
+                                        <p-message severity="error" text="Poblacion es obligatorio"></p-message>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -127,21 +142,28 @@
                     </div>
                 </div>
                 <div>
-                    <div class="w-1/2">
+                    <div>
                         <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
                             <div class="pl-3 pt-2 font-bold w-48">
                                 <p>Tipo vecino:</p>
                             </div>
                             <div class="pl-3 pt-2">
-                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="id_tipovecino" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-                                <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('id_tipovecino').hasError('required')">
-                                    <p-message severity="error" text="Tipo de vecino es obligatorio"></p-message>
+                                <div>
+                                    <div class="flex">
+                                        <div>
+                                            <input class="pl-2 border-b-2 focus:outline-none" formControlName="id_tipovecino"
+                                                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
+                                        </div>
+                                        <div class="ml-4">
+                                            <button (click)="showDialog('tipovecino')">
+                                                <i class="fas fa-search fa-lg"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('id_tipovecino').hasError('required')">
+                                        <p-message severity="error" text="Tipo de vecino es obligatorio"></p-message>
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <button (click)="showDialog('tipovecino')">
-                                    <i class="fas fa-arrows-alt"></i>
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -155,9 +177,21 @@
                                 <p>Comunidad:</p>
                             </div>
                             <div class="pl-3 pt-2">
-                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="comunidad" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-                                <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('comunidad').hasError('required')">
-                                    <p-message severity="error" text="Comunidad es obligatorio"></p-message>
+                                <div>
+                                    <div class="flex">
+                                        <div>
+                                            <input class="pl-2 border-b-2 focus:outline-none" formControlName="comunidad"
+                                                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
+                                        </div>
+                                        <div class="ml-4">
+                                            <button (click)="showDialog('comunidad')">
+                                                <i class="fas fa-search fa-lg"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('comunidad').hasError('required')">
+                                        <p-message severity="error" text="Comunidad es obligatorio"></p-message>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -276,14 +310,13 @@
                     </div>
                 </div>
             </div>
-            <button (click)="showDialog('comunidad')">
-                <i class="fas fa-arrows-alt"></i>
-            </button>
-            <button (click)="showDialog('poblacion')">
-                <i class="fas fa-arrows-alt"></i>
-            </button>
         </form>
-        <button (click)="editVecino()"> Edit</button>
+        <div class="flex justify-center p-5">
+            <button (click)="editVecino()" class="rounded hover:bg-grey-light"  style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
+                <i class="fas fa-edit"></i> 
+                Edit
+            </button>
+        </div>
     </div>
 </div>
 <p-dialog [(visible)]="display_comunidad" [modal]="true">
@@ -398,10 +431,6 @@
     </p-footer>
 </p-dialog>
 
-<button (click)="display_test=true">
-    <i class="fas fa-arrows-alt"></i>
-</button>
-
 <p-dialog [(visible)]="display_tipovecino" [modal]="true" [style]="{width: '500px', height: '200px'}" [positionTop]=10>
     <p-header>
         Tipo de vecinos:
@@ -421,9 +450,8 @@
                 <div class="w-1/4">
                     {{tipovecino.descripcion}}
                 </div>
-                <div class=""> 
-                    <button (click)="saveVecino(tipovecino)"
-                        style="margin-left: 90px">
+                <div class="">
+                    <button (click)="saveVecino(tipovecino)" style="margin-left: 90px">
                         <i class="fas fa-check"></i>
                     </button>
                 </div>

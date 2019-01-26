@@ -24,6 +24,10 @@ export class VecinoService {
     return this.http.post(`${this.config.api}vecinos`, vecino, this.config.header);
   }
 
+  deleteVecino(id: number){
+    return this.http.delete(`${this.config.api}vecinos/${id}`, this.config.header);
+  }
+
 
 
 }

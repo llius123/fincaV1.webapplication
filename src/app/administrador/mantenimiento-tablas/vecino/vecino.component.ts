@@ -6,11 +6,12 @@ import { Subject } from '../../../../../node_modules/rxjs';
 @Component({
   selector: 'app-vecino',
   templateUrl: './vecino.component.html',
-  styleUrls: ['./vecino.component.css']
+  styleUrls: ['./vecino.component.css'],
+  providers: [MessageService]
 })
 export class VecinoComponent implements OnInit {
 
-  constructor(private sqlVecino: VecinoService) { }
+  constructor(private sqlVecino: VecinoService, private messageService: MessageService) { }
 
   vecinos: VecinoInterface[];
   modal_display_vecino: boolean = false;
@@ -38,4 +39,21 @@ export class VecinoComponent implements OnInit {
     this.vecinoEdit = vecino;
   }
 
+  deleteVecino(vecino: VecinoInterface): void{
+    this.sqlVecino.deleteVecino(vecino.id).subscribe(
+      (data:any) => {
+        this.showTooltip('success', '', `${data.msg}`)
+        this.getAllVecinos();
+      },
+      error => this.showTooltip('error', '', `${error.msg}`)
+    )
+  }
+
+  showTooltip(type: string, title: string, desc: string) {
+    this.messageService.add({
+      severity: `${type}`,
+      summary: `${title}`,
+      detail: `${desc}`
+    })
+  }
 }
