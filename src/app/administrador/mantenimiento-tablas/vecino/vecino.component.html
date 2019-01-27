@@ -6,7 +6,7 @@
           <p>Buscar por nombre:</p>
         </div>
         <div class="pl-3 pt-2">
-          <input #myInput placeholder="Item name..." [(ngModel)]="searchName" class="pl-2 border-b-2 focus:outline-none"
+          <input #myInput placeholder="..." [(ngModel)]="searchName" class="pl-2 border-b-2 focus:outline-none"
             style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
         </div>
       </div>
@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="w-3/5 overflow-auto m-1 rounded" style="height: 650px; border-color: #404E5C; border-width:2px;">
-    <app-edit-vecino [seleccionado]="parentMessage" [vecinoHijo]="vecinoPadre"></app-edit-vecino>
+    <app-edit-vecino [seleccionado]="parentMessage" [vecinoHijo]="vecinoPadre" ></app-edit-vecino>
   </div>
 </div>
 <p-toast position="bottom-right" [style]="{marginTop: '80px'}">

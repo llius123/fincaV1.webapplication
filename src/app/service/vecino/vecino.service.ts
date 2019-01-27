@@ -11,6 +11,7 @@ export class VecinoService {
   constructor(private http: HttpClient, private config: ConfigService) { }
 
   nuevoVecino = new EventEmitter<boolean>();
+  reloadVecinos = new EventEmitter<any>();
 
   getAllVecinos(): Observable<VecinoInterface[]>{
     return this.http.get<VecinoInterface[]>(`${this.config.api}vecinos`, this.config.header);

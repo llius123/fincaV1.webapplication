@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { VecinoService } from 'src/app/service/vecino/vecino.service';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -15,7 +15,7 @@ import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.
 })
 export class NewVecinoComponent implements OnInit {
 
-  constructor(private sql: VecinoService,private messageService: MessageService, private comunidadService: ComunidadService, private tipovecinoService: TipoVecinoService, private poblacionService: PoblacionService) { }
+  constructor(private sql: VecinoService, private messageService: MessageService, private comunidadService: ComunidadService, private tipovecinoService: TipoVecinoService, private poblacionService: PoblacionService) { }
 
   formularioVecino: FormGroup;
 
@@ -39,28 +39,31 @@ export class NewVecinoComponent implements OnInit {
       numero: new FormControl('', [Validators.required]),
       nif: new FormControl('', [Validators.required]),
       iban: new FormControl('', [Validators.required]),
-      num_mandato: new FormControl('', [Validators.required]),
-      fecha_mandato: new FormControl('', [Validators.required]),
       porcentaje_participacion: new FormControl('', [Validators.required]),
-      comunidad: new FormControl('', [Validators.required]),
+      comunidad: new FormControl({value: '', disabled: true}, [Validators.required]),
       email: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),
-      id_tipovecino: new FormControl('', [Validators.required]),
-      poblacion: new FormControl('', [Validators.required]),
+      id_tipovecino: new FormControl({value: '', disabled: true}, [Validators.required]),
+      poblacion: new FormControl({value: '', disabled: true}, [Validators.required]),
       login: new FormControl('', [Validators.required]),
       pass: new FormControl('', [Validators.required])
     })
   }
 
-  nuevoVecino(){
+  nuevoVecino() {
     const vecino = this.formularioVecino.value;
 
     vecino.comunidad = this.comunidadSeleccionada;
     vecino.id_tipovecino = this.tipovecinoSeleccionado;
     vecino.poblacion = this.poblacionSeleccionada;
-    
+    vecino.num_mandato = null;
+    vecino.fecha_mandato = null;
+
     this.sql.newVecino(this.formularioVecino.value).subscribe(
-      (data: any) => this.showTooltip('success', '', `${data.msg}`),
+      (data: any) => {
+        this.showTooltip('success', '', `${data.msg}`)
+        this.sql.reloadVecinos.emit();
+      },
       error => this.showTooltip('error', '', `${error.msg}`)
     )
   }
@@ -88,13 +91,13 @@ export class NewVecinoComponent implements OnInit {
     }
   }
 
-  closeModals(): void{
+  closeModals(): void {
     this.display_comunidad = false;
     this.display_tipovecino = false;
     this.display_poblacion = false;
   }
 
-  comunidad() : void{
+  comunidad(): void {
     this.comunidadService.getAll().subscribe(
       (comunidades: ComunidadInterface[]) => {
         this.comunidades = comunidades;
@@ -109,14 +112,14 @@ export class NewVecinoComponent implements OnInit {
     this.closeModals();
   }
 
-  tipoVecino(): void{
+  tipoVecino(): void {
     this.tipovecinoService.getAll().subscribe(
       (tipovecino: TipovecinoInterface[]) => {
         this.tipovecinos = tipovecino;
       }
     )
   }
-  saveVecino(tipovecino: TipovecinoInterface): void{
+  saveVecino(tipovecino: TipovecinoInterface): void {
     this.formularioVecino.patchValue({
       id_tipovecino: tipovecino.descripcion
     })
@@ -124,14 +127,14 @@ export class NewVecinoComponent implements OnInit {
     this.closeModals();
   }
 
-  poblacion(): void{
+  poblacion(): void {
     this.poblacionService.getAllPoblacion().subscribe(
       (data: PoblacionInterface[]) => {
         this.poblaciones = data;
       }
     )
   }
-  savePoblacion(poblacion: PoblacionInterface): void{
+  savePoblacion(poblacion: PoblacionInterface): void {
     this.formularioVecino.patchValue({
       poblacion: poblacion.cod_postal
     })

@@ -1,5 +1,5 @@
 import { ComunidadService } from './../../../../service/comunidad/comunidad.service';
-import { Input, OnDestroy } from '@angular/core';
+import { Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../../../../../../node_modules/primeng/components/common/messageservice';
 import { FormGroup, FormControl, FormBuilder, Validators } from '../../../../../../node_modules/@angular/forms';
@@ -36,10 +36,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
   poblacionSeleccionada: PoblacionInterface;
 
   ngOnInit() {
-    this.vecinoHijo.subscribe((vecino: VecinoInterface) => {
-      console.log(vecino)
-      this.putVecinoForm(vecino)
-    });
+    this.getData();
     this.formularioVecino = new FormGroup({
       id: new FormControl({value:''}),
       nombre: new FormControl('', [Validators.required]),
@@ -62,6 +59,13 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.vecinoHijo.unsubscribe();
+  }
+
+  getData():void {
+    this.vecinoHijo.subscribe((vecino: VecinoInterface) => {
+      console.log(vecino)
+      this.putVecinoForm(vecino)
+    });
   }
 
   newVecino(): void{
@@ -112,6 +116,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
     this.vecinoSQL.updateVecino(vecino).subscribe(
       (response: ErrorInterface) => {
         this.showTooltip('success', '', `${response.msg}`)
+        this.vecinoSQL.reloadVecinos.emit();
       },
       (error: ErrorInterface) => {
         this.showTooltip('error', '', `${error.msg}`)
