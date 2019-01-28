@@ -1,8 +1,8 @@
+import { ProveedorService } from './../../../../service/proveedor/proveedor.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { ProveedorService } from 'src/app/service/proveedor/proveedor.service';
 import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.
 })
 export class EditProveedorComponent implements OnInit {
 
-  constructor(private messageService: MessageService, private proveedorSql: ProveedorService, private poblacionService: PoblacionService) { }
+  constructor(private messageService: MessageService, private poblacionService: PoblacionService, private sql: ProveedorService) { }
 
   @Input() seleccionado: boolean;
   @Input() hijo: Subject<ProveedorInterface>;
@@ -22,11 +22,12 @@ export class EditProveedorComponent implements OnInit {
 
   display_poblacion: boolean = false;
   poblaciones: PoblacionInterface[];
+  new: boolean = false;
 
   ngOnInit() {
     this.hijo.subscribe((data: ProveedorInterface) => {
       console.log(data)
-      this.putVecinoForm(data)
+      this.putProveedorForm(data)
     });
     this.formularioProveedor = new FormGroup({
       id: new FormControl(),
@@ -36,14 +37,14 @@ export class EditProveedorComponent implements OnInit {
       poblacion: new FormControl()
     })
   }
-  putVecinoForm(data: ProveedorInterface): void {
+  putProveedorForm(data: ProveedorInterface): void {
     this.poblacionSeleccionada = data.poblacion;
     this.formularioProveedor.patchValue({
       id: data.id,
       direccion: data.direccion,
       telefono: data.telefono,
       email: data.email,
-      poblacion: data.poblacion.cod_postal
+      poblacion: data.poblacion.descripcion
     })
   }
 
@@ -53,14 +54,20 @@ export class EditProveedorComponent implements OnInit {
 
     proveedor.poblacion = this.poblacionSeleccionada;
 
-    this.proveedorSql.updateProveedor(proveedor).subscribe(
+    this.sql.update(proveedor).subscribe(
       (response: ErrorInterface) => {
         this.showTooltip('success', '', `${response.msg}`)
+        this.sql.reloadProveedores.emit();
       },
       (error: ErrorInterface) => {
         this.showTooltip('error', '', `${error.msg}`)
       }
     )
+  }
+
+  newProveedor(): void{
+    this.new = true;
+    this.seleccionado = false;
   }
 
   showDialog() {
@@ -72,7 +79,7 @@ export class EditProveedorComponent implements OnInit {
   }
 
   poblacion(): void {
-    this.poblacionService.getAllPoblacion().subscribe(
+    this.poblacionService.getAll().subscribe(
       (data: PoblacionInterface[]) => {
         this.poblaciones = data;
       }

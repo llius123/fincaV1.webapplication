@@ -1,13 +1,46 @@
 <div class="flex">
-    <div class="w-2/5">
-      <div *ngFor="let proveedor  of proveedores">
-        {{proveedor.direccion}} {{proveedor.telefono}} {{proveedor.email}} {{proveedor.poblacion.cod_postal}}
-        <button (click)="editProveedor(proveedor)">
-            <i class="fas fa-edit"></i>
-        </button>
+  <div class="w-2/5 ">
+    <div class="border rounded m-1" style="border-color: #404E5C; border-width:2px;">
+      <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Buscar por nombre:</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input #myInput placeholder="..." [(ngModel)]="searchName" class="pl-2 border-b-2 focus:outline-none"
+            style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+        </div>
       </div>
     </div>
-    <div class="w-3/5">
-      <app-edit-proveedor [seleccionado]="parentMessage" [hijo]="padre"></app-edit-proveedor>
+    <div class="border rounded m-1 p-2 overflow-auto" style="border-color: #404E5C; border-width:2px;height: 554px;">
+      <div *ngFor="let proveedor of proveedores | BusquedaNombre: searchName: 'proveedor'">
+        <div class="flex">
+          <div class="w-3/5">
+            <div class="flex" id="borde">
+              <div class="text-lg font-bold pl-3 mt-2 mb-2">
+                Nombre:
+              </div>
+              <div class="font-mono ml-2 mt-2 mb-2">
+                {{proveedor.direccion}}
+              </div>
+            </div>
+          </div>
+          <div class="w-1/5 ">
+            <button (click)="editProveedor(proveedor)" class="ml-5 hover:rosa-jesus">
+              <i class="fas fa-edit fa-2x"></i>
+            </button>
+          </div>
+          <div class="w-1/5 ">
+            <button (click)="deleteProveedor(proveedor)" class="ml-5 hover:rosa-jesus">
+              <i class="fas fa-trash-alt fa-2x"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="w-3/5 overflow-auto m-1 rounded" style="height: 650px; border-color: #404E5C; border-width:2px;">
+    <app-edit-proveedor [seleccionado]="parentMessage" [hijo]="padre" ></app-edit-proveedor>
+  </div>
+</div>
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>

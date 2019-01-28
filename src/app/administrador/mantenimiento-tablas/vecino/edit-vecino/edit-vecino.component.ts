@@ -183,7 +183,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
   }
 
   poblacion(): void{
-    this.poblacionService.getAllPoblacion().subscribe(
+    this.poblacionService.getAll().subscribe(
       (data: PoblacionInterface[]) => {
         this.poblaciones = data;
       }

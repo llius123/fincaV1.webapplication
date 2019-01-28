@@ -22,7 +22,7 @@ export class EditComunidadComponent implements OnInit {
   display_comunidad: boolean = false;
   poblaciones: PoblacionInterface[];
 
-  cod_poblacionSeleccted: PoblacionInterface;
+  cod_poblacionSeleccted;
 
   ngOnInit() {
     this.getData();
@@ -77,7 +77,7 @@ export class EditComunidadComponent implements OnInit {
   }
 
   poblacion(): void {
-    this.poblacionService.getAllPoblacion().subscribe(
+    this.poblacionService.getAll().subscribe(
       (data: PoblacionInterface[]) => {
         this.poblaciones = data;
       }

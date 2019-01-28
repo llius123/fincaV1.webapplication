@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
+import { ProvinciaService } from 'src/app/service/poblacion-provincia/provincia.service';
 
 @Component({
   selector: 'app-edit-poblacion',
@@ -19,7 +20,10 @@ export class EditPoblacionComponent implements OnInit {
 
   provinciaSeleccionada: ProvinciaInterface;
 
-  constructor(private messageService: MessageService, private sql: PoblacionService) { }
+  display_provincia: boolean = false;
+  provincias: ProvinciaInterface[];
+
+  constructor(private messageService: MessageService, private sql: PoblacionService, private provinciaSQL: ProvinciaService) { }
 
   ngOnInit() {
     this.formularioPoblacion = new FormGroup({
@@ -60,6 +64,31 @@ export class EditPoblacionComponent implements OnInit {
   newRegistro(): void {
     this.new = true;
     this.seleccionado = false;
+  }
+
+  showDialog() {
+    this.display_provincia = true;
+    this.provincia();
+  }
+
+  provincia(): void {
+    this.provinciaSQL.getAll().subscribe(
+      (data: ProvinciaInterface[]) => {
+        this.provincias = data;
+      }
+    )
+  }
+  saveProvincia(provincia: ProvinciaInterface): void {
+    console.log(provincia)
+    this.formularioPoblacion.patchValue({
+      cod_provincia: provincia.cod_provincia
+    })
+    this.provinciaSeleccionada = provincia;
+    this.closeModals();
+  }
+
+  closeModals(): void {
+    this.display_provincia = false;
   }
 
   showTooltip(type: string, title: string, desc: string) {

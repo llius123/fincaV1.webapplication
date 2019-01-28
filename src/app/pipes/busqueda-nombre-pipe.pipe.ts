@@ -10,6 +10,10 @@ export class BusquedaNombrePipe implements PipeTransform {
         if (!myInput) return data;
 
         switch (table) {
+            case 'proveedor':
+            return data.filter(proveedor => {
+                return proveedor.email.includes(myInput);
+            });
             case 'provincia':
             return data.filter(provincia => {
                 return provincia.descripcion.includes(myInput);

@@ -128,7 +128,7 @@ export class NewVecinoComponent implements OnInit {
   }
 
   poblacion(): void {
-    this.poblacionService.getAllPoblacion().subscribe(
+    this.poblacionService.getAll().subscribe(
       (data: PoblacionInterface[]) => {
         this.poblaciones = data;
       }

@@ -5,13 +5,13 @@ interface ComunidadInterface {
   nif: string;
   iban: string;
   sufijo: string;
-  poblacion: PoblacionBean;
+  poblacion: PoblacionInterface;
 }
 
 interface FacturaProveedorInterface {
   fecha_registro: Date;
-  proveedor: ProveedorBean;
-  tipofactura: TipofacturaBean;
+  proveedor: ProveedorInterface;
+  tipofactura: TipofacturaInterface;
   base_imponible0: number;
   base_imponible1: number;
   base_imponible2: number;
@@ -23,14 +23,14 @@ interface FacturaProveedorInterface {
   cuota_iva2: number;
   cuota_iva3: number;
   total: number;
-  comunidad: ComunidadBean;
+  comunidad: ComunidadInterface;
   num_factura: string;
   cobrado: string;
 }
 
 interface IncidenciaInterface {
   id: number;
-  vecino: VecinoBean;
+  vecino: VecinoInterface;
   descripcion: String;
   fecha_creacion: Date;
   atendido: String;
@@ -40,7 +40,7 @@ interface PoblacionInterface {
   id:number;
   cod_postal: number;
   descripcion: string;
-  provincia: ProvinciaBean;
+  provincia: ProvinciaInterface;
 }
 
 interface ProveedorInterface {
@@ -48,7 +48,7 @@ interface ProveedorInterface {
   direccion: string;
   telefono: string;
   email: string;
-  poblacion: PoblacionBean;
+  poblacion: PoblacionInterface;
 }
 
 interface ProvinciaInterface {
@@ -61,7 +61,7 @@ interface ReciboInterface {
   id: number;
   fecha_emision: Date;
   num_registro: number;
-  vecino: VecinoBean;
+  vecino: VecinoInterface;
   descripcion: string;
   importe: number;
   fecha_cobro: Date;
@@ -87,11 +87,11 @@ interface VecinoInterface {
   num_mandato: string;
   fecha_mandato: Date;
   porcentaje_participacion: number;
-  comunidad: ComunidadBean;
+  comunidad: ComunidadInterface;
   email: string;
   telefono: string;
-  id_tipovecino: TipovecinoBean;
-  poblacion: PoblacionBean;
+  id_tipovecino: TipovecinoInterface;
+  poblacion: PoblacionInterface;
   login: string;
   pass: string;
 }

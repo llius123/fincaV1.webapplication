@@ -19,7 +19,7 @@ export class PoblacionService {
     }
 
     create(data: PoblacionInterface) {
-        return this.http.post<ErrorInterface>(`${this.config.api}pobaciones`, data, this.config.header);
+        return this.http.post<ErrorInterface>(`${this.config.api}poblaciones`, data, this.config.header);
     }
 
     delete(data: PoblacionInterface) {
