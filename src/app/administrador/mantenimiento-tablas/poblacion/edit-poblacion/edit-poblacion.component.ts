@@ -14,40 +14,54 @@ export class EditPoblacionComponent implements OnInit {
 
   @Input() seleccionado: boolean;
   @Input() hijo: Subject<PoblacionInterface>;
-  formulario: FormGroup;
-  provincia: ProvinciaInterface;
+  formularioPoblacion: FormGroup;
+  new: boolean = false;
+
+  provinciaSeleccionada: ProvinciaInterface;
 
   constructor(private messageService: MessageService, private sql: PoblacionService) { }
 
   ngOnInit() {
-    this.hijo.subscribe(
-      data => this.putForm(data)
-    )
-    this.formulario = new FormGroup({
-      cod_postal: new FormControl(),
+    this.formularioPoblacion = new FormGroup({
+      id: new FormControl(),
+      cod_provincia: new FormControl(),
       descripcion: new FormControl(),
-      cod_provincia: new FormControl()
+      cod_postal: new FormControl()
     })
+    this.hijo.subscribe(data => {
+      this.putProvinciaForm(data)
+    });
   }
 
-  putForm(data): void {
-    this.provincia = data.cod_provincia;
-    console.log(data);
-    this.formulario.patchValue({
-      cod_postal: data.cod_postal,
+  putProvinciaForm(data): void {
+    console.log(data)
+    this.provinciaSeleccionada = data.cod_provincia;
+    this.new = false;
+    this.seleccionado = true;
+    this.formularioPoblacion.patchValue({
+      id: data.id,
+      cod_provincia: data.cod_provincia.descripcion,
       descripcion: data.descripcion,
-      cod_provincia: data.cod_provincia.descripcion
+      cod_postal: data.cod_postal
     })
   }
-
-  edit(): void{
-    const poblacion = this.formulario.value;
-    poblacion.cod_provincia = this.provincia;
-    this.sql.updatePoblacion(poblacion).subscribe(
-      data => this.showTooltip('success', '', `${data.msg}`),
+  edit(): void {
+    const poblacion = this.formularioPoblacion.value;
+    poblacion.cod_provincia = this.provinciaSeleccionada;
+    this.sql.update(poblacion).subscribe(
+      data => {
+        this.showTooltip('success', '', `${data.msg}`)
+        this.sql.reloadPoblaciones.emit()
+      },
       error => this.showTooltip('error', '', `${error.msg}`)
     )
   }
+
+  newRegistro(): void {
+    this.new = true;
+    this.seleccionado = false;
+  }
+
   showTooltip(type: string, title: string, desc: string) {
     this.messageService.add({
       severity: `${type}`,

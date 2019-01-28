@@ -44,9 +44,13 @@ import { EditProvinciaComponent } from './mantenimiento-tablas/provincia/edit-pr
 import { EditPoblacionComponent } from './mantenimiento-tablas/poblacion/edit-poblacion/edit-poblacion.component';
 import { NewVecinoComponent } from './mantenimiento-tablas/vecino/new-vecino/new-vecino.component';
 import { BusquedaNombrePipe } from '../pipes/busqueda-nombre-pipe.pipe';
+import { NewTipovecinoComponent } from './mantenimiento-tablas/tipovecino/new-tipovecino/new-tipovecino.component';
+import { NewTipofacturaComponent } from './mantenimiento-tablas/tipofactura/new-tipofactura/new-tipofactura.component';
+import { NewProvinciaComponent } from './mantenimiento-tablas/provincia/new-provincia/new-provincia.component';
+import { NewPoblacionComponent } from './mantenimiento-tablas/poblacion/new-poblacion/new-poblacion.component';
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe, NewTipovecinoComponent, NewTipofacturaComponent, NewProvinciaComponent, NewPoblacionComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule, FormsModule],
   exports: [HeaderAdminComponent]
 })

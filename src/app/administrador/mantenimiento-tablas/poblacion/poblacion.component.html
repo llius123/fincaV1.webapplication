@@ -1,34 +1,45 @@
 <div class="flex">
-  <div class="w-2/5 border rounded m-1" style="border-color: #404E5C; border-width:2px;">
-    <div *ngFor="let poblacion of poblaciones" class="p-2">
-      <div class="flex">
-        <div class="w-3/5">
-          <div class="flex" id="borde">
-            <div class="text-lg font-bold pl-3 mt-2 mb-2">
-              Cod Postal
-            </div>
-            <div class="font-mono ml-2 mt-2 mb-2">
-              {{poblacion.cod_postal}}
-            </div>
+    <div class="w-2/5 ">
+      <div class="border rounded m-1" style="border-color: #404E5C; border-width:2px;">
+        <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+          <div class="pl-3 pt-2 font-bold w-64">
+            <p>Buscar por descripcion:</p>
           </div>
-          <div class="flex" id="borde">
-            <div class="text-lg font-bold pl-3 mt-2 mb-2">
-              Descripcion:
-            </div>
-            <div class="font-mono ml-2 mt-2 mb-2">
-              {{poblacion.descripcion}}
-            </div>
+          <div class="pl-3 pt-2">
+            <input #myInput placeholder="..." [(ngModel)]="searchName" class="pl-2 border-b-2 focus:outline-none" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
           </div>
         </div>
-        <div class="w-1/5 ">
-          <button (click)="edit(poblacion)" class="p-4 hover:rosa-jesus">
-            <i class="fas fa-edit fa-3x"></i>
-          </button>
+      </div>
+      <div class="border rounded m-1 p-2 overflow-auto" style="border-color: #404E5C; border-width:2px;height: 554px;">
+        <div *ngFor="let poblacion of poblaciones | BusquedaNombre: searchName: 'poblacion'">
+          <div class="flex">
+            <div class="w-3/5">
+              <div class="flex-col" style="border-left-color: #9E4F6E;border-left-width: 4px;border-left-style: solid;">
+                <div class="text-lg font-bold pl-3 mt-2 mb-2">
+                  Descripcion
+                </div>
+                <div class="font-mono ml-2 mt-2 mb-2">
+                  {{poblacion.descripcion}}
+                </div>
+              </div>
+            </div>
+            <div class="w-1/5 ">
+              <button (click)="edit(poblacion)" class="ml-5 hover:rosa-jesus">
+                <i class="fas fa-edit fa-2x"></i>
+              </button>
+            </div>
+            <div class="w-1/5 ">
+              <button (click)="delete(poblacion)" class="ml-5 hover:rosa-jesus">
+                <i class="fas fa-trash-alt fa-2x"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <div class="w-3/5 overflow-auto m-1 rounded" style="height: 650px; border-color: #404E5C; border-width:2px;">
+      <app-edit-poblacion [seleccionado]="parentMessage" [hijo]="padre"></app-edit-poblacion>
+    </div>
   </div>
-  <div class="w-3/5">
-    <app-edit-poblacion [seleccionado]="parentMessage" [hijo]="padre"></app-edit-poblacion>
-  </div>
-</div>
+  <p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+  </p-toast>

@@ -16,33 +16,44 @@ export class EditProvinciaComponent implements OnInit {
 
   @Input() seleccionado: boolean;
   @Input() hijo: Subject<ProvinciaInterface>;
-  formulario: FormGroup;
+  formularioProvincia: FormGroup;
+  new: boolean = false;
 
-  constructor( private messageService: MessageService, private sql: ProvinciaService) { }
+  constructor(private messageService: MessageService, private sql: ProvinciaService) { }
 
   ngOnInit() {
-    this.formulario = new FormGroup({
+    this.formularioProvincia = new FormGroup({
+      id: new FormControl(),
       cod_provincia: new FormControl(),
       descripcion: new FormControl()
     })
-    this.hijo.subscribe(
-      data => this.putForm(data)
-    )
+    this.hijo.subscribe(data => this.putProvinciaForm(data));
   }
 
-  putForm(data: ProvinciaInterface): void{
-    this.formulario.patchValue({
+  putProvinciaForm(data: ProvinciaInterface): void {
+    this.new = false;
+    this.seleccionado = true;
+    this.formularioProvincia.patchValue({
+      id: data.id,
       cod_provincia: data.cod_provincia,
       descripcion: data.descripcion
     })
   }
-
-  edit(): void{
-    this.sql.update(this.formulario.value).subscribe(
-      data => this.showTooltip('success', '', `${data.msg}`),
+  edit(): void {
+    this.sql.update(this.formularioProvincia.value).subscribe(
+      data => {
+        this.showTooltip('success', '', `${data.msg}`)
+        this.sql.reloadProvincias.emit()
+      },
       error => this.showTooltip('error', '', `${error.msg}`)
     )
   }
+
+  newRegistro(): void {
+    this.new = true;
+    this.seleccionado = false;
+  }
+
   showTooltip(type: string, title: string, desc: string) {
     this.messageService.add({
       severity: `${type}`,

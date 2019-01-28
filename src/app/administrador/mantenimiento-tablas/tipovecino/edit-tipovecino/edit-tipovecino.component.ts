@@ -16,6 +16,8 @@ export class EditTipovecinoComponent implements OnInit {
   @Input() hijo: Subject<TipovecinoInterface>;
   formularioTipoVecino: FormGroup;
 
+  new: boolean = false;
+
   constructor(private sql: TipoVecinoService, private messageService: MessageService) { }
 
   ngOnInit() {
@@ -26,7 +28,14 @@ export class EditTipovecinoComponent implements OnInit {
     this.hijo.subscribe(data => this.putTipoVecinoForm(data));
   }
 
+  newRegistro(): void{
+    this.new = true;
+    this.seleccionado = false;
+  }
+
   putTipoVecinoForm(data: TipovecinoInterface): void{
+    this.new = false;
+    this.seleccionado = true;
     this.formularioTipoVecino.patchValue({
       id: data.id,
       descripcion: data.descripcion
@@ -36,7 +45,10 @@ export class EditTipovecinoComponent implements OnInit {
   editTipoVecino(): void{
 
     this.sql.update(this.formularioTipoVecino.value).subscribe(
-      data => this.showTooltip('success', '', `${data.msg}`),
+      data => {
+        this.showTooltip('success', '', `${data.msg}`)
+        this.sql.reloadTipoVecinos.emit()
+      },
       error => this.showTooltip('error', '', `${error.msg}`)
     )
   }

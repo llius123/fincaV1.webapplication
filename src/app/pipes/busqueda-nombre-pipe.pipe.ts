@@ -10,6 +10,18 @@ export class BusquedaNombrePipe implements PipeTransform {
         if (!myInput) return data;
 
         switch (table) {
+            case 'provincia':
+            return data.filter(provincia => {
+                return provincia.descripcion.includes(myInput);
+            });
+            case 'tipofactura':
+            return data.filter(tipofactura => {
+                return tipofactura.descripcion.includes(myInput);
+            });
+            case 'tipovecino':
+            return data.filter(tipovecino => {
+                return tipovecino.descripcion.includes(myInput);
+            });
             case 'vecino':
             return data.filter(vecino => {
                 return vecino.nombre.includes(myInput);

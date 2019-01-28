@@ -16,6 +16,8 @@ export class EditTipofacturaComponent implements OnInit {
   @Input() hijo: Subject<TipofacturaInterface>;
   formularioTipoFactura: FormGroup;
 
+  new: boolean = false;
+
   constructor(private sql: TipoFacturaService, private messageService: MessageService) { }
 
   ngOnInit() {
@@ -27,6 +29,8 @@ export class EditTipofacturaComponent implements OnInit {
   }
 
   putTipoFacturaForm(data: TipofacturaInterface): void{
+    this.new = false;
+    this.seleccionado = true;
     this.formularioTipoFactura.patchValue({
       id: data.id,
       descripcion: data.descripcion
@@ -34,9 +38,17 @@ export class EditTipofacturaComponent implements OnInit {
   }
   edit(): void{
     this.sql.update(this.formularioTipoFactura.value).subscribe(
-      data => this.showTooltip('success', '', `${data.msg}`),
+      data => {
+        this.showTooltip('success', '', `${data.msg}`)
+        this.sql.reloadTipoFacturas.emit()
+      },
       error => this.showTooltip('error', '',`${error.msg}`)
     )
+  }
+
+  newRegistro(): void{
+    this.new = true;
+    this.seleccionado = false;
   }
 
   showTooltip(type: string, title: string, desc: string) {

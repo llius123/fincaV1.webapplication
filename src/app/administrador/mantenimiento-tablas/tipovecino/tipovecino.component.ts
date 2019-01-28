@@ -11,10 +11,14 @@ import { Subject } from 'rxjs';
 })
 export class TipovecinoComponent implements OnInit {
 
-  constructor(private sql: TipoVecinoService,private messageService: MessageService) { }
+  constructor(private sql: TipoVecinoService, private messageService: MessageService) {
+    sql.reloadTipoVecinos.subscribe(
+      data => this.getData()
+    )
+  }
 
   tipovecinos: TipovecinoInterface[];
-  
+
   parentMessage = false;
   padre: Subject<TipovecinoInterface> = new Subject();
 
@@ -22,7 +26,7 @@ export class TipovecinoComponent implements OnInit {
     this.getData();
   }
 
-  getData(): void{
+  getData(): void {
     this.sql.getAll().subscribe(
       data => this.tipovecinos = data,
       error => this.showTooltip('error', '', `${error.msg}`)
@@ -32,6 +36,15 @@ export class TipovecinoComponent implements OnInit {
   edit(tipovecino: TipovecinoInterface): void {
     this.padre.next(tipovecino);
     this.parentMessage = true;
+  }
+  delete(data: TipovecinoInterface): void{
+    this.sql.delete(data).subscribe(
+      data => {
+        this.sql.reloadTipoVecinos.emit();
+        this.showTooltip('success','',`${data.msg}`)
+      },
+      error => this.showTooltip('error','',`${error.msg}`)
+    )
   }
 
   showTooltip(type: string, title: string, desc: string) {

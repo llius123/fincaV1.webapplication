@@ -37,6 +37,7 @@ interface IncidenciaInterface {
 }
 
 interface PoblacionInterface {
+  id:number;
   cod_postal: number;
   descripcion: string;
   provincia: ProvinciaBean;
@@ -51,6 +52,7 @@ interface ProveedorInterface {
 }
 
 interface ProvinciaInterface {
+  id:number;
   cod_provincia: number;
   descripcion: string;
 }
