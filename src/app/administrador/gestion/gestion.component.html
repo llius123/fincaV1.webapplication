@@ -1,3 +1,15 @@
-<p>
-  gestion works!
-</p>
+<div class="flex w-full h-32 border border-black">
+  arriba
+</div>
+
+<div class="flex w-full h-64 border border-yellor">
+  <div *ngFor="let factura of facturas" >
+    {{factura.fecha_registro}}
+    {{factura.id_proveedor.direccion}}
+    {{factura.id_tipofactura.descripcion}}
+  </div>
+</div>
+
+<div class="flex w-full h-12 border border-red">
+  paginacion
+</div>

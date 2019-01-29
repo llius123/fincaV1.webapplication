@@ -12,7 +12,8 @@ import { SentryErrorHandle } from './error/error.service';
 import { ProveedorService } from './proveedor/proveedor.service';
 import { TipoFacturaService } from './tipovecino-tipofactura/tipofactura.service';
 import { ProvinciaService } from './poblacion-provincia/provincia.service';
+import { FacturaService } from './factura/factura.service';
 @NgModule({
-  providers: [LoginService, AuthAdmin, IncidenciaService, TareaService, GeneralService, VecinoService, ComunidadService, TipoVecinoService, PoblacionService,ProvinciaService, SentryErrorHandle, ProveedorService, TipoFacturaService],
+  providers: [LoginService, AuthAdmin, IncidenciaService, TareaService, GeneralService, VecinoService, ComunidadService, TipoVecinoService, PoblacionService,ProvinciaService, SentryErrorHandle, ProveedorService, TipoFacturaService, FacturaService],
 })
 export class ServiceModule { }

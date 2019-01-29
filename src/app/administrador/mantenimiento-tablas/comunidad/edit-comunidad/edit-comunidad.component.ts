@@ -14,18 +14,24 @@ import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.
 })
 export class EditComunidadComponent implements OnInit {
 
-  constructor(private comunidadService: ComunidadService, private messageService: MessageService, private poblacionService: PoblacionService) { }
+  constructor(private sql: ComunidadService, private messageService: MessageService, private poblacionService: PoblacionService) { }
 
   @Input() seleccionado: boolean;
-  @Input() comunidadHijo: Subject<ComunidadInterface>;
+  @Input() hijo: Subject<ComunidadInterface>;
   formularioComunidad: FormGroup;
-  display_comunidad: boolean = false;
+  display_poblacion: boolean = false;
   poblaciones: PoblacionInterface[];
 
-  cod_poblacionSeleccted;
+  new: boolean = false;
+
+  cod_poblacionSelected;
 
   ngOnInit() {
-    this.getData();
+    this.hijo.subscribe(
+      (data: ComunidadInterface) => {
+        this.putComunidadForm(data)
+      }
+    )
     this.formularioComunidad = new FormGroup({
       id: new FormControl(),
       nombre: new FormControl(),
@@ -37,15 +43,10 @@ export class EditComunidadComponent implements OnInit {
     })
   }
 
-  getData(): void {
-    this.comunidadHijo.subscribe(
-      (data: ComunidadInterface) => {
-        this.putComunidadForm(data)
-      }
-    )
-  }
   putComunidadForm(data: ComunidadInterface): void {
-    this.cod_poblacionSeleccted = data.poblacion;
+    this.new = false;
+    this.seleccionado = true;
+    this.cod_poblacionSelected = data.poblacion;
     this.formularioComunidad.patchValue({
       id: data.id,
       nombre: data.nombre,
@@ -59,11 +60,11 @@ export class EditComunidadComponent implements OnInit {
 
   editComunidad(): void {
     const comunidad: ComunidadInterface = this.formularioComunidad.value;
-    comunidad.poblacion = this.cod_poblacionSeleccted;
-    console.log(comunidad)
-    this.comunidadService.save(comunidad).subscribe(
+    comunidad.poblacion = this.cod_poblacionSelected;
+    this.sql.update(comunidad).subscribe(
       (data: ErrorInterface) => {
         this.showTooltip('success', '', `${data.msg}`);
+        this.sql.reloadComunidades.emit();
       },
       (error: ErrorInterface) => {
         this.showTooltip('error', '', `${error.msg}`);
@@ -71,8 +72,13 @@ export class EditComunidadComponent implements OnInit {
     )
   }
 
+  newRegistro(): void {
+    this.new = true;
+    this.seleccionado = false;
+  }
+
   showDialog() {
-    this.display_comunidad = true;
+    this.display_poblacion = true;
     this.poblacion();
   }
 
@@ -87,11 +93,11 @@ export class EditComunidadComponent implements OnInit {
     this.formularioComunidad.patchValue({
       poblacion: poblacion.descripcion
     })
-    this.cod_poblacionSeleccted = poblacion;
+    this.cod_poblacionSelected = poblacion;
     this.closeModals();
   }
   closeModals(): void {
-    this.display_comunidad = false;
+    this.display_poblacion = false;
   }
 
   showTooltip(type: string, title: string, desc: string) {

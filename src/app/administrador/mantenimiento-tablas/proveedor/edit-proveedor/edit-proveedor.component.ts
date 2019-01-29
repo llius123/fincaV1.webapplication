@@ -26,7 +26,6 @@ export class EditProveedorComponent implements OnInit {
 
   ngOnInit() {
     this.hijo.subscribe((data: ProveedorInterface) => {
-      console.log(data)
       this.putProveedorForm(data)
     });
     this.formularioProveedor = new FormGroup({

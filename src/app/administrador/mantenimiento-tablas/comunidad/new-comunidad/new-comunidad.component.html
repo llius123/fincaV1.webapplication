@@ -1,20 +1,4 @@
-<div *ngIf="!seleccionado && !new " class="flex justify-center rounded ml-10 mr-10 " style="margin-top: 40%;border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; background-color: #B7C3F3">
-    <div class="pb-5 pt-5">
-        Selecciona una comunidad o crea uno
-        <button class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; "
-            (click)="newRegistro()">
-            <i class="fas fa-newspaper"></i>
-            Nuevo
-        </button>
-    </div>
-</div>
-<div class="flex">
-    <div *ngIf="new">
-        <app-new-comunidad></app-new-comunidad>
-    </div>
-</div>
-
-<div *ngIf="seleccionado" class="flex relative">
+<div class="flex relative">
     <div class="absolute pin-t pin-r" style="padding-right: 110px;">
         <div class="fixed" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; background-color: #B7C3F3">
             <button (click)="newRegistro()">
@@ -39,7 +23,7 @@
                     <div>
                         <div class="flex">
                             <div>
-                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="cod_poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
                             </div>
                             <div class="ml-4">
                                 <button (click)="showDialog()">
@@ -47,7 +31,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('poblacion').hasError('required')">
+                        <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('cod_poblacion').hasError('required')">
                             <p-message severity="error" text="Poblacion es obligatorio"></p-message>
                         </div>
                     </div>
@@ -110,7 +94,7 @@
                 </div>
         </form>
         <div class="flex justify-center p-5">
-            <button (click)="editComunidad()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
+            <button (click)="nuevaComunidad()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
                 <i class="fas fa-edit"></i>
                 Edit
             </button>

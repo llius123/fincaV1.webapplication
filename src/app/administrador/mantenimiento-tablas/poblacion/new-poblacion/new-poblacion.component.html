@@ -1,99 +1,99 @@
 <div>
-  <div class="flex relative">
-      <form [formGroup]="formularioPoblacion">
-          <div>
-              <div class="w-1/2">
-                  <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-                      <div class="pl-3 pt-2 font-bold w-48">
-                          <p>Provincia:</p>
-                      </div>
-                      <div class="pl-3 pt-2">
-                          <div>
-                              <div class="flex">
-                                  <div>
-                                      <input class="pl-2 border-b-2 focus:outline-none" formControlName="cod_provincia"
-                                          style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
-                                  </div>
-                                  <div class="ml-4">
-                                      <button (click)="showDialog()">
-                                          <i class="fas fa-search fa-lg"></i>
-                                      </button>
-                                  </div>
-                              </div>
-                              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioPoblacion.get('cod_provincia').hasError('required')">
-                                  <p-message severity="error" text="Poblacion es obligatorio"></p-message>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-              <div class="pl-3 pt-2 font-bold w-48">
-                  <p>Descripcion:</p>
-              </div>
-              <div class="pl-3 pt-2">
-                  <input class="pl-2 border-b-2 focus:outline-none " formControlName="descripcion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-              </div>
-          </div>
-          <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-              <div class="pl-3 pt-2 font-bold w-48">
-                  <p>Cod postal:</p>
-              </div>
-              <div class="pl-3 pt-2">
-                  <input class="pl-2 border-b-2 focus:outline-none " formControlName="cod_postal" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-              </div>
-          </div>
-      </form>
-  </div>
-  <div class="flex justify-center p-5">
-      <button (click)="nuevaPoblacion()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
-          <i class="fas fa-edit"></i>
-          Edit
-      </button>
-  </div>
+    <div class="flex relative">
+        <form [formGroup]="formularioPoblacion">
+            <div>
+                <div class="w-1/2">
+                    <div class="flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                        <div class="pl-3 pt-2 font-bold w-48">
+                            <p>Provincia:</p>
+                        </div>
+                        <div class="pl-3 pt-2">
+                            <div>
+                                <div class="flex">
+                                    <div>
+                                        <input class="pl-2 border-b-2 focus:outline-none" formControlName="cod_provincia"
+                                            style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
+                                    </div>
+                                    <div class="ml-4">
+                                        <button (click)="showDialog()">
+                                            <i class="fas fa-search fa-lg"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioPoblacion.get('cod_provincia').hasError('required')">
+                                    <p-message severity="error" text="Poblacion es obligatorio"></p-message>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                <div class="pl-3 pt-2 font-bold w-48">
+                    <p>Descripcion:</p>
+                </div>
+                <div class="pl-3 pt-2">
+                    <input class="pl-2 border-b-2 focus:outline-none " formControlName="descripcion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                </div>
+            </div>
+            <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+                <div class="pl-3 pt-2 font-bold w-48">
+                    <p>Cod postal:</p>
+                </div>
+                <div class="pl-3 pt-2">
+                    <input class="pl-2 border-b-2 focus:outline-none " formControlName="cod_postal" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="flex justify-center p-5">
+        <button (click)="nuevaPoblacion()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
+            <i class="fas fa-edit"></i>
+            Edit
+        </button>
+    </div>
 </div>
 
 <p-dialog [(visible)]="display_provincia" [modal]="true" [style]="{width: '500px', height: '200px'}" [positionTop]=10>
-  <p-header>
-      Provincia:
-  </p-header>
-  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
-      <div class="p-3 font-bold justify-center">
-          <div class="flex ">
-              <div class="w-1/4 flex justify-center">
-                  <div>
-                      Cod provincia
-                  </div>
-              </div>
-              <div class="w-1/4 flex justify-center">
-                  <div>
-                      Descripcion
-                  </div>
-              </div>
-              <div class="w-1/4 flex justify-center">
-                  <div>
-                      Selecciona
-                  </div>
-              </div>
-          </div>
-          <div class="border-b w-full mt-2" style="border-color:#9E4F6E;">
-          </div>
-          <div class="flex" *ngFor="let provincia of provincias">
-              <div class="w-1/4 flex justify-center">
-                  {{provincia.cod_provincia}}
-              </div>
-              <div class="w-1/4 flex justify-center">
-                  {{provincia.descripcion}}
-              </div>
-              <div class="w-1/4 flex justify-center">
-                  <button (click)="saveProvincia(provincia)">
-                      <i class="fas fa-check"></i>
-                  </button>
-              </div>
-          </div>
-      </div>
-  </div>
+    <p-header>
+        Provincia:
+    </p-header>
+    <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
+        <div class="p-3 font-bold justify-center">
+            <div class="flex ">
+                <div class="w-1/4 flex justify-center">
+                    <div>
+                        Cod provincia
+                    </div>
+                </div>
+                <div class="w-1/4 flex justify-center">
+                    <div>
+                        Descripcion
+                    </div>
+                </div>
+                <div class="w-1/4 flex justify-center">
+                    <div>
+                        Selecciona
+                    </div>
+                </div>
+            </div>
+            <div class="border-b w-full mt-2" style="border-color:#9E4F6E;">
+            </div>
+            <div class="flex" *ngFor="let provincia of provincias">
+                <div class="w-1/4 flex justify-center">
+                    {{provincia.cod_provincia}}
+                </div>
+                <div class="w-1/4 flex justify-center">
+                    {{provincia.descripcion}}
+                </div>
+                <div class="w-1/4 flex justify-center">
+                    <button (click)="saveProvincia(provincia)">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </p-dialog>
 
 <p-toast position="bottom-right" [style]="{marginTop: '80px'}">

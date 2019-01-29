@@ -1,16 +1,46 @@
 <div class="flex">
-  <div class="w-2/5">
-    <div class="border rounded m-1" style="border-color: #404E5C; border-width:2px;">
-        <input #myInput placeholder="Item name..." [(ngModel)]="searchName"  >
+    <div class="w-2/5 ">
+      <div class="border rounded m-1" style="border-color: #404E5C; border-width:2px;">
+        <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+          <div class="pl-3 pt-2 font-bold w-48">
+            <p>Buscar por direccion:</p>
+          </div>
+          <div class="pl-3 pt-2">
+            <input #myInput placeholder="..." [(ngModel)]="searchName" class="pl-2 border-b-2 focus:outline-none"
+              style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          </div>
+        </div>
       </div>
-    <div *ngFor="let comunidad of comunidades | BusquedaNombre: searchName: 'comunidad'">
-      {{comunidad.nombre}}{{comunidad.direccion}}{{comunidad.nif}}{{comunidad.iban}}{{comunidad.sufijo}}{{comunidad.poblacion.cod_poblacion}}
-      <button (click)="editComunidad(comunidad)">
-          <i class="fas fa-edit"></i>
-      </button>
+      <div class="border rounded m-1 p-2 overflow-auto" style="border-color: #404E5C; border-width:2px;height: 554px;">
+        <div *ngFor="let comunidad of comunidades | BusquedaNombre: searchName: 'comunidad'">
+          <div class="flex">
+            <div class="w-3/5">
+              <div class="flex-col" id="borde" style="border-left-color: #9E4F6E;border-left-width: 4px;border-left-style: solid;">
+                <div class="text-lg font-bold pl-3 mt-2 mb-2" >
+                  Direccion:
+                </div>
+                <div class="font-mono ml-2 mt-2 mb-2">
+                  {{comunidad.direccion}}
+                </div>
+              </div>
+            </div>
+            <div class="w-1/5 ">
+              <button (click)="editComunidad(comunidad)" class="ml-5 hover:rosa-jesus">
+                <i class="fas fa-edit fa-2x"></i>
+              </button>
+            </div>
+            <div class="w-1/5 ">
+              <button (click)="deleteComunidad(comunidad)" class="ml-5 hover:rosa-jesus">
+                <i class="fas fa-trash-alt fa-2x"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-3/5 overflow-auto m-1 rounded" style="height: 650px; border-color: #404E5C; border-width:2px;">
+      <app-edit-comunidad [seleccionado]="parentMessage" [hijo]="padre" ></app-edit-comunidad>
     </div>
   </div>
-  <div class="w-3/5">
-    <app-edit-comunidad [seleccionado]="parentMessage" [comunidadHijo]="comunidadPadre"></app-edit-comunidad>
-  </div>
-</div>
+  <p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+  </p-toast>
