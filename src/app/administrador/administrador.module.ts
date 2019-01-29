@@ -23,6 +23,9 @@ import { FechaPipePipe } from '../pipes/fecha-pipe.pipe';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {MessagesModule} from 'primeng/messages';
 import { MessageModule} from 'primeng/message';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {TooltipModule} from 'primeng/tooltip';
+
 
 //mantenimiento-tablas
 import { InicioComponent as InicioComponentMentenimiento } from './mantenimiento-tablas/inicio/inicio.component';
@@ -52,7 +55,7 @@ import { NewProveedorComponent } from './mantenimiento-tablas/proveedor/new-prov
 
 @NgModule({
   declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe, NewTipovecinoComponent, NewTipofacturaComponent, NewProvinciaComponent, NewPoblacionComponent, NewProveedorComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule, FormsModule],
+  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule, FormsModule, ScrollPanelModule, TooltipModule],
   exports: [HeaderAdminComponent]
 })
 export class AdministradorModule { }

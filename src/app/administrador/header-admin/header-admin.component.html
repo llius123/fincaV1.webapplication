@@ -20,10 +20,202 @@
     </a>
   </div>
   <div class="flex-1">
-    <a>
-      Usuario: {{vecino_nombre}}
-      Tareas: {{ countTareas}}
-      Incidencias: {{ countIncidencias}}
-    </a>
+    <div class="flex">
+      <div>
+        <div  pTooltip="Tareas" tooltipPosition="bottom" (click)="op1.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
+          style="border-color:#9E4F6E">
+          <div>
+            <i class="fas fa-list-ol"></i>
+          </div>
+          <div>
+            {{ countTareas}}
+          </div>
+        </div>
+      </div>
+      <div>
+        <div  pTooltip="Incidencias" tooltipPosition="bottom" (click)="op2.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
+          style="border-color:#9E4F6E">
+          <div>
+            <i class="fas fa-exclamation"></i>
+          </div>
+          <div>
+            {{ countIncidencias}}
+          </div>
+        </div>
+      </div>
+      <div pTooltip="Perfil" tooltipPosition="bottom">
+        <div (click)="op3.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
+          style="border-color:#9E4F6E">
+          <div>
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<p-overlayPanel #op1 [style]="{width: '500px', height:'250px'}">
+  <p-scrollPanel [style]="{width: '100%', height: '200px'}">
+    <div class="flex justify-center p-2">
+      <div class="text-4xl underline mr-5">
+        Tareas
+      </div>
+      <div>
+        <button type="button" (click)="showDialog2()" class="rounded-full w-32 h-10" style="border-width: 2px; border-color: #9E4F6E;">
+          <div class="flex">
+            <i class="far fa-plus-square fa-2x pl-2"></i>
+            <div class="text-2xl pl-2">
+              Nueva
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+    <div>
+      <div class="border rounded ng-star-inserted m-2 p-2 bg-grey-lighter shadow-md" *ngFor="let tarea of tareas" style="border-color: #9E4F6E">
+        <div class="flex p-2">
+          <div class="p-1 h-8 w-8 border-tareas-icono rounded-full" style="border-color: #9E4F6E;border-width: 2px;">
+            <i class="flex fas fa-user items-center justify-center"></i>
+          </div>
+          <div class="text-2xl ml-5">
+            nombre
+          </div>
+        </div>
+        <div class="flex m-3">
+          {{ tarea.descripcion}}
+        </div>
+        <div class="mt-3 mb-3" style="border-color: #9E4F6E;border-width: 1px;"></div>
+        <div class="flex pt-2 p-2">
+          <div class="w-24 rounded h-8 text-center" style="border-color: #9E4F6E;border-width: 2px;">
+            <div class="self-auto mt-1">
+              {{tarea.fecha | fechaPipe}}
+            </div>
+          </div>
+          <div class="w-full text-right">
+            <button (click)="showDialogEdit(tarea)" class="mr-5 hover:rosa-jesus">
+              <i class="fas fa-edit fa-2x"></i>
+            </button>
+            <button (click)="deleteTarea(tarea.id)" class="mr-5 hover:rosa-jesus">
+              <i class="fas fa-trash-alt fa-2x"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-scrollPanel>
+</p-overlayPanel>
+
+
+
+
+
+<p-overlayPanel #op2 [style]="{width: '500px', height:'220px'}">
+  <p-scrollPanel [style]="{width: '100%', height: '200px'}">
+    <div class="flex justify-center p-2">
+      <div class="text-4xl underline mr-5">
+        Incidencias
+      </div>
+    </div>
+    <div class="flex">
+      <div class="w-full" >
+        <div class="border rounded ng-star-inserted m-2 p-2 bg-grey-lighter shadow-md" *ngFor="let incidencia of incidencias | incidenciaPipe"
+          style="border-color: #404E5C">
+          <div class="flex p-2">
+            <div class="p-1 h-8 w-8 border-tareas-icono rounded-full" style="border-color: #404E5C;border-width: 2px;">
+              <i class="flex fas fa-user items-center justify-center"></i>
+            </div>
+            <div class="text-2xl ml-5">
+              {{incidencia.vecino.nombre}}
+            </div>
+          </div>
+          <div class="flex m-3">
+            {{incidencia.descripcion}}
+          </div>
+          <div class="mt-3 mb-3" style="border-color: #404E5C;border-width: 1px;"></div>
+          <div class="flex pt-2 p-2">
+            <div class="w-24 rounded h-8 text-center" style="border-color: #404E5C;border-width: 2px;">
+              <div class="self-auto mt-1">
+                {{incidencia.fecha_creacion | fechaPipe}}
+              </div>
+            </div>
+            <div class="w-full text-right">
+              <button (click)="showDialog1(incidencia)" class="mr-5 hover:azul-gris-jesus">
+                <i class="fas fa-check"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p-scrollPanel>
+</p-overlayPanel>
+<p-overlayPanel #op3>
+  Perfil
+</p-overlayPanel>
+
+<!-- Resolver la incidencia -->
+<p-dialog header="Incidencia" [(visible)]="modal_incidencia" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
+  <div class="flex">
+    <div class="flex-1">
+      Vecino: {{incidenciaResolver.vecino.nombre}}
+    </div>
+    <div class="flex-1">
+      Fecha: {{incidenciaResolver.fecha_creacion |fechaPipe}}
+    </div>
+  </div>
+  <div class="flex-1">
+    Descripcion: {{incidenciaResolver.descripcion}}
+  </div>
+  <p-footer>
+    <div class="flex">
+      <div class="flex-1">
+        Ha sido resuelta la incidencia?
+      </div>
+      <div class="flex-1">
+        <button type="button" pButton icon="fas fa-check" (click)="resolverIncidencia(incidenciaResolver)" label="Yes"></button>
+        <button type="button" pButton icon="fas fa-times" (click)="modal_incidencia=false" label="No" class="ui-button-secondary"></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dialog>
+
+<!-- Crear una nueva tarea -->
+<p-dialog header="Nueva tarea" [(visible)]="modal_display" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
+  <div class="flex">
+    <div class="flex-1">
+      Descripcion
+    </div>
+    <div class="flex-1 border border-black">
+      <textarea rows="4" cols="30" #tarea></textarea>
+    </div>
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="fas fa-check" (click)="nuevaTarea(tarea.value)" label="Yes"></button>
+    <button type="button" pButton icon="fas fa-times" (click)="modal_display=false" label="No" class="ui-button-secondary"></button>
+  </p-footer>
+</p-dialog>
+
+<!-- Editar una tarea -->
+<p-dialog header="Editar tarea" [(visible)]="modal_display_edit" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
+  <div class="flex">
+    <div class="flex-1">
+      Descripcion
+    </div>
+    <div class="flex-1 border border-black">
+      <textarea rows="4" cols="30" #tareaedited>
+          {{tareaEdited.descripcion}}
+        </textarea>
+    </div>
+  </div>
+  <p-footer>
+    <button type="button" pButton icon="fas fa-check" (click)="editarTarea(tareaedited.value)" label="Yes"></button>
+    <button type="button" pButton icon="fas fa-times" (click)="modal_display_edit=false" label="No" class="ui-button-secondary"></button>
+  </p-footer>
+</p-dialog>
+
+
+
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>

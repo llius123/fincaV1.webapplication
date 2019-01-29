@@ -6,3 +6,8 @@
 #contenido {
   font-family: "IBM Plex Serif", serif;
 }
+.custom .ui-scrollpanel-bar {
+  background-color: #9E4F6E; 
+  opacity: 1; 
+  transition: background-color .3s; 
+}
