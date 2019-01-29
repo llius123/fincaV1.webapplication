@@ -25,7 +25,7 @@ import {MessagesModule} from 'primeng/messages';
 import { MessageModule} from 'primeng/message';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {TooltipModule} from 'primeng/tooltip';
-
+import {CalendarModule} from 'primeng/calendar';
 
 //mantenimiento-tablas
 import { InicioComponent as InicioComponentMentenimiento } from './mantenimiento-tablas/inicio/inicio.component';
@@ -53,10 +53,12 @@ import { NewProvinciaComponent } from './mantenimiento-tablas/provincia/new-prov
 import { NewPoblacionComponent } from './mantenimiento-tablas/poblacion/new-poblacion/new-poblacion.component';
 import { NewProveedorComponent } from './mantenimiento-tablas/proveedor/new-proveedor/new-proveedor.component';
 import { NewComunidadComponent } from './mantenimiento-tablas/comunidad/new-comunidad/new-comunidad.component';
+import { NewFacturaComponent } from './gestion/new-factura/new-factura.component';
+import { ListadoComponent } from './gestion/listado/listado.component';
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe, NewTipovecinoComponent, NewTipofacturaComponent, NewProvinciaComponent, NewPoblacionComponent, NewProveedorComponent, NewComunidadComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule, FormsModule, ScrollPanelModule, TooltipModule],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe, NewTipovecinoComponent, NewTipofacturaComponent, NewProvinciaComponent, NewPoblacionComponent, NewProveedorComponent, NewComunidadComponent, NewFacturaComponent, ListadoComponent],
+  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule, FormsModule, ScrollPanelModule, TooltipModule, CalendarModule],
   exports: [HeaderAdminComponent]
 })
 export class AdministradorModule { }

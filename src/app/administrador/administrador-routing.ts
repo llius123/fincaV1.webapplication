@@ -15,6 +15,8 @@ import { TipofacturaComponent as TipofacturaComponentMantenimiento } from './man
 import { TipovecinoComponent } from './mantenimiento-tablas/tipovecino/tipovecino.component';
 import { PoblacionComponent } from './mantenimiento-tablas/poblacion/poblacion.component';
 import { ProvinciaComponent } from './mantenimiento-tablas/provincia/provincia.component';
+import { NewFacturaComponent } from './gestion/new-factura/new-factura.component';
+import { ListadoComponent } from './gestion/listado/listado.component';
 
 export const routes: Routes = [
   {
@@ -87,6 +89,20 @@ export const routes: Routes = [
         path: "gestion",
         component: GestionComponent,
         canLoad: [AuthAdmin],
+        children: [
+          {
+            path: "nuevafactura",
+            component: NewFacturaComponent,
+            canLoad: [AuthAdmin],
+            data: {id:1}
+          },
+          {
+            path: "listado",
+            component: ListadoComponent,
+            canLoad: [AuthAdmin],
+            data: {id:1}
+          }
+        ],
         data: { id: 1 }
       },
       {
