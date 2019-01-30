@@ -22,7 +22,7 @@
   <div class="flex-1">
     <div class="flex">
       <div>
-        <div #tarea  pTooltip="Tareas" tooltipPosition="bottom" (click)="op1.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
+        <div #tarea pTooltip="Tareas" tooltipPosition="bottom" (click)="op1.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
           style="border-color:#9E4F6E">
           <div>
             <i class="fas fa-list-ol"></i>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div>
-        <div  pTooltip="Incidencias" tooltipPosition="bottom" (click)="op2.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
+        <div pTooltip="Incidencias" tooltipPosition="bottom" (click)="op2.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
           style="border-color:#9E4F6E">
           <div>
             <i class="fas fa-exclamation"></i>
@@ -114,7 +114,7 @@
       </div>
     </div>
     <div class="flex">
-      <div class="w-full" >
+      <div class="w-full">
         <div class="border rounded ng-star-inserted m-2 p-2 bg-grey-lighter shadow-md" *ngFor="let incidencia of incidencias | incidenciaPipe"
           style="border-color: #404E5C">
           <div class="flex p-2">
@@ -183,7 +183,7 @@
       Descripcion
     </div>
     <div class="flex-1 border border-black">
-      <textarea rows="4" cols="30" ></textarea>
+      <textarea rows="4" cols="30"></textarea>
     </div>
   </div>
   <p-footer>

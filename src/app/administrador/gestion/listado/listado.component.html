@@ -1,3 +1,30 @@
 <div *ngFor="let factura of facturas">
-{{factura.fecha_registro | fechaPipe}}{{factura.tipofactura.descripcion}}
+  <div>
+      {{factura.fecha_registro | fechaPipe}}
+  </div>
+  <div>
+      {{factura.tipofactura.descripcion}}
+  </div>
+  <div>
+    {{factura.proveedor.telefono}}
+    <div>
+      <i class="fas fa-caret-down"></i>
+    </div>
+  </div>
+  <div>
+
+  </div>
+  <div>
+
+  </div>
+  <div>
+
+  </div>
+  <div>
+
+  </div>
+  <div>
+    
+  </div>
+  
 </div>
