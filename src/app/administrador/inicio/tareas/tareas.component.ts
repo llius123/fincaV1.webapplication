@@ -49,6 +49,7 @@ export class TareasComponent implements OnInit {
     this.modal_display = true;
   }
   showDialogEdit(tarea: TareaInterface) {
+    console.log(tarea)
     this.modal_display_edit = true;
     this.tareaEdited = tarea;
   }
@@ -79,6 +80,7 @@ export class TareasComponent implements OnInit {
       descripcion: descripcion,
       fecha: fecha
     }
+    console.log(tarea)
     this.tareaService.editTarea(tarea).subscribe(
       response => {
         this.showTooltip('success', '',' Tarea editada correctamente!' );

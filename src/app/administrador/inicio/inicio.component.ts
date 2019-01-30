@@ -18,8 +18,8 @@ export class InicioComponent implements OnInit {
   ngOnInit() {
   }
 
-  recive($event){
-    console.log($event);
-    this.incidencias = $event;
-  }
+  // recive($event){
+  //   console.log($event);
+  //   this.incidencias = $event;
+  // }
 }
