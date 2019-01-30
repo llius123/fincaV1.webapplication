@@ -10,6 +10,9 @@ export class GestionComponent implements OnInit {
 
   constructor(private sql: FacturaService) { }
 
+  listado: boolean = true;
+  nueva: boolean = false;
+
   facturas: FacturaProveedorInterface[];
 
   ngOnInit() {
@@ -20,5 +23,15 @@ export class GestionComponent implements OnInit {
     this.sql.getAll().subscribe(
       data => this.facturas = data
     )
+  }
+
+  nuevaFactura(){
+    this.listado = false;
+    this.nueva = true;
+  }
+
+  volver(){
+    this.listado = true;
+    this.nueva = false;
   }
 }
