@@ -16,6 +16,9 @@ import { RouterModule } from '@angular/router';
 import { ServiceModule } from './service/service.module';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { SentryErrorHandle } from './service/error/error.service';
+import { HelpComponent } from './administrador/help/help.component';
+
+
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import { SentryErrorHandle } from './service/error/error.service';
     LogoutComponent,
     AdministradorComponent,
     HeaderNotloggedComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    HelpComponent
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,7 @@ import { PoblacionComponent } from './mantenimiento-tablas/poblacion/poblacion.c
 import { ProvinciaComponent } from './mantenimiento-tablas/provincia/provincia.component';
 import { NewFacturaComponent } from './gestion/new-factura/new-factura.component';
 import { ListadoComponent } from './gestion/listado/listado.component';
+import { EditFacturaComponent } from './gestion/edit-factura/edit-factura.component';
 
 export const routes: Routes = [
   {
@@ -99,6 +100,12 @@ export const routes: Routes = [
           {
             path: "listado",
             component: ListadoComponent,
+            canLoad: [AuthAdmin],
+            data: {id:1}
+          },
+          {
+            path: "editfactura",
+            component: EditFacturaComponent,
             canLoad: [AuthAdmin],
             data: {id:1}
           }

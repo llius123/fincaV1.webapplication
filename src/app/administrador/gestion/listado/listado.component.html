@@ -1,30 +1,183 @@
 <div *ngFor="let factura of facturas">
   <div>
-      {{factura.fecha_registro | fechaPipe}}
+    fecha registro
+    {{factura.fecha_registro | fechaPipe}}
   </div>
   <div>
-      {{factura.tipofactura.descripcion}}
+    tipofactura
+    {{factura.tipofactura.descripcion}}
   </div>
   <div>
+    proveedor
     {{factura.proveedor.telefono}}
-    <div>
-      <i class="fas fa-caret-down"></i>
+    <div class="cursor-pointer" (click)="selected(factura.proveedor, 'proveedor')">
+      <i class="fas fa-caret-down" #proveedor></i>
     </div>
   </div>
   <div>
-
+    base imponible 0
+    {{factura.base_imponible0}}
   </div>
   <div>
-
+      base imponible 1
+    {{factura.base_imponible1}}
   </div>
   <div>
-
+      base imponible 2
+    {{factura.base_imponible2}}
   </div>
   <div>
-
+      base imponible 0
+    {{factura.base_imponible3}}
   </div>
   <div>
-    
+    tipo iva 1
+    {{factura.tipo_iva1}}
   </div>
-  
+  <div>
+      tipo iva 2
+    {{factura.tipo_iva2}}
+  </div>
+  <div>
+      tipo iva 3
+    {{factura.tipo_iva3}}
+  </div>
+  <div>
+    total
+    {{factura.total}}
+  </div>
+  <div>
+    comunidad
+    {{factura.comunidad}}
+    <div class="cursor-pointer" (click)="selected(factura.comunidad, 'comunidad')">
+      <i class="fas fa-caret-down" #comunidad></i>
+    </div>
+  </div>
+  <div>
+    numero factura
+    {{factura.num_factura}}
+  </div>
+  <div>
+    cobrado
+    {{factura.cobrado}}
+  </div>
+  <div>
+      <button [routerLink]="['/admin/gestion/editfactura']" class="ml-5 hover:rosa-jesus">
+          <i class="fas fa-edit fa-2x"></i>
+        </button>
+  </div>
+
 </div>
+
+<p-dialog [(visible)]="display_proveedor" [modal]="true" [style]="{width: '500px', height: '200px'}" [positionTop]=10>
+  <p-header>
+    Proveedor
+  </p-header>
+  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
+    <div class="p-3 font-bold justify-center">
+      <div class="flex ">
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Direccion
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Telefono
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Email
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Poblacion
+          </div>
+        </div>
+      </div>
+      <div class="border-b w-full mt-2" style="border-color:#9E4F6E;">
+      </div>
+      <div class="flex">
+        <div class="w-1/4 flex justify-center">
+          {{proveedorSeleccionado.direccion}}
+        </div>
+        <div class="w-1/4 flex justify-center">
+          {{proveedorSeleccionado.telefono}}
+        </div>
+        <div class="w-1/4 flex justify-center">
+          {{proveedorSeleccionado.email}}
+        </div>
+        <div class="w-1/4 flex justify-center">
+          {{proveedorSeleccionado.poblacion}}
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+
+<p-dialog [(visible)]="display_comunidad" [modal]="true" [style]="{width: '500px', height: '200px'}" [positionTop]=10>
+  <p-header>
+    Comunidad
+  </p-header>
+  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
+    <div class="p-3 font-bold justify-center">
+      <div class="flex ">
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Nombre
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Direccion
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Nif
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Iban
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Sufijo
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-center">
+          <div>
+            Poblacion
+          </div>
+        </div>
+      </div>
+      <div class="border-b w-full mt-2" style="border-color:#9E4F6E;">
+      </div>
+      <div class="flex">
+        <div class="w-1/4 flex justify-center">
+          {{comunidadSeleccionado.nombre}}
+        </div>
+        <div class="w-1/4 flex justify-center">
+          {{comunidadSeleccionado.direccion}}
+        </div>
+        <div class="w-1/4 flex justify-center">
+          {{comunidadSeleccionado.nif}}
+        </div>
+        <div class="w-1/4 flex justify-center">
+          {{comunidadSeleccionado.iban}}
+        </div>
+        <div class="w-1/4 flex justify-center">
+          {{comunidadSeleccionado.sufijo}}
+        </div>
+        <div class="w-1/4 flex justify-center">
+          {{comunidadSeleccionado.poblacion}}
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
