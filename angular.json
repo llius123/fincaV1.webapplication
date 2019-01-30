@@ -31,6 +31,8 @@
               "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
+              "./src/assets/jspdf.debug.js",
+              "./src/assets/moment-with-locales.js"
             ]
           },
           "configurations": {

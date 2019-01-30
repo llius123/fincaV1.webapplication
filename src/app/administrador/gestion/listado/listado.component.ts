@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FacturaService } from 'src/app/service/factura/factura.service';
 
 @Component({
   selector: 'app-listado',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sql: FacturaService) { }
+
+  facturas: FacturaProveedorInterface[];
 
   ngOnInit() {
+    this.getAll();
+  }
+  getAll() {
+    this.sql.getAll().subscribe(
+      data => this.facturas = data
+    )
   }
 
 }

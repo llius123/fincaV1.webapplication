@@ -120,7 +120,7 @@ export class NewFacturaComponent implements OnInit {
   crearFactura(){
     const factura = this.formularioNuevaFactura.value;
     const fecha: Date = factura.fecha_registro;
-    factura.fecha_registro = `${fecha.getFullYear()}-${fecha.getMonth()}-${fecha.getDate()}`
+    factura.fecha_registro = fecha.getTime();
     factura.proveedor = this.proveedorSelected;
     factura.tipofactura = this.tipofacturaSelected;
     factura.comunidad = this.comunidadSelected;

@@ -1,3 +1,3 @@
-<p>
-  listado works!
-</p>
+<div *ngFor="let factura of facturas">
+{{factura.fecha_registro | fechaPipe}}{{factura.tipofactura.descripcion}}
+</div>
