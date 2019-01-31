@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FacturaService } from 'src/app/service/factura/factura.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listado',
@@ -8,7 +9,7 @@ import { FacturaService } from 'src/app/service/factura/factura.service';
 })
 export class ListadoComponent implements OnInit {
 
-  constructor(private sql: FacturaService) { }
+  constructor(private sql: FacturaService, private router: Router) { }
 
   facturas: FacturaProveedorInterface[];
 
@@ -41,6 +42,11 @@ export class ListadoComponent implements OnInit {
         this.display_comunidad = true;
         break;
     }
+  }
+
+  editFactura(factura: FacturaProveedorInterface){
+    const url = `/admin/gestion/editfactura/${factura.id}`
+    this.router.navigate([url])
   }
 
 }

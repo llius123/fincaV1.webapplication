@@ -62,7 +62,7 @@
     {{factura.cobrado}}
   </div>
   <div>
-      <button [routerLink]="['/admin/gestion/editfactura']" class="ml-5 hover:rosa-jesus">
+      <button (click)="editFactura(factura)" class="ml-5 hover:rosa-jesus">
           <i class="fas fa-edit fa-2x"></i>
         </button>
   </div>

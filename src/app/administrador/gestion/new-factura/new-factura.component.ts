@@ -31,8 +31,11 @@ export class NewFacturaComponent implements OnInit {
   tipofacturaSelected: TipofacturaInterface;
   comunidadSelected: ComunidadInterface;
 
+  es: any;
 
   ngOnInit() {
+    this.es = this.facturaSQL.formatoFechaDatePicker;
+    
     this.formularioNuevaFactura = new FormGroup({
       id:new FormControl(0),
       fecha_registro: new FormControl(),

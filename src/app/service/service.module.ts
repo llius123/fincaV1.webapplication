@@ -8,12 +8,11 @@ import { VecinoService } from './vecino/vecino.service';
 import { ComunidadService } from './comunidad/comunidad.service';
 import { TipoVecinoService } from './tipovecino-tipofactura/tipovecino.service';
 import { PoblacionService } from './poblacion-provincia/poblacion.service';
-import { SentryErrorHandle } from './error/error.service';
 import { ProveedorService } from './proveedor/proveedor.service';
 import { TipoFacturaService } from './tipovecino-tipofactura/tipofactura.service';
 import { ProvinciaService } from './poblacion-provincia/provincia.service';
 import { FacturaService } from './factura/factura.service';
 @NgModule({
-  providers: [LoginService, AuthAdmin, IncidenciaService, TareaService, GeneralService, VecinoService, ComunidadService, TipoVecinoService, PoblacionService,ProvinciaService, SentryErrorHandle, ProveedorService, TipoFacturaService, FacturaService],
+  providers: [LoginService, AuthAdmin, IncidenciaService, TareaService, GeneralService, VecinoService, ComunidadService, TipoVecinoService, PoblacionService,ProvinciaService, ProveedorService, TipoFacturaService, FacturaService],
 })
 export class ServiceModule { }

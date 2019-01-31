@@ -9,6 +9,7 @@ interface ComunidadInterface {
 }
 
 interface FacturaProveedorInterface {
+  id:number;
   fecha_registro: Date;
   proveedor: ProveedorInterface;
   tipofactura: TipofacturaInterface;

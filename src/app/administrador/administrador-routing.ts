@@ -104,7 +104,7 @@ export const routes: Routes = [
             data: {id:1}
           },
           {
-            path: "editfactura",
+            path: "editfactura/:id",
             component: EditFacturaComponent,
             canLoad: [AuthAdmin],
             data: {id:1}
