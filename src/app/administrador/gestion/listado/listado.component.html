@@ -7,7 +7,7 @@
     Tipo de factura:
     <select class="" (change)="onChange('tipofactura')" [(ngModel)]="tipofacturaSelect">
       <option value="0">Selecciona ...</option>
-      <option *ngFor="let tipofactura of tipofacturas" value="{{tipofactura.descripcion}}">{{tipofactura.descripcion}}</option>
+      <option *ngFor="let tipofactura of tipofacturas" value="{{tipofactura.id}}">{{tipofactura.descripcion}}</option>
     </select>
     <div>
       Desde:

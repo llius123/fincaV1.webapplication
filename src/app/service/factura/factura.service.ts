@@ -19,6 +19,9 @@ export class FacturaService {
     }
 
     filtroFecha(desde: string, hasta: string): Observable<FacturaProveedorInterface[]>{
-        return this.http.get<FacturaProveedorInterface[]>(`${this.config.api}facturaproveedores/${desde}/${hasta}`, this.config.header);
+        return this.http.get<FacturaProveedorInterface[]>(`${this.config.api}facturaproveedores/filtrofecha/${desde}/${hasta}`, this.config.header);
+    }
+    filtroGeneral(tabla: string, dato: number): Observable<FacturaProveedorInterface[]>{
+        return this.http.get<FacturaProveedorInterface[]>(`${this.config.api}facturaproveedores/filtrogeneral/${tabla}/${dato}`, this.config.header);
     }
 }

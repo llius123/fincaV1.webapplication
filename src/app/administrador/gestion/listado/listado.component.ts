@@ -84,9 +84,15 @@ export class ListadoComponent implements OnInit {
     switch (tabla) {
       case 'cobrado':
         console.log(this.cobradoSelect)
+        this.sql.filtroGeneral('cobrado', this.cobradoSelect).subscribe(
+          data => this.facturas = data
+        )
         break;
       case 'tipofactura':
         console.log(this.tipofacturaSelect)
+        this.sql.filtroGeneral('id_tipofactura', this.tipofacturaSelect).subscribe(
+          data => this.facturas = data
+        )
         break;
       case 'desdeFecha':
         console.log(this.desdeFecha);
