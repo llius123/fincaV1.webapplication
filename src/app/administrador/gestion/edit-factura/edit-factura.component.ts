@@ -7,6 +7,7 @@ import { TipoFacturaService } from 'src/app/service/tipovecino-tipofactura/tipof
 import { ComunidadService } from 'src/app/service/comunidad/comunidad.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import * as moment from 'src/assets/moment-with-locales.js';
+import { ConfigService } from 'src/app/service/config/config.service';
 
 @Component({
   selector: 'app-edit-factura',
@@ -16,7 +17,7 @@ import * as moment from 'src/assets/moment-with-locales.js';
 })
 export class EditFacturaComponent implements OnInit {
 
-  constructor(private sql: FacturaService, private router: Router, private route: ActivatedRoute, private proveedorSQL: ProveedorService, private tipofacturaSQL: TipoFacturaService, private comunidadSQL: ComunidadService, private messageService: MessageService) { }
+  constructor(private sql: FacturaService, private router: Router, private route: ActivatedRoute, private proveedorSQL: ProveedorService, private tipofacturaSQL: TipoFacturaService, private comunidadSQL: ComunidadService, private messageService: MessageService, private config: ConfigService) { }
 
   factura: FacturaProveedorInterface;
   formularioEditFactura: FormGroup;
@@ -36,7 +37,7 @@ export class EditFacturaComponent implements OnInit {
   es: any;
   
   ngOnInit() {
-    this.es = this.sql.formatoFechaDatePicker;
+    this.es = this.config.formatoFechaDatePicker;
     this.route.params.subscribe(data => {
       this.sql.getById(data.id).subscribe(
         data => this.putDataForm(data)

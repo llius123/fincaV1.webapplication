@@ -6,6 +6,7 @@ import { TipoVecinoService } from 'src/app/service/tipovecino-tipofactura/tipove
 import { TipoFacturaService } from 'src/app/service/tipovecino-tipofactura/tipofactura.service';
 import { FacturaService } from 'src/app/service/factura/factura.service';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { ConfigService } from 'src/app/service/config/config.service';
 
 @Component({
   selector: 'app-new-factura',
@@ -15,7 +16,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
 })
 export class NewFacturaComponent implements OnInit {
 
-  constructor(private proveedorSQL: ProveedorService, private tipofacturaSQL: TipoFacturaService, private comunidadSQL: ComunidadService, private facturaSQL: FacturaService, private messageService: MessageService) { }
+  constructor(private proveedorSQL: ProveedorService, private tipofacturaSQL: TipoFacturaService, private comunidadSQL: ComunidadService, private facturaSQL: FacturaService, private messageService: MessageService, private config: ConfigService) { }
 
   formularioNuevaFactura: FormGroup;
 
@@ -34,7 +35,7 @@ export class NewFacturaComponent implements OnInit {
   es: any;
 
   ngOnInit() {
-    this.es = this.facturaSQL.formatoFechaDatePicker;
+    this.es = this.config.formatoFechaDatePicker;
     
     this.formularioNuevaFactura = new FormGroup({
       id:new FormControl(0),

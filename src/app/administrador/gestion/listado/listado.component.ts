@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FacturaService } from 'src/app/service/factura/factura.service';
 import { Router } from '@angular/router';
+import { TipoFacturaService } from 'src/app/service/tipovecino-tipofactura/tipofactura.service';
+import { ConfigService } from 'src/app/service/config/config.service';
+import { ProveedorService } from 'src/app/service/proveedor/proveedor.service';
 
 @Component({
   selector: 'app-listado',
@@ -9,9 +12,10 @@ import { Router } from '@angular/router';
 })
 export class ListadoComponent implements OnInit {
 
-  constructor(private sql: FacturaService, private router: Router) { }
+  constructor(private sql: FacturaService, private router: Router, private tipofacturaSQL: TipoFacturaService, private config: ConfigService, private proveedorSQL: ProveedorService) { }
 
   facturas: FacturaProveedorInterface[];
+  oFiltro: boolean = false;
 
   //proveedorSeleccionado: ProveedorInterface = { id: null, direccion: null, telefono: null, email: null, poblacion: null };
   proveedorSeleccionado = '';
@@ -20,12 +24,28 @@ export class ListadoComponent implements OnInit {
   comunidadSeleccionado = '';
   display_comunidad: boolean = false;
 
+  tipofacturas: TipofacturaInterface[];
+  proveedores: ProveedorInterface[];
+
+  es: any;
+
+  //NgModel bindeados
+  tipofacturaSelect: any;
+  cobradoSelect: any;
+
   ngOnInit() {
     this.getAll();
   }
   getAll() {
+    this.es = this.config.formatoFechaDatePicker;
     this.sql.getAll().subscribe(
       data => this.facturas = data
+    )
+    this.tipofacturaSQL.getAll().subscribe(
+      data => this.tipofacturas = data
+    )
+    this.proveedorSQL.getAll().subscribe(
+      data => this.proveedores = data
     )
   }
 
@@ -44,9 +64,28 @@ export class ListadoComponent implements OnInit {
     }
   }
 
-  editFactura(factura: FacturaProveedorInterface){
+  editFactura(factura: FacturaProveedorInterface) {
     const url = `/admin/gestion/editfactura/${factura.id}`
     this.router.navigate([url])
+  }
+
+  filtro() {
+    if (this.oFiltro == true) {
+      this.oFiltro = false;
+    } else {
+      this.oFiltro = true;
+    }
+  }
+
+  onChange(tabla: string) {
+    switch (tabla) {
+      case 'cobrado':
+        console.log(this.cobradoSelect)
+        break;
+      case 'tipofactura':
+        console.log(this.tipofacturaSelect)
+        break;
+    }
   }
 
 }

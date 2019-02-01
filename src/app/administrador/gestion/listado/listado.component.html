@@ -1,3 +1,38 @@
+<div class="flex border border-black">
+  <div class="border border-yellow" (click)="filtro()">
+    Filtrar
+    <i class="fas fa-caret-right"></i>
+  </div>
+  <div *ngIf="oFiltro">
+    Tipo de factura:
+    <select class="" (change)="onChange('tipofactura')" [(ngModel)]="tipofacturaSelect">
+      <option value="0">Selecciona ...</option>
+      <option *ngFor="let tipofactura of tipofacturas" value="{{tipofactura.descripcion}}">{{tipofactura.descripcion}}</option>
+    </select>
+    <div>
+      Desde:
+      <p-calendar [(ngModel)]="desdeFecha" [locale]="es"></p-calendar>
+      Hasta:
+      <p-calendar [(ngModel)]="hastaFecha" [locale]="es"></p-calendar>
+    </div>
+    <div>
+      Cobrado:
+      <select class="" (change)="onChange('cobrado')" [(ngModel)]="cobradoSelect">
+        <option value="0">Selecciona ...</option>
+        <option value="s">Si</option>
+        <option value="n">No</option>
+      </select>
+    </div>
+    <div>
+      Proveedor:
+      <select class="">
+        <option value="0">Selecciona ...</option>
+        <option *ngFor="let proveedor of proveedores" value="proveedor.id">{{proveedor.direccion}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
 <div *ngFor="let factura of facturas">
   <div>
     fecha registro
@@ -19,15 +54,15 @@
     {{factura.base_imponible0}}
   </div>
   <div>
-      base imponible 1
+    base imponible 1
     {{factura.base_imponible1}}
   </div>
   <div>
-      base imponible 2
+    base imponible 2
     {{factura.base_imponible2}}
   </div>
   <div>
-      base imponible 0
+    base imponible 0
     {{factura.base_imponible3}}
   </div>
   <div>
@@ -35,11 +70,11 @@
     {{factura.tipo_iva1}}
   </div>
   <div>
-      tipo iva 2
+    tipo iva 2
     {{factura.tipo_iva2}}
   </div>
   <div>
-      tipo iva 3
+    tipo iva 3
     {{factura.tipo_iva3}}
   </div>
   <div>
@@ -62,9 +97,9 @@
     {{factura.cobrado}}
   </div>
   <div>
-      <button (click)="editFactura(factura)" class="ml-5 hover:rosa-jesus">
-          <i class="fas fa-edit fa-2x"></i>
-        </button>
+    <button (click)="editFactura(factura)" class="ml-5 hover:rosa-jesus">
+      <i class="fas fa-edit fa-2x"></i>
+    </button>
   </div>
 
 </div>
