@@ -11,9 +11,9 @@
     </select>
     <div>
       Desde:
-      <p-calendar [(ngModel)]="desdeFecha" [locale]="es"></p-calendar>
+        <p-calendar [(ngModel)]="desdeFecha" [locale]="es" (onSelect)="onChange('desdeFecha')"></p-calendar>
       Hasta:
-      <p-calendar [(ngModel)]="hastaFecha" [locale]="es"></p-calendar>
+      <p-calendar [(ngModel)]="hastaFecha" [locale]="es" (onSelect)="onChange('hastaFecha')"></p-calendar>
     </div>
     <div>
       Cobrado:

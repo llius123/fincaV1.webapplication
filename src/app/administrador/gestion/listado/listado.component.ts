@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TipoFacturaService } from 'src/app/service/tipovecino-tipofactura/tipofactura.service';
 import { ConfigService } from 'src/app/service/config/config.service';
 import { ProveedorService } from 'src/app/service/proveedor/proveedor.service';
+import * as moment from 'src/assets/moment-with-locales.js';
 
 @Component({
   selector: 'app-listado',
@@ -32,6 +33,8 @@ export class ListadoComponent implements OnInit {
   //NgModel bindeados
   tipofacturaSelect: any;
   cobradoSelect: any;
+  desdeFecha: Date;
+  hastaFecha: Date;
 
   ngOnInit() {
     this.getAll();
@@ -85,7 +88,25 @@ export class ListadoComponent implements OnInit {
       case 'tipofactura':
         console.log(this.tipofacturaSelect)
         break;
+      case 'desdeFecha':
+        console.log(this.desdeFecha);
+        if (this.hastaFecha) {
+          this.sql.filtroFecha(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
+            data => this.facturas = data
+          )
+        }
+        break;
+      case 'hastaFecha':
+        console.log(this.hastaFecha);
+        if (this.desdeFecha) {
+          this.sql.filtroFecha(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
+            data => this.facturas = data
+          )
+        }
+        break;
     }
   }
+
+
 
 }

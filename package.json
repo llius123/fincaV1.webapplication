@@ -22,7 +22,6 @@
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
-    "@sentry/browser": "^4.5.3",
     "core-js": "^2.5.4",
     "ember-cli-cors": "0.0.2",
     "primeicons": "^1.0.0",
