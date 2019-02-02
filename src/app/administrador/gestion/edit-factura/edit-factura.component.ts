@@ -35,7 +35,7 @@ export class EditFacturaComponent implements OnInit {
   comunidadSelected: ComunidadInterface;
 
   es: any;
-  
+
   ngOnInit() {
     this.es = this.config.formatoFechaDatePicker;
     this.route.params.subscribe(data => {
@@ -44,7 +44,7 @@ export class EditFacturaComponent implements OnInit {
       )
     })
     this.formularioEditFactura = new FormGroup({
-      id:new FormControl(),
+      id: new FormControl(),
       fecha_registro: new FormControl(),
       proveedor: new FormControl(),
       tipofactura: new FormControl(),
@@ -66,15 +66,15 @@ export class EditFacturaComponent implements OnInit {
 
   }
 
-  putDataForm(factura: FacturaProveedorInterface){
+  putDataForm(factura: FacturaProveedorInterface) {
     this.proveedorSelected = factura.proveedor;
     this.tipofacturaSelected = factura.tipofactura;
     this.comunidadSelected = factura.comunidad;
     const fecha = new Date(factura.fecha_registro);
 
     this.formularioEditFactura.patchValue({
-      id:factura.id,
-      fecha_registro:fecha,
+      id: factura.id,
+      fecha_registro: fecha,
       proveedor: factura.proveedor.direccion,
       tipofactura: factura.tipofactura.descripcion,
       base_imponible0: factura.base_imponible0,
@@ -127,7 +127,7 @@ export class EditFacturaComponent implements OnInit {
           data => this.tipofacturas = data
         )
         break;
-        case 'comunidad':
+      case 'comunidad':
         this.comunidadSQL.getAll().subscribe(
           data => this.comunidades = data
         )
@@ -148,12 +148,24 @@ export class EditFacturaComponent implements OnInit {
     })
     this.display_tipofactura = false;
   }
-  saveComunidad(data: ComunidadInterface){
+  saveComunidad(data: ComunidadInterface) {
     this.comunidadSelected = data;
     this.formularioEditFactura.patchValue({
-      comunidad:data.nombre
+      comunidad: data.nombre
     })
     this.display_comunidad = false;
+  }
+
+  editarFactura() {
+    const factura = this.formularioEditFactura.value;
+    factura.proveedor = this.proveedorSelected;
+    factura.tipofactura = this.tipofacturaSelected;
+    factura.comunidad = this.comunidadSelected;
+
+    this.sql.update(factura).subscribe(
+      data => this.showTooltip('success', '', `${data.msg}`),
+      error => this.showTooltip('error', '', `${error.msg}`)
+    )
   }
 
   showTooltip(type: string, title: string, desc: string) {

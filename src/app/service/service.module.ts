@@ -12,7 +12,8 @@ import { ProveedorService } from './proveedor/proveedor.service';
 import { TipoFacturaService } from './tipovecino-tipofactura/tipofactura.service';
 import { ProvinciaService } from './poblacion-provincia/provincia.service';
 import { FacturaService } from './factura/factura.service';
+import { PdfService } from './pdf.service';
 @NgModule({
-  providers: [LoginService, AuthAdmin, IncidenciaService, TareaService, GeneralService, VecinoService, ComunidadService, TipoVecinoService, PoblacionService,ProvinciaService, ProveedorService, TipoFacturaService, FacturaService],
+  providers: [LoginService, AuthAdmin, IncidenciaService, TareaService, GeneralService, VecinoService, ComunidadService, TipoVecinoService, PoblacionService,ProvinciaService, ProveedorService, TipoFacturaService, FacturaService, PdfService],
 })
 export class ServiceModule { }

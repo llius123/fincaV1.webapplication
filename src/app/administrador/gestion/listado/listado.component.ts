@@ -5,6 +5,7 @@ import { TipoFacturaService } from 'src/app/service/tipovecino-tipofactura/tipof
 import { ConfigService } from 'src/app/service/config/config.service';
 import { ProveedorService } from 'src/app/service/proveedor/proveedor.service';
 import * as moment from 'src/assets/moment-with-locales.js';
+import { PdfService } from 'src/app/service/pdf.service';
 
 @Component({
   selector: 'app-listado',
@@ -13,7 +14,7 @@ import * as moment from 'src/assets/moment-with-locales.js';
 })
 export class ListadoComponent implements OnInit {
 
-  constructor(private sql: FacturaService, private router: Router, private tipofacturaSQL: TipoFacturaService, private config: ConfigService, private proveedorSQL: ProveedorService) { }
+  constructor(private sql: FacturaService, private router: Router, private tipofacturaSQL: TipoFacturaService, private config: ConfigService, private proveedorSQL: ProveedorService, private pdfService: PdfService) { }
 
   facturas: FacturaProveedorInterface[];
   oFiltro: boolean = false;
@@ -35,6 +36,7 @@ export class ListadoComponent implements OnInit {
   cobradoSelect: any;
   desdeFecha: Date;
   hastaFecha: Date;
+  proveedorSelect: any;
 
   ngOnInit() {
     this.getAll();
@@ -83,19 +85,24 @@ export class ListadoComponent implements OnInit {
   onChange(tabla: string) {
     switch (tabla) {
       case 'cobrado':
-        console.log(this.cobradoSelect)
-        this.sql.filtroGeneral('cobrado', this.cobradoSelect).subscribe(
-          data => this.facturas = data
-        )
+        if (this.cobradoSelect != 0) {
+          this.sql.filtroGeneral('cobrado', this.cobradoSelect).subscribe(
+            data => this.facturas = data
+          )
+        } else {
+          this.getAll()
+        }
         break;
       case 'tipofactura':
-        console.log(this.tipofacturaSelect)
-        this.sql.filtroGeneral('id_tipofactura', this.tipofacturaSelect).subscribe(
-          data => this.facturas = data
-        )
+        if (this.tipofacturaSelect > 0) {
+          this.sql.filtroGeneral('id_tipofactura', this.tipofacturaSelect).subscribe(
+            data => this.facturas = data
+          )
+        } else {
+          this.getAll()
+        }
         break;
       case 'desdeFecha':
-        console.log(this.desdeFecha);
         if (this.hastaFecha) {
           this.sql.filtroFecha(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
             data => this.facturas = data
@@ -103,14 +110,26 @@ export class ListadoComponent implements OnInit {
         }
         break;
       case 'hastaFecha':
-        console.log(this.hastaFecha);
         if (this.desdeFecha) {
           this.sql.filtroFecha(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
             data => this.facturas = data
           )
         }
         break;
+      case 'proveedor':
+        if (this.proveedorSelect > 0) {
+          this.sql.filtroGeneral('id_proveedor', this.proveedorSelect).subscribe(
+            data => this.facturas = data
+          )
+        } else {
+          this.getAll()
+        }
+        break;
     }
+  }
+
+  pdf(data: FacturaProveedorInterface){
+    this.pdfService.newPdf(data);
   }
 
 

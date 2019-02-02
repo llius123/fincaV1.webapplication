@@ -11,7 +11,7 @@
     </select>
     <div>
       Desde:
-        <p-calendar [(ngModel)]="desdeFecha" [locale]="es" (onSelect)="onChange('desdeFecha')"></p-calendar>
+      <p-calendar [(ngModel)]="desdeFecha" [locale]="es" (onSelect)="onChange('desdeFecha')"></p-calendar>
       Hasta:
       <p-calendar [(ngModel)]="hastaFecha" [locale]="es" (onSelect)="onChange('hastaFecha')"></p-calendar>
     </div>
@@ -25,83 +25,57 @@
     </div>
     <div>
       Proveedor:
-      <select class="">
+      <select class="" (change)="onChange('proveedor')" [(ngModel)]="proveedorSelect">
         <option value="0">Selecciona ...</option>
-        <option *ngFor="let proveedor of proveedores" value="proveedor.id">{{proveedor.direccion}}</option>
+        <option *ngFor="let proveedor of proveedores" value="{{proveedor.id}}">{{proveedor.direccion}}</option>
       </select>
     </div>
   </div>
 </div>
 
-<div *ngFor="let factura of facturas">
-  <div>
-    fecha registro
-    {{factura.fecha_registro | fechaPipe}}
-  </div>
-  <div>
-    tipofactura
-    {{factura.tipofactura.descripcion}}
-  </div>
-  <div>
-    proveedor
-    {{factura.proveedor.telefono}}
-    <div class="cursor-pointer" (click)="selected(factura.proveedor, 'proveedor')">
-      <i class="fas fa-caret-down" #proveedor></i>
+<div class="flex" *ngFor="let factura of facturas">
+  <div class="flex">
+    <div>
+      fecha registro
+      {{factura.fecha_registro | fechaPipe}}
+    </div>
+    <div>
+      tipofactura
+      {{factura.tipofactura.descripcion}}
+    </div>
+    <div>
+      proveedor
+      {{factura.proveedor.telefono}}
+      <div class="cursor-pointer" (click)="selected(factura.proveedor, 'proveedor')">
+        <i class="fas fa-caret-down" #proveedor></i>
+      </div>
+    </div>
+    <div>
+      comunidad
+      {{factura.comunidad}}
+      <div class="cursor-pointer" (click)="selected(factura.comunidad, 'comunidad')">
+        <i class="fas fa-caret-down" #comunidad></i>
+      </div>
+    </div>
+    <div>
+      numero factura
+      {{factura.num_factura}}
+    </div>
+    <div>
+      cobrado
+      {{factura.cobrado}}
     </div>
   </div>
-  <div>
-    base imponible 0
-    {{factura.base_imponible0}}
-  </div>
-  <div>
-    base imponible 1
-    {{factura.base_imponible1}}
-  </div>
-  <div>
-    base imponible 2
-    {{factura.base_imponible2}}
-  </div>
-  <div>
-    base imponible 0
-    {{factura.base_imponible3}}
-  </div>
-  <div>
-    tipo iva 1
-    {{factura.tipo_iva1}}
-  </div>
-  <div>
-    tipo iva 2
-    {{factura.tipo_iva2}}
-  </div>
-  <div>
-    tipo iva 3
-    {{factura.tipo_iva3}}
-  </div>
-  <div>
-    total
-    {{factura.total}}
-  </div>
-  <div>
-    comunidad
-    {{factura.comunidad}}
-    <div class="cursor-pointer" (click)="selected(factura.comunidad, 'comunidad')">
-      <i class="fas fa-caret-down" #comunidad></i>
+  <div class="flex-1">
+    <div class="flex justify-end">
+      <button (click)="pdf(factura)" class="ml-5 hover:rosa-jesus">
+        <i class="fas fa-file-pdf fa-2x"></i>
+      </button>
+      <button (click)="editFactura(factura)" class="ml-5 hover:rosa-jesus">
+        <i class="fas fa-edit fa-2x"></i>
+      </button>
     </div>
   </div>
-  <div>
-    numero factura
-    {{factura.num_factura}}
-  </div>
-  <div>
-    cobrado
-    {{factura.cobrado}}
-  </div>
-  <div>
-    <button (click)="editFactura(factura)" class="ml-5 hover:rosa-jesus">
-      <i class="fas fa-edit fa-2x"></i>
-    </button>
-  </div>
-
 </div>
 
 <p-dialog [(visible)]="display_proveedor" [modal]="true" [style]="{width: '500px', height: '200px'}" [positionTop]=10>

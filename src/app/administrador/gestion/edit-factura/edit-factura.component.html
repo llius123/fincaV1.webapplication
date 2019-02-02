@@ -1,3 +1,7 @@
+<div class="cursor-pointer" [routerLink]="['/admin/gestion/listado']">
+  <i class="fas fa-backward"></i>
+  Volver al listado
+</div>
 <form [formGroup]="formularioEditFactura">
     <div class="flex">
       <div class="flex-1">
@@ -6,7 +10,6 @@
             <p>Fecha registros</p>
           </div>
           <div class="pl-3 pt-2">
-            <!-- <input class="pl-2 border-b-2 focus:outline-none" formControlName="fecha_registro" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E"> -->
             <p-calendar formControlName="fecha_registro" [locale]="es" [ngStyle]="{backgroundColor: 'yellow'}"></p-calendar>
             <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('fecha_registro').hasError('required') && formularioEditFactura.get('fecha_registro').touched ">
               <p-message severity="error" text="Nombre es obligatorio"></p-message>
@@ -265,7 +268,7 @@
       </div>
     </div>
   </form>
-  <button (click)="crearFactura()">Crear</button>
+  <button (click)="editarFactura()">Editar</button>
   
   <p-dialog [(visible)]="display_proveedor" [modal]="true" [style]="{width: '900px', height: '200px'}" [positionTop]=10>
     <p-header>
