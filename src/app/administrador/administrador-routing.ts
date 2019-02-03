@@ -18,6 +18,7 @@ import { ProvinciaComponent } from './mantenimiento-tablas/provincia/provincia.c
 import { NewFacturaComponent } from './gestion/new-factura/new-factura.component';
 import { ListadoComponent } from './gestion/listado/listado.component';
 import { EditFacturaComponent } from './gestion/edit-factura/edit-factura.component';
+import { GraficoListadosComponent } from './gestion/grafico-listados/grafico-listados.component';
 
 export const routes: Routes = [
   {
@@ -95,19 +96,25 @@ export const routes: Routes = [
             path: "nuevafactura",
             component: NewFacturaComponent,
             canLoad: [AuthAdmin],
-            data: {id:1}
+            data: { id: 1 }
           },
           {
             path: "listado",
             component: ListadoComponent,
             canLoad: [AuthAdmin],
-            data: {id:1}
+            data: { id: 1 }
           },
           {
             path: "editfactura/:id",
             component: EditFacturaComponent,
             canLoad: [AuthAdmin],
-            data: {id:1}
+            data: { id: 1 }
+          },
+          {
+            path: "grafico",
+            component: GraficoListadosComponent,
+            canLoad: [AuthAdmin],
+            data: { id: 1 }
           }
         ],
         data: { id: 1 }

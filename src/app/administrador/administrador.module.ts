@@ -20,12 +20,13 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { IncidenciaPipePipe } from '../pipes/incidencia-pipe.pipe';
 import { FechaPipePipe } from '../pipes/fecha-pipe.pipe';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
-import {MessagesModule} from 'primeng/messages';
-import { MessageModule} from 'primeng/message';
-import {ScrollPanelModule} from 'primeng/scrollpanel';
-import {TooltipModule} from 'primeng/tooltip';
-import {CalendarModule} from 'primeng/calendar';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { TooltipModule } from 'primeng/tooltip';
+import { CalendarModule } from 'primeng/calendar';
+import { ChartModule } from 'primeng/chart';
 
 //mantenimiento-tablas
 import { InicioComponent as InicioComponentMentenimiento } from './mantenimiento-tablas/inicio/inicio.component';
@@ -56,11 +57,12 @@ import { NewComunidadComponent } from './mantenimiento-tablas/comunidad/new-comu
 import { NewFacturaComponent } from './gestion/new-factura/new-factura.component';
 import { ListadoComponent } from './gestion/listado/listado.component';
 import { EditFacturaComponent } from './gestion/edit-factura/edit-factura.component';
+import { GraficoListadosComponent } from './gestion/grafico-listados/grafico-listados.component';
 
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe, NewTipovecinoComponent, NewTipofacturaComponent, NewProvinciaComponent, NewPoblacionComponent, NewProveedorComponent, NewComunidadComponent, NewFacturaComponent, ListadoComponent, EditFacturaComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule,MessageModule, FormsModule, ScrollPanelModule, TooltipModule, CalendarModule],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe, NewTipovecinoComponent, NewTipofacturaComponent, NewProvinciaComponent, NewPoblacionComponent, NewProveedorComponent, NewComunidadComponent, NewFacturaComponent, ListadoComponent, EditFacturaComponent, GraficoListadosComponent],
+  imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule, MessageModule, FormsModule, ScrollPanelModule, TooltipModule, CalendarModule, ChartModule],
   exports: [HeaderAdminComponent]
 })
 export class AdministradorModule { }

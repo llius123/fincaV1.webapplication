@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
 import { ServiceModule } from './service/service.module';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HelpComponent } from './administrador/help/help.component';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DialogModule } from 'primeng/dialog';
 
 

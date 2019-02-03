@@ -32,7 +32,8 @@
             ],
             "scripts": [
               "./src/assets/jspdf.debug.js",
-              "./src/assets/moment-with-locales.js"
+              "./src/assets/moment-with-locales.js",
+              "node_modules/chart.js/dist/Chart.js"
             ]
           },
           "configurations": {
