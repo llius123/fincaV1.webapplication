@@ -18,10 +18,11 @@ export class GraficoListadosComponent implements OnInit {
   dataTipoFactura: any;
   es: any;
 
-  desdeFecha: Date;
-  hastaFecha: Date;
-  desdeFechaCobrado: Date;
-  hastaFechaCobrado: Date;
+  optionsdataCobradoDoughnut: any;
+  dataCobradoDoughnut: boolean = false;
+
+  optionsdataTipoFacturaDoughnut: any
+  dataTipoFacturaDoughnut: boolean = false;
 
   datosCobrados: FacturaProveedorInterface[];
 
@@ -29,27 +30,58 @@ export class GraficoListadosComponent implements OnInit {
     this.es = config.formatoFechaDatePicker;
   }
 
+
+
   ngOnInit() {
+    this.optionsdataCobradoDoughnut = {
+      title: {
+        display: true,
+        text: 'Cobrado',
+        fontSize: 20
+      },
+      legend: {
+        position: 'top'
+      }
+    };
+    this.optionsdataTipoFacturaDoughnut = {
+      title: {
+        display: true,
+        text: 'Tipos de facturas',
+        fontSize: 20
+      },
+      legend: {
+        position: 'top'
+      }
+    }
   }
 
-  si: number = 0;
-  no: number = 0;
+  mostrar(panel: string) {
+    switch (panel) {
+      case 'cobradodoughnut':
+        this.dataCobradoDoughnut = true;
+        this.dataTipoFacturaDoughnut = false;
+        break;
+      case 'tipofacturadoughnut':
+        this.dataCobradoDoughnut = false;
+        this.dataTipoFacturaDoughnut = true;
+        break;
+    }
+  }
+
   graficoCobrado() {
-    this.facturaSQL.filtroFecha(`${moment(this.desdeFechaCobrado).format("YYYY-MM-DD")}`, `${moment(this.hastaFechaCobrado).format("YYYY-MM-DD")}`).subscribe(
-      (data: FacturaProveedorInterface[]) => {
-        this.datosCobrados = data;
-        for (var i = 0; i < this.datosCobrados.length; i++) {
-          if (this.datosCobrados[i].cobrado === 's') {
-            this.si++;
-          } else {
-            this.no++;
-          }
+    this.facturaSQL.graficoCobrado().subscribe(
+      (response: any) => {
+        let label = [];
+        let data = [];
+        for (var i = 0; i < response.length; i++) {
+          label.push(response[i][0]);
+          data.push(response[i][1])
         }
         this.dataCobrado = {
-          labels: ['Si', 'No'],
+          labels: label,
           datasets: [
             {
-              data: [this.si, this.no],
+              data: data,
               backgroundColor: [
                 "#FF6384",
                 "#36A2EB",
@@ -62,50 +94,38 @@ export class GraficoListadosComponent implements OnInit {
               ]
             }]
         };
+        this.mostrar('cobradodoughnut');
       }
     )
   }
 
-  facturas: FacturaProveedorInterface[];
-  tipoFacturas: TipofacturaInterface[];
-  arrayDesc = new Array;
-  arrayDatos = new Array;
   graficoTipoFactura() {
-
-    this.tipoFacturaSQL.getAll().subscribe(
-      (data: TipofacturaInterface[]) => {
-        for (var i = 0; i < data.length; i++) {
-          this.arrayDesc.push(data[i].descripcion);
+    this.facturaSQL.graficoTipoFactura().subscribe(
+      (response: any) => {
+        let label = [];
+        let data = [];
+        for (var i = 0; i < response.length; i++) {
+          label.push(response[i][0]);
+          data.push(response[i][1])
         }
-        this.facturaSQL.getAll().subscribe(
-          (data: FacturaProveedorInterface[]) =>{
-            for(var i = 0; i < data.length; i++){
-              for(var j = 0; j<this.arrayDesc.length; j++){
-                if(data[i].tipofactura.descripcion === this.arrayDesc[j]){
-                  this.arrayDatos.push(data[i].tipofactura.descripcion);
-                }
-              }
-            }
-            this.dataTipoFactura = {
-              labels: this.arrayDesc,
-              datasets: [
-                {
-                  data: this.arrayDatos,
-                  backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
-                  ],
-                  hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
-                  ]
-                }]
-            };
-            console.log(this.arrayDatos)
-          }
-        )
+        this.dataTipoFactura = {
+          labels: label,
+          datasets: [
+            {
+              data: data,
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+              ]
+            }]
+        };
+        this.mostrar('tipofacturadoughnut');
       }
     )
   }

@@ -1,38 +1,32 @@
 <div class="flex border border-black">
   <div>
-    <div>
-      Tipo de factura:
-      <div>
-        <button (click)="graficoTipoFactura()">
-          Tipo facturas
-        </button>
-      </div>
-    </div>
-    <div>
-      Cobrado:
-      <div>
-        Desde:
-        <p-calendar [(ngModel)]="desdeFechaCobrado" [locale]="es"></p-calendar>
-        Hasta:
-        <p-calendar [(ngModel)]="hastaFechaCobrado" [locale]="es"></p-calendar>
-      </div>
-      <div>
-        <button (click)="graficoCobrado()">
-          Grafico cobrado
-        </button>
-      </div>
-    </div>
-    <div>
-      Proveedor:
-      <select class="" (change)="onChange('proveedor')" [(ngModel)]="proveedorSelect">
-        <option value="0">Selecciona ...</option>
-        <option *ngFor="let proveedor of proveedores" value="{{proveedor.id}}">{{proveedor.direccion}}</option>
-      </select>
-    </div>
+    <button (click)="graficoTipoFactura()">
+      Tipo facturas
+    </button>
+  </div>
+  <div>
+    <button (click)="graficoCobrado()">
+      Grafico cobrado
+    </button>
   </div>
 </div>
-<div class="flex">
-  <!-- <p-chart type="doughnut" [data]="data"></p-chart> -->
-  <p-chart type="doughnut" [data]="dataCobrado"></p-chart>
-  <p-chart type="doughnut" [data]="dataTipoFactura"></p-chart>
+<div class="flex" style="height:350px">
+  <div class="flex-col border border-black " style="width: 100px;">
+    <div class="flex">
+      <i class="fas fa-chart-pie"></i>
+    </div>
+    <div class="flex">
+      <img src="assets/icons/polar_area.png" style="width: 30px;height: 30px;">
+    </div>
+  </div>
+  <div class="flex border border-red" style="width: 700px;">
+    <div class="flex">
+      <p-chart type="doughnut" [data]="dataCobrado" *ngIf="dataCobradoDoughnut" width="300px" height="300px"
+        [responsive]="false" [options]="optionsdataCobradoDoughnut"></p-chart>
+    </div>
+    <div class="flex">
+      <p-chart type="doughnut" [data]="dataTipoFactura" *ngIf="dataTipoFacturaDoughnut" width="300px" height="300px"
+        [responsive]="false" [options]="optionsdataTipoFacturaDoughnut"></p-chart>
+    </div>
+  </div>
 </div>

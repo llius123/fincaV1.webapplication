@@ -28,4 +28,10 @@ export class FacturaService {
     filtroGeneral(tabla: string, dato: number): Observable<FacturaProveedorInterface[]> {
         return this.http.get<FacturaProveedorInterface[]>(`${this.config.api}facturaproveedores/filtrogeneral/${tabla}/${dato}`, this.config.header);
     }
+    graficoCobrado(): Observable<any> {
+        return this.http.get<any>(`${this.config.api}facturaproveedores/facturagraficocobrado`, this.config.header);
+    }
+    graficoTipoFactura() {
+        return this.http.get(`${this.config.api}facturaproveedores/facturagraficotipofactura`, this.config.header);
+    }
 }
