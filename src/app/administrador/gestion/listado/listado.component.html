@@ -1,77 +1,143 @@
-<div class="flex border border-black">
-  <div class="border border-yellow" (click)="filtro()">
-    Filtrar
-    <i class="fas fa-caret-right"></i>
+<div class="flex rounded m-2 h-16" id="borde">
+  <div class="flex content-center cursor-pointer mt-2" (click)="filtro()">
+    <div class="ml-2">
+      Filtrar
+    </div>
+    <div class="ml-2">
+      <i class="fas fa-caret-right fa-lg"></i>
+    </div>
   </div>
-  <div *ngIf="oFiltro">
-    Tipo de factura:
-    <select class="" (change)="onChange('tipofactura')" [(ngModel)]="tipofacturaSelect">
-      <option value="0">Selecciona ...</option>
-      <option *ngFor="let tipofactura of tipofacturas" value="{{tipofactura.id}}">{{tipofactura.descripcion}}</option>
-    </select>
-    <div>
-      Desde:
-      <p-calendar [(ngModel)]="desdeFecha" [locale]="es" (onSelect)="onChange('desdeFecha')"></p-calendar>
-      Hasta:
-      <p-calendar [(ngModel)]="hastaFecha" [locale]="es" (onSelect)="onChange('hastaFecha')"></p-calendar>
+  <div class="flex w-full" *ngIf="oFiltro">
+    <div class="flex-1">
+      <div class="flex justify-center font-bold p-1">
+        Tipo de factura:
+      </div>
+      <div class="flex justify-center">
+        <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('tipofactura')" [(ngModel)]="tipofacturaSelect">
+          <option value="0">Selecciona ...</option>
+          <option *ngFor="let tipofactura of tipofacturas" value="{{tipofactura.id}}">{{tipofactura.descripcion}}</option>
+        </select>
+      </div>
     </div>
-    <div>
-      Cobrado:
-      <select class="" (change)="onChange('cobrado')" [(ngModel)]="cobradoSelect">
-        <option value="0">Selecciona ...</option>
-        <option value="s">Si</option>
-        <option value="n">No</option>
-      </select>
+    <div class="flex flex-row">
+      <div class="flex-1">
+        <div class="flex justify-center font-bold">
+          Desde:
+        </div>
+        <div class="flex justify-center rounded" style="border: 2px solid #9E4F6E;">
+          <p-calendar [(ngModel)]="desdeFecha" [locale]="es" (onSelect)="onChange('desdeFecha')"></p-calendar>
+        </div>
+      </div>
+      <div class="flex-1">
+        <div class="flex justify-center font-bold">
+          Hasta:
+        </div>
+        <div class="flex justify-center rounded" style="border: 2px solid #9E4F6E;">
+          <p-calendar [(ngModel)]="hastaFecha" [locale]="es" (onSelect)="onChange('hastaFecha')"></p-calendar>
+        </div>
+      </div>
     </div>
-    <div>
-      Proveedor:
-      <select class="" (change)="onChange('proveedor')" [(ngModel)]="proveedorSelect">
-        <option value="0">Selecciona ...</option>
-        <option *ngFor="let proveedor of proveedores" value="{{proveedor.id}}">{{proveedor.direccion}}</option>
-      </select>
+    <div class="flex-1">
+      <div class="flex justify-center font-bold p-1">
+        Cobrado:
+      </div>
+      <div class="flex justify-center">
+        <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('cobrado')" [(ngModel)]="cobradoSelect">
+          <option value="0">Selecciona ...</option>
+          <option value="s">Si</option>
+          <option value="n">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class="flex justify-center font-bold p-1">
+        Proveedor:
+      </div>
+      <div class="flex justify-center">
+        <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('proveedor')" [(ngModel)]="proveedorSelect">
+          <option value="0">Selecciona ...</option>
+          <option *ngFor="let proveedor of proveedores" value="{{proveedor.id}}">{{proveedor.direccion}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex-1 content-center">
+      <div class=" flex cursor-pointer rounded justify-center p-2 mt-2 mr-2" style="border: 2px solid #9E4F6E;">
+        <div class="font-bold">
+          Reiniciar filtros
+        </div>
+        <div class="ml-5">
+          <i class="fas fa-redo-alt fa-lg"></i>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="flex" *ngFor="let factura of facturas">
-  <div class="flex">
-    <div>
-      fecha registro
+<div class="flex m-2 p-2 rounded" *ngFor="let factura of facturas" id="borde">
+  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+    <div class="flex m-2 font-bold">
+      Fecha registro
+    </div>
+    <div class="flex m-2">
       {{factura.fecha_registro | fechaPipe}}
     </div>
-    <div>
+  </div>
+  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+    <div class="flex m-2 font-bold">
       tipofactura
+    </div>
+    <div class="flex m-2">
       {{factura.tipofactura.descripcion}}
     </div>
-    <div>
+  </div>
+  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+    <div class="flex m-2 font-bold">
       proveedor
-      {{factura.proveedor.telefono}}
-      <div class="cursor-pointer" (click)="selected(factura.proveedor, 'proveedor')">
-        <i class="fas fa-caret-down" #proveedor></i>
+    </div>
+    <div class="flex m-2">
+      <div>
+        {{factura.proveedor.telefono}}
+      </div>
+      <div class="cursor-pointer ml-5" (click)="selected(factura.proveedor, 'proveedor')">
+        <i class="fas fa-search-plus fa-lg" #proveedor></i>
       </div>
     </div>
-    <div>
+  </div>
+  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+    <div class="flex m-2 font-bold">
       comunidad
-      {{factura.comunidad}}
-      <div class="cursor-pointer" (click)="selected(factura.comunidad, 'comunidad')">
-        <i class="fas fa-caret-down" #comunidad></i>
+    </div>
+    <div class="flex m-2">
+      <div>
+        {{factura.comunidad.nombre}}
+      </div>
+      <div class="cursor-pointer ml-5" (click)="selected(factura.comunidad, 'comunidad')">
+        <i class="fas fa-search-plus fa-lg" #comunidad></i>
       </div>
     </div>
-    <div>
+  </div>
+  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+    <div class="flex m-2 font-bold">
       numero factura
+    </div>
+    <div class="flex m-2">
       {{factura.num_factura}}
     </div>
-    <div>
+  </div>
+  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+    <div class="flex m-2 font-bold">
       cobrado
+    </div>
+    <div class="flex m-2">
       {{factura.cobrado}}
     </div>
   </div>
-  <div class="flex-1">
-    <div class="flex justify-end">
-      <button (click)="pdf(factura)" class="ml-5 hover:rosa-jesus">
+  <div class="flex w-1/4 content-center justify-center">
+    <div class="flex content-center">
+      <button (click)="pdf(factura)" class="hover:rosa-jesus mr-8">
         <i class="fas fa-file-pdf fa-2x"></i>
       </button>
-      <button (click)="editFactura(factura)" class="ml-5 hover:rosa-jesus">
+      <button (click)="editFactura(factura)" class="hover:rosa-jesus ml-8">
         <i class="fas fa-edit fa-2x"></i>
       </button>
     </div>
