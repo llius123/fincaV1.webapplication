@@ -1,453 +1,460 @@
-<div class="cursor-pointer" [routerLink]="['/admin/gestion/listado']">
-  <i class="fas fa-backward"></i>
-  Volver al listado
+<div class="flex">
+  <div id="borde" class="cursor-pointer rounded hover:bg-grey-light p-1 m-2" [routerLink]="['/admin/gestion/listado']">
+    <i class="fas fa-backward"></i>
+    Volver al listado
+  </div>
 </div>
-<form [formGroup]="formularioEditFactura">
-    <div class="flex">
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Fecha registros</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <p-calendar formControlName="fecha_registro" [locale]="es" [ngStyle]="{backgroundColor: 'yellow'}"></p-calendar>
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('fecha_registro').hasError('required') && formularioEditFactura.get('fecha_registro').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
+<form [formGroup]="formularioEditFactura" class="rounded p-2 m-2" id="borde">
+  <div class="flex">
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Fecha registros</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <p-calendar formControlName="fecha_registro" [locale]="es" [ngStyle]="{backgroundColor: 'yellow'}"></p-calendar>
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('fecha_registro').hasError('required') && formularioEditFactura.get('fecha_registro').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
           </div>
         </div>
       </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Proveedor</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <div class="flex">
-              <div>
-                <input class="pl-2 border-b-2 focus:outline-none" formControlName="proveedor" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-                <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('proveedor').hasError('required') && formularioEditFactura.get('proveedor').touched ">
-                  <p-message severity="error" text="Nombre es obligatorio"></p-message>
-                </div>
-              </div>
-              <div>
-                <div class="ml-4">
-                  <button (click)="showDialog('proveedor')">
-                    <i class="fas fa-search fa-lg"></i>
-                  </button>
-                </div>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Proveedor</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <div class="flex">
+            <div>
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="proveedor" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('proveedor').hasError('required') && formularioEditFactura.get('proveedor').touched ">
+                <p-message severity="error" text="Nombre es obligatorio"></p-message>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Tipo de factura</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <div class="flex">
-              <div>
-                <input class="pl-2 border-b-2 focus:outline-none" formControlName="tipofactura" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-                <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('tipofactura').hasError('required') && formularioEditFactura.get('tipofactura').touched ">
-                  <p-message severity="error" text="Nombre es obligatorio"></p-message>
-                </div>
-              </div>
-              <div>
-                <div class="ml-4">
-                  <button (click)="showDialog('tipofactura')">
-                    <i class="fas fa-search fa-lg"></i>
-                  </button>
-                </div>
+            <div>
+              <div class="ml-4">
+                <button (click)="showDialog('proveedor')">
+                  <i class="fas fa-search fa-lg"></i>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="flex">
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Base imponible 0</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="base_imponible0" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('base_imponible0').hasError('required') && formularioEditFactura.get('base_imponible0').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Tipo de factura</p>
         </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Base imponible 1</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="base_imponible1" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('base_imponible1').hasError('required') && formularioEditFactura.get('base_imponible1').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Base imponible 2</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="base_imponible2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('base_imponible2').hasError('required') && formularioEditFactura.get('base_imponible2').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Base imponible 3</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="base_imponible3" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('base_imponible3').hasError('required') && formularioEditFactura.get('base_imponible3').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flex">
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Tipo iva 1</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="tipo_iva1" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('tipo_iva1').hasError('required') && formularioEditFactura.get('tipo_iva1').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Tipo iva 2</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="tipo_iva2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('tipo_iva2').hasError('required') && formularioEditFactura.get('tipo_iva2').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Tipo iva 3</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="tipo_iva3" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('tipo_iva3').hasError('required') && formularioEditFactura.get('tipo_iva3').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flex">
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Cuota iva 1</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="cuota_iva1" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('cuota_iva1').hasError('required') && formularioEditFactura.get('cuota_iva1').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Cuota iva 2</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="cuota_iva2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('cuota_iva2').hasError('required') && formularioEditFactura.get('cuota_iva2').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Cuota iva 3</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="cuota_iva3" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('cuota_iva3').hasError('required') && formularioEditFactura.get('cuota_iva3').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flex">
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Total</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="total" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('total').hasError('required') && formularioEditFactura.get('total').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Comunidad</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <div class="flex">
-              <div>
-                <input class="pl-2 border-b-2 focus:outline-none" formControlName="comunidad" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-                <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('comunidad').hasError('required') && formularioEditFactura.get('comunidad').touched ">
-                  <p-message severity="error" text="Nombre es obligatorio"></p-message>
-                </div>
+        <div class="pl-3 pt-2">
+          <div class="flex">
+            <div>
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="tipofactura" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('tipofactura').hasError('required') && formularioEditFactura.get('tipofactura').touched ">
+                <p-message severity="error" text="Nombre es obligatorio"></p-message>
               </div>
-              <div>
-                <div class="ml-4">
-                  <button (click)="showDialog('comunidad')">
-                    <i class="fas fa-search fa-lg"></i>
-                  </button>
-                </div>
+            </div>
+            <div>
+              <div class="ml-4">
+                <button (click)="showDialog('tipofactura')">
+                  <i class="fas fa-search fa-lg"></i>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Numero factura</p>
-          </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="num_factura" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('num_factura').hasError('required') && formularioEditFactura.get('num_factura').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
-            </div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Base imponible 0</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="base_imponible0" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('base_imponible0').hasError('required') && formularioEditFactura.get('base_imponible0').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
           </div>
         </div>
       </div>
-      <div class="flex-1">
-        <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
-          <div class="pl-3 pt-2 font-bold w-48">
-            <p>Cobrado</p>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Base imponible 1</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="base_imponible1" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('base_imponible1').hasError('required') && formularioEditFactura.get('base_imponible1').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
           </div>
-          <div class="pl-3 pt-2">
-            <input class="pl-2 border-b-2 focus:outline-none" formControlName="cobrado" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
-            <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('cobrado').hasError('required') && formularioEditFactura.get('cobrado').touched ">
-              <p-message severity="error" text="Nombre es obligatorio"></p-message>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Base imponible 2</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="base_imponible2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('base_imponible2').hasError('required') && formularioEditFactura.get('base_imponible2').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Base imponible 3</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="base_imponible3" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('base_imponible3').hasError('required') && formularioEditFactura.get('base_imponible3').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Tipo iva 1</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="tipo_iva1" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('tipo_iva1').hasError('required') && formularioEditFactura.get('tipo_iva1').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Tipo iva 2</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="tipo_iva2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('tipo_iva2').hasError('required') && formularioEditFactura.get('tipo_iva2').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Tipo iva 3</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="tipo_iva3" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('tipo_iva3').hasError('required') && formularioEditFactura.get('tipo_iva3').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Cuota iva 1</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="cuota_iva1" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('cuota_iva1').hasError('required') && formularioEditFactura.get('cuota_iva1').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Cuota iva 2</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="cuota_iva2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('cuota_iva2').hasError('required') && formularioEditFactura.get('cuota_iva2').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Cuota iva 3</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="cuota_iva3" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('cuota_iva3').hasError('required') && formularioEditFactura.get('cuota_iva3').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Total</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="total" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('total').hasError('required') && formularioEditFactura.get('total').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Comunidad</p>
+        </div>
+        <div class="pl-3 pt-2">
+          <div class="flex">
+            <div>
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="comunidad" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('comunidad').hasError('required') && formularioEditFactura.get('comunidad').touched ">
+                <p-message severity="error" text="Nombre es obligatorio"></p-message>
+              </div>
+            </div>
+            <div>
+              <div class="ml-4">
+                <button (click)="showDialog('comunidad')">
+                  <i class="fas fa-search fa-lg"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </form>
-  <button (click)="editarFactura()">Editar</button>
-  
-  <p-dialog [(visible)]="display_proveedor" [modal]="true" [style]="{width: '900px', height: '200px'}" [positionTop]=10>
-    <p-header>
-      Proveedor:
-    </p-header>
-    <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
-      <div class="p-3 font-bold">
-        <div class="flex ">
-          <div class="mr-5 flex justify-start">
-            <div>
-              Id
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Direccion
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Telefono
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Correo
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Poblacion
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Seleccionar
-            </div>
-          </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Numero factura</p>
         </div>
-        <div class="border-b w-full mt-2" style="border-color:#9E4F6E;">
-        </div>
-        <div class="flex" *ngFor="let proveedor of proveedores">
-          <div class="mr-5 flex justify-start">
-            {{proveedor.id}}
-          </div>
-          <div class="w-1/4 flex justify-start">
-            {{proveedor.direccion}}
-          </div>
-          <div class="w-1/4 flex justify-start">
-            {{proveedor.telefono}}
-          </div>
-          <div class="w-1/4 flex justify-start">
-            {{proveedor.email}}
-          </div>
-          <div class="w-1/4 flex justify-start">
-            {{proveedor.poblacion.descripcion}}
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <button (click)="saveProveedor(proveedor)">
-              <i class="fas fa-check"></i>
-            </button>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="num_factura" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('num_factura').hasError('required') && formularioEditFactura.get('num_factura').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
           </div>
         </div>
       </div>
     </div>
-  </p-dialog>
-  
-  
-  <p-dialog [(visible)]="display_tipofactura" [modal]="true" [style]="{width: '500px', height: '200px'}" [positionTop]=10>
-    <p-header>
-      Tipo de factura:
-    </p-header>
-    <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
-      <div class="p-3 font-bold justify-center">
-        <div class="flex ">
-          <div class="w-1/4">Id</div>
-          <div class="w-1/3 flex justify-center">
-            <div>
-              Descripcion
-            </div>
-          </div>
-          <div class="w-1/3">
-            <div class="float-right">
-              Selecciona
-            </div>
-          </div>
+    <div class="flex-1">
+      <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+        <div class="pl-3 pt-2 font-bold w-48">
+          <p>Cobrado</p>
         </div>
-        <div class="border-b w-5/6 mt-2" style="border-color:#9E4F6E;">
-        </div>
-        <div class="flex" *ngFor="let tipofactura of tipofacturas">
-          <div class="w-1/3 ">
-            {{tipofactura.id}}
-          </div>
-          <div class="w-1/4">
-            {{tipofactura.descripcion}}
-          </div>
-          <div class="">
-            <button (click)="saveTipoFactura(tipofactura)" style="margin-left: 90px">
-              <i class="fas fa-check"></i>
-            </button>
+        <div class="pl-3 pt-2">
+          <input class="pl-2 border-b-2 focus:outline-none" formControlName="cobrado" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+          <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioEditFactura.get('cobrado').hasError('required') && formularioEditFactura.get('cobrado').touched ">
+            <p-message severity="error" text="Nombre es obligatorio"></p-message>
           </div>
         </div>
       </div>
     </div>
-  </p-dialog>
-  
-  <p-dialog [(visible)]="display_comunidad" [modal]="true" [style]="{width: '900px', height: '200px'}" [positionTop]=10>
-    <p-header>
-      Comunidad:
-    </p-header>
-    <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
-      <div class="p-3 font-bold">
-        <div class="flex ">
-          <div class="mr-5 flex justify-start">
-            <div>
-              Id
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Nombre
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Direccion
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Nif
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Iban
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Sufijo
-            </div>
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <div>
-              Seleccionar
-            </div>
+  </div>
+</form>
+<div class="flex justify-center p-5">
+  <button (click)="editarFactura()" id="borde" class="rounded hover:bg-grey-light p-5">
+    <i class="fas fa-edit"></i>
+    Edit
+  </button>
+</div>
+
+<p-dialog [(visible)]="display_proveedor" [modal]="true" [style]="{width: '900px', height: '200px'}" [positionTop]=10>
+  <p-header>
+    Proveedor:
+  </p-header>
+  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
+    <div class="p-3 font-bold">
+      <div class="flex ">
+        <div class="mr-5 flex justify-start">
+          <div>
+            Id
           </div>
         </div>
-        <div class="border-b w-full mt-2" style="border-color:#9E4F6E;">
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Direccion
+          </div>
         </div>
-        <div class="flex" *ngFor="let comunidad of comunidades">
-          <div class="mr-5 flex justify-start">
-            {{comunidad.id}}
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Telefono
           </div>
-          <div class="w-1/4 flex justify-start">
-            {{comunidad.nombre}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Correo
           </div>
-          <div class="w-1/4 flex justify-start">
-            {{comunidad.direccion}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Poblacion
           </div>
-          <div class="w-1/4 flex justify-start">
-            {{comunidad.nif}}
-          </div>
-          <div class="w-1/4 flex justify-start">
-            {{comunidad.iban}}
-          </div>
-          <div class="w-1/4 flex justify-start">
-            {{comunidad.sufijo}}
-          </div>
-          <div class="w-1/4 flex justify-start">
-            <button (click)="saveComunidad(comunidad)">
-              <i class="fas fa-check"></i>
-            </button>
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Seleccionar
           </div>
         </div>
       </div>
+      <div class="border-b w-full mt-2" style="border-color:#9E4F6E;">
+      </div>
+      <div class="flex" *ngFor="let proveedor of proveedores">
+        <div class="mr-5 flex justify-start">
+          {{proveedor.id}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{proveedor.direccion}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{proveedor.telefono}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{proveedor.email}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{proveedor.poblacion.descripcion}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <button (click)="saveProveedor(proveedor)">
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+      </div>
     </div>
-  </p-dialog>
-  
-  <p-toast position="bottom-right" [style]="{marginTop: '80px'}">
-  </p-toast>
+  </div>
+</p-dialog>
+
+
+<p-dialog [(visible)]="display_tipofactura" [modal]="true" [style]="{width: '500px', height: '200px'}" [positionTop]=10>
+  <p-header>
+    Tipo de factura:
+  </p-header>
+  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
+    <div class="p-3 font-bold justify-center">
+      <div class="flex ">
+        <div class="w-1/4">Id</div>
+        <div class="w-1/3 flex justify-center">
+          <div>
+            Descripcion
+          </div>
+        </div>
+        <div class="w-1/3">
+          <div class="float-right">
+            Selecciona
+          </div>
+        </div>
+      </div>
+      <div class="border-b w-5/6 mt-2" style="border-color:#9E4F6E;">
+      </div>
+      <div class="flex" *ngFor="let tipofactura of tipofacturas">
+        <div class="w-1/3 ">
+          {{tipofactura.id}}
+        </div>
+        <div class="w-1/4">
+          {{tipofactura.descripcion}}
+        </div>
+        <div class="">
+          <button (click)="saveTipoFactura(tipofactura)" style="margin-left: 90px">
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog [(visible)]="display_comunidad" [modal]="true" [style]="{width: '900px', height: '200px'}" [positionTop]=10>
+  <p-header>
+    Comunidad:
+  </p-header>
+  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
+    <div class="p-3 font-bold">
+      <div class="flex ">
+        <div class="mr-5 flex justify-start">
+          <div>
+            Id
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Nombre
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Direccion
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Nif
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Iban
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Sufijo
+          </div>
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <div>
+            Seleccionar
+          </div>
+        </div>
+      </div>
+      <div class="border-b w-full mt-2" style="border-color:#9E4F6E;">
+      </div>
+      <div class="flex" *ngFor="let comunidad of comunidades">
+        <div class="mr-5 flex justify-start">
+          {{comunidad.id}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{comunidad.nombre}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{comunidad.direccion}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{comunidad.nif}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{comunidad.iban}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          {{comunidad.sufijo}}
+        </div>
+        <div class="w-1/4 flex justify-start">
+          <button (click)="saveComunidad(comunidad)">
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>
