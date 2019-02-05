@@ -44,7 +44,7 @@ export class NewVecinoComponent implements OnInit {
       email: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),
       id_tipovecino: new FormControl({value: '', disabled: true}, [Validators.required]),
-      poblacion: new FormControl({value: '', disabled: true}, [Validators.required]),
+      poblacion: new FormControl({value: ''}, [Validators.required]),
       login: new FormControl('', [Validators.required]),
       pass: new FormControl('', [Validators.required])
     })
