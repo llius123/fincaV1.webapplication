@@ -23,4 +23,8 @@ export class LoginService {
     console.log(vecino)
     this.vecino = vecino;
   }
+
+  logout(){
+    this.vecino = null;
+  }
 }

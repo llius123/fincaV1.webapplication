@@ -4,6 +4,7 @@ import { LoginService } from '../../service/login/login.service';
 import { GeneralService } from '../../service/general/general.service';
 import { IncidenciaService } from 'src/app/service/incidencia/incidencia.service';
 import { TareaService } from 'src/app/service/tarea/tarea.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-admin',
@@ -13,7 +14,7 @@ import { TareaService } from 'src/app/service/tarea/tarea.service';
 })
 export class HeaderAdminComponent implements OnInit {
 
-  constructor(private incidenciasService: IncidenciaService, private login: LoginService,private messageService: MessageService, private general: GeneralService,private tareaService: TareaService) { 
+  constructor(private incidenciasService: IncidenciaService, private login: LoginService,private messageService: MessageService, private general: GeneralService,private tareaService: TareaService, private router: Router) { 
     general.tareasEvent.subscribe(
       (data:number) =>{
         this.countTareas = data;
@@ -164,6 +165,11 @@ export class HeaderAdminComponent implements OnInit {
         this.showTooltip('error', '', 'Error en el servidor!');
       }
     )
+  }
+
+  logout(){
+    this.login.logout();
+    this.router.navigate(['login'])
   }
 
   showTooltip(type: string, title: string, desc: string) {

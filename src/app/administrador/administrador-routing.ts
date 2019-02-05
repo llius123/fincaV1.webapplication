@@ -1,3 +1,4 @@
+import { HelpComponent } from './help/help.component';
 import { AuthAdmin } from './../service/login/auth.service';
 import { AdministradorComponent } from "./administrador.component";
 import { InicioComponent } from "./inicio/inicio.component";
@@ -122,6 +123,12 @@ export const routes: Routes = [
       {
         path: "incidencia",
         component: IncidenciaComponent,
+        canLoad: [AuthAdmin],
+        data: { id: 1 }
+      },
+      {
+        path: "help",
+        component: HelpComponent,
         canLoad: [AuthAdmin],
         data: { id: 1 }
       }

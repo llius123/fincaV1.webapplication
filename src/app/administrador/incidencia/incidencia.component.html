@@ -36,13 +36,13 @@
       <div class="flex flex-row">
         <div class="flex">
           <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('ver',incidencia)">
-            <i class="far fa-eye fa-2x"></i>
+            <i class="far fa-eye fa-2x" pTooltip="Ver factura" tooltipPosition="bottom"></i>
           </div>
           <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('atender',incidencia)">
-            <i class="fas fa-check fa-2x" *ngIf="incidencia.atendido==='n'"></i>
+            <i class="fas fa-check fa-2x" pTooltip="Atender factura" tooltipPosition="bottom" *ngIf="incidencia.atendido==='n'"></i>
           </div>
           <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('eliminar',incidencia)">
-            <i class="far fa-trash-alt fa-2x"></i>
+            <i class="far fa-trash-alt fa-2x" pTooltip="Eliminar factura" tooltipPosition="bottom"></i>
           </div>
         </div>
       </div>
