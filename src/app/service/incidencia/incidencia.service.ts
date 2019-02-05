@@ -23,4 +23,8 @@ export class IncidenciaService{
     countNoAtendido(){
         return this.http.get(`${this.config.api}incidenciascount`, this.config.header);
     }
+
+    delete(id: number){
+        return this.http.delete(`${this.config.api}incidencias/${id}`, this.config.header);
+    }
 }

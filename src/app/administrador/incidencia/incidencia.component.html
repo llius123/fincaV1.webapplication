@@ -1,3 +1,96 @@
-<p>
-  incidencia works!
-</p>
+<div class="flex flex-wrap">
+  <div class="flex flex-col border border-black w-1/4 h-64" *ngFor="let incidencia of incidencias">
+    <div class="flex justify-center mt-5">
+      <i class="fas fa-times-circle fa-3x" *ngIf="incidencia.atendido==='n'"></i>
+      <i class="fas fa-check-circle fa-3x" *ngIf="incidencia.atendido==='s'"></i>
+    </div>
+    <div class="flex flex-col">
+      <div class="flex flex-row">
+        <div class="flex flex-col">
+          <div>
+            Vecino
+          </div>
+          <div>
+            {{incidencia.vecino.nombre}}
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div>
+            Fecha
+          </div>
+          <div>
+            {{incidencia.fecha_creacion | fechaPipe}}
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div>
+          Descripcion
+        </div>
+        <div>
+          {{incidencia.descripcion}}
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <div class="flex flex-row">
+        <div class="flex">
+          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('ver',incidencia)">
+            <i class="far fa-eye fa-2x"></i>
+          </div>
+          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('atender',incidencia)">
+            <i class="fas fa-check fa-2x" *ngIf="incidencia.atendido==='n'"></i>
+          </div>
+          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('eliminar',incidencia)">
+            <i class="far fa-trash-alt fa-2x"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Factura" [(visible)]="display_factura" [modal]="true" *ngIf="datos">
+  <div class="flex flex-col">
+    <div class="flex flex-row">
+      <div class="flex flex-col">
+        <div>
+          Vecino
+        </div>
+        <div>
+          {{incidenciaView.vecino}}
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div>
+          Fecha
+        </div>
+        <div>
+          {{incidenciaView.fecha_creacion | fechaPipe}}
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <div>
+        Descripcion
+      </div>
+      <div>
+        {{incidenciaView.descripcion}}
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<p-dialog header="Eliminar" [(visible)]="display_eliminar" [modal]="true">
+  <div class="flex flex-col">
+    Desea eliminar el registro?
+  </div>
+  <div class="flex cursor-pointer" (click)="confirm()">
+    <div class="border border-black">
+      Eliminar
+    </div>
+  </div>
+</p-dialog>
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>
