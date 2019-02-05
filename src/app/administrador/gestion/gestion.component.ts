@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FacturaService } from 'src/app/service/factura/factura.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestion',
@@ -8,7 +9,7 @@ import { FacturaService } from 'src/app/service/factura/factura.service';
 })
 export class GestionComponent implements OnInit {
 
-  constructor(private sql: FacturaService) { }
+  constructor(private sql: FacturaService, private router: Router) { }
 
   listado: boolean = true;
   nueva: boolean = false;
@@ -33,5 +34,9 @@ export class GestionComponent implements OnInit {
   volver(){
     this.listado = true;
     this.nueva = false;
+  }
+
+  cambiar(url: string){
+    this.router.navigate([`admin/gestion/${url}`]);
   }
 }

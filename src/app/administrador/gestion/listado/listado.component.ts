@@ -89,6 +89,10 @@ export class ListadoComponent implements OnInit {
           this.sql.filtroGeneral('cobrado', this.cobradoSelect).subscribe(
             data => this.facturas = data
           )
+          this.tipofacturaSelect = 0;
+          this.desdeFecha = null;
+          this.hastaFecha = null;
+          this.proveedorSelect = 0;
         } else {
           this.getAll()
         }
@@ -98,6 +102,10 @@ export class ListadoComponent implements OnInit {
           this.sql.filtroGeneral('id_tipofactura', this.tipofacturaSelect).subscribe(
             data => this.facturas = data
           )
+          this.desdeFecha = null;
+          this.hastaFecha = null;
+          this.proveedorSelect = 0;
+          this.cobradoSelect = 0;
         } else {
           this.getAll()
         }
@@ -107,6 +115,9 @@ export class ListadoComponent implements OnInit {
           this.sql.filtroFecha(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
             data => this.facturas = data
           )
+          this.tipofacturaSelect = 0;
+          this.proveedorSelect = 0;
+          this.cobradoSelect = 0;
         }
         break;
       case 'hastaFecha':
@@ -114,6 +125,9 @@ export class ListadoComponent implements OnInit {
           this.sql.filtroFecha(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
             data => this.facturas = data
           )
+          this.tipofacturaSelect = 0;
+          this.proveedorSelect = 0;
+          this.cobradoSelect = 0;
         }
         break;
       case 'proveedor':
@@ -121,6 +135,10 @@ export class ListadoComponent implements OnInit {
           this.sql.filtroGeneral('id_proveedor', this.proveedorSelect).subscribe(
             data => this.facturas = data
           )
+          this.tipofacturaSelect = 0;
+          this.desdeFecha = null;
+          this.hastaFecha = null;
+          this.cobradoSelect = 0;
         } else {
           this.getAll()
         }
@@ -130,6 +148,15 @@ export class ListadoComponent implements OnInit {
 
   pdf(data: FacturaProveedorInterface){
     this.pdfService.newPdf(data);
+  }
+
+  reiniciarFiltros(){
+    this.tipofacturaSelect = 0;
+    this.desdeFecha = null;
+    this.hastaFecha = null;
+    this.proveedorSelect = 0;
+    this.cobradoSelect = 0;
+    this.getAll();
   }
 
 

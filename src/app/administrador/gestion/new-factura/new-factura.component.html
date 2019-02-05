@@ -1,8 +1,10 @@
-<div class="cursor-pointer" [routerLink]="['/admin/gestion/listado']">
-  <i class="fas fa-backward"></i>
-  Volver al listado
+<div class="flex">
+  <div id="borde" class="cursor-pointer rounded hover:bg-grey-light p-1 m-2" [routerLink]="['/admin/gestion/listado']">
+    <i class="fas fa-backward"></i>
+    Volver al listado
+  </div>
 </div>
-<form [formGroup]="formularioNuevaFactura">
+<form [formGroup]="formularioNuevaFactura" class="rounded p-2 m-2" id="borde">
   <div class="flex">
     <div class="flex-1">
       <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
@@ -269,7 +271,12 @@
     </div>
   </div>
 </form>
-<button (click)="crearFactura()">Crear</button>
+<div class="flex justify-center p-5">
+  <button (click)="crearFactura()" id="borde" class="rounded hover:bg-grey-light p-5">
+    <i class="fas fa-newspaper"></i>
+    Crear
+  </button>
+</div>
 
 <p-dialog [(visible)]="display_proveedor" [modal]="true" [style]="{width: '900px', height: '200px'}" [positionTop]=10>
   <p-header>

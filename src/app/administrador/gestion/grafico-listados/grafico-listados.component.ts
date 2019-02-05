@@ -13,16 +13,11 @@ import { combineLatest } from 'rxjs';
 })
 export class GraficoListadosComponent implements OnInit {
 
-  data: any;
-  dataCobrado: any;
+  optionsDoughnut: any;
+  booleanDoughnut: boolean;
+  dataDoughnut: any;
   dataTipoFactura: any;
   es: any;
-
-  optionsdataCobradoDoughnut: any;
-  dataCobradoDoughnut: boolean = false;
-
-  optionsdataTipoFacturaDoughnut: any
-  dataTipoFacturaDoughnut: boolean = false;
 
   datosCobrados: FacturaProveedorInterface[];
 
@@ -33,39 +28,10 @@ export class GraficoListadosComponent implements OnInit {
 
 
   ngOnInit() {
-    this.optionsdataCobradoDoughnut = {
-      title: {
-        display: true,
-        text: 'Cobrado',
-        fontSize: 20
-      },
-      legend: {
-        position: 'top'
-      }
-    };
-    this.optionsdataTipoFacturaDoughnut = {
-      title: {
-        display: true,
-        text: 'Tipos de facturas',
-        fontSize: 20
-      },
-      legend: {
-        position: 'top'
-      }
-    }
   }
 
-  mostrar(panel: string) {
-    switch (panel) {
-      case 'cobradodoughnut':
-        this.dataCobradoDoughnut = true;
-        this.dataTipoFacturaDoughnut = false;
-        break;
-      case 'tipofacturadoughnut':
-        this.dataCobradoDoughnut = false;
-        this.dataTipoFacturaDoughnut = true;
-        break;
-    }
+  mostrar() {
+    this.booleanDoughnut = true;
   }
 
   graficoCobrado() {
@@ -77,7 +43,7 @@ export class GraficoListadosComponent implements OnInit {
           label.push(response[i][0]);
           data.push(response[i][1])
         }
-        this.dataCobrado = {
+        this.dataDoughnut = {
           labels: label,
           datasets: [
             {
@@ -94,7 +60,8 @@ export class GraficoListadosComponent implements OnInit {
               ]
             }]
         };
-        this.mostrar('cobradodoughnut');
+        this.mostrar();
+        this.options('Cobrado');
       }
     )
   }
@@ -108,7 +75,7 @@ export class GraficoListadosComponent implements OnInit {
           label.push(response[i][0]);
           data.push(response[i][1])
         }
-        this.dataTipoFactura = {
+        this.dataDoughnut = {
           labels: label,
           datasets: [
             {
@@ -125,9 +92,23 @@ export class GraficoListadosComponent implements OnInit {
               ]
             }]
         };
-        this.mostrar('tipofacturadoughnut');
+        this.mostrar();
+        this.options('Tipo factura');
       }
     )
+  }
+
+  options(titulo: string){
+    this.optionsDoughnut = {
+      title: {
+        display: true,
+        text: titulo,
+        fontSize: 20
+      },
+      legend: {
+        position: 'top'
+      }
+    };
   }
 
 }

@@ -1,17 +1,24 @@
 <div class="flex justify-center h-10">
-  <div class="border border-black">
-    Generar recibos
-  </div>
-  <a [routerLink]="['nuevafactura']">
-    <div class="border border-black cursor-pointer">
+  <div class="flex flex-row rounded" id="borde">
+    <div class="font-bold cursor-pointer p-2">
+      Generar recibos
+    </div>
+    <div class="font-bold cursor-pointer p-2" (click)="cambiar('nuevafactura')" style="border-left: 1px solid black;">
       Añadir factura
     </div>
-  </a>
-  <a [routerLink]="['grafico']">
-    <div class="border border-black cursor-pointer">
+    <div class="font-bold cursor-pointer p-2" (click)="cambiar('grafico')" style="border-left: 1px solid black;">
       Graficos
     </div>
-  </a>
+    <!-- <a [routerLink]="['nuevafactura']">
+      <div class="border border-black cursor-pointer">
+      </div>
+    </a>
+    <a [routerLink]="['grafico']">
+      <div class="border border-black cursor-pointer">
+        Graficos
+      </div>
+    </a> -->
+  </div>
 </div>
 
 <router-outlet></router-outlet>
