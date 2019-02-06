@@ -77,13 +77,13 @@
       Descripcion
     </div>
     <div class="flex-1 border border-black">
-      <textarea rows="4" cols="30" #tareaedited>
+      <textarea rows="4" cols="30" [(ngModel)]="tareaedited">
           {{tareaEdited.descripcion}}
         </textarea>
     </div>
   </div>
   <p-footer>
-    <button type="button" pButton icon="fas fa-check" (click)="editarTarea(tareaedited.value)" label="Yes"></button>
+    <button type="button" pButton icon="fas fa-check" (click)="editarTarea()" label="Yes"></button>
     <button type="button" pButton icon="fas fa-times" (click)="modal_display_edit=false" label="No" class="ui-button-secondary"></button>
   </p-footer>
 </p-dialog>

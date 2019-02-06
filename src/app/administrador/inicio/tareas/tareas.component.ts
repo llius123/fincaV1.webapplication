@@ -16,6 +16,8 @@ export class TareasComponent implements OnInit {
 
   constructor(private tareaService: TareaService, private messageService: MessageService, private login: LoginService, private general: GeneralService) { }
 
+  tareaedited:string;
+
   tareas: Array<TareaInterface>;
   datos: boolean = false;
   tarea: TareaInterface;
@@ -53,8 +55,9 @@ export class TareasComponent implements OnInit {
     this.modal_display = true;
   }
   showDialogEdit(tarea: TareaInterface) {
-    this.modal_display_edit = true;
+    this.tareaedited = tarea.descripcion.toString();
     this.tareaEdited = tarea;
+    this.modal_display_edit = true;
   }
 
   nuevaTarea(descripcion: string) {
@@ -76,14 +79,13 @@ export class TareasComponent implements OnInit {
     this.modal_display = false;
   }
 
-  editarTarea(descripcion: string) {
+  editarTarea() {
     const fecha = new Date();
     const tarea = {
       id: this.tareaEdited.id,
-      descripcion: descripcion,
+      descripcion: this.tareaedited,
       fecha: fecha
     }
-    console.log(tarea)
     this.tareaService.editTarea(tarea).subscribe(
       response => {
         this.showTooltip('success', '',' Tarea editada correctamente!' );
