@@ -28,7 +28,7 @@
           Descripcion
         </div>
         <div>
-          {{incidencia.descripcion}}
+          {{incidencia.descripcion | recorteTextoPipe:[10, '...']}}
         </div>
       </div>
     </div>

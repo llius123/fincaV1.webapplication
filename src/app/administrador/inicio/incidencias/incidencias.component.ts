@@ -23,6 +23,9 @@ export class IncidenciasComponent implements OnInit {
   ngOnInit() {
     this.cargaIncidencias()
   }
+  ampliacionTexto(data: string){
+    this.general.moreTexto.emit({display: true,data: data});
+  }
 
   cargaIncidencias() {
     this.incidenciasService.getAllIncidencia().subscribe(

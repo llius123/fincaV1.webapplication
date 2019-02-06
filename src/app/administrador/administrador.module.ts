@@ -58,10 +58,12 @@ import { NewFacturaComponent } from './gestion/new-factura/new-factura.component
 import { ListadoComponent } from './gestion/listado/listado.component';
 import { EditFacturaComponent } from './gestion/edit-factura/edit-factura.component';
 import { GraficoListadosComponent } from './gestion/grafico-listados/grafico-listados.component';
+import { RecorteTextoPipe } from '../pipes/recorte-texto-pipe.pipe';
+import { ExpandTextoComponent } from './expand-texto/expand-texto.component';
 
 
 @NgModule({
-  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe, NewTipovecinoComponent, NewTipofacturaComponent, NewProvinciaComponent, NewPoblacionComponent, NewProveedorComponent, NewComunidadComponent, NewFacturaComponent, ListadoComponent, EditFacturaComponent, GraficoListadosComponent],
+  declarations: [InicioComponent, HeaderAdminComponent, MantenimientoTablasComponent, GestionComponent, IncidenciaComponent, TareasComponent, IncidenciasComponent, IncidenciaPipePipe, FechaPipePipe, VecinoComponent, ComunidadComponent, ProveedorComponent, TipofacturaComponent, LateralIzquierdoComponent, InicioComponentMentenimiento, EditVecinoComponent, EditComunidadComponent, EditProveedorComponent, TipovecinoComponent, PoblacionComponent, ProvinciaComponent, EditTipovecinoComponent, EditTipofacturaComponent, EditProvinciaComponent, EditPoblacionComponent, NewVecinoComponent, BusquedaNombrePipe, NewTipovecinoComponent, NewTipofacturaComponent, NewProvinciaComponent, NewPoblacionComponent, NewProveedorComponent, NewComunidadComponent, NewFacturaComponent, ListadoComponent, EditFacturaComponent, GraficoListadosComponent, RecorteTextoPipe, ExpandTextoComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule, MatProgressSpinnerModule, ProgressSpinnerModule, BlockUIModule, DialogModule, ButtonModule, ToastModule, ReactiveFormsModule, OverlayPanelModule, MessagesModule, MessageModule, FormsModule, ScrollPanelModule, TooltipModule, CalendarModule, ChartModule],
   exports: [HeaderAdminComponent]
 })

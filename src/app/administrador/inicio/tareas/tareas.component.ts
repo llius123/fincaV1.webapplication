@@ -29,6 +29,10 @@ export class TareasComponent implements OnInit {
     this.cargaTareas();
   }
 
+  ampliacionTexto(data: string){
+    this.general.moreTexto.emit({display: true,data: data});
+  }
+
   cargaTareas() {
     this.tareaService.getAllTarea().subscribe(
       (tareas: Array<TareaInterface>) => {
@@ -49,13 +53,12 @@ export class TareasComponent implements OnInit {
     this.modal_display = true;
   }
   showDialogEdit(tarea: TareaInterface) {
-    console.log(tarea)
     this.modal_display_edit = true;
     this.tareaEdited = tarea;
   }
 
   nuevaTarea(descripcion: string) {
-    const fecha = new Date();
+    let fecha = new Date();
     this.tarea = {
       id: null,
       fecha: fecha,
