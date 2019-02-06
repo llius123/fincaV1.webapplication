@@ -20,7 +20,7 @@
     </a>
   </div>
   <div class="flex-1">
-    <div class="flex">
+    <div class="flex justify-end">
       <div>
         <div #tarea pTooltip="Tareas" tooltipPosition="bottom" (click)="op1.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
           style="border-color:#9E4F6E">
@@ -147,8 +147,13 @@
   </p-scrollPanel>
 </p-overlayPanel>
 <p-overlayPanel #op3>
-  <div class="cursor-pointer" (click)="logout()">
-    Logout
+  <div class="flex flex-row p-2 rounded cursor-pointer" (click)="logout()" style="border-color: #9E4F6E;border-width: 1px;">
+    <div class="flex">
+        <i class="fas fa-sign-out-alt fa-lg"></i>
+    </div>
+    <div class="flex">
+      Logout
+    </div>
   </div>
 </p-overlayPanel>
 

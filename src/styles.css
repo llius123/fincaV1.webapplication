@@ -11,3 +11,8 @@
   opacity: 1; 
   transition: background-color .3s; 
 }
+.custom2 .ui-scrollpanel-bar {
+  background-color: #404E5C; 
+  opacity: 1; 
+  transition: background-color .3s; 
+}

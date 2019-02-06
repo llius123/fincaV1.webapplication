@@ -53,7 +53,7 @@ export class IncidenciasComponent implements OnInit {
     console.log(incidencia);
     this.incidenciasService.resolveIncidencia(incidencia).subscribe(
       response => {
-        this.showTooltip('success', 'Incidencia atendida', `Incidencia del dia: ${incidencia.fecha_creacion} atendida!`);
+        this.showTooltip('success', 'Incidencia atendida', `Incidencia atendida!`);
         this.datos = false;
         this.cargaIncidencias();
         this.modal_incidencia = false;
