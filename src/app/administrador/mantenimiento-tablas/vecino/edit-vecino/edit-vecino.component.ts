@@ -44,8 +44,6 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
       numero: new FormControl('', [Validators.required]),
       nif: new FormControl('', [Validators.required]),
       iban: new FormControl('', [Validators.required]),
-      num_mandato: new FormControl('', [Validators.required]),
-      fecha_mandato: new FormControl('', [Validators.required]),
       porcentaje_participacion: new FormControl('', [Validators.required]),
       comunidad: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
@@ -75,6 +73,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
 
 
   putVecinoForm(vecino: VecinoInterface): void {
+    console.log(vecino);
     this.new = false;
     this.seleccionado = true;
 
@@ -87,11 +86,9 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
       nombre: vecino.nombre,
       direccion: vecino.direccion,
       numero: vecino.numero,
+      porcentaje_participacion: vecino.porcentaje_participacion,
       nif: vecino.nif,
       iban: vecino.iban,
-      num_mandato: vecino.num_mandato,
-      fecha_mandato: vecino.fecha_mandato,
-      porcentaje_participacion: vecino.porcentaje_participacion,
       comunidad: vecino.comunidad.nombre,
       email: vecino.email,
       telefono: vecino.telefono,
@@ -102,7 +99,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
     })
   }
 
-  editVecino(): void {
+  editVecino(data): void {
 
     const vecino: VecinoInterface = this.formularioVecino.value;
 
@@ -119,7 +116,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
         this.vecinoSQL.reloadVecinos.emit();
       },
       (error: ErrorInterface) => {
-        this.showTooltip('error', '', `${error.msg}`)
+        this.showTooltip('error', '', `Error editando el vecino`)
       }
     )
   }

@@ -44,7 +44,7 @@ export class NewVecinoComponent implements OnInit {
       email: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),
       id_tipovecino: new FormControl({value: '', disabled: true}, [Validators.required]),
-      poblacion: new FormControl({value: ''}, [Validators.required]),
+      poblacion: new FormControl({value: '', disabled: true}, [Validators.required]),
       login: new FormControl('', [Validators.required]),
       pass: new FormControl('', [Validators.required])
     })
@@ -56,15 +56,14 @@ export class NewVecinoComponent implements OnInit {
     vecino.comunidad = this.comunidadSeleccionada;
     vecino.id_tipovecino = this.tipovecinoSeleccionado;
     vecino.poblacion = this.poblacionSeleccionada;
-    vecino.num_mandato = null;
-    vecino.fecha_mandato = null;
+    vecino.id = 0;
 
-    this.sql.newVecino(this.formularioVecino.value).subscribe(
+    this.sql.newVecino(vecino).subscribe(
       (data: any) => {
         this.showTooltip('success', '', `${data.msg}`)
         this.sql.reloadVecinos.emit();
       },
-      error => this.showTooltip('error', '', `${error.msg}`)
+      error => this.showTooltip('error', '', 'Error creando el vecino')
     )
   }
 

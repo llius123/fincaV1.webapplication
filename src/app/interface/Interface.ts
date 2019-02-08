@@ -85,10 +85,8 @@ interface VecinoInterface {
   numero: string;
   nif: string;
   iban: string;
-  num_mandato: string;
-  fecha_mandato: Date;
-  porcentaje_participacion: number;
   comunidad: ComunidadInterface;
+  porcentaje_participacion: number;
   email: string;
   telefono: string;
   id_tipovecino: TipovecinoInterface;

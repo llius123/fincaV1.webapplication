@@ -36,7 +36,7 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('poblacion').hasError('required')  && formularioVecino.get('poblacion').touched">
+                                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioVecino.get('poblacion').hasError('required')  && formularioVecino.get('cod_poblacion').touched">
                                         <p-message severity="error" text="Poblacion es obligatorio"></p-message>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@
                 </div>
             </div>
             <div class="flex justify-center p-5">
-                <button (click)="nuevoVecino()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px;">
+                <button (click)="nuevoVecino()" [disabled]="!formularioVecino.valid" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px;">
                     <i class="fas fa-newspaper"></i>
                     Crear
                 </button>
