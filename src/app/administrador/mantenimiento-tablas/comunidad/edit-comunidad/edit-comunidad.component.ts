@@ -1,7 +1,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ComunidadService } from 'src/app/service/comunidad/comunidad.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
@@ -34,12 +34,12 @@ export class EditComunidadComponent implements OnInit {
     )
     this.formularioComunidad = new FormGroup({
       id: new FormControl(),
-      nombre: new FormControl(),
-      direccion: new FormControl(),
-      nif: new FormControl(),
-      iban: new FormControl(),
-      sufijo: new FormControl(),
-      poblacion: new FormControl()
+      nombre: new FormControl('',[Validators.required]),
+      direccion: new FormControl('',[Validators.required]),
+      nif: new FormControl('',[Validators.required]),
+      iban: new FormControl('',[Validators.required]),
+      sufijo: new FormControl('',[Validators.required]),
+      poblacion: new FormControl({value: '', disabled: true}, [Validators.required])
     })
   }
 

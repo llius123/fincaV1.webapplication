@@ -26,5 +26,6 @@ export class LoginService {
 
   logout(){
     this.vecino = null;
+    this.http.get(`${this.configAPI.api}logout`, this.configAPI.header).subscribe();
   }
 }

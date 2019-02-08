@@ -1,4 +1,4 @@
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ComunidadService } from 'src/app/service/comunidad/comunidad.service';
 import { ProvinciaService } from 'src/app/service/poblacion-provincia/provincia.service';
@@ -22,19 +22,19 @@ export class NewComunidadComponent implements OnInit {
 
   ngOnInit() {
     this.formularioComunidad = new FormGroup({
-      id: new FormControl(),
-      nombre: new FormControl(),
-      direccion: new FormControl(),
-      nif: new FormControl(),
-      iban: new FormControl(),
-      sufijo: new FormControl(),
-      cod_poblacion: new FormControl()
+      id: new FormControl(0),
+      nombre: new FormControl('',[Validators.required]),
+      direccion: new FormControl('',[Validators.required]),
+      nif: new FormControl('',[Validators.required]),
+      iban: new FormControl('',[Validators.required]),
+      sufijo: new FormControl('',[Validators.required]),
+      poblacion: new FormControl({value: '', disabled: true}, [Validators.required])
     })
   }
 
-  nuevaComunidad() {
+  nuevaComunidad() { 
     const comunidad = this.formularioComunidad.value;
-    comunidad.cod_poblacion = this.poblacionSeleccionada;
+    comunidad.poblacion = this.poblacionSeleccionada;
 
 
     this.sql.create(comunidad).subscribe(
@@ -60,7 +60,7 @@ export class NewComunidadComponent implements OnInit {
   }
   savePoblacion(data: PoblacionInterface): void {
     this.formularioComunidad.patchValue({
-      cod_poblacion: data.descripcion
+      poblacion: data.descripcion
     })
     this.poblacionSeleccionada = data;
     this.closeModals();

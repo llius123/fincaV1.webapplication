@@ -9,7 +9,7 @@
                     <div>
                         <div class="flex">
                             <div>
-                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="cod_poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
+                                <input class="pl-2 border-b-2 focus:outline-none" formControlName="poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
                             </div>
                             <div class="ml-4">
                                 <button (click)="showDialog()">
@@ -17,7 +17,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('cod_poblacion').hasError('required')">
+                        <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('poblacion').hasError('required')">
                             <p-message severity="error" text="Poblacion es obligatorio"></p-message>
                         </div>
                     </div>
@@ -29,8 +29,8 @@
                 </div>
                 <div class="pl-3 pt-2">
                     <input class="pl-2 border-b-2 focus:outline-none" formControlName="direccion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
-                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('direccion').hasError('required')">
-                        <p-message severity="error" text="Iban es obligatorio"></p-message>
+                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('direccion').hasError('required') && formularioComunidad.get('direccion').touched">
+                        <p-message severity="error" text="Direccion es obligatoria"></p-message>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="pl-3 pt-2">
                     <input class="pl-2 border-b-2 focus:outline-none" formControlName="nombre" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
-                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('nombre').hasError('required')">
+                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('nombre').hasError('required') && formularioComunidad.get('nombre').touched">
                         <p-message severity="error" text="Nombre es obligatorio"></p-message>
                     </div>
                 </div>
@@ -51,8 +51,8 @@
                 </div>
                 <div class="pl-3 pt-2">
                     <input class="pl-2 border-b-2 focus:outline-none" formControlName="nif" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
-                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('nif').hasError('required')">
-                        <p-message severity="error" text="nif es obligatorio"></p-message>
+                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('nif').hasError('required') && formularioComunidad.get('nif').touched">
+                        <p-message severity="error" text="Nif es obligatorio"></p-message>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="pl-3 pt-2">
                     <input class="pl-2 border-b-2 focus:outline-none" formControlName="iban" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
-                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('iban').hasError('required')">
+                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('iban').hasError('required') && formularioComunidad.get('iban').touched">
                         <p-message severity="error" text="nif es obligatorio"></p-message>
                     </div>
                 </div>
@@ -73,16 +73,16 @@
                     </div>
                     <div class="pl-3 pt-2">
                         <input class="pl-2 border-b-2 focus:outline-none" formControlName="sufijo" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
-                        <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('sufijo').hasError('required')">
+                        <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioComunidad.get('sufijo').hasError('required') && formularioComunidad.get('sufijo').touched">
                             <p-message severity="error" text="Sufijo es obligatorio"></p-message>
                         </div>
                     </div>
                 </div>
         </form>
         <div class="flex justify-center p-5">
-            <button (click)="nuevaComunidad()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
+            <button (click)="nuevaComunidad()" [disabled]="!formularioComunidad.valid" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
                 <i class="fas fa-edit"></i>
-                Edit
+                Nueva
             </button>
         </div>
     </div>
