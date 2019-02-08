@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProveedorService } from 'src/app/service/proveedor/proveedor.service';
 
 @Component({
@@ -22,10 +22,10 @@ export class NewProveedorComponent implements OnInit {
   ngOnInit() {
     this.formularioProveedor = new FormGroup({
       id: new FormControl(),
-      direccion: new FormControl(),
-      telefono: new FormControl(),
-      email: new FormControl(),
-      poblacion: new FormControl()
+      direccion: new FormControl('', [Validators.required]),
+      telefono: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      poblacion: new FormControl({value: '', disabled: true}, [Validators.required])
     })
   }
 

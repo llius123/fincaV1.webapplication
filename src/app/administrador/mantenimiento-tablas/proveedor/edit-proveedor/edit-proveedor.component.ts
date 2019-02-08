@@ -1,5 +1,5 @@
 import { ProveedorService } from './../../../../service/proveedor/proveedor.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -30,10 +30,10 @@ export class EditProveedorComponent implements OnInit {
     });
     this.formularioProveedor = new FormGroup({
       id: new FormControl(),
-      direccion: new FormControl(),
-      telefono: new FormControl(),
-      email: new FormControl(),
-      poblacion: new FormControl()
+      direccion: new FormControl('', [Validators.required]),
+      telefono: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required]),
+      poblacion: new FormControl({value: '', disabled: true}, [Validators.required])
     })
   }
   putProveedorForm(data: ProveedorInterface): void {
@@ -86,7 +86,7 @@ export class EditProveedorComponent implements OnInit {
   }
   savePoblacion(poblacion: PoblacionInterface): void {
     this.formularioProveedor.patchValue({
-      poblacion: poblacion.cod_postal
+      poblacion: poblacion.descripcion
     })
     this.poblacionSeleccionada = poblacion;
     this.closeModals();

@@ -1,6 +1,6 @@
 <div *ngIf="!seleccionado && !new " class="flex justify-center rounded ml-10 mr-10 " style="margin-top: 40%;border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; background-color: #B7C3F3">
   <div class="pb-5 pt-5">
-    Selecciona un vecino o crea uno
+    Selecciona un proveedor o crea uno
     <button class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; "
       (click)="newProveedor()">
       <i class="fas fa-newspaper"></i>
@@ -39,7 +39,7 @@
           <div>
             <div class="flex">
               <div>
-                <input class="pl-2 border-b-2 focus:outline-none" formControlName="poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
+                <input class="pl-2 border-b-2 focus:outline-none cursor-not-allowed" formControlName="poblacion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E;width: 120px;">
               </div>
               <div class="ml-4">
                 <button (click)="showDialog('poblacion')">
@@ -60,7 +60,7 @@
         <div class="pl-3 pt-2">
           <input class="pl-2 border-b-2 focus:outline-none" formControlName="direccion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
           <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioProveedor.get('direccion').hasError('required')">
-            <p-message severity="error" text="Iban es obligatorio"></p-message>
+            <p-message severity="error" text="Direccion es obligatorio"></p-message>
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@
         <div class="pl-3 pt-2">
           <input class="pl-2 border-b-2 focus:outline-none" formControlName="telefono" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
           <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioProveedor.get('telefono').hasError('required')">
-            <p-message severity="error" text="Iban es obligatorio"></p-message>
+            <p-message severity="error" text="Telefono es obligatorio"></p-message>
           </div>
         </div>
       </div>
@@ -82,13 +82,13 @@
         <div class="pl-3 pt-2">
           <input class="pl-2 border-b-2 focus:outline-none" formControlName="email" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E; width:300px;">
           <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioProveedor.get('email').hasError('required')">
-            <p-message severity="error" text="Iban es obligatorio"></p-message>
+            <p-message severity="error" text="Email es obligatorio"></p-message>
           </div>
         </div>
       </div>
     </form>
     <div class="flex justify-center p-5">
-      <button (click)="editProveedor()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
+      <button (click)="editProveedor()" [disabled]="!formularioProveedor.valid" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
         <i class="fas fa-edit"></i>
         Edit
       </button>
