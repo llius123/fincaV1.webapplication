@@ -65,6 +65,9 @@ export class IncidenciaComponent implements OnInit {
       error => this.showTooltip('error', '', `${error.msg}`)
     )
   }
+  cerrar(){
+    this.display_factura = false;
+  }
 
   showTooltip(type: string, title: string, desc: string) {
     this.messageService.add({

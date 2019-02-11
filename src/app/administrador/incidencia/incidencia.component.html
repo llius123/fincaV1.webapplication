@@ -1,85 +1,66 @@
-<div class="flex flex-wrap">
-  <div class="flex flex-col border border-black w-1/4 h-64" *ngFor="let incidencia of incidencias">
+<div class="flex flex-wrap m-1 justify-center justify-left">
+  <div class="flex flex-col border rounded h-64 m-2" *ngFor="let incidencia of incidencias" id="borde">
     <div class="flex justify-center mt-5">
-      <i class="fas fa-times-circle fa-3x" *ngIf="incidencia.atendido==='n'"></i>
-      <i class="fas fa-check-circle fa-3x" *ngIf="incidencia.atendido==='s'"></i>
+      <i class="fas fa-times-circle fa-3x text-red-dark" *ngIf="incidencia.atendido==='n'"></i>
+      <i class="fas fa-check-circle fa-3x text-green-dark" *ngIf="incidencia.atendido==='s'"></i>
     </div>
-    <div class="flex flex-col">
-      <div class="flex flex-row">
-        <div class="flex flex-col">
-          <div>
-            Vecino
-          </div>
-          <div>
-            {{incidencia.vecino.nombre}}
-          </div>
+    <div class="flex flex-col mt-5">
+      <div class="flex flex-col ml-2 pl-2 mt-1 mb-1" style="border-left-color:#9E4F6E;border-left-width: 2px;">
+        <div class="font-bold">
+          Vecino
         </div>
-        <div class="flex flex-col">
-          <div>
-            Fecha
-          </div>
-          <div>
-            {{incidencia.fecha_creacion | fechaPipe}}
-          </div>
+        <div>
+          {{incidencia.vecino.nombre}}
         </div>
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col ml-2 pl-2 mt-1 mb-1" style="border-left-color:#9E4F6E;border-left-width: 2px;">
+        <div class="font-bold">
+          Fecha
+        </div>
         <div>
+          {{incidencia.fecha_creacion | fechaPipe}}
+        </div>
+      </div>
+      <div class="flex flex-col ml-2 pl-2 mt-1 mb-1" style="border-left-color:#9E4F6E;border-left-width: 2px;">
+        <div class="font-bold">
           Descripcion
         </div>
         <div>
-          {{incidencia.descripcion | recorteTextoPipe:[10, '...']}}
+          {{incidencia.descripcion | recorteTextoPipe:[20, '...']}}
         </div>
       </div>
     </div>
     <div class="flex flex-col">
-      <div class="flex flex-row">
-        <div class="flex">
-          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('ver',incidencia)" pTooltip="Ver factura"
-            tooltipPosition="bottom">
-            <i class="far fa-eye fa-2x"></i>
-          </div>
-          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('atender',incidencia)" pTooltip="Atender factura"
-            tooltipPosition="bottom">
-            <i class="fas fa-check fa-2x" *ngIf="incidencia.atendido==='n'"></i>
-          </div>
-          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('eliminar',incidencia)" pTooltip="Eliminar factura"
-            tooltipPosition="bottom">
-            <i class="far fa-trash-alt fa-2x"></i>
-          </div>
+      <div class="flex flex-row justify-center mt-1 mb-1">
+        <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('ver',incidencia)" pTooltip="Ver factura"
+          tooltipPosition="bottom">
+          <i class="far fa-eye fa-2x"></i>
+        </div>
+        <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('atender',incidencia)" pTooltip="Atender factura"
+          tooltipPosition="bottom">
+          <i class="fas fa-check fa-2x" *ngIf="incidencia.atendido==='n'"></i>
+        </div>
+        <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('eliminar',incidencia)" pTooltip="Eliminar factura"
+          tooltipPosition="bottom">
+          <i class="far fa-trash-alt fa-2x"></i>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<p-dialog header="Factura" [(visible)]="display_factura" [modal]="true" *ngIf="datos">
-  <div class="flex flex-col">
-    <div class="flex flex-row">
-      <div class="flex flex-col">
-        <div>
-          Vecino
-        </div>
-        <div>
-          {{incidenciaView.vecino}}
-        </div>
-      </div>
-      <div class="flex flex-col">
-        <div>
-          Fecha
-        </div>
-        <div>
-          {{incidenciaView.fecha_creacion | fechaPipe}}
-        </div>
-      </div>
+<p-dialog header="Factura" [(visible)]="display_factura" [modal]="true" *ngIf="datos" [closable]="false" [showHeader]="false" [dismissableMask]="true" [contentStyle]="{'background-color': '#B6C3F3','border-color': '#9E4F6E', 'border-radius': '0.25rem', 'border-width': '2px'}">
+  <div class="flex justify-end">
+    <div (click)="cerrar()" class="cursor-pointer">
+        <i class="fas fa-times"></i>
     </div>
-    <div class="flex flex-col">
-      <div>
-        Descripcion
-      </div>
-      <div>
-        {{incidenciaView.descripcion}}
-      </div>
+  </div>
+  <div class="flex flex-col rounded">
+    <div class="font-bold p-1" style="border-bottom: #9E4F6E;width: 30px;">
+      Descripcion
+    </div>
+    <div class=" p-1">
+      {{incidenciaView.descripcion}}
     </div>
   </div>
 </p-dialog>
