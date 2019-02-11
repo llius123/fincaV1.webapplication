@@ -1,27 +1,55 @@
-<div class="flex h-16 m-1 border border-black rounded items-center justify-center">
-  <div class="flex-1">
-    <a [routerLink]="['inicio']">
-      Inicio
-    </a>
+<div class="flex h-16 m-1 rounded items-center justify-center" style="border-width:2px; border-color: #9E4F6E;background-color: #B6C3F3;">
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" [routerLink]="['inicio']">
+      <div class="flex">
+        <i class="fas fa-home fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Inicio
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="flex-1">
-    <a [routerLink]="['mantenimiento/inicio']">
-      Mantenimiento general
-    </a>
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" [routerLink]="['mantenimiento/inicio']">
+      <div class="flex justify-center">
+        <i class="fas fa-edit fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Mantenimiento general
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="flex-1">
-    <a [routerLink]="['gestion/listado']">
-      Gestion facturas
-    </a>
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" [routerLink]="['gestion/listado']">
+      <div class="flex justify-center">
+        <i class="fas fa-file-invoice-dollar fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Gestion facturas
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="flex-1">
-    <a [routerLink]="['incidencia']">
-      Gestion incidencias
-    </a>
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" [routerLink]="['incidencia']">
+      <div class="flex justify-center">
+        <i class="fas fa-exclamation fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Gestion incidencias
+        </div>
+      </div>
+    </div>
   </div>
   <div class="flex-1">
     <div class="flex justify-end">
-      <div>
+      <div class="ml-2 mr-2">
         <div #tarea pTooltip="Tareas" tooltipPosition="bottom" (click)="op1.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
           style="border-color:#9E4F6E">
           <div>
@@ -32,7 +60,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="ml-2 mr-2">
         <div pTooltip="Incidencias" tooltipPosition="bottom" (click)="op2.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
           style="border-color:#9E4F6E">
           <div>
@@ -43,11 +71,13 @@
           </div>
         </div>
       </div>
-      <div pTooltip="Perfil" tooltipPosition="bottom">
-        <div (click)="op3.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
-          style="border-color:#9E4F6E">
-          <div>
-            <i class="fas fa-user"></i>
+      <div class="ml-2 mr-2">
+        <div pTooltip="Perfil" tooltipPosition="bottom">
+          <div (click)="op3.toggle($event)" class="flex justify-center items-center rounded-full border h-10 w-10 cursor-pointer "
+            style="border-color:#9E4F6E">
+            <div>
+              <i class="fas fa-user"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -149,7 +179,7 @@
 <p-overlayPanel #op3>
   <div class="flex flex-row p-2 rounded cursor-pointer" (click)="logout()" style="border-color: #9E4F6E;border-width: 1px;">
     <div class="flex">
-        <i class="fas fa-sign-out-alt fa-lg"></i>
+      <i class="fas fa-sign-out-alt fa-lg"></i>
     </div>
     <div class="flex">
       Logout

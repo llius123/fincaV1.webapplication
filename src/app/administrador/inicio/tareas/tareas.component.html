@@ -13,9 +13,9 @@
     </button>
   </div>
 </div>
-<div [hidden]="!datos">
+<div [hidden]="!datos" >
   <p-scrollPanel [style]="{width: '100%', height: '430px'}" styleClass="custom">
-    <div class="border rounded ng-star-inserted m-2 p-2 bg-grey-lighter shadow-md" *ngFor="let tarea of tareas" style="border-color: #9E4F6E">
+    <div class="border rounded ng-star-inserted m-2 p-2 shadow-md" *ngFor="let tarea of tareas" style="border-color: #9E4F6E;background-color: #B6C3F3;">
       <div class="flex p-2">
         <div class="p-1 h-8 w-8 border-tareas-icono rounded-full" style="border-color: #9E4F6E;border-width: 2px;">
           <i class="flex fas fa-user items-center justify-center"></i>
@@ -53,10 +53,12 @@
     </div>
   </p-scrollPanel>
 </div>
+<div class="rounded" style="background-color: #B6C3F3;height: 435px;" [hidden]="datos">
+  <p-progressSpinner [styleClass]="{'background-color': '#B6C3F3', 'width': '50px', 'height': '50px'}"></p-progressSpinner>
+</div>
 
 
 <!-- Crear una nueva tarea -->
-<p-progressSpinner [style]="{width: '50px', height: '50px'}" [hidden]="datos"></p-progressSpinner>
 <p-dialog header="Nueva tarea" [(visible)]="modal_display" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
   <div class="flex">
     <div class="flex-1">
