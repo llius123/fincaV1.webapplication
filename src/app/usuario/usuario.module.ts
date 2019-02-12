@@ -5,11 +5,13 @@ import { routes } from './usuario-routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
+import { FacturasComponent } from './facturas/facturas.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 
 @NgModule({
-  declarations: [UsuarioComponent, HeaderUsuarioComponent, InicioComponent],
+  declarations: [UsuarioComponent, HeaderUsuarioComponent, InicioComponent, FacturasComponent, PerfilComponent],
   imports: [RouterModule.forRoot(routes), BrowserModule,],
   exports: []
 })

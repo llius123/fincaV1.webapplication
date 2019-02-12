@@ -38,8 +38,9 @@
             <i class="far fa-eye fa-2x"></i>
           </div>
           <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('atender',incidencia)" pTooltip="Atender factura"
-            tooltipPosition="bottom">
-            <i class="fas fa-check fa-2x" *ngIf="incidencia.atendido==='n'"></i>
+          *ngIf="incidencia.atendido==='n'"
+          tooltipPosition="bottom">
+            <i class="fas fa-check fa-2x"></i>
           </div>
           <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('eliminar',incidencia)" pTooltip="Eliminar factura"
             tooltipPosition="bottom">

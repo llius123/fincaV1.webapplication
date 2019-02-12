@@ -37,6 +37,7 @@ export class ProvinciaComponent implements OnInit {
     this.parentMessage = true;
   }
   delete(data: ProvinciaInterface): void{
+    console.log(data)
     this.sql.delete(data).subscribe(
       data => {
         this.sql.reloadProvincias.emit();

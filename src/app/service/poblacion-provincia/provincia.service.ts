@@ -18,7 +18,7 @@ export class ProvinciaService {
     }
 
     delete(data: ProvinciaInterface){
-        return this.http.delete<ErrorInterface>(`${this.config.api}provincias/${data.cod_provincia}`, this.config.header)
+        return this.http.delete<ErrorInterface>(`${this.config.api}provincias/${data.id}`, this.config.header)
     }
 
     create(data: ProvinciaInterface){
