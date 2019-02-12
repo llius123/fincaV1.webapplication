@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/fo
 import { HelpComponent } from './administrador/help/help.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DialogModule } from 'primeng/dialog';
+import { UsuarioModule } from './usuario/usuario.module';
 
 
 
@@ -37,6 +38,7 @@ import { DialogModule } from 'primeng/dialog';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AdministradorModule,
+    UsuarioModule,
     ServiceModule,
     HttpClientModule,
     RouterModule.forRoot(routes),

@@ -74,76 +74,78 @@
   </div>
 </div>
 
+<p-scrollPanel [style]="{width: '100%', height: '445px'}" styleClass="custom">
 <div class="flex m-2 p-2 rounded" *ngFor="let factura of facturas" id="borde">
-  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
-    <div class="flex m-2 font-bold">
-      Fecha registro
-    </div>
-    <div class="flex m-2">
-      {{factura.fecha_registro | fechaPipe}}
-    </div>
-  </div>
-  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
-    <div class="flex m-2 font-bold">
-      tipofactura
-    </div>
-    <div class="flex m-2">
-      {{factura.tipofactura.descripcion}}
-    </div>
-  </div>
-  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
-    <div class="flex m-2 font-bold">
-      proveedor
-    </div>
-    <div class="flex m-2">
-      <div>
-        {{factura.proveedor.telefono}}
+    <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+      <div class="flex m-2 font-bold">
+        Fecha registro
       </div>
-      <div class="cursor-pointer ml-5" (click)="selected(factura.proveedor, 'proveedor')">
-        <i class="fas fa-search-plus fa-lg" #proveedor></i>
+      <div class="flex m-2">
+        {{factura.fecha_registro | fechaPipe}}
       </div>
     </div>
-  </div>
-  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
-    <div class="flex m-2 font-bold">
-      comunidad
-    </div>
-    <div class="flex m-2">
-      <div>
-        {{factura.comunidad.nombre}}
+    <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+      <div class="flex m-2 font-bold">
+        tipofactura
       </div>
-      <div class="cursor-pointer ml-5" (click)="selected(factura.comunidad, 'comunidad')">
-        <i class="fas fa-search-plus fa-lg" #comunidad></i>
+      <div class="flex m-2">
+        {{factura.tipofactura.descripcion}}
       </div>
     </div>
+    <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+      <div class="flex m-2 font-bold">
+        proveedor
+      </div>
+      <div class="flex m-2">
+        <div>
+          {{factura.proveedor.telefono}}
+        </div>
+        <div class="cursor-pointer ml-5" (click)="selected(factura.proveedor, 'proveedor')">
+          <i class="fas fa-search-plus fa-lg" #proveedor></i>
+        </div>
+      </div>
+    </div>
+    <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+      <div class="flex m-2 font-bold">
+        comunidad
+      </div>
+      <div class="flex m-2">
+        <div>
+          {{factura.comunidad.nombre}}
+        </div>
+        <div class="cursor-pointer ml-5" (click)="selected(factura.comunidad, 'comunidad')">
+          <i class="fas fa-search-plus fa-lg" #comunidad></i>
+        </div>
+      </div>
+    </div>
+    <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+      <div class="flex m-2 font-bold">
+        numero factura
+      </div>
+      <div class="flex m-2">
+        {{factura.num_factura}}
+      </div>
+    </div>
+    <div class="flex-col mr-2 w-48" id="borde_izquierdo">
+      <div class="flex m-2 font-bold">
+        cobrado
+      </div>
+      <div class="flex m-2">
+        {{factura.cobrado}}
+      </div>
+    </div>
+    <div class="flex w-1/4 content-center justify-center">
+      <div class="flex content-center">
+        <button (click)="pdf(factura)" class="hover:rosa-jesus mr-8">
+          <i class="fas fa-file-pdf fa-2x"></i>
+        </button>
+        <button (click)="editFactura(factura)" class="hover:rosa-jesus ml-8">
+          <i class="fas fa-edit fa-2x"></i>
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
-    <div class="flex m-2 font-bold">
-      numero factura
-    </div>
-    <div class="flex m-2">
-      {{factura.num_factura}}
-    </div>
-  </div>
-  <div class="flex-col mr-2 w-48" id="borde_izquierdo">
-    <div class="flex m-2 font-bold">
-      cobrado
-    </div>
-    <div class="flex m-2">
-      {{factura.cobrado}}
-    </div>
-  </div>
-  <div class="flex w-1/4 content-center justify-center">
-    <div class="flex content-center">
-      <button (click)="pdf(factura)" class="hover:rosa-jesus mr-8">
-        <i class="fas fa-file-pdf fa-2x"></i>
-      </button>
-      <button (click)="editFactura(factura)" class="hover:rosa-jesus ml-8">
-        <i class="fas fa-edit fa-2x"></i>
-      </button>
-    </div>
-  </div>
-</div>
+</p-scrollPanel>
 
 <p-dialog [(visible)]="display_proveedor" [modal]="true" [style]="{width: '500px', height: '200px'}" [positionTop]=10>
   <p-header>

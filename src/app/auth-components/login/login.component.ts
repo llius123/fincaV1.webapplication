@@ -21,7 +21,11 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         this.loginService.check().subscribe((vecino: VecinoInterface) => {
           this.loginService.setvecino(vecino);
-          this.router.navigate(['admin/inicio']);
+          if(vecino.id_tipovecino.id == 1){
+            this.router.navigate(['admin/inicio']);
+          }else{
+            this.router.navigate(['usuario']);
+          }
         })
       },
         error => {
