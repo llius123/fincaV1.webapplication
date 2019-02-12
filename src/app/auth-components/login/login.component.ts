@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
           if(vecino.id_tipovecino.id == 1){
             this.router.navigate(['admin/inicio']);
           }else{
-            this.router.navigate(['usuario']);
+            this.router.navigate(['usuario/inicio']);
           }
         })
       },
