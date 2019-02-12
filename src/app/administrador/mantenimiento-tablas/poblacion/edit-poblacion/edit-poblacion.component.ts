@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
@@ -28,9 +28,9 @@ export class EditPoblacionComponent implements OnInit {
   ngOnInit() {
     this.formularioPoblacion = new FormGroup({
       id: new FormControl(),
-      cod_provincia: new FormControl(),
-      descripcion: new FormControl(),
-      cod_postal: new FormControl()
+      cod_provincia: new FormControl({value: '', disabled: true}, [Validators.required]),
+      descripcion: new FormControl('', [Validators.required]),
+      cod_postal: new FormControl('', [Validators.required])
     })
     this.hijo.subscribe(data => {
       this.putProvinciaForm(data)
@@ -38,7 +38,6 @@ export class EditPoblacionComponent implements OnInit {
   }
 
   putProvinciaForm(data): void {
-    console.log(data)
     this.provinciaSeleccionada = data.cod_provincia;
     this.new = false;
     this.seleccionado = true;

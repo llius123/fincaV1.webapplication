@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { TipoFacturaService } from 'src/app/service/tipovecino-tipofactura/tipofactura.service';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -23,7 +23,7 @@ export class EditTipofacturaComponent implements OnInit {
   ngOnInit() {
     this.formularioTipoFactura = new FormGroup({
       id: new FormControl(),
-      descripcion: new FormControl()
+      descripcion: new FormControl('', [Validators.required])
     })
     this.hijo.subscribe(data => this.putTipoFacturaForm(data));
   }

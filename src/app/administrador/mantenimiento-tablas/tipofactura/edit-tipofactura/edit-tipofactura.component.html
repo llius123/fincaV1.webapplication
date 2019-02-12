@@ -31,26 +31,29 @@
             </div>
         </div>
         <form [formGroup]="formularioTipoFactura">
-            <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <!-- <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
                 <div class="pl-3 pt-2 font-bold w-48">
                     <p>Id:</p>
                 </div>
                 <div class="pl-3 pt-2">
                     <input class="pl-2 border-b-2 focus:outline-none cursor-not-allowed" formControlName="id" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
                 </div>
-            </div>
+            </div> -->
             <div class="flex flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
                 <div class="pl-3 pt-2 font-bold w-48">
                     <p>Descripcion:</p>
                 </div>
                 <div class="pl-3 pt-2">
                     <input class="pl-2 border-b-2 focus:outline-none " formControlName="descripcion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                    <div class="mt-2 mb-2" style="width: 200px;" *ngIf="formularioTipoFactura.get('descripcion').hasError('required') && formularioTipoFactura.get('descripcion').touched">
+                        <p-message severity="error" text="Descripcion es obligatoria"></p-message>
+                    </div>
                 </div>
             </div>
         </form>
     </div>
     <div class="flex justify-center p-5">
-        <button (click)="edit()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
+        <button [disabled]="!formularioTipoFactura.valid" (click)="edit()" class="rounded hover:bg-grey-light" style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
             <i class="fas fa-edit"></i>
             Edit
         </button>

@@ -33,17 +33,20 @@ export class NewComunidadComponent implements OnInit {
   }
 
   nuevaComunidad() { 
-    const comunidad = this.formularioComunidad.value;
-    comunidad.poblacion = this.poblacionSeleccionada;
-
-
-    this.sql.create(comunidad).subscribe(
-      (data: any) => {
-        this.showTooltip('success', '', `${data.msg}`)
-        this.sql.reloadComunidades.emit();
-      },
-      error => this.showTooltip('error', '', `${error.msg}`)
-    )
+    if(this.poblacionSeleccionada == null){
+      this.showTooltip('error', '', 'Selecciona una poblacion')
+    }else{
+      const comunidad = this.formularioComunidad.value;
+      comunidad.poblacion = this.poblacionSeleccionada;
+  
+      this.sql.create(comunidad).subscribe(
+        (data: any) => {
+          this.showTooltip('success', '', `${data.msg}`)
+          this.sql.reloadComunidades.emit();
+        },
+        error => this.showTooltip('error', '', `${error.msg}`)
+      )
+    }
   }
 
   showDialog() {

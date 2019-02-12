@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
 import { ProvinciaService } from 'src/app/service/poblacion-provincia/provincia.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-poblacion',
@@ -23,24 +23,28 @@ export class NewPoblacionComponent implements OnInit {
   ngOnInit() {
     this.formularioPoblacion = new FormGroup({
       id: new FormControl(),
-      cod_provincia: new FormControl(),
-      descripcion: new FormControl(),
-      cod_postal: new FormControl()
+      cod_provincia: new FormControl({value: '', disabled: true}, [Validators.required]),
+      descripcion: new FormControl('', [Validators.required]),
+      cod_postal: new FormControl('', [Validators.required])
     })
   }
 
   nuevaPoblacion() {
-    const poblacion = this.formularioPoblacion.value;
-    poblacion.cod_provincia = this.provinciaSeleccionada;
-
-
-    this.sql.create(poblacion).subscribe(
-      (data: any) => {
-        this.showTooltip('success', '', `${data.msg}`)
-        this.sql.reloadPoblaciones.emit();
-      },
-      error => this.showTooltip('error', '', `${error.msg}`)
-    )
+    if(this.provinciaSeleccionada == null ){
+      this.showTooltip('error', '', 'Selecciona una provincia')
+    }else{
+      const poblacion = this.formularioPoblacion.value;
+      poblacion.cod_provincia = this.provinciaSeleccionada;
+  
+  
+      this.sql.create(poblacion).subscribe(
+        (data: any) => {
+          this.showTooltip('success', '', `${data.msg}`)
+          this.sql.reloadPoblaciones.emit();
+        },
+        error => this.showTooltip('error', '', `${error.msg}`)
+      )
+    }
   }
 
   showDialog() {

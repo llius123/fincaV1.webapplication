@@ -10,7 +10,7 @@
         </div>
       </div>
     </div>
-    <div class="border rounded m-1 p-2 overflow-auto" style="border-color: #404E5C; border-width:2px;height: 554px;">
+    <div class="border rounded m-1 p-2 overflow-auto" style="border-color: #404E5C; border-width:2px;height: 470px;">
       <div *ngFor="let tipovecino of tipovecinos | BusquedaNombre: searchName: 'tipovecino'">
         <div class="flex">
           <div class="w-3/5">
@@ -37,7 +37,7 @@
       </div>
     </div>
   </div>
-  <div class="w-3/5 overflow-auto m-1 rounded" style="height: 650px; border-color: #404E5C; border-width:2px;">
+  <div class="w-3/5 overflow-auto m-1 rounded" style="height: 565px; border-color: #404E5C; border-width:2px;">
     <app-edit-tipovecino [seleccionado]="parentMessage" [hijo]="padre"></app-edit-tipovecino>
   </div>
 </div>

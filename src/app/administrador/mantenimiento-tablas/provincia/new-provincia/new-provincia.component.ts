@@ -1,7 +1,7 @@
 import { ProvinciaService } from 'src/app/service/poblacion-provincia/provincia.service';
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-provincia',
@@ -18,8 +18,8 @@ export class NewProvinciaComponent implements OnInit {
   ngOnInit() {
     this.formularioProvincia = new FormGroup({
       id: new FormControl(),
-      cod_provincia: new FormControl(),
-      descripcion: new FormControl()
+      cod_provincia: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('', [Validators.required])
     })
   }
 

@@ -30,17 +30,21 @@ export class NewProveedorComponent implements OnInit {
   }
 
   newProveedor() {
-    const proveedor = this.formularioProveedor.value;
-
-    proveedor.poblacion = this.poblacionSeleccionada;
-
-    this.sql.create(proveedor).subscribe(
-      (data: any) => {
-        this.showTooltip('success', '', `${data.msg}`)
-        this.sql.reloadProveedores.emit();
-      },
-      error => this.showTooltip('error', '', `${error.msg}`)
-    )
+    if(this.poblacionSeleccionada == null){
+      this.showTooltip('error', '', 'Selecciona una Poblacion')
+    }else{
+      const proveedor = this.formularioProveedor.value;
+  
+      proveedor.poblacion = this.poblacionSeleccionada;
+  
+      this.sql.create(proveedor).subscribe(
+        (data: any) => {
+          this.showTooltip('success', '', `${data.msg}`)
+          this.sql.reloadProveedores.emit();
+        },
+        error => this.showTooltip('error', '', `${error.msg}`)
+      )
+    }
   }
 
   showDialog() {

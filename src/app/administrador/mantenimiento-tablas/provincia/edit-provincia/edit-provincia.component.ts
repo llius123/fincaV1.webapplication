@@ -1,6 +1,6 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { PoblacionService } from 'src/app/service/poblacion-provincia/poblacion.service';
@@ -24,8 +24,8 @@ export class EditProvinciaComponent implements OnInit {
   ngOnInit() {
     this.formularioProvincia = new FormGroup({
       id: new FormControl(),
-      cod_provincia: new FormControl(),
-      descripcion: new FormControl()
+      cod_provincia: new FormControl('',[Validators.required]),
+      descripcion: new FormControl('',[Validators.required])
     })
     this.hijo.subscribe(data => this.putProvinciaForm(data));
   }

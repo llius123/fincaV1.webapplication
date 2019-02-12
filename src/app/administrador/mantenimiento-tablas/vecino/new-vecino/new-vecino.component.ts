@@ -51,20 +51,24 @@ export class NewVecinoComponent implements OnInit {
   }
 
   nuevoVecino() {
-    const vecino = this.formularioVecino.value;
-
-    vecino.comunidad = this.comunidadSeleccionada;
-    vecino.id_tipovecino = this.tipovecinoSeleccionado;
-    vecino.poblacion = this.poblacionSeleccionada;
-    vecino.id = 0;
-
-    this.sql.newVecino(vecino).subscribe(
-      (data: any) => {
-        this.showTooltip('success', '', `${data.msg}`)
-        this.sql.reloadVecinos.emit();
-      },
-      error => this.showTooltip('error', '', 'Error creando el vecino')
-    )
+    if(this.comunidadSeleccionada == null || this.tipovecinoSeleccionado == null || this.poblacionSeleccionada == null){
+      this.showTooltip('error', '', 'Hay campos vacios!')
+    }else{
+      const vecino = this.formularioVecino.value;
+  
+      vecino.comunidad = this.comunidadSeleccionada;
+      vecino.id_tipovecino = this.tipovecinoSeleccionado;
+      vecino.poblacion = this.poblacionSeleccionada;
+      vecino.id = 0;
+  
+      this.sql.newVecino(vecino).subscribe(
+        (data: any) => {
+          this.showTooltip('success', '', `${data.msg}`)
+          this.sql.reloadVecinos.emit();
+        },
+        error => this.showTooltip('error', '', 'Error creando el vecino')
+      )
+    }
   }
 
   showDialog(dialog: string) {

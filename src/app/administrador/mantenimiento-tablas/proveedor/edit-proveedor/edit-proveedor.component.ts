@@ -33,7 +33,7 @@ export class EditProveedorComponent implements OnInit {
       direccion: new FormControl('', [Validators.required]),
       telefono: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
-      poblacion: new FormControl({value: '', disabled: true}, [Validators.required])
+      poblacion: new FormControl({ value: '', disabled: true }, [Validators.required])
     })
   }
   putProveedorForm(data: ProveedorInterface): void {
@@ -48,23 +48,27 @@ export class EditProveedorComponent implements OnInit {
   }
 
   editProveedor(): void {
+    if (this.poblacionSeleccionada == null) {
+      this.showTooltip('error', '', 'Selecciona una Poblacion')
+    } else {
 
-    const proveedor: ProveedorInterface = this.formularioProveedor.value;
+      const proveedor: ProveedorInterface = this.formularioProveedor.value;
 
-    proveedor.poblacion = this.poblacionSeleccionada;
+      proveedor.poblacion = this.poblacionSeleccionada;
 
-    this.sql.update(proveedor).subscribe(
-      (response: ErrorInterface) => {
-        this.showTooltip('success', '', `${response.msg}`)
-        this.sql.reloadProveedores.emit();
-      },
-      (error: ErrorInterface) => {
-        this.showTooltip('error', '', `${error.msg}`)
-      }
-    )
+      this.sql.update(proveedor).subscribe(
+        (response: ErrorInterface) => {
+          this.showTooltip('success', '', `${response.msg}`)
+          this.sql.reloadProveedores.emit();
+        },
+        (error: ErrorInterface) => {
+          this.showTooltip('error', '', `${error.msg}`)
+        }
+      )
+    }
   }
 
-  newProveedor(): void{
+  newProveedor(): void {
     this.new = true;
     this.seleccionado = false;
   }
