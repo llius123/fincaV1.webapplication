@@ -3,6 +3,7 @@ import { UsuarioComponent } from './usuario.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { FacturasComponent } from './facturas/facturas.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AuthAdmin } from '../service/login/auth.service';
 
 export const routes: Routes = [
 
@@ -12,16 +13,24 @@ export const routes: Routes = [
         children: [
             {
                 path: "inicio",
-                component: InicioComponent
+                component: InicioComponent,
+                canLoad: [AuthAdmin],
+                data: { id: 2 }
             },
             {
                 path: "facturas",
-                component: FacturasComponent
+                component: FacturasComponent,
+                canLoad: [AuthAdmin],
+                data: { id: 2 }
             },
             {
                 path: "perfil",
-                component: PerfilComponent
+                component: PerfilComponent,
+                canLoad: [AuthAdmin],
+                data: { id: 2 }
             }
-        ]
+        ],
+        canActivate: [AuthAdmin],
+        data: { id: 2 }
     }
 ];

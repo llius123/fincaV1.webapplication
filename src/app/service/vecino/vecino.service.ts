@@ -29,6 +29,8 @@ export class VecinoService {
     return this.http.delete(`${this.config.api}vecinos/${id}`, this.config.header);
   }
 
-
+  updateProfile(vecino: VecinoInterface){
+    return this.http.post(`${this.config.api}editperfil`,vecino, this.config.header);
+  }
 
 }
