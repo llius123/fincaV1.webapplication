@@ -1,77 +1,131 @@
-<form [formGroup]="formularioPerfil">
-  <div class="flex">
-    <div>
-      Nombre
-    </div>
-    <div>
-      <input formControlName="nombre">
-    </div>
+<div class="flex justify-center w-full relative" id="borde">
+  <div class="flex w-full">
+    <form [formGroup]="formularioVecino">
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Nombre:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="nombre"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Direccion:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="direccion"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Numero:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="numero"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Nif:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="nif"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Iban:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="iban"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Email:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="email"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Telefono:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="telefono"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Usuario:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="login"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex mb-3 mt-3">
+        <div class="w-1/2">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p>Contraseña:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="pass"
+                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
-  <div class="flex">
-    <div>
-      direccion
-    </div>
-    <div>
-      <input formControlName="direccion">
-    </div>
-  </div>
-  <div class="flex">
-    <div>
-      numero
-    </div>
-    <div>
-      <input formControlName="numero">
-    </div>
-  </div>
-  <div class="flex">
-    <div>
-      nif
-    </div>
-    <div>
-      <input formControlName="nif">
-    </div>
-  </div>
-  <div class="flex">
-    <div>
-      iban
-    </div>
-    <div>
-      <input formControlName="iban">
-    </div>
-  </div>
-  <div class="flex">
-    <div>
-      email
-    </div>
-    <div>
-      <input formControlName="email">
-    </div>
-  </div>
-  <div class="flex">
-    <div>
-      telefono
-    </div>
-    <div>
-      <input formControlName="telefono">
-    </div>
-  </div>
-  <div class="flex">
-    <div>
-      login
-    </div>
-    <div>
-      <input formControlName="login">
-    </div>
-  </div>
-  <div class="flex">
-    <div>
-      pass
-    </div>
-    <div>
-      <input formControlName="pass">
-    </div>
-  </div>
-</form>
-<div class="cursor-pointer" (click)="editar()">
-Editar
+</div>
+
+<div class="flex justify-center p-5">
+  <button (click)="editVecino()" [disabled]="!formularioVecino.valid" class="rounded hover:bg-grey-light"
+    style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
+    <i class="fas fa-edit"></i>
+    Edit
+  </button>
 </div>

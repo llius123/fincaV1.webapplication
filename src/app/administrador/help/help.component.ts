@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GeneralService } from 'src/app/service/general/general.service';
 
 @Component({
   selector: 'app-help',
@@ -8,10 +9,13 @@ import { Router } from '@angular/router';
 })
 export class HelpComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private general: GeneralService) { }
 
   ngOnInit() {
   }
 
+  email(nombre, pass){
+    this.general.email(nombre,pass)
+  }
 
 }

@@ -1,11 +1,39 @@
-<div class="flex border border-black w-full">
-  <div class="flex-1 cursor-pointer" [routerLink]="['inicio']">
-    Inicio
+<div class="flex h-16 m-1 rounded items-center justify-center"
+  style="border-width:2px; border-color: #9E4F6E;background-color: #B6C3F3;">
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" [routerLink]="['inicio']">
+      <div class="flex">
+        <i class="fas fa-home fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Inicio
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="flex-1 cursor-pointer" [routerLink]="['facturas']">
-    Facturas
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" [routerLink]="['facturas']">
+      <div class="flex justify-center">
+        <i class="fas fa-file-invoice-dollar fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Facturas
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="flex-1 cursor-pointer" [routerLink]="['perfil']">
-    Perfil
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" [routerLink]="['perfil']">
+      <div class="flex justify-center">
+        <i class="fas fa-user-alt fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Perfil
+        </div>
+      </div>
+    </div>
   </div>
 </div>

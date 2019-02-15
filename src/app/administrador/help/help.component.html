@@ -37,7 +37,7 @@
             </div>
             <div class="pl-3 pt-2">
                 <input class="border-b-2 focus:outline-none pl-2"
-                    style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                    style="background-color:#B7C3F3;border-bottom-color:#9E4F6E" #input1>
             </div>
         </div>
         <div class="flex flex-col m-3 border-l-2 border-black h-32" style="border-color:#9E4F6E;">
@@ -46,12 +46,12 @@
             </div>
             <div class="pl-3 pt-2">
                 <textarea class="border-2 rounded focus:outline-none pl-2"
-                    style="background-color:#B7C3F3;border-color:#9E4F6E" rows="4" cols="50"></textarea>
+                    style="background-color:#B7C3F3;border-color:#9E4F6E" rows="4" cols="50" #input2></textarea>
             </div>
         </div>
 
         <div class="flex justify-center p-5">
-            <button class="rounded hover:bg-grey-light"
+            <button class="rounded hover:bg-grey-light" (click)="email(input1.value,input2.value)"
                 style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
                 <i class="fas fa-envelope"></i>
                 Enviar
