@@ -1,20 +1,22 @@
-<div class="flex border border-black justify-center">
-  <div>
-    <button (click)="graficoTipoFactura()">
-      Tipo facturas
-    </button>
-  </div>
-  <div>
-    <button (click)="graficoCobrado()">
-      Grafico cobrado
-    </button>
+<div class="flex justify-center mt-2">
+  <div class="flex rounded" id="borde">
+    <div class="w-2/4">
+      <div class="cursor-pointer p-2" (click)="graficoTipoFactura()">
+        Tipo facturas
+      </div>
+    </div>
+    <div class="w-2/4">
+      <div class="cursor-pointer p-2" style="border-left: 1px solid black;" (click)="graficoCobrado()">
+        Grafico cobrado
+      </div>
+    </div>
   </div>
 </div>
-<div class="flex justify-center" style="height:350px">
-  <div class="flex border border-red" style="width: auto;" *ngIf="dataDoughnut">
+<div class="flex justify-center" style="height:350px;">
+  <div class="flex border border-red rounded mt-2" *ngIf="dataDoughnut" id="borde_grafico">
     <div class="flex">
-      <p-chart type="doughnut" [data]="dataDoughnut" width="300px" height="300px"
-        [responsive]="false" [options]="optionsDoughnut"></p-chart>
+      <p-chart type="doughnut" [data]="dataDoughnut" width="300px" height="300px" [responsive]="false"
+        [options]="optionsDoughnut"></p-chart>
     </div>
   </div>
 </div>

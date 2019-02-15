@@ -1,0 +1,12 @@
+#borde{
+    border-style: solid;
+    border: 2px solid #9E4F6E;
+    background-color: #B6C3F3;
+}
+
+#borde_grafico{
+    width: auto;
+    border-style: solid;
+    border: 2px solid #9E4F6E;
+    background-color: #B6C3F3;
+}

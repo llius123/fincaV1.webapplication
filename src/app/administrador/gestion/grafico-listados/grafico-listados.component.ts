@@ -103,7 +103,7 @@ export class GraficoListadosComponent implements OnInit {
       title: {
         display: true,
         text: titulo,
-        fontSize: 20
+        fontSize: 20,
       },
       legend: {
         position: 'top'
