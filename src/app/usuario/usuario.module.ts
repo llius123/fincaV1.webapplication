@@ -12,11 +12,15 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 import { IncidenciaComponent } from './incidencia/incidencia.component';
-
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { DialogModule } from 'primeng/dialog';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CalendarModule } from 'primeng/calendar';
+import { ApplicationPipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [UsuarioComponent, HeaderUsuarioComponent, InicioComponent, FacturasComponent, PerfilComponent, IncidenciaComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule,FormsModule, ReactiveFormsModule, MessageModule, MessagesModule, ToastModule],
+  imports: [RouterModule.forRoot(routes), BrowserModule,FormsModule, ReactiveFormsModule, MessageModule, MessagesModule, ToastModule, ScrollPanelModule, DialogModule, ProgressSpinnerModule, CalendarModule, ApplicationPipesModule],
   exports: []
 })
 export class UsuarioModule { }

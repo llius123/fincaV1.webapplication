@@ -19,6 +19,8 @@ import { HelpComponent } from './administrador/help/help.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { DialogModule } from 'primeng/dialog';
 import { UsuarioModule } from './usuario/usuario.module';
+import { FechaPipePipe } from './pipes/fecha-pipe.pipe';
+import { ApplicationPipesModule } from './pipes/pipes.module';
 
 
 
