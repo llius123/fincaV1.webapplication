@@ -1,6 +1,6 @@
 <div class="flex justify-center w-full relative" id="borde">
   <div class="flex w-full">
-    <form [formGroup]="formularioVecino">
+    <form [formGroup]="formularioPerfil">
       <div class="flex mb-3 mt-3">
         <div class="w-1/2">
           <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
@@ -123,9 +123,12 @@
 </div>
 
 <div class="flex justify-center p-5">
-  <button (click)="editVecino()" [disabled]="!formularioVecino.valid" class="rounded hover:bg-grey-light"
+  <button (click)="editar()" class="rounded hover:bg-grey-light"
     style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
     <i class="fas fa-edit"></i>
     Edit
   </button>
 </div>
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+  </p-toast>

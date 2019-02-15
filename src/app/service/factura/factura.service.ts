@@ -10,6 +10,10 @@ export class FacturaService {
         return this.http.get<Array<FacturaProveedorInterface>>(`${this.config.api}facturaproveedores`, this.config.header);
     }
 
+    getAll2(): Observable<Array<FacturaProveedorInterface>> {
+        return this.http.get<Array<FacturaProveedorInterface>>(`${this.config.api}facturaproveedoresusuario`, this.config.header);
+    }
+
     create(data: FacturaProveedorInterface): Observable<ErrorInterface> {
         return this.http.post<ErrorInterface>(`${this.config.api}facturaproveedores`, data, this.config.header);
     }

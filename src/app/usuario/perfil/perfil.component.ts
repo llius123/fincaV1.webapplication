@@ -2,18 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/service/login/login.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { VecinoService } from 'src/app/service/vecino/vecino.service';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.css'],
+  providers: [MessageService]
 })
 export class PerfilComponent implements OnInit {
 
-  constructor(private login: LoginService, private sql: VecinoService) { }
+  constructor(private login: LoginService, private sql: VecinoService, private messageService: MessageService) { }
 
   usuario: VecinoInterface;
   formularioPerfil: FormGroup;
+
+  id:number;
+  porcentaje_participacion: number;
+  comunidad: ComunidadInterface;
+  id_tipovecino: TipovecinoInterface;
+  poblacion: PoblacionInterface;
+
+  vecino: VecinoInterface;
+
 
   ngOnInit() {
     this.usuario = this.login.vecino;
@@ -58,8 +69,25 @@ export class PerfilComponent implements OnInit {
   }
 
   editar() {
-    console.log(this.formularioPerfil.value)
-    this.sql.updateProfile(this.formularioPerfil.value).subscribe()
+    this.vecino = this.formularioPerfil.value;
+    this.vecino.id=this.login.vecino.id;
+    this.vecino.porcentaje_participacion=this.login.vecino.porcentaje_participacion;
+    this.vecino.comunidad=this.login.vecino.comunidad;
+    this.vecino.id_tipovecino=this.login.vecino.id_tipovecino;
+    this.vecino.poblacion=this.login.vecino.poblacion;
+
+    console.log(this.vecino)
+    this.sql.updateProfile(this.vecino).subscribe(
+      data => this.showTooltip('success', '', 'Datos actualizados'),
+      error => this.showTooltip('errror', '', 'Error al actualizar los datos')
+    )
   }
 
+  showTooltip(type: string, title: string, desc: string) {
+    this.messageService.add({
+      severity: `${type}`,
+      summary: `${title}`,
+      detail: `${desc}`
+    })
+  }
 }

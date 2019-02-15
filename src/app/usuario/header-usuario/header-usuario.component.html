@@ -36,4 +36,28 @@
       </div>
     </div>
   </div>
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" [routerLink]="['incidencia']">
+      <div class="flex justify-center">
+        <i class="fas fa-exclamation fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Incidencias
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flex w-1/5 justify-center">
+    <div class="flex-col cursor-pointer" (click)="logout()">
+      <div class="flex justify-center">
+        <i class="fas fa-sign-out-alt fa-2x"></i>
+      </div>
+      <div class="flex">
+        <div>
+          Desconectar
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
