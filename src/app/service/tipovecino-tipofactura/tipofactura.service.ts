@@ -13,6 +13,10 @@ export class TipoFacturaService{
         return this.http.get<TipofacturaInterface[]>(`${this.config.api}tipofacturas`, this.config.header);
     }
 
+    getAll2(): Observable<TipofacturaInterface[]> {
+        return this.http.get<TipofacturaInterface[]>(`${this.config.api}tipofacturas`, this.config.header);
+    }
+
     update(data: TipofacturaInterface): Observable<ErrorInterface>{
         return this.http.put<ErrorInterface>(`${this.config.api}tipofacturas`, data, this.config.header);
     }

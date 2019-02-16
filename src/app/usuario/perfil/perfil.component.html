@@ -1,5 +1,5 @@
-<div class="flex justify-center w-full relative" id="borde">
-  <div class="flex w-full">
+<div class="flex justify-center w-full relative mt-2">
+  <div class="rounded" id="borde">
     <form [formGroup]="formularioPerfil">
       <div class="flex mb-3 mt-3">
         <div class="w-1/2">
@@ -8,21 +8,17 @@
               <p>Nombre:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="nombre"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="nombre" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
-      </div>
-      <div class="flex mb-3 mt-3">
         <div class="w-1/2">
           <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
             <div class="pl-3 pt-2 font-bold w-48">
               <p>Direccion:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="direccion"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="direccion" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
@@ -34,21 +30,17 @@
               <p>Numero:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="numero"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="numero" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
-      </div>
-      <div class="flex mb-3 mt-3">
         <div class="w-1/2">
           <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
             <div class="pl-3 pt-2 font-bold w-48">
               <p>Nif:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="nif"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="nif" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
@@ -60,8 +52,7 @@
               <p>Iban:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="iban"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="iban" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
@@ -73,21 +64,17 @@
               <p>Email:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="email"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="email" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
-      </div>
-      <div class="flex mb-3 mt-3">
         <div class="w-1/2">
           <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
             <div class="pl-3 pt-2 font-bold w-48">
               <p>Telefono:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="telefono"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="telefono" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
@@ -99,21 +86,17 @@
               <p>Usuario:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="login"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="login" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
-      </div>
-      <div class="flex mb-3 mt-3">
         <div class="w-1/2">
           <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
             <div class="pl-3 pt-2 font-bold w-48">
               <p>Contraseña:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" formControlName="pass"
-                style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+              <input class="pl-2 border-b-2 focus:outline-none" formControlName="pass" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
             </div>
           </div>
         </div>
@@ -123,12 +106,10 @@
 </div>
 
 <div class="flex justify-center p-5">
-  <button (click)="editar()" class="rounded hover:bg-grey-light"
-    style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
+  <button (click)="editar()" class="rounded hover:bg-grey-light"id="borde">
     <i class="fas fa-edit"></i>
     Edit
   </button>
 </div>
-
 <p-toast position="bottom-right" [style]="{marginTop: '80px'}">
-  </p-toast>
+</p-toast>

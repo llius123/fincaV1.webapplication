@@ -1,0 +1,11 @@
+#borde1{
+    border-style: solid;
+    border: 2px solid #9E4F6E;
+    background-color: #B6C3F3;
+    height: 185px;
+}
+#borde2{
+    border-style: solid;
+    border: 2px solid #9E4F6E;
+    background-color: #B6C3F3;
+}

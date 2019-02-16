@@ -1,5 +1,5 @@
-<div class="flex rounded m-2 h-16" id="borde">
-  <div class="flex content-center cursor-pointer mt-2" (click)="filtro()">
+<div class="rounded m-2  sm:h-auto md:h-auto lg:h-16 xl:h-16 sm:flex-row md:flex-row lg:flex xl:flex" id="borde">
+  <div class="content-center cursor-pointer mt-2 sm:inline-flex md:inline-flex lg:flex xl:flex" (click)="filtro()">
     <div class="ml-2 font-bold ml-2 mt-2">
       Filtrar
     </div>
@@ -8,74 +8,76 @@
       <i class="fas fa-caret-left fa-lg" *ngIf="oFiltro"></i>
     </div>
   </div>
-  <div class="flex w-full" *ngIf="oFiltro">
-    <div class="flex-1">
-      <div class="flex justify-center font-bold p-1">
-        Tipo de factura:
-      </div>
-      <div class="flex justify-center">
-        <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('tipofactura')" [(ngModel)]="tipofacturaSelect">
-          <option value="0">Selecciona ...</option>
-          <option *ngFor="let tipofactura of tipofacturas" value="{{tipofactura.id}}">{{tipofactura.descripcion}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="flex flex-row">
+    <div class="sm:flex-col md:flex-col lg:flex-row xl:flex-row flex flex-col w-full h-auto" *ngIf="oFiltro">
       <div class="flex-1">
-        <div class="flex justify-center font-bold">
-          Desde:
+        <div class="flex justify-center font-bold p-1">
+          Tipo de factura:
         </div>
-        <div class="flex justify-center rounded" style="border: 2px solid #9E4F6E;">
-          <p-calendar [(ngModel)]="desdeFecha" [locale]="es" (onSelect)="onChange('desdeFecha')"></p-calendar>
+        <div class="flex justify-center">
+          <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('tipofactura')" [(ngModel)]="tipofacturaSelect">
+            <option value="0">Selecciona ...</option>
+            <option *ngFor="let tipofactura of tipofacturas" value="{{tipofactura.id}}">{{tipofactura.descripcion}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex flex-row">
+        <div class="flex-1">
+          <div class="flex justify-center font-bold">
+            Desde:
+          </div>
+          <div class="flex justify-center rounded">
+            <p-calendar [(ngModel)]="desdeFecha" [locale]="es" (onSelect)="onChange('desdeFecha')" dateFormat="dd/mm/yy" [style]="{'border': '2px solid #9E4F6E', 'border-radius': '.25rem'}"></p-calendar>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="flex justify-center font-bold">
+            Hasta:
+          </div>
+          <div class="flex justify-center rounded">
+            <p-calendar [(ngModel)]="hastaFecha" [locale]="es" (onSelect)="onChange('hastaFecha')" dateFormat="dd/mm/yyyy"  [style]="{'border': '2px solid #9E4F6E', 'border-radius': '.25rem','color': 'rgba(219, 0, 0, 1)'}"></p-calendar>
+          </div>
         </div>
       </div>
       <div class="flex-1">
-        <div class="flex justify-center font-bold">
-          Hasta:
+        <div class="flex justify-center font-bold p-1">
+          Cobrado:
         </div>
-        <div class="flex justify-center rounded" style="border: 2px solid #9E4F6E;">
-          <p-calendar [(ngModel)]="hastaFecha" [locale]="es" (onSelect)="onChange('hastaFecha')"></p-calendar>
+        <div class="flex justify-center">
+          <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('cobrado')" [(ngModel)]="cobradoSelect">
+            <option value="0">Selecciona ...</option>
+            <option value="s">Si</option>
+            <option value="n">No</option>
+          </select>
         </div>
       </div>
-    </div>
-    <div class="flex-1">
-      <div class="flex justify-center font-bold p-1">
-        Cobrado:
-      </div>
-      <div class="flex justify-center">
-        <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('cobrado')" [(ngModel)]="cobradoSelect">
-          <option value="0">Selecciona ...</option>
-          <option value="s">Si</option>
-          <option value="n">No</option>
-        </select>
-      </div>
-    </div>
-    <div class="flex-1">
-      <div class="flex justify-center font-bold p-1">
-        Proveedor:
-      </div>
-      <div class="flex justify-center">
-        <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('proveedor')" [(ngModel)]="proveedorSelect">
-          <option value="0">Selecciona ...</option>
-          <option *ngFor="let proveedor of proveedores" value="{{proveedor.id}}">{{proveedor.direccion}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="w-30 content-center">
-      <div class=" flex cursor-pointer rounded justify-center p-2 mt-2 mr-2" style="border: 2px solid #9E4F6E;" (click)="reiniciarFiltros()">
-        <div class="font-bold">
-          Reiniciar filtros
+      <div class="flex-1">
+        <div class="flex justify-center font-bold p-1">
+          Proveedor:
         </div>
-        <div class="ml-5">
-          <i class="fas fa-redo-alt fa-lg"></i>
+        <div class="flex justify-center">
+          <select class="rounded" style="border: 2px solid #9E4F6E;" (change)="onChange('proveedor')" [(ngModel)]="proveedorSelect">
+            <option value="0">Selecciona ...</option>
+            <option *ngFor="let proveedor of proveedores" value="{{proveedor.id}}">{{proveedor.direccion}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex-1 content-center">
+        <div class="flex w-30 cursor-pointer rounded justify-center p-2 mt-2 mr-2 ml-2" style="border: 2px solid #9E4F6E;"
+          (click)="reiniciarFiltros()">
+          <div class="font-bold">
+            Reiniciar filtros
+          </div>
+          <div class="ml-5">
+            <i class="fas fa-redo-alt fa-lg"></i>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 <p-scrollPanel [style]="{width: '100%', height: '445px'}" styleClass="custom">
-<div class="flex m-2 p-2 rounded" *ngFor="let factura of facturas" id="borde">
+  <div class="m-2 p-2 rounded ng-star-inserted  sm:flex-row md:flex-row lg:flex xl:flex" *ngFor="let factura of facturas"
+    id="borde">
     <div class="flex-col mr-2 w-48" id="borde_izquierdo">
       <div class="flex m-2 font-bold">
         Fecha registro

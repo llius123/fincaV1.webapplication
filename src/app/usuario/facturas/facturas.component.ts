@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import * as moment from 'src/assets/moment-with-locales.js';
 import { PdfService } from 'src/app/service/pdf.service';
 import { ConfigService } from 'src/app/service/config/config.service';
+import { TipoFacturaService } from 'src/app/service/tipovecino-tipofactura/tipofactura.service';
+import { ProveedorService } from 'src/app/service/proveedor/proveedor.service';
 
 @Component({
   selector: 'app-facturas',
@@ -12,7 +14,7 @@ import { ConfigService } from 'src/app/service/config/config.service';
 })
 export class FacturasComponent implements OnInit {
 
-  constructor(private sql: FacturaService, private router: Router, private pdfService: PdfService,private config: ConfigService) { }
+  constructor(private sql: FacturaService, private router: Router, private pdfService: PdfService,private config: ConfigService, private tipofacturaSQL: TipoFacturaService, private proveedorSQL: ProveedorService) { }
 
   facturas: FacturaProveedorInterface[];
   oFiltro: boolean = false;
@@ -49,6 +51,12 @@ export class FacturasComponent implements OnInit {
         this.datos = true;
       }
     )
+    this.tipofacturaSQL.getAll().subscribe(
+      data => this.tipofacturas = data
+    )
+    this.proveedorSQL.getAll2().subscribe(
+      data => this.proveedores = data
+    )
   }
 
   selected(data: any, table: string) {
@@ -78,7 +86,7 @@ export class FacturasComponent implements OnInit {
     switch (tabla) {
       case 'cobrado':
         if (this.cobradoSelect != 0) {
-          this.sql.filtroGeneral('cobrado', this.cobradoSelect).subscribe(
+          this.sql.filtroGeneral2('cobrado', this.cobradoSelect).subscribe(
             data => this.facturas = data
           )
           this.tipofacturaSelect = 0;
@@ -91,7 +99,7 @@ export class FacturasComponent implements OnInit {
         break;
       case 'tipofactura':
         if (this.tipofacturaSelect > 0) {
-          this.sql.filtroGeneral('id_tipofactura', this.tipofacturaSelect).subscribe(
+          this.sql.filtroGeneral2('id_tipofactura', this.tipofacturaSelect).subscribe(
             data => this.facturas = data
           )
           this.desdeFecha = null;
@@ -104,7 +112,7 @@ export class FacturasComponent implements OnInit {
         break;
       case 'desdeFecha':
         if (this.hastaFecha) {
-          this.sql.filtroFecha(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
+          this.sql.filtroFecha2(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
             data => this.facturas = data
           )
           this.tipofacturaSelect = 0;
@@ -114,7 +122,7 @@ export class FacturasComponent implements OnInit {
         break;
       case 'hastaFecha':
         if (this.desdeFecha) {
-          this.sql.filtroFecha(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
+          this.sql.filtroFecha2(`${moment(this.desdeFecha).format("YYYY-MM-DD")}`, `${moment(this.hastaFecha).format("YYYY-MM-DD")}`).subscribe(
             data => this.facturas = data
           )
           this.tipofacturaSelect = 0;
@@ -124,7 +132,7 @@ export class FacturasComponent implements OnInit {
         break;
       case 'proveedor':
         if (this.proveedorSelect > 0) {
-          this.sql.filtroGeneral('id_proveedor', this.proveedorSelect).subscribe(
+          this.sql.filtroGeneral2('id_proveedor', this.proveedorSelect).subscribe(
             data => this.facturas = data
           )
           this.tipofacturaSelect = 0;

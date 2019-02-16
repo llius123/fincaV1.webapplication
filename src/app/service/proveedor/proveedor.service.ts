@@ -12,6 +12,9 @@ export class ProveedorService {
     getAll(): Observable<ProveedorInterface[]> {
         return this.http.get<ProveedorInterface[]>(`${this.config.api}proveedores`, this.config.header);
     }
+    getAll2(): Observable<ProveedorInterface[]> {
+        return this.http.get<ProveedorInterface[]>(`${this.config.api}proveedoresusuario`, this.config.header);
+    }
 
     update(data: ProveedorInterface): Observable<ErrorInterface> {
         return this.http.put<ErrorInterface>(`${this.config.api}proveedores`, data, this.config.header);
