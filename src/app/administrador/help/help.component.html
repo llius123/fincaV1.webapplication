@@ -6,8 +6,7 @@
                 <p>Horario de atencion</p>
             </div>
             <div class="pl-3 pt-2">
-                <div class="border-b-2 focus:outline-none "
-                    style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                <div class="border-b-2 focus:outline-none " style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
                     9:00/19:00
                 </div>
             </div>
@@ -17,8 +16,7 @@
                 <p>Oficina</p>
             </div>
             <div class="pl-3 pt-2">
-                <div class="border-b-2 focus:outline-none "
-                    style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
+                <div class="border-b-2 focus:outline-none " style="background-color:#B7C3F3;border-bottom-color:#9E4F6E">
                     Plaza del ayuntamiento
                 </div>
             </div>
@@ -36,8 +34,8 @@
                 <p>Nombre</p>
             </div>
             <div class="pl-3 pt-2">
-                <input class="border-b-2 focus:outline-none pl-2"
-                    style="background-color:#B7C3F3;border-bottom-color:#9E4F6E" #input1>
+                <input class="border-b-2 focus:outline-none pl-2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E"
+                    #nombre>
             </div>
         </div>
         <div class="flex flex-col m-3 border-l-2 border-black h-32" style="border-color:#9E4F6E;">
@@ -45,20 +43,42 @@
                 <p>Descripcion</p>
             </div>
             <div class="pl-3 pt-2">
-                <textarea class="border-2 rounded focus:outline-none pl-2"
-                    style="background-color:#B7C3F3;border-color:#9E4F6E" rows="4" cols="50" #input2></textarea>
+                <textarea class="border-2 rounded focus:outline-none pl-2" style="background-color:#B7C3F3;border-color:#9E4F6E"
+                    rows="4" cols="50" #cuerpo></textarea>
             </div>
         </div>
 
+        <div class="flex flex-row">
+            <div class="flex flex-col m-3 border-l-2 border-black h-16 w-1/2" style="border-color:#9E4F6E;">
+                <div class="pl-3 pt-2 font-bold w-48">
+                    <p>Usuario email</p>
+                </div>
+                <div class="pl-3 pt-2">
+                    <input class="border-b-2 focus:outline-none pl-2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E"
+                        #usuario>
+                </div>
+            </div>
+
+            <div class="flex flex-col m-3 border-l-2 border-black h-16 w-1/2" style="border-color:#9E4F6E;">
+                <div class="pl-3 pt-2 font-bold w-48">
+                    <p>Contraseña email</p>
+                </div>
+                <div class="pl-3 pt-2">
+                    <input type="password" class="border-b-2 focus:outline-none pl-2" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E"
+                        #pass>
+                </div>
+            </div>
+
+        </div>
         <div class="flex justify-center p-5">
-            <button class="rounded hover:bg-grey-light" (click)="email(input1.value,input2.value)"
+            <button class="rounded hover:bg-grey-light" (click)="email(nombre.value,cuerpo.value,usuario.value,pass.value)"
                 style="border: 1px solid #9E4F6E;border-radius: 5px;padding: 5px; ">
                 <i class="fas fa-envelope"></i>
                 Enviar
             </button>
         </div>
-
     </div>
-
-
 </div>
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+</p-toast>
