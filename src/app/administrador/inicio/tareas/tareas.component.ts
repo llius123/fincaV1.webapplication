@@ -40,14 +40,14 @@ export class TareasComponent implements OnInit {
       (tareas: Array<TareaInterface>) => {
         this.tareas = tareas
       }
-    )
-    this.tareaService.countTarea().subscribe(
-      (num: number) => {
-        this.general.tareasEvent.emit(num);
-      }
-    )
-    setTimeout(() => {
-      this.datos = true;
+      )
+      this.tareaService.countTarea().subscribe(
+        (num: number) => {
+          this.general.tareasEvent.emit(num);
+        }
+        )
+        setTimeout(() => {
+          this.datos = true;
     }, 1500);
   }
 

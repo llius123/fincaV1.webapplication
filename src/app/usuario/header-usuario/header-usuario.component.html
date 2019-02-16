@@ -1,9 +1,9 @@
 <div class="flex h-16 m-1 rounded items-center justify-center"
   style="border-width:2px; border-color: #9E4F6E;background-color: #B6C3F3;">
-  <div class="flex w-1/5 justify-center">
+  <div class="flex w-1/5 justify-center"  (mouseenter)="animationEnter('.inicio')" (mouseleave)="animationEnd('.inicio')">
     <div class="flex-col cursor-pointer" [routerLink]="['inicio']">
       <div class="flex">
-        <i class="fas fa-home fa-2x"></i>
+        <i class="fas fa-home fa-2x inicio"></i>
       </div>
       <div class="flex">
         <div>
@@ -12,10 +12,10 @@
       </div>
     </div>
   </div>
-  <div class="flex w-1/5 justify-center">
+  <div class="flex w-1/5 justify-center"  (mouseenter)="animationEnter('.facturas')" (mouseleave)="animationEnd('.facturas')">
     <div class="flex-col cursor-pointer" [routerLink]="['facturas']">
-      <div class="flex justify-center">
-        <i class="fas fa-file-invoice-dollar fa-2x"></i>
+      <div class="flex justify-center facturas">
+        <i class="fas fa-file-invoice-dollar fa-2x "></i>
       </div>
       <div class="flex">
         <div>
@@ -24,22 +24,23 @@
       </div>
     </div>
   </div>
-  <div class="flex w-1/5 justify-center">
+  <div class="flex w-1/5 justify-center" (mouseenter)="animationEnter('.perfil')" (mouseleave)="animationEnd('.perfil')">
     <div class="flex-col cursor-pointer" [routerLink]="['perfil']">
-      <div class="flex justify-center">
-        <i class="fas fa-user-alt fa-2x"></i>
+      <div class="flex justify-center ">
+        <i class="fas fa-user-alt fa-2x perfil"></i>
       </div>
       <div class="flex">
         <div>
           Perfil
         </div>
+        <div id="test"></div>
       </div>
     </div>
   </div>
-  <div class="flex w-1/5 justify-center">
+  <div class="flex w-1/5 justify-center" (mouseenter)="animationEnter('.incidencias')" (mouseleave)="animationEnd('.incidencias')">
     <div class="flex-col cursor-pointer" [routerLink]="['incidencia']">
-      <div class="flex justify-center">
-        <i class="fas fa-exclamation fa-2x"></i>
+      <div class="flex justify-center ">
+        <i class="fas fa-exclamation fa-2x incidencias"></i>
       </div>
       <div class="flex">
         <div>
@@ -48,10 +49,10 @@
       </div>
     </div>
   </div>
-  <div class="flex w-1/5 justify-center">
+  <div class="flex w-1/5 justify-center " (mouseenter)="animationEnter('.desconectar')" (mouseleave)="animationEnd('.desconectar')">
     <div class="flex-col cursor-pointer" (click)="logout()">
       <div class="flex justify-center">
-        <i class="fas fa-sign-out-alt fa-2x"></i>
+        <i class="fas fa-sign-out-alt fa-2x desconectar"></i>
       </div>
       <div class="flex">
         <div>

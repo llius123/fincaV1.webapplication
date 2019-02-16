@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/service/general/general.service';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
+import * as anime from 'src/assets/anime.min.js';
 
 @Component({
   selector: 'app-header-usuario',
@@ -18,6 +19,26 @@ export class HeaderUsuarioComponent implements OnInit {
   logout(){
     this.login.logout();
     this.router.navigate(['login'])
+  }
+
+  animationEnter(target: string){
+    anime({
+      targets: `${target}`,
+      translateX: 10
+    });
+    anime({
+      targets: target,
+      width: '100%', // -> from '28px' to '100%',
+      easing: 'easeInOutQuad',
+      direction: 'alternate',
+      loop: true
+    });
+  }
+  animationEnd(target: string){
+    anime({
+      targets: `${target}`,
+      translateX: 0
+    });
   }
 
 }
