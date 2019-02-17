@@ -2,33 +2,112 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, Input } from "@angular/core";
 import { LoginService } from "../../service/login/login.service";
 import { Router, ActivatedRoute } from '@angular/router';
+import * as anime from 'src/assets/anime.min.js';
+import { NgModel, FormGroup, FormControl, Validators } from '@angular/forms';
+import { isUndefined } from 'util';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  styleUrls: ["./login.component.css"],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private loginService: LoginService, private router: Router, private route: ActivatedRoute, private messageService: MessageService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.login_form = new FormGroup({
+      titulo_usuario: new FormControl('', [Validators.required, Validators.minLength(1), Validators.nullValidator]),
+      titulo_contrasenya: new FormControl('', [Validators.required, Validators.minLength(1), Validators.nullValidator])
+    })
+    anime({
+      targets: ['#titulo_usuario', '#titulo_contrasenya'],
+      translateY: +15,
+    });
+  }
+
+  login_form: FormGroup;
+
+
 
   vecinotest;
 
-  login(login: string, pass: string) {
+  login() {
     this.loginService
-      .login(login, pass)
+      .login(this.login_form.get('titulo_usuario').value, this.login_form.get('titulo_contrasenya').value)
       .subscribe(data => {
         this.loginService.check().subscribe((vecino: VecinoInterface) => {
           this.loginService.setvecino(vecino);
-          if(vecino.id_tipovecino.id == 1){
+          if (vecino.id_tipovecino.id == 1) {
             this.router.navigate(['admin/inicio']);
-          }else{
+          } else {
             this.router.navigate(['usuario/inicio']);
           }
         })
       },
         error => {
+          this.showTooltip('error', '', 'Error al iniciar sesion')
         });
+  }
+
+  focusIn(target: string) {
+    anime({
+      targets: target,
+      translateY: -10,
+      translateX: -25,
+      color: '#9E4F6E',
+      scale: .7
+    });
+  }
+  focusOut(target: string) {
+    switch (target) {
+      case '#titulo_usuario':
+        console.log(this.login_form.get('titulo_usuario').valid, target)
+        if (!this.login_form.get('titulo_usuario').valid) {
+          anime({
+            targets: target,
+            translateY: +7,
+            translateX: 0,
+            color: '#000000',
+            scale: 1
+          });
+        }
+        break;
+      case '#titulo_contrasenya':
+        if (!this.login_form.get('titulo_contrasenya').valid) {
+          anime({
+            targets: target,
+            translateY: +7,
+            translateX: 0,
+            color: '#000000',
+            scale: 1
+          });
+        }
+        break;
+    }
+  }
+
+  animationEnter(target: string) {
+    anime({
+      targets: `${target}`,
+      translateX: [
+        { value: 60, duration: 1500, delay: 500 },
+        { value: 0, duration: 1000, delay: 500 }
+      ],
+      translateY: [
+        { value: -17, duration: 1000 },
+        { value: 17, duration: 1000, delay: 500 },
+        { value: 0, duration: 500, delay: 500 }
+      ]
+    });
+  }
+
+  showTooltip(type: string, title: string, desc: string) {
+    this.messageService.add({
+      severity: `${type}`,
+      summary: `${title}`,
+      detail: `${desc}`
+    })
   }
 }

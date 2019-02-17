@@ -159,6 +159,4 @@ export class ListadoComponent implements OnInit {
     this.getAll();
   }
 
-
-
 }

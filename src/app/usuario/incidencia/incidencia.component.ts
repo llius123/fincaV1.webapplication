@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from 'src/app/service/general/general.service';
 import { MessageService } from 'primeng/components/common/messageservice';
+import * as anime from 'src/assets/anime.min.js';
 
 @Component({
   selector: 'app-incidencia',

@@ -26,13 +26,6 @@ export class HeaderUsuarioComponent implements OnInit {
       targets: `${target}`,
       translateX: 10
     });
-    anime({
-      targets: target,
-      width: '100%', // -> from '28px' to '100%',
-      easing: 'easeInOutQuad',
-      direction: 'alternate',
-      loop: true
-    });
   }
   animationEnd(target: string){
     anime({

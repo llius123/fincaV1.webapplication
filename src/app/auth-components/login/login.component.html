@@ -1,40 +1,48 @@
-<div class="flex bg-red h-32">
-  <app-header-notlogged></app-header-notlogged>
-</div>
-<div class="flex">
-  <div class="w-1/5 bg-yellow">0</div>
-  <div class="w-3/5 bg-yellow content-center px-24 py-10">
-    <form class="bg-white shadow-md rounded px-10 py-10">
-      <div class="mb-4">
-        <label class="text-xl block text-grey-darker text-sm font-bold mb-2" for="username">
-          Usuario
-        </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
-          id="usuario" type="text" placeholder="Usuario" #user>
+<div class="flex justify-center">
+  <div class="flex-col">
+    <div class="flex-col w-64 rounded m-2" id="borde">
+      <div class="flex justify-center p-2" style="font-size: 25px;text-decoration: underline;">
+        FincaV1
       </div>
-      <div class="mb-6">
-        <label class="text-xl block text-grey-darker text-sm font-bold mb-2" for="password">
-          Contraseña
-        </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
-          id="pass" type="password" placeholder="******************" #pass>
+      <div class="flex justify-center p-2 contenido font-bold">
+        Iniciar sesion
       </div>
-      <div class="flex items-center justify-between">
-        <button class="flex rounded-full text-white font-bold py-2 px-4 rounded border border-blue-jesus"
-          type="button" (click)="login(user.value,pass.value)" style="outline:none">
-          <img class="flex-1/4 w-6 mx-1 my-1" src="assets/icons/login.svg" alt="Icono login">
-          <div class="flex-3/4 text-lg my-2 ml-2 text-black">
-            Acceder
+    </div>
+    <form [formGroup]="login_form">
+      <div class="w-64 rounded m-2" id="borde">
+        <div class="w-64">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p id="titulo_usuario">Usuario:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E"
+                ng-focus="animacionTituloEntrada()" (focus)="focusIn('#titulo_usuario')" (focusout)="focusOut('#titulo_usuario')"
+                formControlName="titulo_usuario">
+            </div>
           </div>
-        </button>
-        <a (click)="login('admin','admin')" class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker">
-          Admin
-        </a>
-        <a (click)="login('vecino', 'vecino')" class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker">
-            Vecino
-          </a>
+        </div>
+        <div class="w-64">
+          <div class=" flex-col m-3 border-l-2 border-black h-16" style="border-color:#9E4F6E;">
+            <div class="pl-3 pt-2 font-bold w-48">
+              <p id="titulo_contrasenya">Contraseña:</p>
+            </div>
+            <div class="pl-3 pt-2">
+              <input class="pl-2 border-b-2 focus:outline-none" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E"
+                (focus)="focusIn('#titulo_contrasenya')" (focusout)="focusOut('#titulo_contrasenya')" formControlName="titulo_contrasenya">
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-center p-2"  (mouseenter)="animationEnter('.login')">
+          <button (click)="login()" id="borde" class="rounded hover:bg-grey-light p-5">
+            <i class="fas fa-arrow-circle-right login"></i>
+            Entrar
+          </button>
+        </div>
       </div>
     </form>
   </div>
-  <div class="w-1/4 bg-yellow">0</div>
 </div>
+
+<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
+  </p-toast>

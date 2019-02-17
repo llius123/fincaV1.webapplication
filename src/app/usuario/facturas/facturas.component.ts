@@ -150,6 +150,11 @@ export class FacturasComponent implements OnInit {
     this.pdfService.newPdf(data);
   }
 
+  cerrar(){
+    this.display_comunidad = false;
+    this.display_proveedor = false;
+  }
+
   reiniciarFiltros(){
     this.tipofacturaSelect = 0;
     this.desdeFecha = null;
