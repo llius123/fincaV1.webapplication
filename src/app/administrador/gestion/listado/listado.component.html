@@ -151,7 +151,7 @@
   <p-header>
     Proveedor
   </p-header>
-  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
+  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;" *ngIf="proveedorSeleccionado">
     <div class="p-3 font-bold justify-center">
       <div class="flex ">
         <div class="w-1/4 flex justify-center">
@@ -188,7 +188,7 @@
           {{proveedorSeleccionado.email}}
         </div>
         <div class="w-1/4 flex justify-center">
-          {{proveedorSeleccionado.poblacion}}
+          {{proveedorSeleccionado.poblacion.descripcion}}
         </div>
       </div>
     </div>
@@ -200,7 +200,7 @@
   <p-header>
     Comunidad
   </p-header>
-  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;">
+  <div class="flex-col  m-3 border rounded" style="border-color:#9E4F6E;" *ngIf="comunidadSeleccionado">
     <div class="p-3 font-bold justify-center">
       <div class="flex ">
         <div class="w-1/4 flex justify-center">
@@ -253,7 +253,7 @@
           {{comunidadSeleccionado.sufijo}}
         </div>
         <div class="w-1/4 flex justify-center">
-          {{comunidadSeleccionado.poblacion}}
+          {{comunidadSeleccionado.poblacion.descripcion}}
         </div>
       </div>
     </div>

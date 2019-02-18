@@ -20,7 +20,6 @@ export class LateralIzquierdoComponent implements OnInit {
   }
 
   clicked(target: string) {
-    console.log(target, this.lastPicked)
     anime.timeline({
       targets: `.${this.lastPicked}`,
       translateX: 0,

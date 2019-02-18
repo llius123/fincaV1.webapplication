@@ -58,7 +58,7 @@ export class TareasComponent implements OnInit {
       translateY: +200,
       keyframes: [
         { opacity: 1 },
-        { opacity: 0 }
+        { opacity: 0, height:'0px' }
       ]
     }).add({translateY: -200}).finished.then(() => { this.datos = true });
 
