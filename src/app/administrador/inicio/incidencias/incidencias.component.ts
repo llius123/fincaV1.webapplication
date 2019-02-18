@@ -23,6 +23,17 @@ export class IncidenciasComponent implements OnInit {
 
   ngOnInit() {
     this.cargaIncidencias()
+    anime.timeline({
+      targets: '.spinner2 ',
+      duration: 1500,
+      easing: 'easeInOutSine',
+    }).add({
+      translateY: +200,
+      keyframes: [
+        { opacity: 1 },
+        { opacity: 0, height: '0px' }
+      ]
+    }).add({ translateY: -200 }).finished.then(() => { this.datos = true });
   }
   ampliacionTexto(data: string) {
     this.general.moreTexto.emit({ display: true, data: data });
@@ -39,17 +50,6 @@ export class IncidenciasComponent implements OnInit {
         this.general.incidenciasEvent.emit(num.msg);
       }
     )
-    anime.timeline({
-      targets: '.spinner2 ',
-      duration: 1500,
-      easing: 'easeInOutSine',
-    }).add({
-      translateY: +200,
-      keyframes: [
-        { opacity: 1 },
-        { opacity: 0, height:'0px' }
-      ]
-    }).add({ translateY: -200 }).finished.then(() => { this.datos = true });
   }
 
   showDialog(incidencia: IncidenciaInterface): void {

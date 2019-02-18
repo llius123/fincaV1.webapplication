@@ -34,6 +34,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
   comunidadSeleccionada: ComunidadInterface;
   tipovecinoSeleccionado: TipovecinoInterface;
   poblacionSeleccionada: PoblacionInterface;
+  vecinoSeleccionado: number;
 
   ngOnInit() {
     this.getData();
@@ -73,13 +74,13 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
 
 
   putVecinoForm(vecino: VecinoInterface): void {
-    console.log(vecino);
     this.new = false;
     this.seleccionado = true;
 
     this.comunidadSeleccionada = vecino.comunidad;
     this.tipovecinoSeleccionado = vecino.id_tipovecino;
     this.poblacionSeleccionada = vecino.poblacion;
+    this.vecinoSeleccionado = vecino.id;
 
     this.formularioVecino.patchValue({
       id: vecino.id,
@@ -102,7 +103,7 @@ export class EditVecinoComponent implements OnInit, OnDestroy {
   editVecino(): void {
 
     const vecino: VecinoInterface = this.formularioVecino.value;
-
+    vecino.id = this.vecinoSeleccionado;
     vecino.comunidad = this.comunidadSeleccionada;
     vecino.id_tipovecino = this.tipovecinoSeleccionado;
     vecino.poblacion = this.poblacionSeleccionada;

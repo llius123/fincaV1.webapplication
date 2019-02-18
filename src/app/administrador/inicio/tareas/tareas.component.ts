@@ -31,6 +31,17 @@ export class TareasComponent implements OnInit {
 
   ngOnInit() {
     this.cargaTareas();
+      anime.timeline({
+        targets: '.spinner1',
+        duration: 1500,
+        easing: 'easeInOutSine',
+      }).add({
+        translateY: +200,
+        keyframes: [
+          { opacity: 1 },
+          { opacity: 0, height:'0px' }
+        ]
+      }).add({translateY: -200}).finished.then(() => { this.datos = true });
   }
 
   ampliacionTexto(data: string) {
@@ -49,20 +60,6 @@ export class TareasComponent implements OnInit {
         this.general.tareasEvent.emit(num);
       }
     )
-
-    anime.timeline({
-      targets: '.spinner1',
-      duration: 1500,
-      easing: 'easeInOutSine',
-    }).add({
-      translateY: +200,
-      keyframes: [
-        { opacity: 1 },
-        { opacity: 0, height:'0px' }
-      ]
-    }).add({translateY: -200}).finished.then(() => { this.datos = true });
-
-
   }
 
   showDialog() {
