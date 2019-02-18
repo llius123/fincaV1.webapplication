@@ -101,7 +101,6 @@ export class TareasComponent implements OnInit {
       response => {
         this.showTooltip('success', '', ' Tarea editada correctamente!');
         this.cargaTareas();
-        this.datos = false;
         this.modal_display_edit = false;
       },
       (error: ErrorInterface) => {
@@ -115,7 +114,6 @@ export class TareasComponent implements OnInit {
       response => {
         this.showTooltip('success', '', ' Tarea eliminada correctamente!');
         this.cargaTareas();
-        this.datos = false;
       },
       error => {
         this.showTooltip('error', '', 'Error en el servidor!');

@@ -63,7 +63,6 @@ export class IncidenciasComponent implements OnInit {
     this.incidenciasService.resolveIncidencia(incidencia).subscribe(
       response => {
         this.showTooltip('success', 'Incidencia atendida', `Incidencia atendida!`);
-        this.datos = false;
         this.cargaIncidencias();
         this.modal_incidencia = false;
       },

@@ -21,7 +21,7 @@ export class TareaService{
         return this.http.delete(`${this.config.api}tareas/${id}`, this.config.header);
     }
 
-    editTarea(tarea: TareaInterface) {
+    editTarea(tarea: any) {
         return this.http.put(`${this.config.api}tareas`, tarea, this.config.header);
     }
 

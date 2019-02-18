@@ -9,7 +9,7 @@ export class IncidenciaService{
     constructor(private http: HttpClient, private config: ConfigService){}
 
     getAllIncidencia(): Observable<Array<IncidenciaInterface>>{
-        return this.http.get<Array<IncidenciaInterface>>(`${this.config.api}/incidencias`, this.config.header);
+        return this.http.get<Array<IncidenciaInterface>>(`${this.config.api}incidencias`, this.config.header);
     }
 
     countIncidencia(): Observable<number>{
