@@ -14,6 +14,13 @@ export class HeaderUsuarioComponent implements OnInit {
   constructor(private login: LoginService, private router: Router) { }
 
   ngOnInit() {
+    anime({
+      targets: '.header',
+      translateX: 2500,
+      duration: 1500,
+      direction: 'reverse',
+      easing: 'easeInOutSine'
+    });
   }
 
   logout(){

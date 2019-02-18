@@ -28,14 +28,37 @@ export class LoginComponent implements OnInit {
   }
 
   login_form: FormGroup;
+  reCaptcha: string;
 
 
 
   vecinotest;
 
   login() {
+    if(!isUndefined(this.reCaptcha)){
+      this.loginService
+        .login(this.login_form.get('titulo_usuario').value, this.login_form.get('titulo_contrasenya').value)
+        .subscribe(data => {
+          this.loginService.check().subscribe((vecino: VecinoInterface) => {
+            this.loginService.setvecino(vecino);
+            if (vecino.id_tipovecino.id == 1) {
+              this.router.navigate(['admin/inicio']);
+            } else {
+              this.router.navigate(['usuario/inicio']);
+            }
+          })
+        },
+          error => {
+            this.showTooltip('error', '', 'Error al iniciar sesion')
+          });
+    }else{
+      this.showTooltip('error','', 'Haz el Captcha!')
+    }
+  }
+
+  login2(usu: string, pass:string) {
     this.loginService
-      .login(this.login_form.get('titulo_usuario').value, this.login_form.get('titulo_contrasenya').value)
+      .login(usu,pass)
       .subscribe(data => {
         this.loginService.check().subscribe((vecino: VecinoInterface) => {
           this.loginService.setvecino(vecino);
@@ -101,6 +124,9 @@ export class LoginComponent implements OnInit {
         { value: 0, duration: 500, delay: 500 }
       ]
     });
+  }
+  showResponse(data){
+    this.reCaptcha = data.response
   }
 
   showTooltip(type: string, title: string, desc: string) {

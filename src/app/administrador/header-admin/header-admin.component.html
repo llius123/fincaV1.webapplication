@@ -1,47 +1,47 @@
-<div class="flex h-16 m-1 rounded items-center justify-center" style="border-width:2px; border-color: #9E4F6E;background-color: #B6C3F3;">
-  <div class="flex w-1/5 justify-center">
+<div class="flex h-16 m-1 rounded items-center justify-center header" style="border-width:2px; border-color: #9E4F6E;background-color: #B6C3F3;">
+  <div class="flex w-1/5 justify-center "  (mouseenter)="animationEnter('.inicio')" (mouseleave)="animationEnd('.inicio')">
     <div class="flex-col cursor-pointer" [routerLink]="['inicio']">
-      <div class="flex">
-        <i class="fas fa-home fa-2x"></i>
+      <div class="flex justify-center ">
+        <i class="fas fa-home fa-2x inicio"></i>
       </div>
-      <div class="flex">
-        <div>
+      <div >
+        <div class="titulo">
           Inicio
         </div>
       </div>
     </div>
   </div>
-  <div class="flex w-1/5 justify-center">
+  <div class="flex w-1/5 justify-center" (mouseenter)="animationEnter('.mantenimiento_general')" (mouseleave)="animationEnd('.mantenimiento_general')">
     <div class="flex-col cursor-pointer" [routerLink]="['mantenimiento/inicio']">
       <div class="flex justify-center">
-        <i class="fas fa-edit fa-2x"></i>
+        <i class="fas fa-edit fa-2x mantenimiento_general"></i>
       </div>
       <div class="flex">
-        <div>
+        <div class="titulo">
           Mantenimiento general
         </div>
       </div>
     </div>
   </div>
-  <div class="flex w-1/5 justify-center">
+  <div class="flex w-1/5 justify-center " (mouseenter)="animationEnter('.facturas')" (mouseleave)="animationEnd('.facturas')">
     <div class="flex-col cursor-pointer" [routerLink]="['gestion/listado']">
       <div class="flex justify-center">
-        <i class="fas fa-file-invoice-dollar fa-2x"></i>
+        <i class="fas fa-file-invoice-dollar fa-2x facturas"></i>
       </div>
       <div class="flex">
-        <div>
+        <div class="titulo">
           Gestion facturas
         </div>
       </div>
     </div>
   </div>
-  <div class="flex w-1/5 justify-center">
+  <div class="flex w-1/5 justify-center" (mouseenter)="animationEnter('.incidencia')" (mouseleave)="animationEnd('.incidencia')">
     <div class="flex-col cursor-pointer" [routerLink]="['incidencia']">
       <div class="flex justify-center">
-        <i class="fas fa-exclamation fa-2x"></i>
+        <i class="fas fa-exclamation fa-2x incidencia"></i>
       </div>
       <div class="flex">
-        <div>
+        <div class="titulo">
           Gestion incidencias
         </div>
       </div>

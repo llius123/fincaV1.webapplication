@@ -22,6 +22,7 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { FechaPipePipe } from './pipes/fecha-pipe.pipe';
 import { ApplicationPipesModule } from './pipes/pipes.module';
 import { ToastModule } from 'primeng/toast';
+import {CaptchaModule} from 'primeng/captcha';
 
 
 
@@ -47,7 +48,8 @@ import { ToastModule } from 'primeng/toast';
     RouterModule.forRoot(routes),
     OverlayPanelModule,
     DialogModule,
-    ToastModule
+    ToastModule,
+    CaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

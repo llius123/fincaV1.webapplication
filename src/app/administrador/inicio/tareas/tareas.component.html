@@ -21,7 +21,7 @@
           <i class="flex fas fa-user items-center justify-center"></i>
         </div>
         <div class="text-2xl ml-5">
-          nombre
+            {{vecinoSession.nombre}}
         </div>
         <div class="w-full flex justify-end">
           <button (click)="ampliacionTexto(tarea.descripcion)" pTooltip="Expandir descripcion" tooltipPosition="right"
@@ -53,8 +53,10 @@
     </div>
   </p-scrollPanel>
 </div>
-<div class="rounded" style="background-color: #B6C3F3;height: 435px;" [hidden]="datos">
-  <p-progressSpinner [styleClass]="{'background-color': '#B6C3F3', 'width': '50px', 'height': '50px'}"></p-progressSpinner>
+<div class="flex justify-center spinner1" style="height: 489px;" [hidden]="datos">
+  <div class="rounded" >
+    <p-progressSpinner [styleClass]="{'width': '50px', 'height': '50px'}"></p-progressSpinner>
+  </div>
 </div>
 
 

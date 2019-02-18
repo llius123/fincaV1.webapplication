@@ -1,59 +1,59 @@
-<div class="h-24 p-2 cursor-pointer" (click)="navegar('vecino')">
+<div class="h-24 p-2 cursor-pointer" (click)="navegar('vecino')" (click)="clicked('vecino')" (mouseenter)="animationEnter('.vecino')" (mouseleave)="animationEnd('.vecino')">
   <div class="flex justify-center">
-    <i class="fas fa-user fa-3x"></i>
+    <i class="fas fa-user fa-3x vecino"></i>
   </div>
   <div class="flex justify-center mt-2">
-    <div class="font-bold" style="color:#9E4F6E">
+    <div class="titulo titulo_vecino" style="color:#9E4F6E">
       Vecino
     </div>
   </div>
 </div>
-<div class="h-24 p-2 cursor-pointer" (click)="navegar('comunidad')">
+<div class="h-24 p-2 cursor-pointer" (click)="navegar('comunidad')" (click)="clicked('comunidad')" (mouseenter)="animationEnter('.comunidad')" (mouseleave)="animationEnd('.comunidad')">
   <div class="flex justify-center">
-    <i class="fas fa-city fa-3x"></i>
+    <i class="fas fa-city fa-3x comunidad"></i>
   </div>
   <div class="flex justify-center mt-2">
-    <div class="font-bold" style="color:#9E4F6E">
+    <div class="titulo titulo_comunidad" style="color:#9E4F6E">
       Comunidad
     </div>
   </div>
 </div>
-<div class="h-24 p-2 cursor-pointer" (click)="navegar('proveedor')">
+<div class="h-24 p-2 cursor-pointer" (click)="navegar('proveedor')" (click)="clicked('proveedor')" (mouseenter)="animationEnter('.proveedor')" (mouseleave)="animationEnd('.proveedor')">
   <div class="flex justify-center">
-    <i class="fas fa-dolly fa-3x"></i>
+    <i class="fas fa-dolly fa-3x proveedor"></i>
   </div>
   <div class="flex justify-center mt-2">
-    <div class="font-bold" style="color:#9E4F6E">
+    <div class="titulo titulo_proveedor" style="color:#9E4F6E">
       Proveedor
     </div>
   </div>
 </div>
-<div class="h-24 p-2 cursor-pointer" (click)="navegar('poblacion')">
+<div class="h-24 p-2 cursor-pointer" (click)="navegar('poblacion')" (click)="clicked('poblacion')" (mouseenter)="animationEnter('.poblacion')" (mouseleave)="animationEnd('.poblacion')">
     <div class="flex justify-center">
-      <i class="fas fa-map-marked-alt fa-3x"></i>
+      <i class="fas fa-map-marked-alt fa-3x poblacion"></i>
     </div>
     <div class="flex justify-center mt-2">
-      <div class="font-bold" style="color:#9E4F6E">
+      <div class="titulo titulo_poblacion" style="color:#9E4F6E">
         Poblacion
       </div>
     </div>
   </div>
-  <div class="h-24 p-2 cursor-pointer" (click)="navegar('provincia')">
+  <div class="h-24 p-2 cursor-pointer" (click)="navegar('provincia')" (click)="clicked('provincia')" (mouseenter)="animationEnter('.provincia')" (mouseleave)="animationEnd('.provincia')">
     <div class="flex justify-center">
-      <i class="fas fa-map-marked-alt fa-3x"></i>
+      <i class="fas fa-map-marked-alt fa-3x provincia" ></i>
     </div>
     <div class="flex justify-center mt-2">
-      <div class="font-bold" style="color:#9E4F6E">
+      <div class="titulo titulo_provincia" style="color:#9E4F6E">
         Provincia
       </div>
     </div>
   </div>
-<div class="h-24 p-2 cursor-pointer" (click)="navegar('tipofactura')">
-  <div class="flex justify-center">
-    <i class="fas fa-ellipsis-v fa-3x"></i>
+<div class="h-24 p-2 cursor-pointer" (click)="navegar('tipofactura')"  (click)="clicked('tipofactura')" (mouseenter)="animationEnter('.tipofactura')" (mouseleave)="animationEnd('.tipofactura')">
+  <div class="flex justify-center ">
+    <i class="fas fa-ellipsis-v fa-3x tipofactura"></i>
   </div>
   <div class="flex justify-center mt-2">
-    <div class="font-bold" style="color:#9E4F6E">
+    <div class="titulo titulo_tipofactura" style="color:#9E4F6E">
       Tipofactura
     </div>
   </div>
@@ -63,7 +63,7 @@
     <i class="fas fa-ellipsis-v fa-3x"></i>
   </div>
   <div class="flex justify-center mt-2">
-    <div class="font-bold" style="color:#9E4F6E">
+    <div class="titulo" style="color:#9E4F6E">
       Tipovecino
     </div>
   </div>

@@ -28,21 +28,28 @@
               <p id="titulo_contrasenya">Contraseña:</p>
             </div>
             <div class="pl-3 pt-2">
-              <input class="pl-2 border-b-2 focus:outline-none" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E"
+              <input type="password" class="pl-2 border-b-2 focus:outline-none" style="background-color:#B7C3F3;border-bottom-color:#9E4F6E"
                 (focus)="focusIn('#titulo_contrasenya')" (focusout)="focusOut('#titulo_contrasenya')" formControlName="titulo_contrasenya">
             </div>
           </div>
         </div>
-        <div class="flex justify-center p-2"  (mouseenter)="animationEnter('.login')">
+        <div class="w-64" style="transform:scale(0.77);transform-origin:0 0;">
+          <p-captcha siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" (onResponse)="showResponse($event)"></p-captcha>
+        </div>
+        <div class="flex justify-center p-2" (mouseenter)="animationEnter('.login')">
           <button (click)="login()" id="borde" class="rounded hover:bg-grey-light p-5">
             <i class="fas fa-arrow-circle-right login"></i>
             Entrar
           </button>
         </div>
+        <button (click)="login2('admin','admin')" id="borde" class="rounded hover:bg-grey-light p-5">
+          <i class="fas fa-arrow-circle-right login"></i>
+          Entrar
+        </button>
       </div>
     </form>
   </div>
 </div>
 
 <p-toast position="bottom-right" [style]="{marginTop: '80px'}">
-  </p-toast>
+</p-toast>

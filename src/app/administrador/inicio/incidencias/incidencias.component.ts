@@ -3,6 +3,7 @@ import { IncidenciaService } from '../../../service/incidencia/incidencia.servic
 import { LoginService } from '../../../service/login/login.service';
 import { MessageService } from '../../../../../node_modules/primeng/components/common/messageservice';
 import { GeneralService } from '../../../service/general/general.service';
+import * as anime from 'src/assets/anime.min.js';
 
 @Component({
   selector: 'app-incidencias',
@@ -12,19 +13,19 @@ import { GeneralService } from '../../../service/general/general.service';
 })
 export class IncidenciasComponent implements OnInit {
 
-  constructor(private incidenciasService: IncidenciaService, private login: LoginService,private messageService: MessageService, private general: GeneralService) { }
+  constructor(private incidenciasService: IncidenciaService, private login: LoginService, private messageService: MessageService, private general: GeneralService) { }
 
   datos: boolean = false;
   modal_incidencia: boolean = false;
-  incidenciaResolver = {id: null, vecino:{nombre: null}, descripcion: null,fecha_creacion: null, atendido: null};
+  incidenciaResolver = { id: null, vecino: { nombre: null }, descripcion: null, fecha_creacion: null, atendido: null };
 
   incidencias: Array<IncidenciaInterface>;
-  
+
   ngOnInit() {
     this.cargaIncidencias()
   }
-  ampliacionTexto(data: string){
-    this.general.moreTexto.emit({display: true,data: data});
+  ampliacionTexto(data: string) {
+    this.general.moreTexto.emit({ display: true, data: data });
   }
 
   cargaIncidencias() {
@@ -38,9 +39,17 @@ export class IncidenciasComponent implements OnInit {
         this.general.incidenciasEvent.emit(num.msg);
       }
     )
-    setTimeout(() => {
-      this.datos = true;
-    }, 1500);
+    anime.timeline({
+      targets: '.spinner2 ',
+      duration: 1500,
+      easing: 'easeInOutSine',
+    }).add({
+      translateY: +200,
+      keyframes: [
+        { opacity: 1 },
+        { opacity: 0 }
+      ]
+    }).add({ translateY: -200 }).finished.then(() => { this.datos = true });
   }
 
   showDialog(incidencia: IncidenciaInterface): void {
@@ -48,7 +57,7 @@ export class IncidenciasComponent implements OnInit {
     this.incidenciaResolver = incidencia;
   }
 
-  resolverIncidencia(incidencia: IncidenciaInterface): void{
+  resolverIncidencia(incidencia: IncidenciaInterface): void {
     incidencia.atendido = "s";
     console.log(incidencia);
     this.incidenciasService.resolveIncidencia(incidencia).subscribe(

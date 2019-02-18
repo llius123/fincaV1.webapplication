@@ -1,10 +1,10 @@
-import { HeaderAdminComponent } from './../../header-admin/header-admin.component';
-import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
+
+import { Component, OnInit } from '@angular/core';
 import { TareaService } from '../../../service/tarea/tarea.service';
 import { MessageService } from 'primeng/components/common/messageservice';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { LoginService } from '../../../service/login/login.service';
 import { GeneralService } from '../../../service/general/general.service';
+import * as anime from 'src/assets/anime.min.js';
 
 @Component({
   selector: 'app-tareas',
@@ -16,7 +16,7 @@ export class TareasComponent implements OnInit {
 
   constructor(private tareaService: TareaService, private messageService: MessageService, private login: LoginService, private general: GeneralService) { }
 
-  tareaedited:string;
+  tareaedited: string;
 
   tareas: Array<TareaInterface>;
   datos: boolean = false;
@@ -27,28 +27,42 @@ export class TareasComponent implements OnInit {
   modal_display: boolean = false;
   modal_display_edit: boolean = false;
 
+  vecinoSession: VecinoInterface;
+
   ngOnInit() {
     this.cargaTareas();
   }
 
-  ampliacionTexto(data: string){
-    this.general.moreTexto.emit({display: true,data: data});
+  ampliacionTexto(data: string) {
+    this.general.moreTexto.emit({ display: true, data: data });
   }
 
   cargaTareas() {
+    this.vecinoSession = this.login.vecino;
     this.tareaService.getAllTarea().subscribe(
       (tareas: Array<TareaInterface>) => {
         this.tareas = tareas
       }
-      )
-      this.tareaService.countTarea().subscribe(
-        (num: number) => {
-          this.general.tareasEvent.emit(num);
-        }
-        )
-        setTimeout(() => {
-          this.datos = true;
-    }, 1500);
+    )
+    this.tareaService.countTarea().subscribe(
+      (num: number) => {
+        this.general.tareasEvent.emit(num);
+      }
+    )
+
+    anime.timeline({
+      targets: '.spinner1',
+      duration: 1500,
+      easing: 'easeInOutSine',
+    }).add({
+      translateY: +200,
+      keyframes: [
+        { opacity: 1 },
+        { opacity: 0 }
+      ]
+    }).add({translateY: -200}).finished.then(() => { this.datos = true });
+
+
   }
 
   showDialog() {
@@ -69,7 +83,7 @@ export class TareasComponent implements OnInit {
     }
     this.tareaService.addTarea(this.tarea).subscribe(
       (response) => {
-        this.showTooltip('success', '',' Tarea creada correctamente!' );
+        this.showTooltip('success', '', ' Tarea creada correctamente!');
         this.cargaTareas();
       },
       (error: ErrorInterface) => {
@@ -88,7 +102,7 @@ export class TareasComponent implements OnInit {
     }
     this.tareaService.editTarea(tarea).subscribe(
       response => {
-        this.showTooltip('success', '',' Tarea editada correctamente!' );
+        this.showTooltip('success', '', ' Tarea editada correctamente!');
         this.cargaTareas();
         this.datos = false;
         this.modal_display_edit = false;
@@ -102,7 +116,7 @@ export class TareasComponent implements OnInit {
   deleteTarea(id: number) {
     this.tareaService.deleteTarea(id).subscribe(
       response => {
-        this.showTooltip('success', '',' Tarea eliminada correctamente!' );
+        this.showTooltip('success', '', ' Tarea eliminada correctamente!');
         this.cargaTareas();
         this.datos = false;
       },

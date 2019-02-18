@@ -5,6 +5,7 @@ import { GeneralService } from '../../service/general/general.service';
 import { IncidenciaService } from 'src/app/service/incidencia/incidencia.service';
 import { TareaService } from 'src/app/service/tarea/tarea.service';
 import { Router } from '@angular/router';
+import * as anime from 'src/assets/anime.min.js';
 
 @Component({
   selector: 'app-header-admin',
@@ -14,26 +15,26 @@ import { Router } from '@angular/router';
 })
 export class HeaderAdminComponent implements OnInit {
 
-  constructor(private incidenciasService: IncidenciaService, private login: LoginService,private messageService: MessageService, private general: GeneralService,private tareaService: TareaService, private router: Router) { 
+  constructor(private incidenciasService: IncidenciaService, private login: LoginService, private messageService: MessageService, private general: GeneralService, private tareaService: TareaService, private router: Router) {
     general.tareasEvent.subscribe(
-      (data:number) =>{
+      (data: number) => {
         this.countTareas = data;
       }
     )
     general.incidenciasEvent.subscribe(
-      (data:number) => {
+      (data: number) => {
         this.countIncidencias = data;
       }
     )
   }
 
-  vecino_nombre:  string;
+  vecino_nombre: string;
   countIncidencias: number;
   countTareas: number;
 
   datos1: boolean = false;
   modal_incidencia: boolean = false;
-  incidenciaResolver = {id: null, vecino:{nombre: null}, descripcion: null,fecha_creacion: null, atendido: null};
+  incidenciaResolver = { id: null, vecino: { nombre: null }, descripcion: null, fecha_creacion: null, atendido: null };
 
   incidencias: Array<IncidenciaInterface>;
 
@@ -45,8 +46,15 @@ export class HeaderAdminComponent implements OnInit {
 
   modal_display: boolean = false;
   modal_display_edit: boolean = false;
-  
+
   ngOnInit() {
+    anime({
+      targets: '.header',
+      translateX: 2500,
+      duration: 1500,
+      direction: 'reverse',
+      easing: 'easeInOutSine'
+    });
     this.cargaIncidencias()
     this.cargaTareas();
   }
@@ -72,7 +80,7 @@ export class HeaderAdminComponent implements OnInit {
     this.incidenciaResolver = incidencia;
   }
 
-  resolverIncidencia(incidencia: IncidenciaInterface): void{
+  resolverIncidencia(incidencia: IncidenciaInterface): void {
     incidencia.atendido = "s";
     console.log(incidencia);
     this.incidenciasService.resolveIncidencia(incidencia).subscribe(
@@ -124,7 +132,7 @@ export class HeaderAdminComponent implements OnInit {
     }
     this.tareaService.addTarea(this.tarea).subscribe(
       (response) => {
-        this.showTooltip('success', '',' Tarea creada correctamente!' );
+        this.showTooltip('success', '', ' Tarea creada correctamente!');
         this.cargaTareas();
       },
       (error: ErrorInterface) => {
@@ -143,7 +151,7 @@ export class HeaderAdminComponent implements OnInit {
     }
     this.tareaService.editTarea(tarea).subscribe(
       response => {
-        this.showTooltip('success', '',' Tarea editada correctamente!' );
+        this.showTooltip('success', '', ' Tarea editada correctamente!');
         this.cargaTareas();
         this.datos2 = false;
         this.modal_display_edit = false;
@@ -157,7 +165,7 @@ export class HeaderAdminComponent implements OnInit {
   deleteTarea(id: number) {
     this.tareaService.deleteTarea(id).subscribe(
       response => {
-        this.showTooltip('success', '',' Tarea eliminada correctamente!' );
+        this.showTooltip('success', '', ' Tarea eliminada correctamente!');
         this.cargaTareas();
         this.datos2 = false;
       },
@@ -167,9 +175,22 @@ export class HeaderAdminComponent implements OnInit {
     )
   }
 
-  logout(){
+  logout() {
     this.login.logout();
     this.router.navigate(['login'])
+  }
+
+  animationEnter(target: string){
+    anime({
+      targets: `${target}`,
+      translateX: 10
+    });
+  }
+  animationEnd(target: string){
+    anime({
+      targets: `${target}`,
+      translateX: 0
+    });
   }
 
   showTooltip(type: string, title: string, desc: string) {

@@ -42,8 +42,10 @@
       </div>
     </p-scrollPanel>
   </div>
-  <div class="rounded w-full" [hidden]="datos" style="background-color: #B6C3F3;height: 435px;">
-    <p-progressSpinner [styleClass]="{'background-color': '#B6C3F3', 'width': '50px', 'height': '50px'}"></p-progressSpinner>
+</div>
+<div class="flex justify-center spinner2" style="height: 489px;" [hidden]="datos">
+  <div class="rounded">
+      <p-progressSpinner [class]="custom2" [styleClass]="{ 'width': '50px', 'height': '50px'}"></p-progressSpinner>
   </div>
 </div>
 
