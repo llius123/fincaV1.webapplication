@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   login_form: FormGroup;
-  reCaptcha: string = "hola";
+  reCaptcha: string;
 
 
 
