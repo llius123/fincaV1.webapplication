@@ -36,16 +36,12 @@
         <div class="w-64" style="transform:scale(0.77);transform-origin:0 0;">
           <p-captcha siteKey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" (onResponse)="showResponse($event)"></p-captcha>
         </div>
-        <div class="flex justify-center p-2" (mouseenter)="animationEnter('.login')">
+        <div class="flex justify-center p-2">
           <button (click)="login()" id="borde" class="rounded hover:bg-grey-light p-5">
             <i class="fas fa-arrow-circle-right login"></i>
             Entrar
           </button>
         </div>
-        <button (click)="login2('admin','admin')" class="rounded hover:bg-grey-light p-5">
-          <i class="fas fa-arrow-circle-right login"></i>
-          Entrar
-        </button>
       </div>
     </form>
   </div>
