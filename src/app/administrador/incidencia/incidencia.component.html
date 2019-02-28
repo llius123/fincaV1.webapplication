@@ -1,49 +1,80 @@
-<p-scrollPanel [style]="{width: '100%', height: '550px'}" styleClass="custom">
-<div class="flex flex-wrap m-1 justify-center justify-left">
-    <div class="flex flex-col border rounded h-64 m-2" *ngFor="let incidencia of incidencias" id="borde">
+<p-scrollPanel [style]="{ width: '100%', height: '550px' }" styleClass="custom">
+  <div class="flex flex-wrap m-1 justify-center justify-left">
+    <div
+      class="flex flex-col border rounded h-64 m-2"
+      *ngFor="let incidencia of incidencias"
+      id="borde"
+    >
       <div class="flex justify-center mt-5">
-        <i class="fas fa-times-circle fa-3x text-red-dark" *ngIf="incidencia.atendido==='n'"></i>
-        <i class="fas fa-check-circle fa-3x text-green-dark" *ngIf="incidencia.atendido==='s'"></i>
+        <i
+          class="fas fa-times-circle fa-3x text-red-dark"
+          *ngIf="incidencia.atendido === 'n'"
+        ></i>
+        <i
+          class="fas fa-check-circle fa-3x text-green-dark"
+          *ngIf="incidencia.atendido === 's'"
+        ></i>
       </div>
       <div class="flex flex-col mt-5">
-        <div class="flex flex-col ml-2 pl-2 mt-1 mb-1" style="border-left-color:#9E4F6E;border-left-width: 2px;">
+        <div
+          class="flex flex-col ml-2 pl-2 mt-1 mb-1"
+          style="border-left-color:#9E4F6E;border-left-width: 2px;"
+        >
           <div class="font-bold">
             Vecino
           </div>
           <div>
-            {{incidencia.vecino.nombre}}
+            {{ incidencia.vecino.nombre }}
           </div>
         </div>
-        <div class="flex flex-col ml-2 pl-2 mt-1 mb-1" style="border-left-color:#9E4F6E;border-left-width: 2px;">
+        <div
+          class="flex flex-col ml-2 pl-2 mt-1 mb-1"
+          style="border-left-color:#9E4F6E;border-left-width: 2px;"
+        >
           <div class="font-bold">
             Fecha
           </div>
           <div>
-            {{incidencia.fecha_creacion | fechaPipe}}
+            {{ incidencia.fecha_creacion | fechaPipe }}
           </div>
         </div>
-        <div class="flex flex-col ml-2 pl-2 mt-1 mb-1" style="border-left-color:#9E4F6E;border-left-width: 2px;">
+        <div
+          class="flex flex-col ml-2 pl-2 mt-1 mb-1"
+          style="border-left-color:#9E4F6E;border-left-width: 2px;"
+        >
           <div class="font-bold">
             Descripcion
           </div>
           <div>
-            {{incidencia.descripcion | recorteTextoPipe:[20, '...']}}
+            {{ incidencia.descripcion | recorteTextoPipe: [20, "..."] }}
           </div>
         </div>
       </div>
       <div class="flex flex-col">
         <div class="flex flex-row justify-center mt-1 mb-1">
-          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('ver',incidencia)" pTooltip="Ver factura"
-            tooltipPosition="bottom">
+          <div
+            class="flex p-3 cursor-pointer hover:rosa-jesus"
+            (click)="action('ver', incidencia)"
+            pTooltip="Ver factura"
+            tooltipPosition="bottom"
+          >
             <i class="far fa-eye fa-2x"></i>
           </div>
-          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('atender',incidencia)" pTooltip="Atender factura"
-          *ngIf="incidencia.atendido==='n'"
-          tooltipPosition="bottom">
+          <div
+            class="flex p-3 cursor-pointer hover:rosa-jesus"
+            (click)="action('atender', incidencia)"
+            pTooltip="Atender factura"
+            *ngIf="incidencia.atendido === 'n'"
+            tooltipPosition="bottom"
+          >
             <i class="fas fa-check fa-2x"></i>
           </div>
-          <div class="flex p-3 cursor-pointer hover:rosa-jesus" (click)="action('eliminar',incidencia)" pTooltip="Eliminar factura"
-            tooltipPosition="bottom">
+          <div
+            class="flex p-3 cursor-pointer hover:rosa-jesus"
+            (click)="action('eliminar', incidencia)"
+            pTooltip="Eliminar factura"
+            tooltipPosition="bottom"
+          >
             <i class="far fa-trash-alt fa-2x"></i>
           </div>
         </div>
@@ -52,8 +83,21 @@
   </div>
 </p-scrollPanel>
 
-<p-dialog header="Factura" [(visible)]="display_factura" [modal]="true" *ngIf="datos" [closable]="false" [showHeader]="false"
-  [dismissableMask]="true" [contentStyle]="{'background-color': '#B6C3F3','border-color': '#9E4F6E', 'border-radius': '0.25rem', 'border-width': '2px'}">
+<p-dialog
+  header="Factura"
+  [(visible)]="display_factura"
+  [modal]="true"
+  *ngIf="datos"
+  [closable]="false"
+  [showHeader]="false"
+  [dismissableMask]="true"
+  [contentStyle]="{
+    'background-color': '#B6C3F3',
+    'border-color': '#9E4F6E',
+    'border-radius': '0.25rem',
+    'border-width': '2px'
+  }"
+>
   <div class="flex justify-end">
     <div (click)="cerrar()" class="cursor-pointer">
       <i class="fas fa-times"></i>
@@ -64,7 +108,7 @@
       Descripcion
     </div>
     <div class=" p-1">
-      {{incidenciaView.descripcion}}
+      {{ incidenciaView.descripcion }}
     </div>
   </div>
 </p-dialog>
@@ -80,5 +124,4 @@
   </div>
 </p-dialog>
 
-<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
-</p-toast>
+<p-toast position="bottom-right" [style]="{ marginTop: '80px' }"> </p-toast>

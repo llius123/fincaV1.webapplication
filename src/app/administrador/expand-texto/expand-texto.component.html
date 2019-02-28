@@ -1,5 +1,22 @@
-<p-dialog [(visible)]="display_expandtexto" [modal]="true" [contentStyle]="{'max-width':'700px'}">
+<p-dialog
+  [(visible)]="display_expandtexto"
+  [modal]="true"
+  [closable]="false"
+  [showHeader]="false"
+  [dismissableMask]="true"
+  [contentStyle]="{
+    'background-color': '#B6C3F3',
+    'border-color': '#9E4F6E',
+    'border-radius': '0.25rem',
+    'border-width': '2px'
+  }"
+>
+  <div class="flex justify-end">
+    <div (click)="cerrar()" class="cursor-pointer">
+      <i class="fas fa-times"></i>
+    </div>
+  </div>
   <div class="flex flex-wrap ">
-    {{texto}}
+    {{ texto }}
   </div>
 </p-dialog>

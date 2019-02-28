@@ -3,7 +3,12 @@
     Tareas
   </div>
   <div>
-    <button type="button" (click)="showDialog()" class="rounded-full w-32 h-10" style="border-width: 2px; border-color: #9E4F6E;">
+    <button
+      type="button"
+      (click)="showDialog()"
+      class="rounded-full w-32 h-10"
+      style="border-width: 2px; border-color: #9E4F6E;"
+    >
       <div class="flex">
         <i class="far fa-plus-square fa-2x pl-2"></i>
         <div class="text-2xl pl-2">
@@ -13,39 +18,69 @@
     </button>
   </div>
 </div>
-<div [hidden]="!datos" >
-  <p-scrollPanel [style]="{width: '100%', height: '430px'}" styleClass="custom">
-    <div class="border rounded ng-star-inserted m-2 p-2 shadow-md" *ngFor="let tarea of tareas" style="border-color: #9E4F6E;background-color: #B6C3F3;">
+<div [hidden]="!datos">
+  <p-scrollPanel
+    [style]="{ width: '100%', height: '430px' }"
+    styleClass="custom"
+  >
+    <div
+      class="border rounded ng-star-inserted m-2 p-2 shadow-md"
+      *ngFor="let tarea of tareas"
+      style="border-color: #9E4F6E;background-color: #B6C3F3;"
+    >
       <div class="flex p-2">
-        <div class="p-1 h-8 w-8 border-tareas-icono rounded-full" style="border-color: #9E4F6E;border-width: 2px;">
+        <div
+          class="p-1 h-8 w-8 border-tareas-icono rounded-full"
+          style="border-color: #9E4F6E;border-width: 2px;"
+        >
           <i class="flex fas fa-user items-center justify-center"></i>
         </div>
         <div class="text-2xl ml-5" style="width:100%">
-            {{vecinoSession.nombre}}
+          {{ vecinoSession.nombre }}
         </div>
         <div class="w-full flex justify-end">
-          <button (click)="ampliacionTexto(tarea.descripcion)" pTooltip="Expandir descripcion" tooltipPosition="right"
-            class="border-2 rounded p-1" style="border-color: #9E4F6E">
+          <button
+            (click)="ampliacionTexto(tarea.descripcion)"
+            pTooltip="Expandir descripcion"
+            tooltipPosition="right"
+            class="border-2 rounded p-1"
+            style="border-color: #9E4F6E"
+          >
             <i class="fas fa-expand-arrows-alt fa-lg"></i>
           </button>
         </div>
       </div>
       <div class="flex m-3">
-        {{ tarea.descripcion | recorteTextoPipe:[40, '...']}}
+        {{ tarea.descripcion | recorteTextoPipe: [40, "..."] }}
       </div>
-      <div class="mt-3 mb-3" style="border-color: #9E4F6E;border-width: 1px;"></div>
+      <div
+        class="mt-3 mb-3"
+        style="border-color: #9E4F6E;border-width: 1px;"
+      ></div>
       <div class="flex pt-2 p-2">
-        <div class="w-32 h-8 text-center" style="border-bottom-color: #9E4F6E;border-bottom-width: 2px;">
+        <div
+          class="w-32 h-8 text-center"
+          style="border-bottom-color: #9E4F6E;border-bottom-width: 2px;"
+        >
           <div class="self-auto mt-1">
-            {{tarea.fecha | fechaPipe}}
+            {{ tarea.fecha | fechaPipe }}
           </div>
         </div>
         <div class="w-full text-right">
-          <button (click)="showDialogEdit(tarea)" class="mr-5 hover:rosa-jesus" pTooltip="Editar tarea" tooltipPosition="bottom">
+          <button
+            (click)="showDialogEdit(tarea)"
+            class="mr-5 hover:rosa-jesus"
+            pTooltip="Editar tarea"
+            tooltipPosition="bottom"
+          >
             <i class="fas fa-edit fa-2x"></i>
           </button>
-          <button (click)="deleteTarea(tarea.id)" class="mr-5 hover:rosa-jesus" pTooltip="Eliminar tarea"
-            tooltipPosition="bottom">
+          <button
+            (click)="deleteTarea(tarea.id)"
+            class="mr-5 hover:rosa-jesus"
+            pTooltip="Eliminar tarea"
+            tooltipPosition="bottom"
+          >
             <i class="fas fa-trash-alt fa-2x"></i>
           </button>
         </div>
@@ -53,46 +88,115 @@
     </div>
   </p-scrollPanel>
 </div>
-<div class="flex justify-center spinner1" style="height: 489px;" [hidden]="datos">
-  <div class="rounded" >
-    <p-progressSpinner [styleClass]="{'width': '50px', 'height': '50px'}"></p-progressSpinner>
+<div
+  class="flex justify-center spinner1"
+  style="height: 489px;"
+  [hidden]="datos"
+>
+  <div class="rounded">
+    <p-progressSpinner
+      [styleClass]="{ width: '50px', height: '50px' }"
+    ></p-progressSpinner>
   </div>
 </div>
 
-
 <!-- Crear una nueva tarea -->
-<p-dialog header="Nueva tarea" [(visible)]="modal_display" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
-  <div class="flex">
-    <div class="flex-1">
-      Descripcion
-    </div>
-    <div class="flex-1 border border-black">
-      <textarea rows="4" cols="30" #tarea></textarea>
-    </div>
+<p-dialog
+  [(visible)]="modal_display"
+  [modal]="true"
+  *ngIf="datos"
+  [closable]="false"
+  [showHeader]="false"
+  [dismissableMask]="true"
+  [contentStyle]="{
+    'background-color': '#B6C3F3',
+    'border-color': '#9E4F6E',
+    'border-radius': '0.25rem',
+    'border-width': '2px'
+  }"
+>
+  <div class="flex font-bold mt-2 mb-2">
+    Descripcion
   </div>
-  <p-footer>
-    <button type="button" pButton icon="fas fa-check" (click)="nuevaTarea(tarea.value)" label="Yes"></button>
-    <button type="button" pButton icon="fas fa-times" (click)="modal_display=false" label="No" class="ui-button-secondary"></button>
-  </p-footer>
+  <div class="flex mt-2 mb-2">
+    <textarea
+      rows="4"
+      cols="30"
+      style="border:1px solid #9E4F6E;border-radius: 2px;"
+      #tarea
+    >
+    </textarea>
+  </div>
+  <div class="flex justify-end">
+    <button
+      type="button"
+      icon="fas fa-check"
+      (click)="nuevaTarea(tarea.value)"
+      class="mr-1 bg-green-lighter rounded font-bold"
+      style="width: 60px;height: 40px;border:1px solid #9E4F6E;"
+    >
+      Editar
+    </button>
+    <button
+      type="button"
+      icon="fas fa-times"
+      (click)="modal_display = false"
+      class="ml-1 bg-red-lighter rounded font-bold"
+      style="width: 80px;height: 40px;border:1px solid #9E4F6E;"
+    >
+      Cancelar
+    </button>
+  </div>
 </p-dialog>
 
 <!-- Editar una tarea -->
-<p-dialog header="Editar tarea" [(visible)]="modal_display_edit" [modal]="true" [responsive]="true" [style]="{width: '500px'}">
-  <div class="flex">
-    <div class="flex-1">
-      Descripcion
-    </div>
-    <div class="flex-1 border border-black">
-      <textarea rows="4" cols="30" [(ngModel)]="tareaedited">
-          {{tareaEdited.descripcion}}
-        </textarea>
-    </div>
+<p-dialog
+  [(visible)]="modal_display_edit"
+  [modal]="true"
+  *ngIf="datos"
+  [closable]="false"
+  [showHeader]="false"
+  [dismissableMask]="true"
+  [contentStyle]="{
+    'background-color': '#B6C3F3',
+    'border-color': '#9E4F6E',
+    'border-radius': '0.25rem',
+    'border-width': '2px'
+  }"
+>
+  <div class="flex font-bold mt-2 mb-2">
+    Descripcion
   </div>
-  <p-footer>
-    <button type="button" pButton icon="fas fa-check" (click)="editarTarea()" label="Yes"></button>
-    <button type="button" pButton icon="fas fa-times" (click)="modal_display_edit=false" label="No" class="ui-button-secondary"></button>
-  </p-footer>
+  <div class="flex mt-2 mb-2">
+    <textarea
+      rows="4"
+      cols="30"
+      [(ngModel)]="tareaedited"
+      style="border:1px solid #9E4F6E;border-radius: 2px;"
+    >
+          {{ tareaEdited.descripcion }}
+    </textarea>
+  </div>
+  <div class="flex justify-end">
+    <button
+      type="button"
+      icon="fas fa-check"
+      (click)="editarTarea()"
+      class="mr-1 bg-green-lighter rounded font-bold"
+      style="width: 60px;height: 40px;border:1px solid #9E4F6E;"
+    >
+      Editar
+    </button>
+    <button
+      type="button"
+      icon="fas fa-times"
+      (click)="modal_display_edit = false"
+      class="ml-1 bg-red-lighter rounded font-bold"
+      style="width: 80px;height: 40px;border:1px solid #9E4F6E;"
+    >
+      Cancelar
+    </button>
+  </div>
 </p-dialog>
 
-<p-toast position="bottom-right" [style]="{marginTop: '80px'}">
-</p-toast>
+<p-toast position="bottom-right" [style]="{ marginTop: '80px' }"> </p-toast>

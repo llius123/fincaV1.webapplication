@@ -20,4 +20,8 @@ export class ExpandTextoComponent {
       )
     }
 
+    cerrar (){
+      this.display_expandtexto = !this.display_expandtexto;
+    }
+
 }

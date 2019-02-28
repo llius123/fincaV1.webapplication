@@ -1,20 +1,23 @@
-
-import { Component, OnInit } from '@angular/core';
-import { TareaService } from '../../../service/tarea/tarea.service';
-import { MessageService } from 'primeng/components/common/messageservice';
-import { LoginService } from '../../../service/login/login.service';
-import { GeneralService } from '../../../service/general/general.service';
-import * as anime from 'src/assets/anime.min.js';
+import { Component, OnInit } from "@angular/core";
+import { TareaService } from "../../../service/tarea/tarea.service";
+import { MessageService } from "primeng/components/common/messageservice";
+import { LoginService } from "../../../service/login/login.service";
+import { GeneralService } from "../../../service/general/general.service";
+import * as anime from "src/assets/anime.min.js";
 
 @Component({
-  selector: 'app-tareas',
-  templateUrl: './tareas.component.html',
-  styleUrls: ['./tareas.component.css'],
+  selector: "app-tareas",
+  templateUrl: "./tareas.component.html",
+  styleUrls: ["./tareas.component.css"],
   providers: [MessageService]
 })
 export class TareasComponent implements OnInit {
-
-  constructor(private tareaService: TareaService, private messageService: MessageService, private login: LoginService, private general: GeneralService) { }
+  constructor(
+    private tareaService: TareaService,
+    private messageService: MessageService,
+    private login: LoginService,
+    private general: GeneralService
+  ) {}
 
   tareaedited: string;
 
@@ -31,17 +34,20 @@ export class TareasComponent implements OnInit {
 
   ngOnInit() {
     this.cargaTareas();
-      anime.timeline({
-        targets: '.spinner1',
+    anime
+      .timeline({
+        targets: ".spinner1",
         duration: 1500,
-        easing: 'easeInOutSine',
-      }).add({
+        easing: "easeInOutSine"
+      })
+      .add({
         translateY: +200,
-        keyframes: [
-          { opacity: 1 },
-          { opacity: 0, height:'0px' }
-        ]
-      }).add({translateY: -200}).finished.then(() => { this.datos = true });
+        keyframes: [{ opacity: 1 }, { opacity: 0, height: "0px" }]
+      })
+      .add({ translateY: -200 })
+      .finished.then(() => {
+        this.datos = true;
+      });
   }
 
   ampliacionTexto(data: string) {
@@ -50,16 +56,14 @@ export class TareasComponent implements OnInit {
 
   cargaTareas() {
     this.vecinoSession = this.login.vecino;
-    this.tareaService.getAllTarea().subscribe(
-      (tareas: Array<TareaInterface>) => {
-        this.tareas = tareas
-      }
-    )
-    this.tareaService.countTarea().subscribe(
-      (num: number) => {
-        this.general.tareasEvent.emit(num);
-      }
-    )
+    this.tareaService
+      .getAllTarea()
+      .subscribe((tareas: Array<TareaInterface>) => {
+        this.tareas = tareas;
+      });
+    this.tareaService.countTarea().subscribe((num: number) => {
+      this.general.tareasEvent.emit(num);
+    });
   }
 
   showDialog() {
@@ -77,16 +81,20 @@ export class TareasComponent implements OnInit {
       id: null,
       fecha: fecha,
       descripcion: descripcion
-    }
+    };
     this.tareaService.addTarea(this.tarea).subscribe(
-      (response) => {
-        this.showTooltip('success', '', ' Tarea creada correctamente!');
+      response => {
+        this.showTooltip("success", "", " Tarea creada correctamente!");
         this.cargaTareas();
       },
       (error: ErrorInterface) => {
-        this.showTooltip('error', '', 'Error en el servidor al añadir la tarea!');
+        this.showTooltip(
+          "error",
+          "",
+          "Error en el servidor al añadir la tarea!"
+        );
       }
-    )
+    );
     this.modal_display = false;
   }
 
@@ -96,29 +104,29 @@ export class TareasComponent implements OnInit {
       id: this.tareaEdited.id,
       descripcion: this.tareaedited,
       fecha: fecha
-    }
+    };
     this.tareaService.editTarea(tarea).subscribe(
       response => {
-        this.showTooltip('success', '', ' Tarea editada correctamente!');
+        this.showTooltip("success", "", " Tarea editada correctamente!");
         this.cargaTareas();
         this.modal_display_edit = false;
       },
       (error: ErrorInterface) => {
-        this.showTooltip('error', '', 'Error en el servidor!');
+        this.showTooltip("error", "", "Error en el servidor!");
       }
-    )
+    );
   }
 
   deleteTarea(id: number) {
     this.tareaService.deleteTarea(id).subscribe(
       response => {
-        this.showTooltip('success', '', ' Tarea eliminada correctamente!');
+        this.showTooltip("success", "", " Tarea eliminada correctamente!");
         this.cargaTareas();
       },
       error => {
-        this.showTooltip('error', '', 'Error en el servidor!');
+        this.showTooltip("error", "", "Error en el servidor!");
       }
-    )
+    );
   }
 
   showTooltip(type: string, title: string, desc: string) {
@@ -126,7 +134,7 @@ export class TareasComponent implements OnInit {
       severity: `${type}`,
       summary: `${title}`,
       detail: `${desc}`
-    })
+    });
     //this.messageService.add({ severity: 'success', summary: 'Tarea actualizada!', detail: 'Tarea actualizada correctamente' });
   }
   // showError() {
