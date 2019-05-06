@@ -17,7 +17,7 @@ export class IncidenciasComponent implements OnInit {
 
   datos: boolean = false;
   modal_incidencia: boolean = false;
-  incidenciaResolver = { id: null, vecino: { nombre: null }, descripcion: null, fecha_creacion: null, atendido: null };
+  incidenciaResolver: IncidenciaInterface = {id: null,vecino: { id: null, nombre: null, direccion: null,numero: null,nif: null,iban: null,comunidad: null,porcentaje_participacion: null,email: null,telefono: null,id_tipovecino: null,poblacion: null,login: null,pass: null},descripcion: null, fecha_creacion: null, atendido: null};
 
   incidencias: Array<IncidenciaInterface>;
 

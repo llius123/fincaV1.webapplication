@@ -7,8 +7,8 @@ import { Injectable } from "@angular/core";
 export class ConfigService {
   constructor() { }
 
-  private _api: string = "http://localhost:8081/fincaV1.server/";
-
+  // private _api: string = "http://localhost:8081/fincaV1.server/";
+  private _api: string = "http://178.62.202.55:8081/fincaV1.server/";
   public get api(): string {
     return this._api;
   }
