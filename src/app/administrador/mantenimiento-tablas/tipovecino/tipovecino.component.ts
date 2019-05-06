@@ -19,6 +19,7 @@ export class TipovecinoComponent implements OnInit {
 
   tipovecinos: TipovecinoInterface[];
 
+  searchName: string;
   parentMessage = false;
   padre: Subject<TipovecinoInterface> = new Subject();
 

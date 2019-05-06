@@ -19,6 +19,7 @@ export class PoblacionComponent implements OnInit {
     )
   }
 
+  searchName: string;
   poblaciones: PoblacionInterface[];
   parentMessage = false;
   padre: Subject<PoblacionInterface> = new Subject();

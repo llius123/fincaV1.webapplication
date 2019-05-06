@@ -18,6 +18,8 @@ export class VecinoComponent implements OnInit {
     )
   }
 
+  searchName: string;
+  
   vecinos: VecinoInterface[];
   modal_display_vecino: boolean = false;
 

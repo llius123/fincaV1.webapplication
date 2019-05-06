@@ -20,6 +20,7 @@ export class TipofacturaComponent implements OnInit {
     )
   }
 
+  searchName: string;
   tipofacturas: TipofacturaInterface[];
   parentMessage = false;
   padre: Subject<TipovecinoInterface> = new Subject();

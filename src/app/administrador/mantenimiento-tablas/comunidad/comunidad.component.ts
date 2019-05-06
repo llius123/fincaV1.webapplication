@@ -17,6 +17,7 @@ export class ComunidadComponent implements OnInit {
     );
   }
 
+  searchName: string;
   comunidades: ComunidadInterface[];
 
   parentMessage = false;

@@ -19,6 +19,7 @@ export class ProvinciaComponent implements OnInit {
     )
   }
 
+  searchName: string;
   provincias: ProvinciaInterface[];
   parentMessage = false;
   padre: Subject<TipovecinoInterface> = new Subject();

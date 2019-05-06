@@ -17,6 +17,7 @@ export class ProveedorComponent implements OnInit {
     )
   }
 
+  searchName: string;
   parentMessage = false;
   proveedores: ProveedorInterface[];
   ngOnInit() {
