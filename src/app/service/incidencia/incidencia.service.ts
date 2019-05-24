@@ -27,4 +27,8 @@ export class IncidenciaService{
     delete(id: number){
         return this.http.delete(`${this.config.api}incidencias/${id}`, this.config.header);
     }
+
+    add(incidencia: IncidenciaInterface){
+        return this.http.post(`${this.config.api}incidencias`, incidencia, this.config.header);
+    }
 }
